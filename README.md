@@ -91,10 +91,11 @@ linescoreComponent.init(); // initiates component
 
 ###TODO
 
-* UMD support
-* Bootstrap addition
-* Atomic design addition
-* etc...
+- [ ] UMD support
+- [ ] Bootstrap addition
+- [ ] Atomic design addition
+- [ ] Refactor/Cleanup
+- [ ] etc...
 
 ###Reference
 
