@@ -1,0 +1,17 @@
+/**
+ *
+ * file: g5-component.css
+ * description: core styling for g5-component
+ *
+ */
+
+.g5-component {
+    display: none;
+    visibility: hidden;
+}
+
+[data-g5-component-visible] {
+    display: block;
+    visibility: visible;
+}
+

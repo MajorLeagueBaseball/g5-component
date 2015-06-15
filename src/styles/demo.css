@@ -1,0 +1,14 @@
+/**
+ *
+ * file: demo.css
+ * description: simple styling for the demo component
+ *
+ */
+
+body {
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 2em;
+}
+

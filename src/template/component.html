@@ -1,0 +1,21 @@
+<section class="{{subject}}">
+    {{#if data.game}}
+        <dl>
+            <dt><strong>Home Team</strong></dt>
+            <dd>{{data.game.home_team_name}}</dd>
+
+            <dt><strong>Location</strong></dt>
+            <dd>{{data.game.location}}</dd>
+
+            <dt><strong>Game Date</strong></dt>
+            <dd>{{data.game.original_date}}</dd>
+
+            <dt><strong>Game Time</strong></dt>
+            <dd>{{data.game.time}}</dd>
+        </dl>
+    {{/if}}
+</section>
+
+<article>
+    <small>{{copyright}}</small>
+</article>
