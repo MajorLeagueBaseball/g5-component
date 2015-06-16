@@ -16,8 +16,6 @@ const EventEmitter = require('events').EventEmitter;
  *
  * @constructor MasterViewModel
  * @param {Object} opts
- * @param {String} opts.css classes added to main container
- * @param {Element} opts.container
  *
  */
 function MasterViewModel(opts) {
@@ -31,11 +29,14 @@ function MasterViewModel(opts) {
     }, opts);
 
     this.container = this.opts.container;
+
     this.instance = false;
     this.active = false;
+    this.bound = false;
 
-    // if no opts passed, assuming this is being called by a test
-    this.template = (opts && require('./../../template/component.html')) || '';
+    this.component = opts && require('component');
+    this.less = opts && require('component-less');
+    this.template = opts && require('component-template');
 
     EventEmitter.call(this);
 
@@ -75,8 +76,10 @@ MasterViewModel.prototype.addG5Attributes = function() {
     let container = this.container;
 
     container.className = container.className + ' ' + this.opts.css;
+
     container.setAttribute('data-g5-component-instance', this.instance);
     container.setAttribute('data-g5-component-visible', this.active);
+    container.setAttribute('data-g5-component-bound', this.bound);
 
     return this;
 
@@ -95,6 +98,30 @@ MasterViewModel.prototype.refresh = function(data={}) {
     util.log('g5-component : refreshing data on viewModel');
 
     this.container.innerHTML = this.template(data);
+
+    return this;
+
+};
+
+/**
+ *
+ * @method bindComponent
+ * @returns {Object} this
+ * @description attaches component specific functionality
+ *
+ */
+MasterViewModel.prototype.bindComponent = function() {
+
+    let container = this.container;
+
+    if (!this.bound) {
+
+        this.bound = true;
+        this.component.init(container);
+
+        container.setAttribute('data-g5-component-bound', this.bound);
+
+    }
 
     return this;
 

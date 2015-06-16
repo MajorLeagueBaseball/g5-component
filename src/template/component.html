@@ -1,18 +1,37 @@
+<h3>Bootstrap Example</h3>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+<h3>Game Data</h3>
+
 <section class="{{subject}}">
     {{#if data.game}}
-        <dl>
-            <dt><strong>Home Team</strong></dt>
-            <dd>{{data.game.home_team_name}}</dd>
+        {{#with data.game}}
+            <dl>
+                <dt><strong>Home Team</strong></dt>
+                <dd>{{home_team_name}}</dd>
 
-            <dt><strong>Location</strong></dt>
-            <dd>{{data.game.location}}</dd>
+                <dt><strong>Location</strong></dt>
+                <dd>{{location}}</dd>
 
-            <dt><strong>Game Date</strong></dt>
-            <dd>{{data.game.original_date}}</dd>
+                <dt><strong>Game Date</strong></dt>
+                <dd>{{original_date}}</dd>
 
-            <dt><strong>Game Time</strong></dt>
-            <dd>{{data.game.time}}</dd>
-        </dl>
+                <dt><strong>Game Time</strong></dt>
+                <dd>{{time}}</dd>
+
+                <dt><strong>Game Media</strong></dt>
+                <dd>
+                    {{#if game_media.media.thumbnail}}
+                        {{#with game_media.media}}
+                            <img src="{{thumbnail}}" alt="{{title}}" />
+                        {{/with}}
+                    {{/if}}
+                </dd>
+            </dl>
+        {{/with}}
     {{/if}}
 </section>
 
