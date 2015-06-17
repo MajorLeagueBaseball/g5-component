@@ -44,10 +44,10 @@
     "server": "python -m SimpleHTTPServer 9966",
     "start": "npm run build && npm run server",
     "start-dev": "npm run watch & npm run server",
-    "build-js": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle.js",
+    "build-js": "browserify src/scripts/g5-component.js --standalone 'g5-component' | uglifyjs -mc > src/static/bundle.js",
     "build-css": "catw -c 'lessc -' 'src/styles/component.less' > src/static/bundle.css",
     "build": "npm run build-js",
-    "watch-js": "watchify src/scripts/index.js -o src/static/bundle.js -dv",
+    "watch-js": "watchify src/scripts/g5-component.js -o src/static/bundle.js -dv",
     "watch-css": "catw -c 'lessc -' 'src/styles/component.less' -o src/static/bundle.css -v",
     "watch": "npm run watch-js",
     "test": "babel-tape-runner test/*.js"
