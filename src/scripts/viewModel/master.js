@@ -56,9 +56,25 @@ MasterViewModel.prototype.init = function() {
 
         this.instance = true;
         this.active = true;
-        this.addG5Attributes();
+        this.addClass().addG5Attributes();
 
     }
+
+    return this;
+
+};
+
+/**
+ *
+ * @method addClass
+ * @returns {Object} this
+ *
+ */
+MasterViewModel.prototype.addClass = function() {
+
+    let container = this.container;
+
+    container.className = container.className + ' ' + this.opts.css;
 
     return this;
 
@@ -74,8 +90,6 @@ MasterViewModel.prototype.init = function() {
 MasterViewModel.prototype.addG5Attributes = function() {
 
     let container = this.container;
-
-    container.className = container.className + ' ' + this.opts.css;
 
     container.setAttribute('data-g5-component-instance', this.instance);
     container.setAttribute('data-g5-component-visible', this.active);
@@ -112,14 +126,11 @@ MasterViewModel.prototype.refresh = function(data={}) {
  */
 MasterViewModel.prototype.bindComponent = function() {
 
-    let container = this.container;
-
     if (!this.bound) {
 
         this.bound = true;
-        this.component.init(container);
-
-        container.setAttribute('data-g5-component-bound', this.bound);
+        this.component.init(this.container);
+        this.addG5Attributes();
 
     }
 
