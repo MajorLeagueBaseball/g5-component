@@ -36,16 +36,81 @@ npm test
 npm run build
 ```
 
-###Component Setup
+###Usage
 
-```js
+####AMD
 
-let linescoreComponent = g5Component({
-    container: document.getElementById('component--linescore'),
-    css: 'linescore linescore--game',
-    interval: 80000,
-    path: '/src/data/linescore.json'
-});
+```
+npm run build-js
+```
+
+```html
+<script>
+
+    require(['src/static/bundle'], function(g5Component) {
+
+        g5Component = g5Component && g5Component.construct;
+
+        var linescoreComponent = g5Component({
+            container: document.getElementById('component--linescore'),
+            css: 'g5-component-linescore linescore linescore--game',
+            interval: 15000,
+            path: '/src/data/linescore.json'
+        });
+
+        linescoreComponent.init();
+
+    });
+
+</script>
+```
+
+####Browser Global
+
+```
+npm run build-js
+```
+
+```html
+<script src="src/static/bundle.js"></script>
+
+<script>
+
+    var g5Component = g5Component && g5Component.construct;
+
+    var linescoreComponent = g5Component({
+        container: document.getElementById('component--linescore'),
+        css: 'g5-component-linescore linescore linescore--game',
+        interval: 15000,
+        path: '/src/data/linescore.json'
+    });
+
+    linescoreComponent.init();
+
+</script>
+```
+
+####Browserify
+
+```
+npm run build-cjs
+```
+
+```html
+<script>
+
+    const g5Component = require('./g5-component').construct;
+
+    let linescoreComponent = g5Component({
+        container: document.getElementById('component--linescore'),
+        css: 'g5-component-linescore linescore linescore--game',
+        interval: 15000,
+        path: '/src/data/linescore.json'
+    });
+
+    linescoreComponent.init();
+
+</script>
 ```
 
 ###Events
