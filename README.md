@@ -38,7 +38,7 @@ npm run build
 
 ###Usage
 
-####AMD
+####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/index-amd.html)
 
 ```
 npm run build-js
@@ -65,7 +65,7 @@ npm run build-js
 </script>
 ```
 
-####Browser Global
+####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/index-global.html)
 
 ```
 npm run build-js
@@ -90,7 +90,7 @@ npm run build-js
 </script>
 ```
 
-####Browserify
+####[Browserify](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/index.js)
 
 ```
 npm run build-cjs
@@ -149,17 +149,11 @@ linescoreComponent.init(); // initiates component
 * Protect against `new` - constructors can be called with or without `new`
 * Maintain chainability, methods return `this`
 
-###Notes
-
-* `npm run start` will run a single build and start the server, if you want auto builds run `npm run start-dev`
-* If you're having issues running the setup command, make sure you have the proper permissions setup (you can also attempt to run the commands with sudo, although that is usually discouraged)
-
 ###TODO
 
-- [ ] UMD support
 - [ ] Fix build-css and watch-css commands
-- [ ] Atomic design addition
 - [ ] Refactor/Cleanup
+- [x] UMD support
 - [x] Bootstrap addition
 - [ ] etc...
 
