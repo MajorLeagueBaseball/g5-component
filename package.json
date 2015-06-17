@@ -41,8 +41,9 @@
     "component-template": "./src/template/component.html"
   },
   "scripts": {
-    "start": "npm run build && python -m SimpleHTTPServer 9966",
-    "start-dev": "npm run watch & npm start",
+    "server": "python -m SimpleHTTPServer 9966",
+    "start": "npm run build && npm run server",
+    "start-dev": "npm run watch & npm run server",
     "build-js": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle.js",
     "build-css": "catw -c 'lessc -' 'src/styles/component.less' > src/static/bundle.css",
     "build": "npm run build-js",
