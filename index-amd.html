@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>g5-component.js / AMD</title>
+
+        <!-- <link rel="stylesheet" href="src/static/bundle.css" /> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
+    </head>
+    <body>
+
+        <section class="g5-component" id="component--linescore"></section>
+
+        <!-- AMD implementation -->
+        <script>
+
+            require(['src/static/bundle'], function(g5Component) {
+
+                g5Component = g5Component && g5Component.construct;
+
+                var linescoreComponent = g5Component({
+                    container: document.getElementById('component--linescore'),
+                    css: 'g5-component-linescore linescore linescore--game',
+                    interval: 15000,
+                    path: '/src/data/linescore.json'
+                });
+
+                linescoreComponent.init();
+
+            });
+
+        </script>
+
+    </body>
+</html>

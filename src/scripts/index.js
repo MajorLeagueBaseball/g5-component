@@ -1,7 +1,7 @@
 /**
  *
  * @module index
- * @description g5-component implementation example
+ * @description g5-component browserify implementation example
  * @author Greg Babula
  *
  */

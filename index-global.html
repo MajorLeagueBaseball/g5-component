@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>g5-component.js / Browser Global</title>
+
+        <!-- <link rel="stylesheet" href="src/static/bundle.css" /> -->
+    </head>
+    <body>
+
+        <section class="g5-component" id="component--linescore"></section>
+
+        <!-- bundled JS -->
+        <script src="src/static/bundle.js"></script>
+
+        <!-- browser global implementation -->
+        <script>
+
+            var g5Component = g5Component && g5Component.construct;
+
+            var linescoreComponent = g5Component({
+                container: document.getElementById('component--linescore'),
+                css: 'g5-component-linescore linescore linescore--game',
+                interval: 15000,
+                path: '/src/data/linescore.json'
+            });
+
+            linescoreComponent.init();
+
+        </script>
+
+    </body>
+</html>
