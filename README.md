@@ -13,6 +13,10 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git
 ```
 
 ```
+npm install jscs -g
+```
+
+```
 npm install
 ```
 
