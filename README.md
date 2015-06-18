@@ -1,6 +1,6 @@
 #g5-component.js
 
-MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery"
+MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery
 
 ---
 
@@ -16,18 +16,26 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git
 npm install
 ```
 
-###Build
-
-```
-npm run build
-```
-
 ###Server
+
+> Server running on [http://localhost:9966](http://localhost:9966)
+
+```
+npm run start
+```
+
+###Dev Server
 
 > Server running on [http://localhost:9966](http://localhost:9966) with auto builds, [Ctrl+C] to kill server
 
 ```
 npm run start-dev
+```
+
+###Build
+
+```
+npm run build
 ```
 
 ###Test
