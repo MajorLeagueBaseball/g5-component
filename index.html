@@ -2,16 +2,34 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>g5-component.js / Browserify</title>
+        <title>g5-component.js</title>
 
-        <!-- <link rel="stylesheet" href="src/static/bundle.css" /> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+        <style>
+            .container {
+                margin: 4em auto;
+                max-width: 660px;
+            }
+        </style>
     </head>
     <body>
 
-        <section class="g5-component" id="component--linescore"></section>
+        <main class="container">
 
-        <!-- bundled JS -->
-        <script src="src/static/bundle.js"></script>
+            <div class="jumbotron">
+                <h1 class="text-center">g5-component.js</h1>
+            </div>
+
+            <div class="list-group">
+                <a href="/example/index-global.html" class="list-group-item">Component Build - Global</a>
+                <a href="/example/index-amd.html" class="list-group-item">Component Build - AMD</a>
+                <a href="/example/index-browserify.html" class="list-group-item">Component Build - Browserify</a>
+            </div>
+
+        </main>
 
     </body>
 </html>
