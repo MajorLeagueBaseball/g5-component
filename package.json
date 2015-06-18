@@ -42,6 +42,11 @@
     "component-less": "./src/styles/component.less",
     "component-template": "./src/template/component.html"
   },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
+  },
   "scripts": {
     "server": "python -m SimpleHTTPServer 9966",
     "start": "npm run build && npm run server",
@@ -70,6 +75,7 @@
     "babel-tape-runner": "^1.1.0",
     "babelify": "^6.1.2",
     "catw": "^0.2.0",
+    "ghooks": "^0.3.2",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
     "less": "^2.5.1",
