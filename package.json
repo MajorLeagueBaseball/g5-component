@@ -44,7 +44,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "cat src/scripts/**/*.js | jscs --esnext --preset=airbnb && npm test"
     }
   },
   "scripts": {
