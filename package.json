@@ -1,7 +1,7 @@
 {
   "name": "g5-component",
-  "version": "0.1.2",
-  "description": "MVVM + Event Layer - Component base with handlebars",
+  "version": "1.0.0",
+  "description": "MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery",
   "author": "Greg Babula",
   "license": "ISC",
   "repository": {
@@ -18,7 +18,9 @@
     "events",
     "scaffold",
     "base",
-    "handlebars"
+    "handlebars",
+    "bootstrap",
+    "jquery"
   ],
   "main": "src/scripts/g5-component.js",
   "browserify": {
@@ -43,12 +45,12 @@
   "scripts": {
     "server": "python -m SimpleHTTPServer 9966",
     "start": "npm run build && npm run server",
-    "start-dev": "npm run build-cjs && npm run server && npm run watch",
-    "build-cjs": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle.js",
+    "start-dev": "npm run build-cjs && npm run server & npm run watch",
+    "build-cjs": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle-dev.js",
     "build-js": "browserify src/scripts/g5-component.js --standalone 'g5-component' | uglifyjs -mc > src/static/bundle.js",
     "build-css": "catw -c 'lessc -' 'src/styles/component.less' > src/static/bundle.css",
-    "build": "npm run build-js",
-    "watch-js": "watchify src/scripts/index.js -o src/static/bundle.js -dv",
+    "build": "npm run build-js && npm run build-cjs",
+    "watch-js": "watchify src/scripts/index.js -o src/static/bundle-dev.js -dv",
     "watch-css": "catw -c 'lessc -' 'src/styles/component.less' -o src/static/bundle.css -v",
     "watch": "npm run watch-js",
     "test": "babel-tape-runner test/*.js"

@@ -1,6 +1,6 @@
 #g5-component.js
 
-MVVM + Event Layer - Component base with handlebars
+MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery"
 
 ---
 
@@ -14,6 +14,12 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git
 
 ```
 npm install
+```
+
+###Build
+
+```
+npm run build
 ```
 
 ###Server
@@ -30,19 +36,9 @@ npm run start-dev
 npm test
 ```
 
-###Build
-
-```
-npm run build
-```
-
 ###Usage
 
-####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/index-amd.html)
-
-```
-npm run build-js
-```
+####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
 <script>
@@ -65,11 +61,7 @@ npm run build-js
 </script>
 ```
 
-####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/index-global.html)
-
-```
-npm run build-js
-```
+####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
 <script src="src/static/bundle.js"></script>
@@ -91,10 +83,6 @@ npm run build-js
 ```
 
 ####[Browserify](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/index.js)
-
-```
-npm run build-cjs
-```
 
 ```html
 <script>
@@ -151,7 +139,10 @@ linescoreComponent.init(); // initiates component
 
 ###TODO
 
+- [ ] Iron out build process
+- [ ] Add Grunt process
 - [ ] Fix build-css and watch-css commands
+- [ ] Add Git hooks
 - [ ] Refactor/Cleanup
 - [x] UMD support
 - [x] Bootstrap addition
