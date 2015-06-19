@@ -2,8 +2,12 @@
 
 MVVM + Event Layer - Browserify Component Scaffold
 
+---
+
 * completely self-contained, event based, scalable architecture
 * simple workflow - instantiate component, edit template and add any component specific JS
+* clean, documented, consistent code and methodologies
+* environment agnostic code
 * ES6 support via babel
 * Tape unit tests
 * Style guide validation and test on commit
