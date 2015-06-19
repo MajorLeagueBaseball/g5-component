@@ -13,7 +13,7 @@ const EventTower    = require('../src/scripts/events/master').EventTower;
 
 test('events-master test', function(t) {
 
-    t.plan(4);
+    t.plan(5);
 
     let eventTower = EventTower();
 
@@ -22,5 +22,6 @@ test('events-master test', function(t) {
     t.equal(typeof eventTower.model, 'object');
     t.equal(typeof eventTower.viewModel, 'object');
     t.equal(typeof eventTower.attachEvents, 'function');
+    t.equal(typeof eventTower.detachEvents, 'function');
 
 });

@@ -45,6 +45,7 @@ util.inherits(G5Component, EventEmitter);
 /**
  *
  * @method init
+ * @returns {Object} this
  *
  */
 G5Component.prototype.init = function() {
@@ -56,17 +57,22 @@ G5Component.prototype.init = function() {
 
     this.emit('ready', this);
 
+    return this;
+
 };
 
 /**
  *
  * @method detachEvents
  * @description detaches all events
+ * @returns {Object} this
  *
  */
 G5Component.prototype.detachEvents = function() {
 
     this.eventTower.detachEvents();
+
+    return this;
 
 };
 
@@ -74,11 +80,33 @@ G5Component.prototype.detachEvents = function() {
  *
  * @method attachEvents
  * @description attaches all events
+ * @returns {Object} this
  *
  */
 G5Component.prototype.attachEvents = function() {
 
     this.eventTower.attachEvents();
+
+    return this;
+
+};
+
+/**
+ *
+ * @method destroy
+ * @description kills component instance
+ * @returns {Object} this
+ *
+ */
+G5Component.prototype.destroy = function() {
+
+    this.emit('destroy', this);
+
+    this.detachEvents();
+    this.model.destroy();
+    this.viewModel.destroy();
+
+    return this;
 
 };
 

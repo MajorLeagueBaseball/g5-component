@@ -29,6 +29,7 @@ function initBootstrapExamples() {
  *
  * @function init
  * @param {Element} el
+ * @description instantiates component
  *
  */
 function init(el) {
@@ -39,4 +40,18 @@ function init(el) {
 
 }
 
+/**
+ *
+ * @function destroy
+ * @description detaches component functionality, events must be cleaned up to prevent memory leaks
+ *
+ */
+function destroy() {
+
+    $element.find('[data-toggle="tooltip"]').tooltip('destroy');
+    $element.find('[data-toggle="popover"]').popover('destroy');
+
+}
+
 exports.init = init;
+exports.destroy = destroy;
