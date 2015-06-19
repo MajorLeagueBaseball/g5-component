@@ -1,6 +1,6 @@
 #g5-component.js
 
-MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery
+MVVM + Event Layer - Browserify Component Scaffold
 
 ---
 
@@ -154,8 +154,8 @@ linescoreComponent.init(); // initiates component
 - [ ] Iron out build process
 - [ ] Add Grunt process
 - [ ] Fix build-css and watch-css commands
-- [ ] Add Git hooks
 - [ ] Refactor/Cleanup
+- [x] Add Git hooks
 - [x] UMD support
 - [x] Bootstrap addition
 - [ ] etc...

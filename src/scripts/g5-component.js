@@ -2,7 +2,7 @@
  *
  * @module g5-component
  * @author Greg Babula
- * @description MVVM + Event Layer - Component base with handlebars
+ * @description MVVM + Event Layer - Browserify Component Scaffold
  *
  */
 

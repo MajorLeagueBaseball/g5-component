@@ -1,7 +1,7 @@
 {
   "name": "g5-component",
-  "version": "1.0.0",
-  "description": "MVVM + Event Layer - Component base with handlebars, bootstrap, and jQuery",
+  "version": "1.0.1",
+  "description": "MVVM + Event Layer - Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
   "repository": {
