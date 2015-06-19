@@ -9,49 +9,65 @@
 'use strict';
 
 const $          = global.jQuery = require('jquery');
-const bootstrap  = require('bootstrap');
-
-let $element;
-
-/**
- *
- * @function initBootstrapExamples
- *
- */
-function initBootstrapExamples() {
-
-    $element.find('[data-toggle="tooltip"]').tooltip();
-    $element.find('[data-toggle="popover"]').popover();
-
-}
+const tooltip    = require('bootstrap/js/tooltip');
+const popover    = require('bootstrap/js/popover');
 
 /**
  *
- * @function init
- * @param {Element} el
- * @description instantiates component
+ * @name component
+ * @description init, render, and destroy methods are required
  *
  */
-function init(el) {
+let component = {
+    $element: undefined,
+    /**
+     *
+     * @method init
+     * @param {Element} el
+     * @returns {Object} this
+     * @description instantiates component
+     *
+     */
+    init(el) {
 
-    $element = $(el);
+        el = el || document.querySelector('.g5-component');
 
-    initBootstrapExamples();
+        this.$element = $(el);
+        this.render();
 
-}
+        return this;
 
-/**
- *
- * @function destroy
- * @description detaches component functionality, events must be cleaned up to prevent memory leaks
- *
- */
-function destroy() {
+    },
+    /**
+     *
+     * @method render
+     * @returns {Object} this
+     * @description attaches component functionality
+     *
+     */
+    render() {
 
-    $element.find('[data-toggle="tooltip"]').tooltip('destroy');
-    $element.find('[data-toggle="popover"]').popover('destroy');
+        this.$element.find('[data-toggle="tooltip"]').tooltip();
+        this.$element.find('[data-toggle="popover"]').popover();
 
-}
+        return this;
 
-exports.init = init;
-exports.destroy = destroy;
+    },
+    /**
+     *
+     * @method destroy
+     * @returns {Object} this
+     * @description detaches component functionality, events must be cleaned up to prevent memory leaks
+     *
+     */
+    destroy() {
+
+        this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
+        this.$element.find('[data-toggle="popover"]').popover('destroy');
+
+        return this;
+
+    }
+};
+
+module.exports = component;
