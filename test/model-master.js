@@ -14,7 +14,7 @@ const EventEmitter  = require('events').EventEmitter;
 
 test('model-master test', function(t) {
 
-    t.plan(10);
+    t.plan(11);
 
     let model = MasterModel();
 
@@ -30,5 +30,6 @@ test('model-master test', function(t) {
     t.equal(typeof model.fetch, 'function');
     t.equal(typeof model.start, 'function');
     t.equal(typeof model.stop, 'function');
+    t.equal(typeof model.destroy, 'function');
 
 });

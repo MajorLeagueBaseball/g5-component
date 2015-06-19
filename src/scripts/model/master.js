@@ -162,4 +162,23 @@ MasterModel.prototype.stop = function() {
 
 };
 
+/**
+ *
+ * @method destroy
+ * @returns {Object} this
+ * @description kills instance
+ *
+ */
+MasterModel.prototype.destroy = function() {
+
+    this.stop();
+
+    this.instance = false;
+    this.dataCache = {};
+    this.dataFetch = null;
+
+    return this;
+
+};
+
 exports.MasterModel = MasterModel;
