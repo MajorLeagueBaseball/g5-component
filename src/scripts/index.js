@@ -13,6 +13,28 @@ const g5Component = require('./g5-component').construct;
 
 /**
  *
+ * @function onLoad
+ *
+ */
+function onLoad() {
+
+    let linescoreComponent = g5Component({
+        container: document.getElementById('component--linescore'),
+        css: 'g5-component-linescore linescore linescore--game',
+        interval: 15000,
+        path: '/src/data/linescore.json'
+    });
+
+    // attach events before init
+    attachEvents(linescoreComponent);
+
+    // init component
+    linescoreComponent.init();
+
+}
+
+/**
+ *
  * @function attachEvents
  * @description event usage example
  *
@@ -22,13 +44,13 @@ function attachEvents(component) {
     /**
      *
      * @event ready
-     * @param {Object} constructor
+     * @param {Object} obj
      *
      */
-    component.on('ready', function(constructor) {
+    component.on('ready', function(obj) {
 
         util.log('component model and viewModel have been initiated');
-        // util.log(constructor);
+        // util.log(obj);
 
     });
 
@@ -58,27 +80,18 @@ function attachEvents(component) {
 
     });
 
-}
+    /**
+     *
+     * @event destroy
+     * @param {Object} obj
+     *
+     */
+    component.on('destroy', function(obj) {
 
-/**
- *
- * @function onLoad
- *
- */
-function onLoad() {
+        util.log('component instance killed');
+        // util.log(obj);
 
-    let linescoreComponent = g5Component({
-        container: document.getElementById('component--linescore'),
-        css: 'g5-component-linescore linescore linescore--game',
-        interval: 15000,
-        path: '/src/data/linescore.json'
     });
-
-    // attach events before init
-    attachEvents(linescoreComponent);
-
-    // init component
-    linescoreComponent.init();
 
 }
 

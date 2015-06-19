@@ -113,6 +113,28 @@ npm test
 </script>
 ```
 
+###Methods
+
+```js
+
+linescoreComponent.init(); // initiates component
+```
+
+```js
+
+linescoreComponent.detachEvents(); // detaches all events
+```
+
+```js
+
+linescoreComponent.attachEvents(); // attaches all events
+```
+
+```js
+
+linescoreComponent.destroy(); // kills component instance
+```
+
 ###Events
 
 ```js
@@ -134,23 +156,12 @@ linescoreComponent.on('data-error', function(err) {
     // console.log('component model data error', err);
 
 });
-```
 
-###Methods
+linescoreComponent.on('destroy', function(obj) {
 
-```js
+    // console.log('component instance killed', obj);
 
-linescoreComponent.init(); // initiates component
-```
-
-```js
-
-linescoreComponent.detachEvents(); // detaches all events
-```
-
-```js
-
-linescoreComponent.attachEvents(); // attaches all events
+});
 ```
 
 ###Style Guide / Rules
