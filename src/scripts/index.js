@@ -8,7 +8,7 @@
 
 'use strict';
 
-const util        = require('util');
+const utils       = require('./utils/master');
 const g5Component = require('./g5-component').construct;
 
 /**
@@ -49,8 +49,7 @@ function attachEvents(component) {
      */
     component.on('ready', function(obj) {
 
-        util.log('component model and viewModel have been initiated');
-        // util.log(obj);
+        utils.log('component model and viewModel have been initiated');
 
     });
 
@@ -62,8 +61,7 @@ function attachEvents(component) {
      */
     component.on('data', function(data) {
 
-        util.log('component data from model');
-        // util.log(data);
+        utils.log('component data from model');
 
     });
 
@@ -75,8 +73,7 @@ function attachEvents(component) {
      */
     component.on('data-error', function(err) {
 
-        util.log('component model data error');
-        // util.log(err);
+        utils.log('component model data error');
 
     });
 
@@ -88,8 +85,7 @@ function attachEvents(component) {
      */
     component.on('destroy', function(obj) {
 
-        util.log('component instance killed');
-        // util.log(obj);
+        utils.log('component instance killed');
 
     });
 

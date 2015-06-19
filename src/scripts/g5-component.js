@@ -10,6 +10,7 @@
 
 const _               = require('lodash');
 const util            = require('util');
+const utils           = require('./utils/master');
 const MasterModel     = require('./model/master').MasterModel;
 const MasterViewModel = require('./viewModel/master').MasterViewModel;
 const EventEmitter    = require('events').EventEmitter;
@@ -50,7 +51,7 @@ util.inherits(G5Component, EventEmitter);
  */
 G5Component.prototype.init = function() {
 
-    util.log('g5-component : init');
+    utils.log('init');
 
     this.model.init();
     this.viewModel.init();

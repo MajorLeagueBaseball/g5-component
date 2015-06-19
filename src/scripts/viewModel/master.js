@@ -10,6 +10,7 @@
 
 const _            = require('lodash');
 const util         = require('util');
+const utils        = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
 
 /**
@@ -113,7 +114,7 @@ MasterViewModel.prototype.addG5Attributes = function() {
  */
 MasterViewModel.prototype.refresh = function(data={}) {
 
-    util.log('g5-component : refreshing data on viewModel');
+    utils.log('refreshing data on viewModel');
 
     this.container.innerHTML = this.template(data);
 

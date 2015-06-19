@@ -10,6 +10,7 @@
 
 const _             = require('lodash');
 const util          = require('util');
+const utils         = require('./../utils/master');
 const http          = require('http');
 const EventEmitter  = require('events').EventEmitter;
 
@@ -73,7 +74,7 @@ MasterModel.prototype.fetch = function() {
     let _this = this;
     let _opts = this.opts;
 
-    util.log('g5-component : fetch master model data');
+    utils.log('fetch master model data');
 
     /**
      *

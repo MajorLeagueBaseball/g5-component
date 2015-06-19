@@ -11,6 +11,7 @@
 const $          = global.jQuery = require('jquery');
 const tooltip    = require('bootstrap/js/tooltip');
 const popover    = require('bootstrap/js/popover');
+const utils      = require('./../utils/master');
 
 /**
  *
@@ -46,6 +47,8 @@ let component = {
      *
      */
     render() {
+
+        utils.log('render component');
 
         this.$element.find('[data-toggle="tooltip"]').tooltip();
         this.$element.find('[data-toggle="popover"]').popover();

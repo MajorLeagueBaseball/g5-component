@@ -9,7 +9,7 @@
 'use strict';
 
 const _             = require('lodash');
-const util          = require('util');
+const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
 
 /**
@@ -91,7 +91,7 @@ EventTower.prototype.attachEvents = function() {
     let _model = this.model;
     let _viewModel = this.viewModel;
 
-    util.log('g5-component : attach events');
+    utils.log('attach events');
 
     /**
      *
@@ -114,7 +114,7 @@ EventTower.prototype.attachEvents = function() {
      */
     _model.on('data-error', function(err) {
 
-        util.log('g5-component : error fetching model data :', err);
+        utils.log('error fetching model data :', err);
 
         _master.emit('data-error', err);
         _viewModel.emit('data-error', err);
@@ -151,7 +151,7 @@ EventTower.prototype.detachEvents = function() {
     let _viewModel = this.viewModel;
     let _eventGroup = [_master, _model, _viewModel];
 
-    util.log('g5-component : detach events');
+    utils.log('detach events');
 
     _.each(_eventGroup, function(obj) {
         detachEvents(obj);
