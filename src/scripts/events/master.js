@@ -28,6 +28,23 @@ function hasEventEmitter(obj) {
 
 /**
  *
+ * @function detachEvents
+ * @param {Object} target
+ * @description checks if a given target has events, proceeds to remove if true
+ *
+ */
+function detachEvents(target) {
+
+    let hasEvents = target && hasEventEmitter(target) && _.size(target._events);
+
+    if (hasEvents) {
+        target.removeAllListeners();
+    }
+
+}
+
+/**
+ *
  * @constructor EventTower
  * @param {Object} master
  * @description mediates events between master, model and viewModel
@@ -114,6 +131,30 @@ EventTower.prototype.attachEvents = function() {
 
         _viewModel.refresh(data).bindComponent();
 
+    });
+
+    return this;
+
+};
+
+/**
+ *
+ * @method detachEvents
+ * @description detaches all events
+ * @returns {Object} this
+ *
+ */
+EventTower.prototype.detachEvents = function() {
+
+    let _master = this.master;
+    let _model = this.model;
+    let _viewModel = this.viewModel;
+    let _eventGroup = [_master, _model, _viewModel];
+
+    util.log('g5-component : detach events');
+
+    _.each(_eventGroup, function(obj) {
+        detachEvents(obj);
     });
 
     return this;

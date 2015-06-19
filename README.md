@@ -143,6 +143,16 @@ linescoreComponent.on('data-error', function(err) {
 linescoreComponent.init(); // initiates component
 ```
 
+```js
+
+linescoreComponent.detachEvents(); // detaches all events
+```
+
+```js
+
+linescoreComponent.attachEvents(); // attaches all events
+```
+
 ###Style Guide / Rules
 
 * Style Guide - [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)

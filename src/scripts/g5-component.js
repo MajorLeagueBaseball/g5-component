@@ -58,4 +58,28 @@ G5Component.prototype.init = function() {
 
 };
 
+/**
+ *
+ * @method detachEvents
+ * @description detaches all events
+ *
+ */
+G5Component.prototype.detachEvents = function() {
+
+    this.eventTower.detachEvents();
+
+};
+
+/**
+ *
+ * @method attachEvents
+ * @description attaches all events
+ *
+ */
+G5Component.prototype.attachEvents = function() {
+
+    this.eventTower.attachEvents();
+
+};
+
 exports.construct = G5Component;
