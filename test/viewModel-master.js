@@ -14,7 +14,7 @@ const EventEmitter     = require('events').EventEmitter;
 
 test('viewModel-master test', function(t) {
 
-    t.plan(7);
+    t.plan(9);
 
     let viewModel = MasterViewModel();
 
@@ -26,5 +26,7 @@ test('viewModel-master test', function(t) {
     t.equal(typeof viewModel.active, 'boolean');
     t.equal(typeof viewModel.init, 'function');
     t.equal(typeof viewModel.refresh, 'function');
+    t.equal(typeof viewModel.bindComponent, 'function');
+    t.equal(typeof viewModel.destroy, 'function');
 
 });

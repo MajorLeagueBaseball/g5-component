@@ -138,4 +138,30 @@ MasterViewModel.prototype.bindComponent = function() {
 
 };
 
+/**
+ *
+ * @method destroy
+ * @returns {Object} this
+ * @description kills viewModel instance
+ *
+ */
+MasterViewModel.prototype.destroy = function() {
+
+    this.component.destroy();
+
+    this.instance = false;
+    this.active = false;
+    this.bound = false;
+
+    this.component = null;
+    this.less = null;
+    this.template = null;
+
+    this.container.outerHTML = '';
+    this.container = null;
+
+    return this;
+
+};
+
 exports.MasterViewModel = MasterViewModel;
