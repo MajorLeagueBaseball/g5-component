@@ -52,6 +52,10 @@ util.inherits(MasterViewModel, EventEmitter);
  */
 MasterViewModel.prototype.init = function() {
 
+    if (!this.container) {
+        throw Error('G5Component needs to be instantiated with a container');
+    }
+
     if (!this.instance) {
 
         this.instance = true;
