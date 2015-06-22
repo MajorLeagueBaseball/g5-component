@@ -8,15 +8,16 @@
 
 'use strict';
 
-const $          = global.jQuery = require('jquery');
-const tooltip    = require('bootstrap/js/tooltip');
-const popover    = require('bootstrap/js/popover');
-const utils      = require('./../utils/master');
+const $     = global.jQuery = require('jquery');
+const utils = require('./../utils/master');
+
+require('bootstrap/js/tooltip');
+require('bootstrap/js/popover');
 
 /**
  *
  * @name component
- * @description init, render, and destroy methods are required
+ * @description init, render, addEvents, and destroy methods are required for consistency
  *
  */
 let component = {
@@ -34,7 +35,7 @@ let component = {
         el = el || document.querySelector('.g5-component');
 
         this.$element = $(el);
-        this.render();
+        this.render().addEvents();
 
         return this;
 
@@ -58,6 +59,30 @@ let component = {
     },
     /**
      *
+     * @method addEvents
+     * @returns {Object} this
+     * @description attaches component events
+     *
+     */
+    addEvents() {
+
+        /**
+         *
+         * @event click
+         * @param {Object} e event
+         *
+         */
+        this.$element.on('click', 'dt', function(e) {
+
+            utils.log('list title click', e);
+
+        });
+
+        return this;
+
+    },
+    /**
+     *
      * @method destroy
      * @returns {Object} this
      * @description detaches component functionality, events must be cleaned up to prevent memory leaks
@@ -67,6 +92,7 @@ let component = {
 
         this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
         this.$element.find('[data-toggle="popover"]').popover('destroy');
+        this.$element.off();
 
         return this;
 
