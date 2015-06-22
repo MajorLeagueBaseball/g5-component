@@ -114,7 +114,22 @@ MasterModel.prototype.fetch = function() {
 
     }
 
-    fetch(_opts.path).then(handleData).then(handleSuccess);
+    /**
+     *
+     * @function handleError
+     * @param {Object} err
+     *
+     */
+    function handleError(err) {
+
+        _this.emit('data-error', err);
+
+    }
+
+    fetch(_opts.path)
+        .then(handleData)
+        .then(handleSuccess)
+        .catch(handleError);
 
     return this;
 
