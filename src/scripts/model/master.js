@@ -11,8 +11,9 @@
 const _             = require('lodash');
 const util          = require('util');
 const utils         = require('./../utils/master');
-const http          = require('http');
 const EventEmitter  = require('events').EventEmitter;
+
+require('isomorphic-fetch');
 
 /**
  *
@@ -78,54 +79,42 @@ MasterModel.prototype.fetch = function() {
 
     /**
      *
-     * @method get
-     * @param {Object} options
-     * @param {Function} callback
+     * @function handleData
+     * @param {Object} response
+     * @returns {Object} response JSON
+     * @description handles response and returns JSON if successful
      *
      */
-    http.get(_opts, function(res) {
+    function handleData(response) {
 
-        if (res.statusCode === 404) {
-            _this.emit('data-error', 404);
+        if (response.status >= 400) {
+            _this.emit('data-error', response.status);
         }
 
-        /**
-         *
-         * @event data
-         * @param {Object} buf
-         *
-         */
-        res.on('data', function(buf) {
+        return response.json();
 
-            let _data = JSON.parse(buf);
+    }
 
-            //
-            // emit data event and update cache only if the data has changed since last fetch
-            //
-            if (!_.isEqual(_data, _this.dataCache)) {
+    /**
+     *
+     * @function handleSuccess
+     * @param {Object} data parsed JSON
+     *
+     */
+    function handleSuccess(data) {
 
-                _this.emit('data', _data);
-                _this.dataCache = _data;
+        if (!_.isEqual(data, _this.dataCache)) {
 
-            }
+            _this.emit('data', data);
+            _this.dataCache = data;
 
-            _this.dataFetch = _opts.enablePolling && setTimeout(_this.fetch.bind(_this), _opts.interval);
+        }
 
-        });
+        _this.dataFetch = _opts.enablePolling && setTimeout(_this.fetch.bind(_this), _opts.interval);
 
-        /**
-         *
-         * @event error
-         * @param {Object} err
-         *
-         */
-        res.on('error', function(err) {
+    }
 
-            _this.emit('data-error', err);
-
-        });
-
-    });
+    fetch(_opts.path).then(handleData).then(handleSuccess);
 
     return this;
 

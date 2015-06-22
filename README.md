@@ -195,6 +195,7 @@ linescoreComponent.on('destroy', function(obj) {
 
 ###Reference
 
+* [Fetch](https://fetch.spec.whatwg.org/)
 * [Browserify and UMD](http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html)
 * [Browserify Handbook](https://github.com/substack/browserify-handbook)
 * [Task Automation with npm run](http://substack.net/task_automation_with_npm_run)
