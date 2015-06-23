@@ -14,7 +14,7 @@ const EventEmitter     = require('events').EventEmitter;
 
 test('viewModel-master test', function(t) {
 
-    t.plan(9);
+    t.plan(12);
 
     let viewModel = MasterViewModel();
 
@@ -22,9 +22,13 @@ test('viewModel-master test', function(t) {
     t.ok(viewModel instanceof EventEmitter, 'should have instance of EventeEmitter');
 
     t.equal(typeof viewModel.opts, 'object');
+    t.equal(typeof viewModel.opts.css, 'string');
+
     t.equal(typeof viewModel.instance, 'boolean');
     t.equal(typeof viewModel.active, 'boolean');
     t.equal(typeof viewModel.init, 'function');
+    t.equal(typeof viewModel.addClass, 'function');
+    t.equal(typeof viewModel.addG5Attributes, 'function');
     t.equal(typeof viewModel.refresh, 'function');
     t.equal(typeof viewModel.bindComponent, 'function');
     t.equal(typeof viewModel.destroy, 'function');
