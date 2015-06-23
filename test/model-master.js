@@ -14,7 +14,7 @@ const EventEmitter  = require('events').EventEmitter;
 
 test('model-master test', function(t) {
 
-    t.plan(11);
+    t.plan(12);
 
     let model = MasterModel();
 
@@ -22,6 +22,7 @@ test('model-master test', function(t) {
     t.ok(model instanceof EventEmitter, 'should have instance of EventEmitter');
 
     t.equal(typeof model.opts, 'object');
+    t.equal(typeof model.opts.enablePolling, 'boolean');
     t.equal(typeof model.dataCache, 'object');
     t.equal(typeof model.dataFetch, 'object');
     t.equal(typeof model.instance, 'boolean');

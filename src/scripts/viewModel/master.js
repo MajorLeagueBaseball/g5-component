@@ -35,9 +35,17 @@ function MasterViewModel(opts) {
     this.active = false;
     this.bound = false;
 
-    this.component = opts && require('component');
-    this.less = opts && require('component-less');
-    this.template = opts && require('component-template');
+    try {
+
+        this.component = require('component');
+        this.less = require('component-less');
+        this.template = require('component-template');
+
+    } catch (e) {
+
+        return;
+
+    }
 
     EventEmitter.call(this);
 
