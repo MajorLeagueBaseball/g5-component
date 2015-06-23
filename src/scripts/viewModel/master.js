@@ -153,6 +153,21 @@ MasterViewModel.prototype.bindComponent = function() {
 
 /**
  *
+ * @method showError
+ * @param {Object} err
+ * @returns {Object} this
+ *
+ */
+MasterViewModel.prototype.showError = function(err) {
+
+    this.container.innerHTML = `<div class="alert alert-danger" role="alert">Error - ${err}</div>`;
+
+    return this;
+
+};
+
+/**
+ *
  * @method destroy
  * @returns {Object} this
  * @description kills viewModel instance

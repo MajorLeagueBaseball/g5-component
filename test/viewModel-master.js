@@ -14,7 +14,7 @@ const EventEmitter     = require('events').EventEmitter;
 
 test('viewModel-master test', function(t) {
 
-    t.plan(13);
+    t.plan(14);
 
     let viewModel = MasterViewModel();
 
@@ -33,6 +33,7 @@ test('viewModel-master test', function(t) {
     t.equal(typeof viewModel.addG5Attributes, 'function');
     t.equal(typeof viewModel.refresh, 'function');
     t.equal(typeof viewModel.bindComponent, 'function');
+    t.equal(typeof viewModel.showError, 'function');
     t.equal(typeof viewModel.destroy, 'function');
 
 });
