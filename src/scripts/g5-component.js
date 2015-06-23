@@ -111,4 +111,4 @@ G5Component.prototype.destroy = function() {
 
 };
 
-exports.construct = G5Component;
+module.exports= G5Component;

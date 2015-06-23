@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MVVM + Event Layer - Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -48,7 +48,7 @@
     }
   },
   "scripts": {
-    "server": "python -m SimpleHTTPServer 9966",
+    "server": "http-server -p 9966",
     "start": "npm run build && npm run server",
     "start-dev": "npm run build-cjs && npm run server & npm run watch",
     "build-cjs": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle-dev.js",
@@ -66,6 +66,7 @@
     "duplexer2": "0.0.2",
     "falafel": "^0.3.1",
     "inherits": "^2.0.1",
+    "isomorphic-fetch": "^2.1.0",
     "jquery": "^2.1.4",
     "lodash": "^2.4.1",
     "readable-stream": "^1.0.33"

@@ -9,7 +9,7 @@
 'use strict';
 
 const utils       = require('./utils/master');
-const g5Component = require('./g5-component').construct;
+const g5Component = require('./g5-component');
 
 /**
  *

@@ -25,11 +25,11 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git
 ```
 
 ```
-npm install jscs -g
+npm i jscs http-server -g
 ```
 
 ```
-npm install
+npm i
 ```
 
 ###Server
@@ -69,8 +69,6 @@ npm test
 
     require(['src/static/bundle'], function(g5Component) {
 
-        g5Component = g5Component && g5Component.construct;
-
         var linescoreComponent = g5Component({
             container: document.getElementById('component--linescore'),
             css: 'g5-component-linescore linescore linescore--game',
@@ -92,8 +90,6 @@ npm test
 
 <script>
 
-    var g5Component = g5Component && g5Component.construct;
-
     var linescoreComponent = g5Component({
         container: document.getElementById('component--linescore'),
         css: 'g5-component-linescore linescore linescore--game',
@@ -111,7 +107,7 @@ npm test
 ```html
 <script>
 
-    const g5Component = require('./g5-component').construct;
+    const g5Component = require('./g5-component');
 
     let linescoreComponent = g5Component({
         container: document.getElementById('component--linescore'),
@@ -195,12 +191,12 @@ linescoreComponent.on('destroy', function(obj) {
 
 ###Reference
 
+* [Fetch](https://fetch.spec.whatwg.org/)
 * [Browserify and UMD](http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html)
 * [Browserify Handbook](https://github.com/substack/browserify-handbook)
 * [Task Automation with npm run](http://substack.net/task_automation_with_npm_run)
 * [About Watchify](https://github.com/substack/watchify)
 * [Tape Tests](https://github.com/substack/tape)
-* [Simple HTTP Server](https://docs.python.org/2/library/simplehttpserver.html)
 * [JSDoc](http://usejsdoc.org/)
 
 ###License
