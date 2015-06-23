@@ -69,8 +69,6 @@ npm test
 
     require(['src/static/bundle'], function(g5Component) {
 
-        g5Component = g5Component && g5Component.construct;
-
         var linescoreComponent = g5Component({
             container: document.getElementById('component--linescore'),
             css: 'g5-component-linescore linescore linescore--game',
@@ -92,8 +90,6 @@ npm test
 
 <script>
 
-    var g5Component = g5Component && g5Component.construct;
-
     var linescoreComponent = g5Component({
         container: document.getElementById('component--linescore'),
         css: 'g5-component-linescore linescore linescore--game',
@@ -111,7 +107,7 @@ npm test
 ```html
 <script>
 
-    const g5Component = require('./g5-component').construct;
+    const g5Component = require('./g5-component');
 
     let linescoreComponent = g5Component({
         container: document.getElementById('component--linescore'),
