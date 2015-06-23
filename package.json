@@ -48,7 +48,7 @@
     }
   },
   "scripts": {
-    "server": "python -m SimpleHTTPServer 9966",
+    "server": "http-server -p 9966",
     "start": "npm run build && npm run server",
     "start-dev": "npm run build-cjs && npm run server & npm run watch",
     "build-cjs": "browserify src/scripts/index.js | uglifyjs -mc > src/static/bundle-dev.js",

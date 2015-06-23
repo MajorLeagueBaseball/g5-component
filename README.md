@@ -25,11 +25,11 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git
 ```
 
 ```
-npm install jscs -g
+npm i jscs http-server -g
 ```
 
 ```
-npm install
+npm i
 ```
 
 ###Server
@@ -201,7 +201,6 @@ linescoreComponent.on('destroy', function(obj) {
 * [Task Automation with npm run](http://substack.net/task_automation_with_npm_run)
 * [About Watchify](https://github.com/substack/watchify)
 * [Tape Tests](https://github.com/substack/tape)
-* [Simple HTTP Server](https://docs.python.org/2/library/simplehttpserver.html)
 * [JSDoc](http://usejsdoc.org/)
 
 ###License
