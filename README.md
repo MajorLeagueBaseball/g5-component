@@ -21,7 +21,7 @@ MVVM + Event Layer - Browserify Component Scaffold
 > Install the package and use it as a scaffold for your component
 
 ```
-git clone https://github.com/MajorLeagueBaseball/g5-component.git
+git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
 ```
 
 ```
@@ -201,7 +201,7 @@ linescoreComponent.on('destroy', function(obj) {
 
 ###License
 
-Copyright (c) 2015, Greg Babula <gbabula@gmail.com>
+Copyright (c) Greg Babula <greg.babula@mlb.com>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
