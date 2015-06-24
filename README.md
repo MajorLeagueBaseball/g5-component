@@ -25,7 +25,7 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 ```
 
 ```
-npm i jscs http-server -g
+npm i less catw jscs http-server -g
 ```
 
 ```
@@ -193,11 +193,11 @@ linescoreComponent.on('destroy', function(obj) {
 
 - [ ] Iron out build process
 - [ ] Add Grunt process
-- [ ] Fix build-css and watch-css commands
-- [ ] Refactor/Cleanup
+- [x] Fix build-css and watch-css commands
 - [x] Add Git hooks
 - [x] UMD support
 - [x] Bootstrap addition
+- [x] Refactor/Cleanup
 - [ ] etc...
 
 ###Reference

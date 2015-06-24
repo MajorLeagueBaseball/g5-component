@@ -61,7 +61,7 @@ let component = {
      *
      * @method addEvents
      * @returns {Object} this
-     * @description attaches component events
+     * @description attaches component events, events should be delegated from primary element
      *
      */
     addEvents() {
