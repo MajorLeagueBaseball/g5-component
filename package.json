@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MVVM + Event Layer - Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -26,6 +26,7 @@
   "browserify": {
     "transform": [
       "babelify",
+      "aliasify",
       "node-lessify",
       [
         "hbsfy",
@@ -72,6 +73,7 @@
     "readable-stream": "^1.0.33"
   },
   "devDependencies": {
+    "aliasify": "^1.7.2",
     "babel": "^5.5.6",
     "babel-tape-runner": "^1.1.0",
     "babelify": "^6.1.2",
