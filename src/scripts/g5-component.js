@@ -19,7 +19,13 @@ const EventTower      = require('./events/master').EventTower;
 /**
  *
  * @constructor G5Component
- * @param {Object} opts
+ * @param {Object}   opts shared options Object
+ * @param {Element}  opts.container primary container
+ * @param {String}   opts.css classes
+ * @param {String}   opts.i18n localization
+ * @param {Number}   opts.interval polling interval
+ * @param {String}   opts.path data path
+ * @param {Boolean}  opts.enablePolling
  *
  */
 function G5Component(opts) {
@@ -46,6 +52,7 @@ util.inherits(G5Component, EventEmitter);
 /**
  *
  * @method init
+ * @description initiates model and viewModel
  * @returns {Object} this
  *
  */
@@ -111,4 +118,4 @@ G5Component.prototype.destroy = function() {
 
 };
 
-module.exports= G5Component;
+module.exports = G5Component;

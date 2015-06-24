@@ -121,6 +121,17 @@ npm test
 </script>
 ```
 
+###Options
+
+A single options Object shared between all Constructors
+
+* `Element` __container__ - primary container
+* `String` __css__ - classes
+* `String` __i18n__ - localization
+* `Number` __interval__ - polling interval
+* `String` __path__ - data path
+* `Boolean` __enablePolling__ - flag to enable/disable data polling
+
 ###Methods
 
 ```js
