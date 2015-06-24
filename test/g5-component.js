@@ -14,7 +14,7 @@ const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', function(t) {
 
-    t.plan(10);
+    t.plan(3);
 
     let linescoreComponent = g5Component({
         container: null,
@@ -23,18 +23,30 @@ test('g5-component core test', function(t) {
         path: '/src/data/linescore.json'
     });
 
-    t.ok(linescoreComponent instanceof EventEmitter, 'should have instance of EventeEmitter');
+    t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventeEmitter');
 
-    t.ok(!!linescoreComponent.model, 'should have model');
-    t.ok(!!linescoreComponent.viewModel, 'should have viewModel');
-    t.ok(!!linescoreComponent.eventTower, 'should have eventTower');
+    t.test('g5Component should have expected properties', function(st) {
 
-    t.equal(typeof linescoreComponent.opts, 'object');
-    t.equal(typeof linescoreComponent.init, 'function');
-    t.equal(typeof linescoreComponent.detachEvents, 'function');
-    t.equal(typeof linescoreComponent.attachEvents, 'function');
-    t.equal(typeof linescoreComponent.destroy, 'function');
+        st.ok(!!linescoreComponent.model, 'should have model');
+        st.ok(!!linescoreComponent.viewModel, 'should have viewModel');
+        st.ok(!!linescoreComponent.eventTower, 'should have eventTower');
 
-    t.notEqual(linescoreComponent.opts.container, 'undefined');
+        st.equal(typeof linescoreComponent.opts, 'object');
+        st.notEqual(linescoreComponent.opts.container, 'undefined');
+
+        st.end();
+
+    });
+
+    t.test('g5Component should have expected methods', function(st) {
+
+        st.equal(typeof linescoreComponent.init, 'function');
+        st.equal(typeof linescoreComponent.detachEvents, 'function');
+        st.equal(typeof linescoreComponent.attachEvents, 'function');
+        st.equal(typeof linescoreComponent.destroy, 'function');
+
+        st.end();
+
+    });
 
 });
