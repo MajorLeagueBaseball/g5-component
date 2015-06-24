@@ -6,6 +6,7 @@ MVVM + Event Layer - Browserify Component Scaffold
 
 * completely self-contained, event based, scalable architecture
 * simple workflow - instantiate component, edit template and add any component specific JS
+* can be used as a scaffold and a module
 * clean, documented, consistent code and methodologies
 * environment agnostic code
 * ES6 support via babel
@@ -192,7 +193,6 @@ linescoreComponent.on('destroy', function(obj) {
 ###TODO
 
 - [ ] Iron out build process
-- [ ] Add Grunt process
 - [x] Fix build-css and watch-css commands
 - [x] Add Git hooks
 - [x] UMD support
