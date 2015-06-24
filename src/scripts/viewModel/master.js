@@ -16,7 +16,7 @@ const EventEmitter = require('events').EventEmitter;
 /**
  *
  * @constructor MasterViewModel
- * @param {Object} opts
+ * @param {Object} opts shared options Object
  *
  */
 function MasterViewModel(opts) {
@@ -56,6 +56,7 @@ util.inherits(MasterViewModel, EventEmitter);
 /**
  *
  * @method init
+ * @description initiates viewModel
  * @returns {Object} this
  *
  */
@@ -80,6 +81,7 @@ MasterViewModel.prototype.init = function() {
 /**
  *
  * @method addClass
+ * @description adds classes based on options
  * @returns {Object} this
  *
  */
@@ -155,6 +157,7 @@ MasterViewModel.prototype.bindComponent = function() {
  *
  * @method showError
  * @param {Object} err
+ * @description shows data error
  * @returns {Object} this
  *
  */

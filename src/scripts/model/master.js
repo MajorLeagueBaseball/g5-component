@@ -18,7 +18,7 @@ require('isomorphic-fetch');
 /**
  *
  * @constructor MasterModel
- * @param {Object} opts
+ * @param {Object} opts shared options Object
  *
  */
 function MasterModel(opts) {
@@ -171,7 +171,7 @@ MasterModel.prototype.stop = function() {
  *
  * @method destroy
  * @returns {Object} this
- * @description kills instance
+ * @description stops polling and kills instance
  *
  */
 MasterModel.prototype.destroy = function() {

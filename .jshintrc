@@ -35,6 +35,7 @@
     "predef": [
         "require",
         "define",
-        "notify"
+        "notify",
+        "fetch"
     ]
 }

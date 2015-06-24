@@ -13,15 +13,28 @@ const EventTower    = require('../src/scripts/events/master').EventTower;
 
 test('events-master test', function(t) {
 
-    t.plan(5);
+    t.plan(3);
 
     let eventTower = EventTower();
 
-    t.ok(eventTower instanceof EventTower, 'should have instance of EventTower');
+    t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 
-    t.equal(typeof eventTower.model, 'object');
-    t.equal(typeof eventTower.viewModel, 'object');
-    t.equal(typeof eventTower.attachEvents, 'function');
-    t.equal(typeof eventTower.detachEvents, 'function');
+    t.test('eventTower should have expected properties', function(st) {
+
+        st.equal(typeof eventTower.model, 'object');
+        st.equal(typeof eventTower.viewModel, 'object');
+
+        st.end();
+
+    });
+
+    t.test('eventTower should have expected methods', function(st) {
+
+        st.equal(typeof eventTower.attachEvents, 'function');
+        st.equal(typeof eventTower.detachEvents, 'function');
+
+        st.end();
+
+    });
 
 });
