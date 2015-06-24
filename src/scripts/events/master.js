@@ -123,13 +123,25 @@ EventTower.prototype.attachEvents = function() {
 
     /**
      *
-     * @event data-refresh
+     * @event data
      * @param {Object} data
      *
      */
     _viewModel.on('data', function(data) {
 
         _viewModel.refresh(data).bindComponent();
+
+    });
+
+    /**
+     *
+     * @event data-error
+     * @param {Object} err
+     *
+     */
+    _viewModel.on('data-error', function(err) {
+
+        _viewModel.showError(err);
 
     });
 

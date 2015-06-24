@@ -35,9 +35,17 @@ function MasterViewModel(opts) {
     this.active = false;
     this.bound = false;
 
-    this.component = opts && require('component');
-    this.less = opts && require('component-less');
-    this.template = opts && require('component-template');
+    try {
+
+        this.component = require('component');
+        this.less = require('component-less');
+        this.template = require('component-template');
+
+    } catch (e) {
+
+        return;
+
+    }
 
     EventEmitter.call(this);
 
@@ -138,6 +146,21 @@ MasterViewModel.prototype.bindComponent = function() {
         this.addG5Attributes();
 
     }
+
+    return this;
+
+};
+
+/**
+ *
+ * @method showError
+ * @param {Object} err
+ * @returns {Object} this
+ *
+ */
+MasterViewModel.prototype.showError = function(err) {
+
+    this.container.innerHTML = `<div class="alert alert-danger" role="alert">Error - ${err}</div>`;
 
     return this;
 
