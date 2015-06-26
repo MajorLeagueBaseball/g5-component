@@ -192,6 +192,8 @@ linescoreComponent.on('destroy', function(obj) {
 
 ###TODO
 
+- [ ] Add ability to swap out model
+- [ ] Add examples of module/scaffold usage
 - [ ] Iron out build process
 - [x] Fix build-css and watch-css commands
 - [x] Add Git hooks
