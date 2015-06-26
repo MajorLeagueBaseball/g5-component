@@ -41,7 +41,8 @@
   "browser": {
     "component": "./src/scripts/component/master.js",
     "component-less": "./src/styles/component.less",
-    "component-template": "./src/template/component.html"
+    "component-template": "./src/template/component.html",
+    "component-extender": "./src/scripts/component/extender.js"
   },
   "config": {
     "ghooks": {

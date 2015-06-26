@@ -40,6 +40,7 @@ function MasterViewModel(opts) {
         this.component = require('component');
         this.less = require('component-less');
         this.template = require('component-template');
+        this.extender = require('component-extender');
 
     } catch (e) {
 
@@ -70,6 +71,7 @@ MasterViewModel.prototype.init = function() {
 
         this.instance = true;
         this.active = true;
+
         this.addClass().addG5Attributes();
 
     }
@@ -126,7 +128,7 @@ MasterViewModel.prototype.refresh = function(data={}) {
 
     utils.log('refreshing data on viewModel');
 
-    this.container.innerHTML = this.template(data);
+    this.container.innerHTML = this.template(this.extender(data));
 
     return this;
 
