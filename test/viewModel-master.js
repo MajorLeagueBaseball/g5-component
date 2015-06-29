@@ -9,7 +9,7 @@
 'use strict';
 
 const test             = require('tape');
-const MasterViewModel  = require('../src/scripts/viewModel/master').MasterViewModel;
+const MasterViewModel  = require('./../src/scripts/viewModel/master').MasterViewModel;
 const EventEmitter     = require('events').EventEmitter;
 
 test('viewModel-master test', function(t) {

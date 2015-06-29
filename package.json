@@ -60,7 +60,7 @@
     "watch-js": "watchify src/scripts/index.js -o src/static/bundle-dev.js -dv",
     "watch-css": "catw -w -c 'lessc -' 'src/styles/component.less' -o src/static/bundle.css -v",
     "watch": "npm run watch-js",
-    "test": "babel-tape-runner test/*.js"
+    "test": "babel-tape-runner test/*.js | tap-spec"
   },
   "dependencies": {
     "bootstrap": "^3.3.4",
@@ -84,6 +84,7 @@
     "hbsfy": "^2.2.1",
     "less": "^2.5.1",
     "node-lessify": "0.0.10",
+    "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
     "watchify": "^2.2.1"
