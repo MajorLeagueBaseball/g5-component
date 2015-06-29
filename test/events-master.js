@@ -21,8 +21,8 @@ test('events-master test', function(t) {
 
     t.test('eventTower should have expected properties', function(st) {
 
-        st.equal(typeof eventTower.model, 'object');
-        st.equal(typeof eventTower.viewModel, 'object');
+        st.equal(typeof eventTower.model, 'object', 'should have model reference');
+        st.equal(typeof eventTower.viewModel, 'object', 'should have viewModel reference');
 
         st.end();
 
@@ -30,8 +30,8 @@ test('events-master test', function(t) {
 
     t.test('eventTower should have expected methods', function(st) {
 
-        st.equal(typeof eventTower.attachEvents, 'function');
-        st.equal(typeof eventTower.detachEvents, 'function');
+        st.equal(typeof eventTower.attachEvents, 'function', 'should have attachEvents method');
+        st.equal(typeof eventTower.detachEvents, 'function', 'should have detachEvents method');
 
         st.end();
 

@@ -31,8 +31,8 @@ test('g5-component core test', function(t) {
         st.ok(!!linescoreComponent.viewModel, 'should have viewModel');
         st.ok(!!linescoreComponent.eventTower, 'should have eventTower');
 
-        st.equal(typeof linescoreComponent.opts, 'object');
-        st.notEqual(linescoreComponent.opts.container, 'undefined');
+        st.equal(typeof linescoreComponent.opts, 'object', 'should have opts object');
+        st.notEqual(linescoreComponent.opts.container, 'undefined', 'should have a container');
 
         st.end();
 
@@ -40,10 +40,10 @@ test('g5-component core test', function(t) {
 
     t.test('g5Component should have expected methods', function(st) {
 
-        st.equal(typeof linescoreComponent.init, 'function');
-        st.equal(typeof linescoreComponent.detachEvents, 'function');
-        st.equal(typeof linescoreComponent.attachEvents, 'function');
-        st.equal(typeof linescoreComponent.destroy, 'function');
+        st.equal(typeof linescoreComponent.init, 'function', 'should have init method');
+        st.equal(typeof linescoreComponent.detachEvents, 'function', 'should have detachEvents method');
+        st.equal(typeof linescoreComponent.attachEvents, 'function', 'should have attachEvents method');
+        st.equal(typeof linescoreComponent.destroy, 'function', 'should have destroy method');
 
         st.end();
 
