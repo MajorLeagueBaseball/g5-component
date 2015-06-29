@@ -35,18 +35,10 @@ npm i
 
 ###Server
 
-> Server running on [http://localhost:9966](http://localhost:9966)
+> Server running on [http://localhost:9966](http://localhost:9966) [Ctrl+C] to kill server
 
 ```
 npm run start
-```
-
-###Dev Server
-
-> Server running on [http://localhost:9966](http://localhost:9966) with auto builds, [Ctrl+C] to kill server
-
-```
-npm run start-dev
 ```
 
 ###Build
@@ -92,25 +84,6 @@ npm test
 <script>
 
     var linescoreComponent = g5Component({
-        container: document.getElementById('component--linescore'),
-        css: 'g5-component-linescore linescore linescore--game',
-        interval: 15000,
-        path: '/src/data/linescore.json'
-    });
-
-    linescoreComponent.init();
-
-</script>
-```
-
-####[Browserify](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/index.js)
-
-```html
-<script>
-
-    const g5Component = require('./g5-component');
-
-    let linescoreComponent = g5Component({
         container: document.getElementById('component--linescore'),
         css: 'g5-component-linescore linescore linescore--game',
         interval: 15000,
