@@ -53,7 +53,7 @@
     "server": "http-server -p 9966",
     "start": "npm run build && npm run server",
     "start-dev": "npm run watch & npm run server",
-    "build-js": "browserify src/scripts/g5-component.js --standalone 'g5-component' | uglifyjs -mc > src/static/g5-component.js",
+    "build-js": "browserify src/scripts/g5-component.js --standalone 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component.js",
     "build-css": "lessc src/styles/component.less > src/static/bundle.css",
     "build": "npm run build-js",
     "watch-js": "watchify src/scripts/g5-component.js --standalone 'g5-component' -o src/static/g5-component.js -dv",
