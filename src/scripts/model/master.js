@@ -37,6 +37,16 @@ function MasterModel(opts) {
     this.dataCache = {};
     this.dataFetch = null;
 
+    try {
+
+        this.extender = require('component-extender');
+
+    } catch (e) {
+
+        return;
+
+    }
+
     EventEmitter.call(this);
 
 }
@@ -101,12 +111,14 @@ MasterModel.prototype.fetch = function() {
      * @param {Object} data parsed JSON
      *
      */
-    function handleSuccess(data) {
+    function handleSuccess(data={}) {
+
+        data = _this.extender(data);
 
         if (!_.isEqual(data, _this.dataCache)) {
 
-            _this.emit('data', data);
             _this.dataCache = data;
+            _this.emit('data', data);
 
         }
 

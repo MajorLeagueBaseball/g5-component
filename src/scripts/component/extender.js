@@ -1,7 +1,7 @@
 /**
  *
  * @module utils/extender
- * @description module for extending data before it gets passed to the view
+ * @description module for extending data
  *
  */
 
