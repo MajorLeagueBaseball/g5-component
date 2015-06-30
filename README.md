@@ -69,6 +69,8 @@ A single options Object shared between all Constructors
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
+<section class="g5-component" id="component--linescore"></section>
+
 <script>
 
     require(['src/static/g5-component'], function(g5Component) {
@@ -90,6 +92,8 @@ A single options Object shared between all Constructors
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
+<section class="g5-component" id="component--linescore"></section>
+
 <script src="/src/static/g5-component.js"></script>
 
 <script>
