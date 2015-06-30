@@ -53,6 +53,17 @@ npm run build
 npm test
 ```
 
+###Options
+
+A single options Object shared between all Constructors
+
+* `Element` __container__ - primary container
+* `String` __css__ - classes
+* `String` __i18n__ - localization
+* `Number` __interval__ - polling interval
+* `String` __path__ - data path
+* `Boolean` __enablePolling__ - flag to enable/disable data polling
+
 ###Usage
 
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
@@ -60,7 +71,7 @@ npm test
 ```html
 <script>
 
-    require(['src/static/bundle'], function(g5Component) {
+    require(['src/static/g5-component'], function(g5Component) {
 
         var linescoreComponent = g5Component({
             container: document.getElementById('component--linescore'),
@@ -79,7 +90,7 @@ npm test
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
-<script src="src/static/bundle.js"></script>
+<script src="/src/static/g5-component.js"></script>
 
 <script>
 
@@ -94,17 +105,6 @@ npm test
 
 </script>
 ```
-
-###Options
-
-A single options Object shared between all Constructors
-
-* `Element` __container__ - primary container
-* `String` __css__ - classes
-* `String` __i18n__ - localization
-* `Number` __interval__ - polling interval
-* `String` __path__ - data path
-* `Boolean` __enablePolling__ - flag to enable/disable data polling
 
 ###Methods
 
