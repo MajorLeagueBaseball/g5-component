@@ -22,7 +22,7 @@ MVVM + Event Layer - Browserify Component Scaffold
 
 ###Setup
 
-> Install the package and use it as a module
+> Install the package and use it as a module - [usage example](https://github.com/gbabula/babu.la)
 
 ```
 npm i g5-component
@@ -69,8 +69,8 @@ A single options Object shared between all Constructors
 * `Element` __container__ - primary container
 * `String` __css__ - classes
 * `String` __i18n__ - localization
-* `Number` __interval__ - polling interval
-* `String` __path__ - data path
+* `Number` __interval__ - polling interval (ms)
+* `String` __path__ - data path (remote/local)
 * `Boolean` __enablePolling__ - flag to enable/disable data polling
 
 ###Usage
@@ -78,14 +78,14 @@ A single options Object shared between all Constructors
 ####CommonJS
 
 ```html
-<section class="g5-component" id="component--linescore"></section>
+<section class="g5-component"></section>
 
 <script>
 
     var g5Component = require('g5-component');
 
     var linescoreComponent = g5Component({
-        container: document.getElementById('component--linescore'),
+        container: document.querySelector('.g5-component'),
         css: 'g5-component-linescore linescore linescore--game',
         interval: 15000,
         path: '/src/data/linescore.json'
@@ -93,21 +93,20 @@ A single options Object shared between all Constructors
 
     linescoreComponent.init();
 
-
 </script>
 ```
 
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
-<section class="g5-component" id="component--linescore"></section>
+<section class="g5-component"></section>
 
 <script>
 
     require(['src/static/g5-component'], function(g5Component) {
 
         var linescoreComponent = g5Component({
-            container: document.getElementById('component--linescore'),
+            container: document.querySelector('.g5-component'),
             css: 'g5-component-linescore linescore linescore--game',
             interval: 15000,
             path: '/src/data/linescore.json'
@@ -123,14 +122,14 @@ A single options Object shared between all Constructors
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
-<section class="g5-component" id="component--linescore"></section>
+<section class="g5-component"></section>
 
 <script src="/src/static/g5-component.js"></script>
 
 <script>
 
     var linescoreComponent = g5Component({
-        container: document.getElementById('component--linescore'),
+        container: document.querySelector('.g5-component'),
         css: 'g5-component-linescore linescore linescore--game',
         interval: 15000,
         path: '/src/data/linescore.json'
