@@ -2,7 +2,8 @@
 
 MVVM + Event Layer - Browserify Component Scaffold
 
-[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
+[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
+[![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 
 ---
 
@@ -21,7 +22,13 @@ MVVM + Event Layer - Browserify Component Scaffold
 
 ###Setup
 
-> Install the package and use it as a scaffold for your component
+> Install the package and use it as a module
+
+```
+npm i g5-component
+```
+
+> Or clone the package and use it as a scaffold
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
@@ -67,6 +74,28 @@ A single options Object shared between all Constructors
 * `Boolean` __enablePolling__ - flag to enable/disable data polling
 
 ###Usage
+
+####CommonJS
+
+```html
+<section class="g5-component" id="component--linescore"></section>
+
+<script>
+
+    var g5Component = require('g5-component');
+
+    var linescoreComponent = g5Component({
+        container: document.getElementById('component--linescore'),
+        css: 'g5-component-linescore linescore linescore--game',
+        interval: 15000,
+        path: '/src/data/linescore.json'
+    });
+
+    linescoreComponent.init();
+
+
+</script>
+```
 
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
@@ -136,6 +165,8 @@ linescoreComponent.destroy(); // kills component instance
 
 ###Events
 
+> Events must be attached before the component is initiated
+
 ```js
 
 linescoreComponent.on('ready', function(obj) {
@@ -174,6 +205,7 @@ linescoreComponent.on('destroy', function(obj) {
 - [ ] Add ability to swap out model
 - [ ] Add examples of module/scaffold usage
 - [ ] Iron out build process
+- [ ] Add full instructions for usage as a module
 - [x] Fix build-css and watch-css commands
 - [x] Add Git hooks
 - [x] UMD support
