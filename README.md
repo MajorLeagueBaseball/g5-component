@@ -206,12 +206,7 @@ If you plan on using CommonJS/Browserify, you're index.js should look like this.
 ```js
 const g5Component = require('g5-component');
 
-/**
- *
- * @function onLoad
- *
- */
-function onLoad() {
+window.onload = () => {
 
     let infoComponent = g5Component({
         container: document.querySelector('.g5-component--info'),
@@ -223,9 +218,7 @@ function onLoad() {
     // init component
     infoComponent.init();
 
-}
-
-window.onload = onLoad;
+};
 ```
 
 For UMD support, set module.exports to point to g5Component, and init your component elsewhere.
