@@ -2,6 +2,8 @@
 
 MVVM + Event Layer - Browserify Component Scaffold
 
+[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
+
 ---
 
 * completely self-contained, event based, scalable architecture
