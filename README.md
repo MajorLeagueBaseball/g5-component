@@ -128,7 +128,7 @@ exampleComponent.on('destroy', function(obj) {
 
 ###Usage // Module
 
-Instructions for usage as a module, for a full example with all files view the [info component implementation](https://github.com/gbabula/babu.la)
+Instructions for usage as a module, the easiest thing to do is clone the [info component example](https://github.com/gbabula/babu.la) and use it as your baseline
 
 Simplifies component development, the model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible and consistent structure for development.
 
@@ -180,7 +180,7 @@ To see how simple it really is, look at the info component implementation in [an
 
 #### Component File Reference
 
-The g5-component module keeps an internal browser reference to all component files, when extended for use with a new component, these references need to be updated for use with aliasify. Esentially, you are invalidating the internal file references and pointing to the files in your component. Aliasify is used here because browserify does not allow overriding previous browser references.
+Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead.
 
 ```json
   "browser": {
