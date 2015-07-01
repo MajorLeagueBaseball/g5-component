@@ -128,7 +128,7 @@ exampleComponent.on('destroy', function(obj) {
 
 ###Usage // Module
 
-Instructions for usage as a module, the easiest thing to do is clone the [info component example](https://github.com/gbabula/babu.la) and use it as your baseline
+__Instructions for usage as a module, the easiest thing to do is to clone the [info component example](https://github.com/gbabula/babu.la) and use it as your baseline__
 
 Simplifies component development, the model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible and consistent structure for development.
 
