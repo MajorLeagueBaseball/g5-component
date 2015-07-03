@@ -1,6 +1,6 @@
 #g5-component.js
 
-MVVM + Event Layer - Browserify Component Scaffold
+Browserify Component Scaffold
 
 [![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
@@ -201,7 +201,7 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
 
 #### Component Entry Point
 
-If you plan on using CommonJS/Browserify, you're index.js should look like this.
+If you plan on using CommonJS/Browserify, you're index.js should look something like this.
 
 ```js
 const g5Component = require('g5-component');
@@ -330,8 +330,8 @@ var info = infoComponent(options);
 
 ###TODO
 
+- [ ] Add hello-world component example
 - [ ] Add ability to swap out model
-- [ ] Add examples of module/scaffold usage
 - [ ] Iron out build process
 - [x] Add full instructions for usage as a module
 - [x] Fix build-css and watch-css commands

@@ -1,7 +1,7 @@
 {
   "name": "g5-component",
-  "version": "1.1.6",
-  "description": "MVVM + Event Layer - Browserify Component Scaffold",
+  "version": "1.1.7",
+  "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
   "repository": {
@@ -13,6 +13,7 @@
   },
   "keywords": [
     "component",
+    "component scaffold",
     "browserify",
     "MVVM",
     "events",
