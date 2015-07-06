@@ -8,8 +8,8 @@
 
 'use strict';
 
-const _               = require('lodash');
 const util            = require('util');
+const assign          = require('lodash/object/assign');
 const utils           = require('./utils/master');
 const MasterModel     = require('./model/master').MasterModel;
 const MasterViewModel = require('./viewModel/master').MasterViewModel;
@@ -34,7 +34,7 @@ function G5Component(opts) {
         return new G5Component(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         container: undefined,
         i18n: 'en'
     }, opts);

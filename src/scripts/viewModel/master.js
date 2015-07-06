@@ -8,7 +8,7 @@
 
 'use strict';
 
-const _            = require('lodash');
+const assign       = require('lodash/object/assign');
 const util         = require('util');
 const utils        = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
@@ -25,7 +25,7 @@ function MasterViewModel(opts) {
         return new MasterViewModel(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         css: 'g5-component'
     }, opts);
 

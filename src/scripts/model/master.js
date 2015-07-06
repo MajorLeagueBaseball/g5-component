@@ -8,7 +8,8 @@
 
 'use strict';
 
-const _             = require('lodash');
+const assign        = require('lodash/object/assign');
+const isEqual       = require('lodash/lang/isEqual');
 const util          = require('util');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
@@ -27,7 +28,7 @@ function MasterModel(opts) {
         return new MasterModel(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         interval: 40000,
         enablePolling: true,
         path: ''
@@ -115,7 +116,7 @@ MasterModel.prototype.fetch = function() {
 
         data = _this.extender(data);
 
-        if (!_.isEqual(data, _this.dataCache)) {
+        if (!isEqual(data, _this.dataCache)) {
 
             _this.dataCache = data;
             _this.emit('data', data);

@@ -8,7 +8,8 @@
 
 'use strict';
 
-const _             = require('lodash');
+const size          = require('lodash/collection/size');
+const each          = require('lodash/collection/each');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
 
@@ -35,7 +36,7 @@ function hasEventEmitter(obj) {
  */
 function detachEvents(target) {
 
-    let hasEvents = target && hasEventEmitter(target) && _.size(target._events);
+    let hasEvents = target && hasEventEmitter(target) && size(target._events);
 
     if (hasEvents) {
         target.removeAllListeners();
@@ -165,7 +166,7 @@ EventTower.prototype.detachEvents = function() {
 
     utils.log('detach events');
 
-    _.each(_eventGroup, function(obj) {
+    each(_eventGroup, function(obj) {
         detachEvents(obj);
     });
 

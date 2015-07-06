@@ -8,7 +8,6 @@
 
 'use strict';
 
-const _             = require('lodash');
 const test          = require('tape');
 const MasterModel   = require('./../src/scripts/model/master').MasterModel;
 const EventEmitter  = require('events').EventEmitter;

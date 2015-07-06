@@ -7,7 +7,7 @@
 
 'use strict';
 
-const _ = require('lodash');
+const merge = require('lodash/object/merge');
 
 /**
  *
@@ -20,7 +20,7 @@ function extender(data={}) {
 
     let game = data.data && data.data.game;
 
-    return _.merge(data, {
+    return merge(data, {
         data: {
             game: {
                 description: game.away_team_name + ' @ ' + game.home_team_name
