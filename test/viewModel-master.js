@@ -9,12 +9,12 @@
 'use strict';
 
 const test             = require('tape');
-const MasterViewModel  = require('./../src/scripts/viewModel/master').MasterViewModel;
+const MasterViewModel  = require('./../src/scripts/viewModel/master');
 const EventEmitter     = require('events').EventEmitter;
 
 test('viewModel-master test', function(t) {
 
-    t.plan(4);
+    t.plan(5);
 
     let viewModel = MasterViewModel();
 
@@ -30,6 +30,10 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.active, 'boolean', 'should have active property');
         st.equal(typeof viewModel.bound, 'boolean', 'should have bound property');
 
+        st.ok(!!viewModel.component, 'should have component JS defined');
+        st.ok(!!viewModel.less, 'should have component LESS defined');
+        st.ok(!!viewModel.template, 'should have component Template defined');
+
         st.end();
 
     });
@@ -43,6 +47,14 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
         st.equal(typeof viewModel.showError, 'function', 'should have showError method');
         st.equal(typeof viewModel.destroy, 'function', 'should have destroy method');
+
+        st.end();
+
+    });
+
+    t.test('viewModel should have events', function(st) {
+
+        st.ok(viewModel._events, 'viewModel should have events Object');
 
         st.end();
 

@@ -9,12 +9,12 @@
 'use strict';
 
 const test          = require('tape');
-const MasterModel   = require('./../src/scripts/model/master').MasterModel;
+const MasterModel   = require('./../src/scripts/model/master');
 const EventEmitter  = require('events').EventEmitter;
 
 test('model-master test', function(t) {
 
-    t.plan(6);
+    t.plan(7);
 
     let model = MasterModel({
         path: '/src/data/linescore.json'
@@ -31,6 +31,8 @@ test('model-master test', function(t) {
         st.equal(typeof model.dataFetch, 'object', 'should have dataFetch property');
         st.equal(typeof model.instance, 'boolean', 'should have instance property');
 
+        st.ok(!!model.extender, 'model extender should be defined');
+
         st.end();
 
     });
@@ -42,6 +44,14 @@ test('model-master test', function(t) {
         st.equal(typeof model.start, 'function', 'should have start method');
         st.equal(typeof model.stop, 'function', 'should have stop method');
         st.equal(typeof model.destroy, 'function', 'should have destroy method');
+
+        st.end();
+
+    });
+
+    t.test('model should have events', function(st) {
+
+        st.ok(model._events, 'model should have events Object');
 
         st.end();
 
