@@ -8,9 +8,8 @@
 
 'use strict';
 
-const _             = require('lodash');
-const test          = require('tape');
-const EventTower    = require('./../src/scripts/events/master').EventTower;
+const test       = require('tape');
+const EventTower = require('./../src/scripts/events/master').EventTower;
 
 test('events-master test', function(t) {
 
