@@ -43,7 +43,9 @@ function MasterViewModel(opts) {
 
     } catch (e) {
 
-        return;
+        this.component = {};
+        this.less = {};
+        this.template = {};
 
     }
 
@@ -196,4 +198,4 @@ MasterViewModel.prototype.destroy = function() {
 
 };
 
-exports.MasterViewModel = MasterViewModel;
+module.exports = MasterViewModel;

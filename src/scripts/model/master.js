@@ -44,7 +44,7 @@ function MasterModel(opts) {
 
     } catch (e) {
 
-        return;
+        this.extender = require('./../component/extender');
 
     }
 
@@ -199,4 +199,4 @@ MasterModel.prototype.destroy = function() {
 
 };
 
-exports.MasterModel = MasterModel;
+module.exports = MasterModel;

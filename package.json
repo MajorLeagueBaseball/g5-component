@@ -40,6 +40,8 @@
     ]
   },
   "browser": {
+    "model": "./src/scripts/model/master.js",
+    "viewModel": "./src/scripts/viewModel/master.js",
     "component": "./src/scripts/component/master.js",
     "component-less": "./src/styles/component.less",
     "component-template": "./src/template/component.html",
