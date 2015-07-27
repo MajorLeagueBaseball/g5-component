@@ -194,6 +194,34 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
   }
 ```
 
+#### Component Extender
+
+When the model successfully returns data, that data can then be manipulated and/or extended with new properties in the component extender. For example, if you need a game date property, and that property does not exist in your data set - instead of making your markup more verbose, you can add that property to the extender and it will then be available in your template.
+
+The component extender is a required file (provided by default) and should always return an Object.
+
+```js
+const merge = require('lodash/object/merge');
+
+/**
+ *
+ * @function extender
+ * @param {Object} data
+ * @returns {Object} extended data
+ *
+ */
+function extender(data={}) {
+
+    return merge(data, {
+        game_date: data.game_id && data.game_id.slice(0, 10)
+    });
+
+}
+
+module.exports = extender;
+```
+
+
 ###Usage // Scaffold
 
 > A linescore component example is included in this repo for demonstraton purposes
@@ -268,19 +296,6 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
 * Style Guide - [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)
 * Protect against `new` - constructors can be called with or without `new`
 * Maintain chainability, methods return `this`
-
-###TODO
-
-- [ ] Add hello-world component example
-- [ ] Add ability to swap out model
-- [ ] Iron out build process
-- [x] Add full instructions for usage as a module
-- [x] Fix build-css and watch-css commands
-- [x] Add Git hooks
-- [x] UMD support
-- [x] Bootstrap addition
-- [x] Refactor/Cleanup
-- [ ] etc...
 
 ###Reference
 
