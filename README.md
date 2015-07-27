@@ -8,14 +8,15 @@ Browserify Component Scaffold
 ---
 
 * completely self-contained, event based, scalable architecture
-* simple workflow - instantiate component, edit template and add any component specific JS
+* simple, consistent workflow
 * can be used as a scaffold and a module
-* clean, documented, consistent code and methodologies
+* clean, well documented, consistent code and methodologies
 * environment agnostic code
 * ES6 support via babel
 * Tape unit tests
 * Style guide validation and test on commit
-* Handlebars, LoDash, LESS, Bootstrap, jQuery
+* Handlebars, LoDash
+* LESS, Bootstrap, jQuery (available on component level)
 * UMD support
 
 ---
@@ -175,7 +176,7 @@ To see how simple it really is, look at the info component implementation in [an
 
 #### Component File Reference
 
-Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead.
+Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead. If need be, the core model and/or viewModel can also be changed if necessary, however it should inherit it's prototype from the g5-component model to maintain expected methods.
 
 ```json
   "browser": {
@@ -221,6 +222,103 @@ function extender(data={}) {
 module.exports = extender;
 ```
 
+#### Component Master
+
+Main file for all component specific JS. For consistency, primary methods should remain the same between components. The example below is using jQuery and bootstrap, however keep in mind jQuery and bootstrap are not used anywhere else in the project - so if you dont need either, simply dont import the modules.
+
+```js
+const $ = global.jQuery = require('jquery');
+
+require('bootstrap/js/tooltip');
+require('bootstrap/js/popover');
+
+/**
+ *
+ * @name component
+ * @description init, render, addEvents, and destroy methods are required for consistency
+ *
+ */
+let component = {
+    $element: undefined,
+    /**
+     *
+     * @method init
+     * @param {Element} el
+     * @returns {Object} this
+     * @description instantiates component
+     *
+     */
+    init(el) {
+
+        el = el || document.querySelector('.g5-component');
+
+        this.$element = $(el);
+        this.render().addEvents();
+
+        return this;
+
+    },
+    /**
+     *
+     * @method render
+     * @returns {Object} this
+     * @description attaches component functionality
+     *
+     */
+    render() {
+
+        console.log('render component');
+
+        this.$element.find('[data-toggle="tooltip"]').tooltip();
+        this.$element.find('[data-toggle="popover"]').popover();
+
+        return this;
+
+    },
+    /**
+     *
+     * @method addEvents
+     * @returns {Object} this
+     * @description attaches component events, events should be delegated from primary element
+     *
+     */
+    addEvents() {
+
+        /**
+         *
+         * @event click
+         * @param {Object} e event
+         *
+         */
+        this.$element.on('click', 'dt', function(e) {
+
+            console.log('list title click', e);
+
+        });
+
+        return this;
+
+    },
+    /**
+     *
+     * @method destroy
+     * @returns {Object} this
+     * @description detaches component functionality, events must be cleaned up to prevent memory leaks
+     *
+     */
+    destroy() {
+
+        this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
+        this.$element.find('[data-toggle="popover"]').popover('destroy');
+        this.$element.off();
+
+        return this;
+
+    }
+};
+
+module.exports = component;
+```
 
 ###Usage // Scaffold
 
