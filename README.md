@@ -23,13 +23,13 @@ Browserify Component Scaffold
 
 ###Setup
 
-> Install the package and use it as a module
+> Install the package and use it as a module ([directions](https://github.com/MajorLeagueBaseball/g5-component/blob/master/README.md#usage--module))
 
 ```
 npm i g5-component
 ```
 
-> Or clone the package and use it as a scaffold
+> Or clone the package and use it as a scaffold  ([directions](https://github.com/MajorLeagueBaseball/g5-component#usage--scaffold))
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
@@ -322,7 +322,7 @@ module.exports = component;
 
 ###Usage // Scaffold
 
-> A linescore component example is included in this repo for demonstraton purposes
+> A [linescore component](https://github.com/MajorLeagueBaseball/g5-component/tree/master/example) example is included in this repo for demonstraton purposes
 
 ####CommonJS
 
@@ -407,7 +407,9 @@ module.exports = component;
 
 ###License
 
-Copyright (c) 2015 Greg Babula <greg.babula@mlb.com>
+Copyright (c) 2015 [MLBAM](http://mlb.mlb.com/home)
+
+Copyright (c) 2015 [Greg Babula](https://twitter.com/gregbabula)
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
