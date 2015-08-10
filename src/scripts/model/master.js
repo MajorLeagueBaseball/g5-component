@@ -102,7 +102,15 @@ MasterModel.prototype.fetch = function() {
             _this.emit('data-error', response.status);
         }
 
-        return response.json();
+        try {
+
+            return response.json();
+
+        } catch (e) {
+
+            return false;
+
+        }
 
     }
 
