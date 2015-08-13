@@ -13,10 +13,11 @@ const merge = require('lodash/object/merge');
  *
  * @function extender
  * @param {Object} data
+ * @param {Object} opts shared options
  * @returns {Object} extended data
  *
  */
-function extender(data={}) {
+function extender(data={}, opts={}) {
 
     let game = data.data && data.data.game;
 

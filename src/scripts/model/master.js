@@ -122,7 +122,7 @@ MasterModel.prototype.fetch = function() {
      */
     function handleSuccess(data={}) {
 
-        data = _this.extender(data);
+        data = _this.extender(data, _opts);
 
         if (!isEqual(data, _this.dataCache)) {
 
