@@ -354,15 +354,15 @@ module.exports = component;
 ####CommonJS
 
 ```html
-<section class="g5-component"></section>
+<section class="g5-component g5-component-linescore"></section>
 
 <script>
 
     var g5Component = require('./g5-component');
 
     var linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component'),
-        css: 'g5-component-linescore linescore linescore--game',
+        container: document.querySelector('.g5-component-linescore'),
+        css: 'linescore linescore--game',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
@@ -375,15 +375,15 @@ module.exports = component;
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
-<section class="g5-component"></section>
+<section class="g5-component g5-component-linescore"></section>
 
 <script>
 
     require(['src/static/g5-component'], function(g5Component) {
 
         var linescoreComponent = g5Component({
-            container: document.querySelector('.g5-component'),
-            css: 'g5-component-linescore linescore linescore--game',
+            container: document.querySelector('.g5-component-linescore'),
+            css: 'linescore linescore--game',
             interval: 15000,
             path: '/src/data/linescore.json'
         });
@@ -398,15 +398,15 @@ module.exports = component;
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
-<section class="g5-component"></section>
+<section class="g5-component g5-component-linescore"></section>
 
 <script src="/src/static/g5-component.js"></script>
 
 <script>
 
     var linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component'),
-        css: 'g5-component-linescore linescore linescore--game',
+        container: document.querySelector('.g5-component-linescore'),
+        css: 'linescore linescore--game',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
@@ -425,8 +425,9 @@ module.exports = component;
 ###Reference
 
 * [Fetch](https://fetch.spec.whatwg.org/)
-* [Browserify and UMD](http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html)
+* [Simple Browserify Overview](https://github.com/yoshuawuyts/knowledge/blob/master/browserify.md)
 * [Browserify Handbook](https://github.com/substack/browserify-handbook)
+* [Browserify and UMD](http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html)
 * [Task Automation with npm run](http://substack.net/task_automation_with_npm_run)
 * [About Watchify](https://github.com/substack/watchify)
 * [Tape Tests](https://github.com/substack/tape)
