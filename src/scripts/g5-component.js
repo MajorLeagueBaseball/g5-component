@@ -12,7 +12,6 @@ const util          = require('util');
 const assign        = require('lodash/object/assign');
 const utils         = require('./utils/master');
 const EventEmitter  = require('events').EventEmitter;
-const EventTower    = require('./events/master').EventTower;
 
 /**
  *
@@ -41,15 +40,15 @@ function G5Component(opts) {
 
         this.model = require('model')(this.opts);
         this.viewModel = require('viewModel')(this.opts);
+        this.eventTower = require('eventTower')(this);
 
     } catch (e) {
 
         this.model = require('./model/master')(this.opts);
         this.viewModel = require('./viewModel/master')(this.opts);
+        this.eventTower = require('./events/master')(this);
 
     }
-
-    this.eventTower = EventTower(this);
 
     EventEmitter.call(this);
 

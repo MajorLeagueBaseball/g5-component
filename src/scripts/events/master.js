@@ -179,4 +179,4 @@ EventTower.prototype.detachEvents = function() {
 
 };
 
-exports.EventTower = EventTower;
+module.exports = EventTower;

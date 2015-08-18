@@ -9,7 +9,7 @@
 'use strict';
 
 const test       = require('tape');
-const EventTower = require('./../src/scripts/events/master').EventTower;
+const EventTower = require('./../src/scripts/events/master');
 
 test('events-master test', function(t) {
 
