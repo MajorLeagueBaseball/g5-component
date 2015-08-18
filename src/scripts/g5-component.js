@@ -68,10 +68,14 @@ G5Component.prototype.init = function() {
 
     utils.log('init');
 
-    this.model.init();
-    this.viewModel.init();
+    if (!this.hasInstance()) {
 
-    this.emit('ready', this);
+        this.model.init();
+        this.viewModel.init();
+
+        this.emit('ready', this);
+
+    }
 
     return this;
 
@@ -104,6 +108,19 @@ G5Component.prototype.attachEvents = function() {
     this.eventTower.attachEvents();
 
     return this;
+
+};
+
+/**
+ *
+ * @method hasInstance
+ * @description checks if active instance exists on container
+ * @returns {Boolean}
+ *
+ */
+G5Component.prototype.hasInstance = function() {
+
+    return this.viewModel.hasInstance();
 
 };
 

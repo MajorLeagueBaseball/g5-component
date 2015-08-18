@@ -180,6 +180,19 @@ MasterViewModel.prototype.showError = function(err) {
 
 /**
  *
+ * @method hasInstance
+ * @description checks if container has an active instance
+ * @returns {Boolean}
+ *
+ */
+MasterViewModel.prototype.hasInstance = function() {
+
+    return !!this.container.getAttribute('data-g5-component-instance');
+
+};
+
+/**
+ *
  * @method destroy
  * @returns {Object} this
  * @description kills viewModel instance

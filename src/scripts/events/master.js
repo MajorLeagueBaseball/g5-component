@@ -67,7 +67,12 @@ function EventTower(master) {
     //
     if (hasEventEmitter(this.master) && hasEventEmitter(this.model) && hasEventEmitter(this.viewModel)) {
 
-        this.attachEvents();
+        //
+        // attach events to a single instnace
+        //
+        if (!this.master.hasInstance()) {
+            this.attachEvents();
+        }
 
     } else {
 
