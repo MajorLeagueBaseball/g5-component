@@ -1,7 +1,7 @@
 /**
  *
  * @module viewModel/master
- * @description master viewModel
+ * @description master viewModel, view layer related functionality
  * @author Greg Babula
  *
  */
@@ -65,7 +65,13 @@ util.inherits(MasterViewModel, EventEmitter);
 MasterViewModel.prototype.init = function() {
 
     if (!this.container) {
+
         throw Error('G5Component needs to be instantiated with a container');
+
+    } else if (!this.container.nodeType) {
+
+        throw Error('Container must be a valid DOM Node');
+
     }
 
     if (!this.instance) {
