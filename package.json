@@ -50,7 +50,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "cat src/scripts/**/*.js | jscs --esnext --preset=airbnb && npm test"
+      "pre-commit": "cat src/scripts/**/*.js | jscs --esnext --preset=airbnb && npm run lint && npm test"
     }
   },
   "scripts": {
@@ -63,7 +63,8 @@
     "watch-js": "watchify src/scripts/g5-component.js --standalone 'g5-component' -o src/static/g5-component.js -dv",
     "watch-css": "catw -w -c 'lessc -' 'src/styles/component.less' -o src/static/bundle.css -v",
     "watch": "npm run watch-js",
-    "test": "babel-tape-runner test/*.js | tap-spec"
+    "test": "babel-tape-runner test/*.js | tap-spec",
+    "lint": "jshint src/scripts/ || true"
   },
   "dependencies": {
     "bootstrap": "^3.3.4",
@@ -85,6 +86,7 @@
     "ghooks": "^0.3.2",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
+    "jshint": "^2.8.0",
     "less": "^2.5.1",
     "node-lessify": "0.0.10",
     "tap-spec": "^4.0.2",
