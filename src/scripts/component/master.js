@@ -2,7 +2,7 @@
  *
  * @module component/master
  * @author Greg Babula
- * @description component specific functionality
+ * @description entry point for all component specific functionality
  *
  */
 

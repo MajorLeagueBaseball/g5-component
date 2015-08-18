@@ -1,7 +1,7 @@
 /**
  *
  * @module utils/extender
- * @description module for extending data
+ * @description module for extending data after its been retrieved by the model
  *
  */
 
