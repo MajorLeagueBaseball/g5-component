@@ -40,6 +40,8 @@ __[viewModel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/sr
 
 __[Component Master](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - entry point for all component specific functionality
 
+__[eventTower](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js)__ - mediates events between layers
+
 ---
 
 ###Setup
