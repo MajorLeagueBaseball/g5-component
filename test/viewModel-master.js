@@ -46,6 +46,7 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.refresh, 'function', 'should have refresh method');
         st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
         st.equal(typeof viewModel.showError, 'function', 'should have showError method');
+        st.equal(typeof viewModel.hasInstance, 'function', 'should have hasInstance method');
         st.equal(typeof viewModel.destroy, 'function', 'should have destroy method');
 
         st.end();
