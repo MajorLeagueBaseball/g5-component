@@ -14,7 +14,7 @@
     </head>
     <body>
 
-        <section class="g5-component"></section>
+        <section class="g5-component g5-component-linescore"></section>
 
         <!-- bundled JS -->
         <script src="/src/static/g5-component.js"></script>
@@ -23,8 +23,8 @@
         <script>
 
             var linescoreComponent = g5Component({
-                container: document.querySelector('.g5-component'),
-                css: 'g5-component-linescore linescore linescore--game',
+                container: document.querySelector('.g5-component-linescore'),
+                css: 'linescore linescore--game',
                 interval: 15000,
                 path: '/src/data/linescore.json'
             });
