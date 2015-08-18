@@ -187,7 +187,15 @@ MasterViewModel.prototype.showError = function(err) {
  */
 MasterViewModel.prototype.hasInstance = function() {
 
-    return !!this.container.getAttribute('data-g5-component-instance');
+    if (this.container) {
+
+        return !!this.container.getAttribute('data-g5-component-instance');
+
+    } else {
+
+        return false;
+
+    }
 
 };
 
