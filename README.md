@@ -102,6 +102,10 @@ exampleComponent.init(); // initiates component
 ```
 
 ```js
+exampleComponent.hasInstance(); // checks if container has an instance of g5-component
+```
+
+```js
 exampleComponent.detachEvents(); // detaches all events
 ```
 
