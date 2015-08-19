@@ -86,6 +86,12 @@ npm run build
 npm test
 ```
 
+###JSHint
+
+```
+npm run lint
+```
+
 ###Options
 
 A single options Object shared between all Constructors
