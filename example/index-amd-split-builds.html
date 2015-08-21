@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Browserify Component Scaffold" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="g5-component.js" />
+
+        <title>g5-component.js / AMD</title>
+    </head>
+    <body>
+
+        <section class="g5-component g5-component-linescore"></section>
+
+        <!-- AMD -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
+
+        <!-- AMD implementation -->
+        <script>
+
+            requirejs.config({
+                paths: {
+                    'g5-component-vendor': '../src/static/g5-component-vendor',
+                    'g5-component-bundle': '../src/static/g5-component-bundle'
+                }
+            });
+
+            require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
+
+                var linescoreComponent = g5Component({
+                    container: document.querySelector('.g5-component-linescore'),
+                    css: 'linescore linescore--game',
+                    interval: 15000,
+                    path: '/src/data/linescore.json'
+                });
+
+                linescoreComponent.init();
+
+            });
+
+        </script>
+
+    </body>
+</html>
