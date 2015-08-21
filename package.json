@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -54,17 +54,23 @@
     }
   },
   "scripts": {
-    "server": "http-server -p 9966",
-    "start": "npm run build && npm run server",
-    "start-dev": "npm run watch & npm run server",
-    "build-js": "browserify src/scripts/g5-component.js --standalone 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component.js",
+    "serve": "http-server -p 9966",
+    "start": "npm run serve & npm run build-js-full",
+    "start-dev": "npm run serve & npm run watch",
+    "build-js": "browserify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/g5-component.js --s 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component-bundle.js",
+    "build-js-vendor": "browserify -r bootstrap -r jquery -r lodash -r isomorphic-fetch | uglifyjs -mc > src/static/g5-component-vendor.js",
+    "build-js-full": "browserify src/scripts/g5-component.js --s 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component.js",
     "build-css": "lessc src/styles/component.less > src/static/bundle.css",
-    "build": "npm run build-js",
-    "watch-js": "watchify src/scripts/g5-component.js --standalone 'g5-component' -o src/static/g5-component.js -dv",
+    "build": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
+    "watch-js": "watchify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/g5-component.js --s 'g5-component' -o src/static/g5-component-bundle.js -dv",
     "watch-css": "catw -w -c 'lessc -' 'src/styles/component.less' -o src/static/bundle.css -v",
     "watch": "npm run watch-js",
     "test": "babel-tape-runner test/*.js | tap-spec",
-    "lint": "jshint src/scripts/ || true"
+    "pretest": "echo 'Checking code via babel-tape-runner'",
+    "posttest": "echo 'tests successfully passed!'",
+    "lint": "jshint src/scripts/ || true",
+    "prelint": "echo 'Checking code via JSHint...'",
+    "postlint": "echo 'Code is lint free, great success!'"
   },
   "dependencies": {
     "bootstrap": "^3.3.4",
