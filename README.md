@@ -63,30 +63,58 @@ npm i less catw jscs http-server -g
 ```
 
 ```
-npm i
+npm i && npm run build
+```
+
+###Server / Development
+
+> Server running on [http://localhost:9966](http://localhost:9966) with auto (split) builds [Ctrl+C] to kill server
+
+```
+npm run start-dev
 ```
 
 ###Server
 
-> Server running on [http://localhost:9966](http://localhost:9966) [Ctrl+C] to kill server
+> Server running on [http://localhost:9966](http://localhost:9966) with full build [Ctrl+C] to kill server
 
 ```
 npm run start
 ```
 
-###Build
+###Commands
+
+####Build
+
+> Bundle build, without vendor dependencies
 
 ```
-npm run build
+npm run build-js
 ```
 
-###Test
+####Build Vendor
+
+> Vendor build
+
+```
+npm run build-js-vendor
+```
+
+####Build Full
+
+> Full build, including vendor and bundle
+
+```
+npm run build-js-full
+```
+
+####Test
 
 ```
 npm test
 ```
 
-###JSHint
+####JSHint
 
 ```
 npm run lint
