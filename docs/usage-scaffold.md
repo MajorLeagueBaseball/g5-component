@@ -1,6 +1,6 @@
 #Usage // Scaffold
 
-> A [linescore component](https://github.com/MajorLeagueBaseball/g5-component/tree/master/example) example is included in this repo for demonstraton purposes
+A [linescore component](https://github.com/MajorLeagueBaseball/g5-component/tree/master/example) example is included in this repo for demonstraton purposes
 
 ####CommonJS
 
