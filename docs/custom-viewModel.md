@@ -56,5 +56,4 @@ function MasterViewModel(opts) {
 
 util.inherits(MasterViewModel, g5ViewModel);
 
-
 module.exports = MasterViewModel;
