@@ -1,6 +1,6 @@
 #g5-component.js
 
-Browserify Component Scaffold
+Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation))
 
 [![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
@@ -188,17 +188,6 @@ exampleComponent.on('destroy', function(obj) {
 * Style Guide - [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)
 * Protect against `new` - constructors can be called with or without `new`
 * Maintain chainability, methods return `this`
-
-###Reference
-
-* [Fetch](https://fetch.spec.whatwg.org/)
-* [Simple Browserify Overview](https://github.com/yoshuawuyts/knowledge/blob/master/browserify.md)
-* [Browserify Handbook](https://github.com/substack/browserify-handbook)
-* [Browserify and UMD](http://dontkry.com/posts/code/browserify-and-the-universal-module-definition.html)
-* [Task Automation with npm run](http://substack.net/task_automation_with_npm_run)
-* [About Watchify](https://github.com/substack/watchify)
-* [Tape Tests](https://github.com/substack/tape)
-* [JSDoc](http://usejsdoc.org/)
 
 ###License
 
