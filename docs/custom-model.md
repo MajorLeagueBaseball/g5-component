@@ -35,11 +35,8 @@ Create /src/scripts/model/master.js and inherit the prototype from the scaffold'
 
 'use strict';
 
-const assign        = require('lodash/object/assign');
-const isEqual       = require('lodash/lang/isEqual');
-const util          = require('util');
-const EventEmitter  = require('events').EventEmitter;
-const g5Model       = require('g5-component/model');
+const util    = require('util');
+const g5Model = require('g5-component/model');
 
 /**
  *
