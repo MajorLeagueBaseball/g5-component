@@ -13,6 +13,7 @@
 
 ####Notes
 
+* [Architecture](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-architecture.md)
 * [Usage](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-notes.md)
 
 ####Reference
