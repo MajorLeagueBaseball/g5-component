@@ -165,7 +165,7 @@ MasterViewModel.prototype.bindComponent = function() {
 /**
  *
  * @method showError
- * @param {Object} err
+ * @param {Number|Object} err
  * @description shows data error
  * @returns {Object} this
  *

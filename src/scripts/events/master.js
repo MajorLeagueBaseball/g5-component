@@ -115,7 +115,7 @@ EventTower.prototype.attachEvents = function() {
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     _model.on('data-error', function(err) {
@@ -142,7 +142,7 @@ EventTower.prototype.attachEvents = function() {
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     _viewModel.on('data-error', function(err) {

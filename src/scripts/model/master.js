@@ -99,7 +99,7 @@ MasterModel.prototype.fetch = function() {
     function handleData(response) {
 
         if (response.status >= 400) {
-            _this.emit('data-error', response.status);
+            throw response.status;
         }
 
         try {
@@ -108,7 +108,7 @@ MasterModel.prototype.fetch = function() {
 
         } catch (e) {
 
-            return false;
+            throw e;
 
         }
 
@@ -138,7 +138,7 @@ MasterModel.prototype.fetch = function() {
     /**
      *
      * @function handleError
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     function handleError(err) {
