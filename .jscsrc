@@ -4,5 +4,6 @@
   "disallowMultipleVarDecl": null,
   "disallowTrailingWhitespace": "ignoreEmptyLines",
   "disallowQuotedKeysInObjects": null,
-  "requireCamelCaseOrUpperCaseIdentifiers": null
+  "requireCamelCaseOrUpperCaseIdentifiers": null,
+  "requireTrailingComma": null
 }
