@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -16,10 +16,14 @@
     "component scaffold",
     "browserify",
     "browserify component",
+    "browserify scaffold",
     "MVVM",
     "events",
+    "event based",
     "scaffold",
     "base",
+    "application base",
+    "base scaffold",
     "handlebars",
     "bootstrap",
     "jquery"
