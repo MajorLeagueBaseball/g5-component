@@ -10,6 +10,7 @@
 
 const size          = require('lodash/collection/size');
 const each          = require('lodash/collection/each');
+const every         = require('lodash/collection/every');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
 
@@ -65,7 +66,7 @@ function EventTower(master) {
     // ensure all targets have an instance of
     // EventEmitter before proceeding to attach events
     //
-    if (hasEventEmitter(this.master) && hasEventEmitter(this.model) && hasEventEmitter(this.viewModel)) {
+    if (every([this.master, this.model, this.viewModel], hasEventEmitter)) {
 
         //
         // attach events to a single instnace
@@ -164,10 +165,7 @@ EventTower.prototype.attachEvents = function() {
  */
 EventTower.prototype.detachEvents = function() {
 
-    let _master = this.master;
-    let _model = this.model;
-    let _viewModel = this.viewModel;
-    let _eventGroup = [_master, _model, _viewModel];
+    let _eventGroup = [this.master, this.model, this.viewModel];
 
     utils.log('detach events');
 
