@@ -70,6 +70,7 @@ let component = {
          *
          * @event click
          * @param {Object} e event
+         * @description simple event example
          *
          */
         this.$element.on('click', 'dt', function(e) {

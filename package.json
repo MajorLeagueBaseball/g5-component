@@ -94,15 +94,15 @@
     "hbsfy": "^2.2.1",
     "inherits": "^2.0.1",
     "isomorphic-fetch": "^2.1.0",
-    "less": "^2.5.1",
-    "jshint": "^2.8.0",
     "jquery": "^2.1.4",
+    "jshint": "^2.8.0",
+    "less": "^2.5.1",
     "lodash": "^3.10.0",
     "node-lessify": "0.0.10",
-    "tape": "^4.0.0",
+    "readable-stream": "^1.0.33",
     "tap-spec": "^4.0.2",
+    "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
-    "watchify": "^2.2.1",
-    "readable-stream": "^1.0.33"
+    "watchify": "^2.2.1"
   }
 }
