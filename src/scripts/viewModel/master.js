@@ -38,13 +38,13 @@ function MasterViewModel(opts) {
     try {
 
         this.component = require('component');
-        this.less = require('component-less');
+        this.style = require('component-style');
         this.template = require('component-template');
 
     } catch (e) {
 
         this.component = {};
-        this.less = {};
+        this.style = {};
         this.template = {};
 
     }
@@ -215,7 +215,7 @@ MasterViewModel.prototype.destroy = function() {
     this.bound = false;
 
     this.component = null;
-    this.less = null;
+    this.style = null;
     this.template = null;
 
     this.container.outerHTML = '';

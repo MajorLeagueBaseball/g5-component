@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -49,7 +49,7 @@
     "viewModel": "./src/scripts/viewModel/master.js",
     "eventTower": "./src/scripts/events/master.js",
     "component": "./src/scripts/component/master.js",
-    "component-less": "./src/styles/component.less",
+    "component-style": "./src/styles/component.less",
     "component-template": "./src/template/component.html",
     "component-extender": "./src/scripts/component/extender.js"
   },
