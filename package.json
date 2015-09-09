@@ -58,8 +58,8 @@
   },
   "scripts": {
     "serve": "http-server -p 9966",
-    "start": "npm run serve & npm run build-js-full",
-    "start-dev": "npm run serve & npm run watch",
+    "start": "npm run build-js-full && npm run serve",
+    "start-dev": "npm run watch & npm run serve",
     "compress-images": "imageoptim --directory src/images",
     "build-js": "browserify -u bootstrap-sass -u jquery -u lodash -u isomorphic-fetch src/scripts/g5-component.js --s 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component-bundle.js",
     "build-js-vendor": "browserify -r bootstrap-sass -r jquery -r lodash -r isomorphic-fetch | uglifyjs -mc > src/static/g5-component-vendor.js",
