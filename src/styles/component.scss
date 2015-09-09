@@ -1,0 +1,37 @@
+/**
+ *
+ * file: component.scss
+ * author: Greg Babula
+ * description: entry point for all component styling
+ *
+ */
+
+// Core variables and mixins
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/grid";
+@import "bootstrap/buttons";
+
+// Components
+@import "bootstrap/button-groups";
+@import "bootstrap/alerts";
+
+// Components w/ JavaScript
+@import "bootstrap/tooltip";
+@import "bootstrap/popovers";
+
+// Utility classes
+@import "bootstrap/utilities";
+@import "bootstrap/responsive-utilities";
+
+// Component Specific
+@import "g5-component";
+@import "base";
