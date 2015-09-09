@@ -9,7 +9,7 @@
 'use strict';
 
 const test         = require('tape');
-const g5Component  = require('../src/scripts/g5-component');
+const g5Component  = require('./../src/scripts/g5-component');
 const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', function(t) {
@@ -31,8 +31,8 @@ test('g5-component core test', function(t) {
         st.ok(!!linescoreComponent.viewModel, 'should have viewModel');
         st.ok(!!linescoreComponent.eventTower, 'should have eventTower');
 
-        st.equal(typeof linescoreComponent.opts, 'object');
-        st.notEqual(linescoreComponent.opts.container, 'undefined');
+        st.equal(typeof linescoreComponent.opts, 'object', 'should have opts object');
+        st.notEqual(linescoreComponent.opts.container, 'undefined', 'should have a container');
 
         st.end();
 
@@ -40,10 +40,11 @@ test('g5-component core test', function(t) {
 
     t.test('g5Component should have expected methods', function(st) {
 
-        st.equal(typeof linescoreComponent.init, 'function');
-        st.equal(typeof linescoreComponent.detachEvents, 'function');
-        st.equal(typeof linescoreComponent.attachEvents, 'function');
-        st.equal(typeof linescoreComponent.destroy, 'function');
+        st.equal(typeof linescoreComponent.init, 'function', 'should have init method');
+        st.equal(typeof linescoreComponent.hasInstance, 'function', 'should have hasInstance method');
+        st.equal(typeof linescoreComponent.detachEvents, 'function', 'should have detachEvents method');
+        st.equal(typeof linescoreComponent.attachEvents, 'function', 'should have attachEvents method');
+        st.equal(typeof linescoreComponent.destroy, 'function', 'should have destroy method');
 
         st.end();
 

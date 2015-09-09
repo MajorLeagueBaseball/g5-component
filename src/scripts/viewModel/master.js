@@ -1,14 +1,14 @@
 /**
  *
  * @module viewModel/master
- * @description master viewModel
+ * @description master viewModel, view layer related functionality
  * @author Greg Babula
  *
  */
 
 'use strict';
 
-const _            = require('lodash');
+const assign       = require('lodash/object/assign');
 const util         = require('util');
 const utils        = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
@@ -25,7 +25,7 @@ function MasterViewModel(opts) {
         return new MasterViewModel(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         css: 'g5-component'
     }, opts);
 
@@ -40,11 +40,12 @@ function MasterViewModel(opts) {
         this.component = require('component');
         this.less = require('component-less');
         this.template = require('component-template');
-        this.extender = require('component-extender');
 
     } catch (e) {
 
-        return;
+        this.component = {};
+        this.less = {};
+        this.template = {};
 
     }
 
@@ -64,7 +65,13 @@ util.inherits(MasterViewModel, EventEmitter);
 MasterViewModel.prototype.init = function() {
 
     if (!this.container) {
+
         throw Error('G5Component needs to be instantiated with a container');
+
+    } else if (!this.container.nodeType) {
+
+        throw Error('Container must be a valid DOM Node');
+
     }
 
     if (!this.instance) {
@@ -128,7 +135,7 @@ MasterViewModel.prototype.refresh = function(data={}) {
 
     utils.log('refreshing data on viewModel');
 
-    this.container.innerHTML = this.template(this.extender(data));
+    this.container.innerHTML = this.template(data);
 
     return this;
 
@@ -158,7 +165,7 @@ MasterViewModel.prototype.bindComponent = function() {
 /**
  *
  * @method showError
- * @param {Object} err
+ * @param {Number|Object} err
  * @description shows data error
  * @returns {Object} this
  *
@@ -168,6 +175,27 @@ MasterViewModel.prototype.showError = function(err) {
     this.container.innerHTML = `<div class="alert alert-danger" role="alert">Error - ${err}</div>`;
 
     return this;
+
+};
+
+/**
+ *
+ * @method hasInstance
+ * @description checks if container has an active instance
+ * @returns {Boolean}
+ *
+ */
+MasterViewModel.prototype.hasInstance = function() {
+
+    if (this.container) {
+
+        return !!this.container.getAttribute('data-g5-component-instance');
+
+    } else {
+
+        return false;
+
+    }
 
 };
 
@@ -197,4 +225,4 @@ MasterViewModel.prototype.destroy = function() {
 
 };
 
-exports.MasterViewModel = MasterViewModel;
+module.exports = MasterViewModel;

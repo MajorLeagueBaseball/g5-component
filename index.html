@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>g5-component.js / Home</title>
-
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Browserify Component Scaffold" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="g5-component.js" />
 
         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+        <title>g5-component.js / Home</title>
 
         <style>
             .container {
@@ -24,10 +30,27 @@
             </div>
 
             <div class="list-group">
-                <a href="/example/index-global.html" class="list-group-item">Component Build - Global</a>
-                <a href="/example/index-amd.html" class="list-group-item">Component Build - AMD</a>
-                <a href="/example/index-browserify.html" class="list-group-item">Component Build - Browserify</a>
+                <a href="/example/index-global.html" class="list-group-item">Component Build - Global (Full Build)</a>
+                <a href="/example/index-global-split-builds.html" class="list-group-item">Component Build - Global (Split Builds)</a>
             </div>
+
+            <div class="list-group">
+                <a href="/example/index-amd.html" class="list-group-item">Component Build - AMD (Full Build)</a>
+                <a href="/example/index-amd-split-builds.html" class="list-group-item">Component Build - AMD (Split Builds)</a>
+            </div>
+
+            <hr />
+
+            <ul>
+                <li>
+                    <p><strong><em>Server + Full Build</em></strong></p>
+                    <pre>npm run start</pre>
+                </li>
+                <li>
+                    <p><strong><em>Server + Split (Auto) Builds</em></strong></p>
+                    <pre>npm run start-dev</pre>
+                </li>
+            </ul>
 
         </main>
 

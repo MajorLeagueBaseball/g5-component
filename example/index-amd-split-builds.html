@@ -22,7 +22,14 @@
         <!-- AMD implementation -->
         <script>
 
-            require(['../src/static/g5-component'], function(g5Component) {
+            requirejs.config({
+                paths: {
+                    'g5-component-vendor': '../src/static/g5-component-vendor',
+                    'g5-component-bundle': '../src/static/g5-component-bundle'
+                }
+            });
+
+            require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
 
                 var linescoreComponent = g5Component({
                     container: document.querySelector('.g5-component-linescore'),

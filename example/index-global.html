@@ -1,50 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>g5-component.js / Browser Global</title>
-
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Browserify Component Scaffold" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="g5-component.js" />
 
-        <!-- <link rel="stylesheet" href="src/static/bundle.css" /> -->
-
-        <style>
-            .button--back {
-                background: lightcoral;
-                box-shadow: inset 0 -3px 4px rgba(0, 0, 0, 0.1);
-                color: rgb(176, 45, 45);
-                display: block;
-                font-size: 1.2em;
-                margin-bottom: 6em;
-                padding: 1.2em;
-            }
-
-            .button--back:hover {
-                background: rgb(205, 77, 77);
-                color: #f6f6f6;
-                text-decoration: none;
-            }
-        </style>
+        <title>g5-component.js / Browser Global</title>
     </head>
     <body>
 
-        <main>
-
-            <a href="/" class="button button--back">&laquo; g5-component.js</a>
-
-            <section class="g5-component" id="component--linescore"></section>
-
-        </main>
+        <section class="g5-component g5-component-linescore"></section>
 
         <!-- bundled JS -->
-        <script src="/src/static/bundle.js"></script>
+        <script src="/src/static/g5-component.js"></script>
 
         <!-- browser global implementation -->
         <script>
 
             var linescoreComponent = g5Component({
-                container: document.getElementById('component--linescore'),
-                css: 'g5-component-linescore linescore linescore--game',
+                container: document.querySelector('.g5-component-linescore'),
+                css: 'linescore linescore--game',
                 interval: 15000,
                 path: '/src/data/linescore.json'
             });

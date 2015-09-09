@@ -1,7 +1,7 @@
 /**
  *
  * @module utils/master
- * @description utility functions
+ * @description simple utility functions
  *
  */
 

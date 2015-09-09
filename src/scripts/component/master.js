@@ -2,7 +2,7 @@
  *
  * @module component/master
  * @author Greg Babula
- * @description component specific functionality
+ * @description entry point for all component specific functionality
  *
  */
 
@@ -70,6 +70,7 @@ let component = {
          *
          * @event click
          * @param {Object} e event
+         * @description simple event example
          *
          */
         this.$element.on('click', 'dt', function(e) {

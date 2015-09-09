@@ -1,14 +1,15 @@
 /**
  *
  * @module model/master
- * @description master model
+ * @description master model, data layer
  * @author Greg Babula
  *
  */
 
 'use strict';
 
-const _             = require('lodash');
+const assign        = require('lodash/object/assign');
+const isEqual       = require('lodash/lang/isEqual');
 const util          = require('util');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
@@ -27,7 +28,7 @@ function MasterModel(opts) {
         return new MasterModel(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         interval: 40000,
         enablePolling: true,
         path: ''
@@ -36,6 +37,16 @@ function MasterModel(opts) {
     this.instance = false;
     this.dataCache = {};
     this.dataFetch = null;
+
+    try {
+
+        this.extender = require('component-extender');
+
+    } catch (e) {
+
+        this.extender = require('./../component/extender');
+
+    }
 
     EventEmitter.call(this);
 
@@ -88,10 +99,18 @@ MasterModel.prototype.fetch = function() {
     function handleData(response) {
 
         if (response.status >= 400) {
-            _this.emit('data-error', response.status);
+            throw response.status;
         }
 
-        return response.json();
+        try {
+
+            return response.json();
+
+        } catch (e) {
+
+            throw e;
+
+        }
 
     }
 
@@ -101,12 +120,14 @@ MasterModel.prototype.fetch = function() {
      * @param {Object} data parsed JSON
      *
      */
-    function handleSuccess(data) {
+    function handleSuccess(data={}) {
 
-        if (!_.isEqual(data, _this.dataCache)) {
+        data = _this.extender(data, _opts);
 
-            _this.emit('data', data);
+        if (!isEqual(data, _this.dataCache)) {
+
             _this.dataCache = data;
+            _this.emit('data', data);
 
         }
 
@@ -117,7 +138,7 @@ MasterModel.prototype.fetch = function() {
     /**
      *
      * @function handleError
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     function handleError(err) {
@@ -186,4 +207,4 @@ MasterModel.prototype.destroy = function() {
 
 };
 
-exports.MasterModel = MasterModel;
+module.exports = MasterModel;

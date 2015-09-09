@@ -2,19 +2,16 @@
  *
  * @module g5-component
  * @author Greg Babula
- * @description MVVM + Event Layer - Browserify Component Scaffold
+ * @description Browserify Component Scaffold
  *
  */
 
 'use strict';
 
-const _               = require('lodash');
-const util            = require('util');
-const utils           = require('./utils/master');
-const MasterModel     = require('./model/master').MasterModel;
-const MasterViewModel = require('./viewModel/master').MasterViewModel;
-const EventEmitter    = require('events').EventEmitter;
-const EventTower      = require('./events/master').EventTower;
+const util          = require('util');
+const assign        = require('lodash/object/assign');
+const utils         = require('./utils/master');
+const EventEmitter  = require('events').EventEmitter;
 
 /**
  *
@@ -34,14 +31,24 @@ function G5Component(opts) {
         return new G5Component(opts);
     }
 
-    this.opts = _.extend({
+    this.opts = assign({
         container: undefined,
         i18n: 'en'
     }, opts);
 
-    this.model = MasterModel(this.opts);
-    this.viewModel = MasterViewModel(this.opts);
-    this.eventTower = EventTower(this);
+    try {
+
+        this.model = require('model')(this.opts);
+        this.viewModel = require('viewModel')(this.opts);
+        this.eventTower = require('eventTower')(this);
+
+    } catch (e) {
+
+        this.model = require('./model/master')(this.opts);
+        this.viewModel = require('./viewModel/master')(this.opts);
+        this.eventTower = require('./events/master')(this);
+
+    }
 
     EventEmitter.call(this);
 
@@ -60,10 +67,14 @@ G5Component.prototype.init = function() {
 
     utils.log('init');
 
-    this.model.init();
-    this.viewModel.init();
+    if (!this.hasInstance()) {
 
-    this.emit('ready', this);
+        this.model.init();
+        this.viewModel.init();
+
+        this.emit('ready', this);
+
+    }
 
     return this;
 
@@ -96,6 +107,19 @@ G5Component.prototype.attachEvents = function() {
     this.eventTower.attachEvents();
 
     return this;
+
+};
+
+/**
+ *
+ * @method hasInstance
+ * @description checks if active instance exists on container
+ * @returns {Boolean}
+ *
+ */
+G5Component.prototype.hasInstance = function() {
+
+    return this.viewModel.hasInstance();
 
 };
 

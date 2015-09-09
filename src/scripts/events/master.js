@@ -8,7 +8,9 @@
 
 'use strict';
 
-const _             = require('lodash');
+const size          = require('lodash/collection/size');
+const each          = require('lodash/collection/each');
+const every         = require('lodash/collection/every');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
 
@@ -35,7 +37,7 @@ function hasEventEmitter(obj) {
  */
 function detachEvents(target) {
 
-    let hasEvents = target && hasEventEmitter(target) && _.size(target._events);
+    let hasEvents = target && hasEventEmitter(target) && size(target._events);
 
     if (hasEvents) {
         target.removeAllListeners();
@@ -64,9 +66,14 @@ function EventTower(master) {
     // ensure all targets have an instance of
     // EventEmitter before proceeding to attach events
     //
-    if (hasEventEmitter(this.master) && hasEventEmitter(this.model) && hasEventEmitter(this.viewModel)) {
+    if (every([this.master, this.model, this.viewModel], hasEventEmitter)) {
 
-        this.attachEvents();
+        //
+        // attach events to a single instnace
+        //
+        if (!this.master.hasInstance()) {
+            this.attachEvents();
+        }
 
     } else {
 
@@ -109,7 +116,7 @@ EventTower.prototype.attachEvents = function() {
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     _model.on('data-error', function(err) {
@@ -136,7 +143,7 @@ EventTower.prototype.attachEvents = function() {
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     _viewModel.on('data-error', function(err) {
@@ -158,14 +165,11 @@ EventTower.prototype.attachEvents = function() {
  */
 EventTower.prototype.detachEvents = function() {
 
-    let _master = this.master;
-    let _model = this.model;
-    let _viewModel = this.viewModel;
-    let _eventGroup = [_master, _model, _viewModel];
+    let _eventGroup = [this.master, this.model, this.viewModel];
 
     utils.log('detach events');
 
-    _.each(_eventGroup, function(obj) {
+    each(_eventGroup, function(obj) {
         detachEvents(obj);
     });
 
@@ -173,4 +177,4 @@ EventTower.prototype.detachEvents = function() {
 
 };
 
-exports.EventTower = EventTower;
+module.exports = EventTower;

@@ -10,30 +10,27 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="g5-component.js" />
 
-        <title>g5-component.js / AMD</title>
+        <title>g5-component.js / Browser Global</title>
     </head>
     <body>
 
         <section class="g5-component g5-component-linescore"></section>
 
-        <!-- AMD -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
+        <!-- bundled JS -->
+        <script src="/src/static/g5-component-vendor.js"></script>
+        <script src="/src/static/g5-component-bundle.js"></script>
 
-        <!-- AMD implementation -->
+        <!-- browser global implementation -->
         <script>
 
-            require(['../src/static/g5-component'], function(g5Component) {
-
-                var linescoreComponent = g5Component({
-                    container: document.querySelector('.g5-component-linescore'),
-                    css: 'linescore linescore--game',
-                    interval: 15000,
-                    path: '/src/data/linescore.json'
-                });
-
-                linescoreComponent.init();
-
+            var linescoreComponent = g5Component({
+                container: document.querySelector('.g5-component-linescore'),
+                css: 'linescore linescore--game',
+                interval: 15000,
+                path: '/src/data/linescore.json'
             });
+
+            linescoreComponent.init();
 
         </script>
 
