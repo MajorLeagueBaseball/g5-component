@@ -31,7 +31,6 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.bound, 'boolean', 'should have bound property');
 
         st.ok(!!viewModel.component, 'should have component JS defined');
-        st.ok(!!viewModel.style, 'should have component style defined');
         st.ok(!!viewModel.template, 'should have component Template defined');
 
         st.end();
