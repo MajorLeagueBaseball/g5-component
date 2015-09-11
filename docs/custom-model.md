@@ -52,6 +52,12 @@ function MasterModel(opts) {
 
     g5Model.call(this);
 
+    this.opts = assign({
+        interval: 40000,
+        enablePolling: true,
+        path: ''
+    }, opts);
+
 }
 
 util.inherits(MasterModel, g5Model);
