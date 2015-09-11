@@ -7,31 +7,26 @@
  */
 
 .g5-component-linescore {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
+    color: #7f8c8d;
+    line-height: 1.7em;
+    font-size: 18px;
     margin: 0 auto;
     max-width: 600px;
+}
 
-    * {
-        color: #7f8c8d;
-        line-height: 1.7em;
-        font-size: 18px;
-    }
+.game--linescore {
+    padding: 0 0 3em 0;
+}
 
-    section {
-        padding: 0 0 3em 0;
-    }
+.game--linescore dt,
+.game--linescore dd {
+    background: #FDFDFD;
+    border: 1px solid #F9F9F9;
+    border-radius: 2px;
+    padding: 1em;
+}
 
-    dt,
-    dd {
-        background: #FDFDFD;
-        border: 1px solid #F9F9F9;
-        border-radius: 2px;
-        padding: 1em;
-    }
-
-    dd {
-        background: none;
-    }
+.game--linescore dd {
+    background: none;
 }
