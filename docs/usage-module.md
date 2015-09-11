@@ -23,6 +23,7 @@ To see how simple it really is, look at the info component implementation in [an
 │   ├── scripts/
 │   │   ├── component/
 │   │   │   │   extender.js
+│   │   │   │   helpers.js
 │   │   │   │   master.js
 │   │   ├── index.js
 │   ├── styles/
@@ -41,6 +42,7 @@ To see how simple it really is, look at the info component implementation in [an
 * __[src/data/](https://github.com/gbabula/babu.la/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
 * __[src/static/](https://github.com/gbabula/babu.la/tree/master/src/static)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
+* __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
 * __[src/scripts/component/master.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - module containing all component specific functionality (listeners, etc...)
 * __[src/scripts/index.js](https://github.com/gbabula/babu.la/blob/master/src/scripts/index.js)__ - component entry point, require g5-component and init your module in this file, then point browserify to this file to create the bundle
 * __[src/styles/base.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)__ - component specific styling
@@ -58,13 +60,15 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
   "browser": {
     "component": false,
     "component-template": false,
-    "component-extender": false
+    "component-extender": false,
+    "component-helpers": false
   },
   "aliasify": {
     "aliases": {
       "component": "./src/scripts/component/master.js",
       "component-template": "./src/template/component.html",
-      "component-extender": "./src/scripts/component/extender.js"
+      "component-extender": "./src/scripts/component/extender.js",
+      "component-helpers": "./src/scripts/component/helpers.js"
     }
   }
 ```
@@ -94,6 +98,32 @@ function extender(data={}) {
 }
 
 module.exports = extender;
+```
+
+#### Component Helpers
+
+Module for easily adding handlebars helpers
+
+```js
+/**
+ *
+ * @name helpers
+ * @description handlebar helpers to be registered
+ *
+ */
+let helpers = {
+    /**
+     *
+     * @method upcase
+     * @description example helper, transforms text to uppercase
+     *
+     */
+    'upcase': function(s) {
+        return s.toUpperCase();
+    }
+};
+
+module.exports = helpers;
 ```
 
 #### Component Master

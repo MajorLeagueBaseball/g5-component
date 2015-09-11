@@ -18,6 +18,7 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 * ES6/ES2015 support via babel
 * Tape unit tests
 * Style guide (Airbnb) validation and test on commit
+* BEM Syntax
 * Handlebars, LoDash, SASS, Bootstrap, jQuery
 
 ---
