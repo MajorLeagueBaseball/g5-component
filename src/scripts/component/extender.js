@@ -1,6 +1,6 @@
 /**
  *
- * @module utils/extender
+ * @module component/extender
  * @description module for extending data after its been retrieved by the model
  *
  */

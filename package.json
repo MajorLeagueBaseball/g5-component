@@ -49,7 +49,8 @@
     "eventTower": "./src/scripts/events/master.js",
     "component": "./src/scripts/component/master.js",
     "component-template": "./src/template/component.html",
-    "component-extender": "./src/scripts/component/extender.js"
+    "component-extender": "./src/scripts/component/extender.js",
+    "component-helpers": "./src/scripts/component/helpers.js"
   },
   "config": {
     "ghooks": {

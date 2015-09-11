@@ -8,10 +8,13 @@
 
 'use strict';
 
-const assign       = require('lodash/object/assign');
 const util         = require('util');
+const assign       = require('lodash/object/assign');
+const size         = require('lodash/collection/size');
+const forOwn       = require('lodash/object/forOwn');
 const utils        = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
+const Handlebars   = require('hbsfy/runtime');
 
 /**
  *
@@ -39,11 +42,13 @@ function MasterViewModel(opts) {
 
         this.component = require('component');
         this.template = require('component-template');
+        this.helpers = require('component-helpers');
 
     } catch (e) {
 
         this.component = {};
         this.template = {};
+        this.helpers = {};
 
     }
 
@@ -77,7 +82,7 @@ MasterViewModel.prototype.init = function() {
         this.instance = true;
         this.active = true;
 
-        this.addClass().addG5Attributes();
+        this.addClass().addG5Attributes().registerHelpers();
 
     }
 
@@ -116,6 +121,30 @@ MasterViewModel.prototype.addG5Attributes = function() {
     container.setAttribute('data-g5-component-instance', this.instance);
     container.setAttribute('data-g5-component-visible', this.active);
     container.setAttribute('data-g5-component-bound', this.bound);
+
+    return this;
+
+};
+
+/**
+ *
+ * @method registerHelpers
+ * @param {Object} helpers
+ * @returns {Object} this
+ * @description method for registering handlebar helpers
+ *
+ */
+MasterViewModel.prototype.registerHelpers = function(helpers = this.helpers) {
+
+    if (size(helpers)) {
+
+        forOwn(helpers, function(item, key) {
+
+            Handlebars.registerHelper(key, item);
+
+        });
+
+    }
 
     return this;
 
@@ -214,6 +243,7 @@ MasterViewModel.prototype.destroy = function() {
 
     this.component = null;
     this.template = null;
+    this.helpers = null;
 
     this.container.outerHTML = '';
     this.container = null;

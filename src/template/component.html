@@ -1,4 +1,4 @@
-<h3>Bootstrap Widget Example</h3>
+<h3>Bootstrap Widget {{ upcase 'Example' }}</h3>
 
 <button
     type="button"
@@ -27,32 +27,32 @@
     Click to toggle popover
 </button>
 
-<h3>Game Data</h3>
+<h3>Game {{ upcase 'Data' }}</h3>
 
-<section class="{{subject}}">
+<section class="{{ subject }}">
     {{#if data.game}}
         {{#with data.game}}
             <dl>
                 <dt><strong>Home Team</strong></dt>
-                <dd>{{home_team_name}}</dd>
+                <dd>{{ home_team_name }}</dd>
 
                 <dt><strong>Location</strong></dt>
-                <dd>{{location}}</dd>
+                <dd>{{ location }}</dd>
 
                 <dt><strong>Game Date</strong></dt>
-                <dd>{{original_date}}</dd>
+                <dd>{{ original_date }}</dd>
 
                 <dt><strong>Game Description</strong></dt>
-                <dd>{{description}}</dd>
+                <dd>{{ description }}</dd>
 
                 <dt><strong>Game Time</strong></dt>
-                <dd>{{time}}</dd>
+                <dd>{{ time }}</dd>
 
                 <dt><strong>Game Media</strong></dt>
                 <dd>
                     {{#if game_media.media.thumbnail}}
                         {{#with game_media.media}}
-                            <img src="{{thumbnail}}" alt="{{title}}" />
+                            <img src="{{ thumbnail }}" alt="{{ title }}" />
                         {{/with}}
                     {{/if}}
                 </dd>
@@ -62,5 +62,5 @@
 </section>
 
 <article>
-    <small>{{copyright}}</small>
+    <small>{{ copyright }}</small>
 </article>
