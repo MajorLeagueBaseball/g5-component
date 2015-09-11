@@ -37,7 +37,7 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 ```
 
 ```
-npm i nodemon node-sass jshint jscs imageoptim-cli http-server -g
+npm i nodemon node-sass jshint jscs imageoptim-cli uglifycss http-server -g
 ```
 
 ```
