@@ -67,7 +67,7 @@
     "build-js-full": "browserify src/scripts/g5-component.js --s 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component.js",
     "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
     "build-css": "node-sass --include-path src/styles --include-path node_modules/bootstrap-sass/assets/stylesheets src/styles/component.scss src/static/g5-component.css",
-    "postbuild-css": "uglifycss src/static/g5-component.css > src/static/g5-component-bundle.css",
+    "postbuild-css": "cleancss -o src/static/g5-component-min.css src/static/g5-component.css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
@@ -102,5 +102,8 @@
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
     "watchify": "^2.2.1"
+  },
+  "devDependencies": {
+    "clean-css": "^3.4.2"
   }
 }
