@@ -1,8 +1,8 @@
 /**
  *
  * @module viewModel/master
- * @description master viewModel, view layer related functionality
  * @author Greg Babula
+ * @description master viewModel, view layer related functionality
  *
  */
 

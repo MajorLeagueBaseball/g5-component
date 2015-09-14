@@ -1,8 +1,8 @@
 /**
  *
  * @module component/helpers
- * @description module for adding handlebars helpers
  * @author Greg Babula
+ * @description module for adding handlebars helpers
  *
  */
 

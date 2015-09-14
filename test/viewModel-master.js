@@ -1,8 +1,8 @@
 /**
  *
  * @module viewModel-master
- * @description MasterModel test
  * @author Greg Babula
+ * @description MasterModel test
  *
  */
 

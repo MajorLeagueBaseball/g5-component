@@ -1,8 +1,8 @@
 /**
  *
  * @module model-master
- * @description MasterModel test
  * @author Greg Babula
+ * @description MasterModel test
  *
  */
 
