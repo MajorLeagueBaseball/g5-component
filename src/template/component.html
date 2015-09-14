@@ -1,3 +1,13 @@
+<!--
+
+    Examples Included:
+
+        - Bootstrap widgets
+        - Handlebars helpers (upcase helper with plain String and variable)
+        - Data binding, including variable from component-extender (description)
+
+-->
+
 <h3>Bootstrap Widget {{ upcase 'Example' }}</h3>
 
 <button
@@ -31,7 +41,7 @@
         {{#with data.game}}
             <dl>
                 <dt><strong>Home Team</strong></dt>
-                <dd class="team__home__name">{{ home_team_name }}</dd>
+                <dd class="team__home__name">{{ upcase home_team_name }}</dd>
 
                 <dt><strong>Location</strong></dt>
                 <dd class="game__location">{{ location }}</dd>
