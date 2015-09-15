@@ -16,7 +16,7 @@
     </head>
     <body>
 
-        <section class="g5-component g5-component-linescore"></section>
+        <section class="g5-component g5-component--linescore"></section>
 
         <!-- AMD -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
@@ -27,8 +27,8 @@
             require(['../src/static/g5-component'], function(g5Component) {
 
                 var linescoreComponent = g5Component({
-                    container: document.querySelector('.g5-component-linescore'),
-                    css: 'fed-component-linescore',
+                    container: document.querySelector('.g5-component--linescore'),
+                    css: 'g5-component--linescore-initiated',
                     interval: 15000,
                     path: '/src/data/linescore.json'
                 });
