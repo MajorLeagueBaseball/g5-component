@@ -190,13 +190,13 @@ MasterViewModel.prototype.bindComponent = function() {
 
 /**
  *
- * @method hasError
+ * @method onDataError
  * @param {Number|Object} err
  * @description method triggered on error
  * @returns {Object} this
  *
  */
-MasterViewModel.prototype.hasError = function(err) {
+MasterViewModel.prototype.onDataError = function(err) {
 
     utils.log('error: ' + err);
 
