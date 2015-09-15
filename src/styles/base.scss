@@ -2,31 +2,40 @@
  *
  * file: base.scss
  * author: Grg Babula
- * description: simple base styling
+ * description: simple base styling for the linescore component example
  *
  */
 
-.g5-component-linescore {
+.g5-component--linescore {
     box-sizing: border-box;
     color: #7f8c8d;
     line-height: 1.7em;
     font-size: 18px;
     margin: 0 auto;
     max-width: 600px;
-}
 
-.game--linescore {
-    padding: 0 0 3em 0;
-}
+    &__title {
+        color: rebeccapurple;
+    }
 
-.game--linescore dt,
-.game--linescore dd {
-    background: #FDFDFD;
-    border: 1px solid #F9F9F9;
-    border-radius: 2px;
-    padding: 1em;
-}
+    &__linescore {
+        padding: 0 0 3em 0;
+    }
 
-.game--linescore dd {
-    background: none;
+    &__key,
+    &__value {
+        background: #FDFDFD;
+        border: 1px solid #F9F9F9;
+        border-radius: 2px;
+        padding: 1em;
+    }
+
+    &__value {
+        background: none;
+    }
+
+    &__media {
+        border: 1px solid #666;
+        padding: 1em;
+    }
 }
