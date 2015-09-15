@@ -93,15 +93,17 @@ MasterViewModel.prototype.init = function() {
 /**
  *
  * @method addClass
- * @description adds classes based on options
+ * @description adds classes based on options and component state
  * @returns {Object} this
  *
  */
 MasterViewModel.prototype.addClass = function() {
 
-    let container = this.container;
+    this.container.className += ' ' + this.opts.css;
 
-    container.className = container.className + ' ' + this.opts.css;
+    if (this.active) {
+        this.container.className += ' g5-component--is-visible';
+    }
 
     return this;
 
@@ -116,11 +118,8 @@ MasterViewModel.prototype.addClass = function() {
  */
 MasterViewModel.prototype.addG5Attributes = function() {
 
-    let container = this.container;
-
-    container.setAttribute('data-g5-component-instance', this.instance);
-    container.setAttribute('data-g5-component-visible', this.active);
-    container.setAttribute('data-g5-component-bound', this.bound);
+    this.container.setAttribute('data-g5-component-instance', this.instance);
+    this.container.setAttribute('data-g5-component-bound', this.bound);
 
     return this;
 
@@ -191,15 +190,17 @@ MasterViewModel.prototype.bindComponent = function() {
 
 /**
  *
- * @method showError
+ * @method hasError
  * @param {Number|Object} err
- * @description shows data error
+ * @description method triggered on error
  * @returns {Object} this
  *
  */
-MasterViewModel.prototype.showError = function(err) {
+MasterViewModel.prototype.hasError = function(err) {
 
-    this.container.innerHTML = `<div class="alert alert-danger" role="alert">Error - ${err}</div>`;
+    utils.log('error: ' + err);
+
+    this.container.className += ' g5-component--is-error';
 
     return this;
 
