@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -88,7 +88,6 @@
     "babelify": "^6.1.2",
     "bootstrap-sass": "^3.3.5",
     "browserify": "^8.1.1",
-    "clean-css": "^3.4.2",
     "duplexer2": "0.0.2",
     "falafel": "^0.3.1",
     "ghooks": "^0.3.2",
@@ -98,8 +97,16 @@
     "isomorphic-fetch": "^2.1.0",
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
+    "readable-stream": "^1.0.33"
+  },
+  "devDependencies": {
+    "clean-css": "^3.4.2",
+    "http-server": "^0.8.0",
+    "imageoptim-cli": "^1.11.6",
+    "jscs": "^2.1.1",
+    "jshint": "^2.8.0",
+    "nodemon": "^1.5.0",
     "node-sass": "^3.3.2",
-    "readable-stream": "^1.0.33",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
