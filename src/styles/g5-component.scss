@@ -11,8 +11,7 @@
     visibility: hidden;
 }
 
-[data-g5-component-visible] {
+.g5-component--is-visible {
     display: block;
     visibility: visible;
 }
-
