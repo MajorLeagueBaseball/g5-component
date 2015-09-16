@@ -11,8 +11,8 @@
 const $     = global.jQuery = require('jquery');
 const utils = require('./../utils/master');
 
-require('bootstrap/js/tooltip');
-require('bootstrap/js/popover');
+require('bootstrap-sass/assets/javascripts/bootstrap/tooltip');
+require('bootstrap-sass/assets/javascripts/bootstrap/popover');
 
 /**
  *

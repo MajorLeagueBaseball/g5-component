@@ -1,8 +1,8 @@
 /**
  *
  * @module events-master
- * @description EventTower test
  * @author Greg Babula
+ * @description EventTower test
  *
  */
 

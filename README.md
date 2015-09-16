@@ -18,8 +18,8 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 * ES6/ES2015 support via babel
 * Tape unit tests
 * Style guide (Airbnb) validation and test on commit
-* Handlebars, LoDash, LESS
-* Bootstrap, jQuery (available on component level)
+* BEM Syntax
+* Handlebars, LoDash, SASS, Bootstrap, jQuery
 
 ---
 
@@ -35,10 +35,6 @@ npm i g5-component
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
-```
-
-```
-npm i less catw jscs http-server -g
 ```
 
 ```
@@ -85,6 +81,12 @@ npm run build-js-vendor
 
 ```
 npm run build-js-full
+```
+
+####Compress Images
+
+```
+npm run compress-images
 ```
 
 ####Test

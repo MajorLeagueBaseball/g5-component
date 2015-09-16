@@ -1,8 +1,8 @@
 /**
  *
  * @module g5-component test
- * @description core test
  * @author Greg Babula
+ * @description core test
  *
  */
 

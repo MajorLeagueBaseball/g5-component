@@ -1,8 +1,8 @@
 /**
  *
  * @module viewModel-master
- * @description MasterModel test
  * @author Greg Babula
+ * @description MasterModel test
  *
  */
 
@@ -31,8 +31,8 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.bound, 'boolean', 'should have bound property');
 
         st.ok(!!viewModel.component, 'should have component JS defined');
-        st.ok(!!viewModel.less, 'should have component LESS defined');
         st.ok(!!viewModel.template, 'should have component Template defined');
+        st.ok(!!viewModel.helpers, 'should have component Helpers defined');
 
         st.end();
 
@@ -43,9 +43,10 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.init, 'function', 'should have init method');
         st.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
         st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');
+        st.equal(typeof viewModel.registerHelpers, 'function', 'should have registerHelpers method');
         st.equal(typeof viewModel.refresh, 'function', 'should have refresh method');
         st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
-        st.equal(typeof viewModel.showError, 'function', 'should have showError method');
+        st.equal(typeof viewModel.onDataError, 'function', 'should have onDataError method');
         st.equal(typeof viewModel.hasInstance, 'function', 'should have hasInstance method');
         st.equal(typeof viewModel.destroy, 'function', 'should have destroy method');
 

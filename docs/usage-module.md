@@ -23,11 +23,12 @@ To see how simple it really is, look at the info component implementation in [an
 │   ├── scripts/
 │   │   ├── component/
 │   │   │   │   extender.js
+│   │   │   │   helpers.js
 │   │   │   │   master.js
 │   │   ├── index.js
 │   ├── styles/
-│   │   │   base.less
-│   │   │   component.less
+│   │   │   base.scss
+│   │   │   component.scss
 │   ├── template/
 │   │   │   component.html
 ├── test/
@@ -41,10 +42,11 @@ To see how simple it really is, look at the info component implementation in [an
 * __[src/data/](https://github.com/gbabula/babu.la/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
 * __[src/static/](https://github.com/gbabula/babu.la/tree/master/src/static)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
+* __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
 * __[src/scripts/component/master.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - module containing all component specific functionality (listeners, etc...)
 * __[src/scripts/index.js](https://github.com/gbabula/babu.la/blob/master/src/scripts/index.js)__ - component entry point, require g5-component and init your module in this file, then point browserify to this file to create the bundle
-* __[src/styles/base.less](https://github.com/gbabula/babu.la/blob/master/src/styles/base.less)__ - component specific styling
-* __[src/styles/component.less](https://github.com/gbabula/babu.la/blob/master/src/styles/component.less)__ - LESS entry point, all file references (bootstrap assets, etc...)
+* __[src/styles/base.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)__ - component specific styling
+* __[src/styles/component.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.scss)__ - SASS entry point, all file references (bootstrap assets, etc...)
 * __[src/template/component.html](https://github.com/gbabula/babu.la/blob/master/src/template/component.html)__ - primary template for component
 * __[test/component.js](https://github.com/gbabula/babu.la/blob/master/test/component.js)__ - primary test for component
 * __[package.json](https://github.com/gbabula/babu.la/blob/master/package.json)__ - all dependencies, npm scripts for browserify builds, and alias references
@@ -57,16 +59,16 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
 ```json
   "browser": {
     "component": false,
-    "component-less": false,
     "component-template": false,
-    "component-extender": false
+    "component-extender": false,
+    "component-helpers": false
   },
   "aliasify": {
     "aliases": {
       "component": "./src/scripts/component/master.js",
-      "component-less": "./src/styles/component.less",
       "component-template": "./src/template/component.html",
-      "component-extender": "./src/scripts/component/extender.js"
+      "component-extender": "./src/scripts/component/extender.js",
+      "component-helpers": "./src/scripts/component/helpers.js"
     }
   }
 ```
@@ -98,6 +100,32 @@ function extender(data={}) {
 module.exports = extender;
 ```
 
+#### Component Helpers
+
+Module for easily adding handlebars helpers
+
+```js
+/**
+ *
+ * @name helpers
+ * @description handlebar helpers to be registered
+ *
+ */
+let helpers = {
+    /**
+     *
+     * @method upcase
+     * @description example helper, transforms text to uppercase
+     *
+     */
+    'upcase': function(s) {
+        return s.toUpperCase();
+    }
+};
+
+module.exports = helpers;
+```
+
 #### Component Master
 
 Main file for all component specific JS. For consistency, primary methods should remain the same between components. The example below is using jQuery and bootstrap, however keep in mind jQuery and bootstrap are not used anywhere else in the project - so if you dont need either, simply dont import the modules.
@@ -105,8 +133,8 @@ Main file for all component specific JS. For consistency, primary methods should
 ```js
 const $ = global.jQuery = require('jquery');
 
-require('bootstrap/js/tooltip');
-require('bootstrap/js/popover');
+require('bootstrap-sass/assets/javascripts/bootstrap/tooltip');
+require('bootstrap-sass/assets/javascripts/bootstrap/popover');
 
 /**
  *

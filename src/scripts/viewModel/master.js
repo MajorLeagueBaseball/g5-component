@@ -1,17 +1,20 @@
 /**
  *
  * @module viewModel/master
- * @description master viewModel, view layer related functionality
  * @author Greg Babula
+ * @description master viewModel, view layer related functionality
  *
  */
 
 'use strict';
 
-const assign       = require('lodash/object/assign');
 const util         = require('util');
+const assign       = require('lodash/object/assign');
+const size         = require('lodash/collection/size');
+const forOwn       = require('lodash/object/forOwn');
 const utils        = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
+const Handlebars   = require('hbsfy/runtime');
 
 /**
  *
@@ -38,14 +41,14 @@ function MasterViewModel(opts) {
     try {
 
         this.component = require('component');
-        this.less = require('component-less');
         this.template = require('component-template');
+        this.helpers = require('component-helpers');
 
     } catch (e) {
 
         this.component = {};
-        this.less = {};
         this.template = {};
+        this.helpers = {};
 
     }
 
@@ -79,7 +82,7 @@ MasterViewModel.prototype.init = function() {
         this.instance = true;
         this.active = true;
 
-        this.addClass().addG5Attributes();
+        this.addClass().addG5Attributes().registerHelpers();
 
     }
 
@@ -90,15 +93,17 @@ MasterViewModel.prototype.init = function() {
 /**
  *
  * @method addClass
- * @description adds classes based on options
+ * @description adds classes based on options and component state
  * @returns {Object} this
  *
  */
 MasterViewModel.prototype.addClass = function() {
 
-    let container = this.container;
+    this.container.className += ' ' + this.opts.css;
 
-    container.className = container.className + ' ' + this.opts.css;
+    if (this.active) {
+        this.container.className += ' g5-component--is-visible';
+    }
 
     return this;
 
@@ -113,11 +118,32 @@ MasterViewModel.prototype.addClass = function() {
  */
 MasterViewModel.prototype.addG5Attributes = function() {
 
-    let container = this.container;
+    this.container.setAttribute('data-g5-component-instance', this.instance);
+    this.container.setAttribute('data-g5-component-bound', this.bound);
 
-    container.setAttribute('data-g5-component-instance', this.instance);
-    container.setAttribute('data-g5-component-visible', this.active);
-    container.setAttribute('data-g5-component-bound', this.bound);
+    return this;
+
+};
+
+/**
+ *
+ * @method registerHelpers
+ * @param {Object} helpers
+ * @returns {Object} this
+ * @description method for registering handlebar helpers
+ *
+ */
+MasterViewModel.prototype.registerHelpers = function(helpers = this.helpers) {
+
+    if (size(helpers)) {
+
+        forOwn(helpers, function(item, key) {
+
+            Handlebars.registerHelper(key, item);
+
+        });
+
+    }
 
     return this;
 
@@ -164,15 +190,17 @@ MasterViewModel.prototype.bindComponent = function() {
 
 /**
  *
- * @method showError
+ * @method onDataError
  * @param {Number|Object} err
- * @description shows data error
+ * @description method triggered on error
  * @returns {Object} this
  *
  */
-MasterViewModel.prototype.showError = function(err) {
+MasterViewModel.prototype.onDataError = function(err) {
 
-    this.container.innerHTML = `<div class="alert alert-danger" role="alert">Error - ${err}</div>`;
+    utils.log('error: ' + err);
+
+    this.container.className += ' g5-component--is-error';
 
     return this;
 
@@ -215,8 +243,8 @@ MasterViewModel.prototype.destroy = function() {
     this.bound = false;
 
     this.component = null;
-    this.less = null;
     this.template = null;
+    this.helpers = null;
 
     this.container.outerHTML = '';
     this.container = null;

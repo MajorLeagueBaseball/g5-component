@@ -1,6 +1,7 @@
 /**
  *
  * @module utils/master
+ * @author Greg Babula
  * @description simple utility functions
  *
  */

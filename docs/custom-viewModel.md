@@ -52,6 +52,10 @@ function MasterViewModel(opts) {
 
     g5ViewModel.call(this);
 
+    this.opts = assign({
+        css: 'g5-component'
+    }, opts);
+
 }
 
 util.inherits(MasterViewModel, g5ViewModel);

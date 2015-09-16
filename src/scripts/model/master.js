@@ -1,8 +1,8 @@
 /**
  *
  * @module model/master
- * @description master model, data layer
  * @author Greg Babula
+ * @description master model, data layer
  *
  */
 

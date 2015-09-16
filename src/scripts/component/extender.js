@@ -1,6 +1,7 @@
 /**
  *
- * @module utils/extender
+ * @module component/extender
+ * @author Greg Babula
  * @description module for extending data after its been retrieved by the model
  *
  */
