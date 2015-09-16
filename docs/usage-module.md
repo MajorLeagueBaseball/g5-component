@@ -1,10 +1,12 @@
 #Usage // Module
 
-__Instructions for usage as a module, the easiest thing to do is to clone the [info component example](https://github.com/gbabula/babu.la) and use it as a baseline for your new component__
-
 Simplifies component development, the model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible and consistent structure for development.
 
-To see how simple it really is, look at the info component implementation in [angular](https://github.com/gbabula/gregbabula.info) vs [g5-component](https://github.com/gbabula/babu.la)
+---
+
+:construction: This documentation is in need of a review/update.
+
+---
 
 #### Expected Directory Structure
 
@@ -39,15 +41,15 @@ To see how simple it really is, look at the info component implementation in [an
 
 #### File Overview
 
-* __[src/data/](https://github.com/gbabula/babu.la/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
-* __[src/static/](https://github.com/gbabula/babu.la/tree/master/src/static)__ - directory for builds
+* __[src/data/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
+* __[src/static/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/static)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
 * __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
 * __[src/scripts/component/master.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - module containing all component specific functionality (listeners, etc...)
 * __[src/scripts/index.js](https://github.com/gbabula/babu.la/blob/master/src/scripts/index.js)__ - component entry point, require g5-component and init your module in this file, then point browserify to this file to create the bundle
 * __[src/styles/base.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)__ - component specific styling
 * __[src/styles/component.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.scss)__ - SASS entry point, all file references (bootstrap assets, etc...)
-* __[src/template/component.html](https://github.com/gbabula/babu.la/blob/master/src/template/component.html)__ - primary template for component
+* __[src/template/component.html](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html)__ - primary template for component
 * __[test/component.js](https://github.com/gbabula/babu.la/blob/master/test/component.js)__ - primary test for component
 * __[package.json](https://github.com/gbabula/babu.la/blob/master/package.json)__ - all dependencies, npm scripts for browserify builds, and alias references
 * __[index.html](https://github.com/gbabula/babu.la/blob/master/index.html)__ - contains reference to your container element and the bundle js, if you plan on consuming your component in a different way, disregard this file completely or use it for testing
