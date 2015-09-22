@@ -13,6 +13,8 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 > Set up exactly as the g5-component module, except all you need are component specific files
 
 ```
+├── .babelrc
+├── .scss-lint.yml
 ├── .editorconfig
 ├── .gitignore
 ├── .jscsrc
@@ -45,6 +47,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 
 #### File Overview
 
+* __[.scss-lint.yml](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.scss-lint.yml)__ - SCSS lint configuration options
 * __[.editorconfig](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.editorconfig)__ - editor configuration options
 * __[.gitignore](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.gitignore)__ - files for Git to ignore
 * __[.jscsrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)__ - JSCS configuration
@@ -131,24 +134,28 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "build-js-full": "browserify src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example.js",
     "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
     "build-css": "node-sass --include-path src/styles --include-path node_modules/bootstrap-sass/assets/stylesheets --include-path node_modules/g5-component/src/styles src/styles/component.scss src/static/fed-component-example.css",
-    "postbuild-css": "cleancss -o src/static/fed-component-example-min.css src/static/fed-component-example.css",
+    "prebuild-css": "npm run lint-sass",
+    "postbuild-css": "npm run minify-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
     "watch-js": "watchify -u bootstrap-sass -u jquery -u lodash -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' -o src/static/fed-component-exampe-bundle.js -dv",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "minify-css": "cleancss -o src/static/fed-component-example-min.css src/static/fed-component-example.css",
     "watch": "npm run watch-js & npm run watch-css",
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
     "posttest": "echo 'tests successfully passed!'",
+    "install-scss-lint": "gem install scss_lint -v '~> 0.40' || true",
     "lint": "jshint src/scripts/ || true",
+    "lint-sass": "scss-lint src/styles/*.scss || true",
     "prelint": "echo 'Checking code via JSHint...'",
-    "postlint": "echo 'Code is lint free, great success!'"
+    "postlint": "echo 'Code is lint free, great success!'",
+    "postinstall": "npm run install-scss-lint && npm run build"
   },
   "dependencies": {
     "aliasify": "^1.7.2",
     "babel": "^5.5.6",
-    "babel-tape-runner": "^1.1.0",
     "babelify": "^6.1.2",
     "bootstrap-sass": "^3.3.5",
     "browserify": "^8.1.1",
@@ -165,6 +172,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "readable-stream": "^1.0.33"
   },
   "devDependencies": {
+    "babel-tape-runner": "^1.1.0",
     "clean-css": "^3.4.2",
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
@@ -172,6 +180,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "jshint": "^2.8.0",
     "node-sass": "^3.3.2",
     "nodemon": "^1.5.0",
+    "sass-lint": "^1.2.1",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
