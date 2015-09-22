@@ -1,5 +1,16 @@
 #Change Log
 
+###v2.2
+
+* Added SASS Lint
+* Adjustment SASS
+* Documentation updates
+
+###v2.1
+
+* Bug fixes
+* Event layer fixes
+
 ###v2.0
 
 * SASS support
@@ -19,4 +30,3 @@
 * Adjusted dependencies
 * Updated and simplified setup
 * Other improvements and enhancements 
-
