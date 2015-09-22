@@ -18,6 +18,7 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 * ES6/ES2015 support via babel
 * Tape unit tests
 * Style guide (Airbnb) validation and test on commit
+* JS and SASS lint
 * BEM Syntax
 * Handlebars, LoDash, SASS, Bootstrap, jQuery
 
@@ -37,9 +38,19 @@ npm i g5-component
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
 ```
 
+> If you want SASS linting, make sure you have a version of Ruby installed via [RVM](https://rvm.io/) or [Homebrew](http://brew.sh/). If you skip this step, the scss-lint will fail silently. If you have homebrew, installing ruby is extremely simple.
+
 ```
-npm i && npm run build
+brew install ruby
 ```
+
+> Install the dependencies, this will trigger the initial builds on completion, once done you can simply run the server and start development.
+
+```
+npm i
+```
+
+---
 
 ###Server / Development
 
@@ -57,9 +68,11 @@ npm run start-dev
 npm run start
 ```
 
+---
+
 ###Commands
 
-####Build
+####build-js
 
 > Bundle build, without vendor dependencies
 
@@ -67,15 +80,15 @@ npm run start
 npm run build-js
 ```
 
-####Build Vendor
+####build-js-vendor
 
-> Vendor build
+> Vendor build (bootstrap, jQuery, lodash, etc...)
 
 ```
 npm run build-js-vendor
 ```
 
-####Build Full
+####build-js-full
 
 > Full build, including vendor and bundle
 
@@ -83,23 +96,55 @@ npm run build-js-vendor
 npm run build-js-full
 ```
 
-####Compress Images
+####build
+
+> Full build, including vendor, bundle and CSS
 
 ```
-npm run compress-images
+npm run build
 ```
 
-####Test
+####test
+
+> babel-tape-runner test
 
 ```
 npm test
 ```
 
-####JSHint
+####compress-images
+
+> compresses all images in src/images/ and outputs to src/images/build
+
+```
+npm run compress-images
+```
+
+####lint
+
+> JSHint, options set in .jshintrc
 
 ```
 npm run lint
 ```
+
+####lint-sass
+
+> scss-lint, options set in .scss-lint.yml
+
+```
+npm run lint-sass
+```
+
+####minify-css
+
+> minifies CSS via cleancss
+
+```
+npm run minify-css
+```
+
+---
 
 ###Options
 
