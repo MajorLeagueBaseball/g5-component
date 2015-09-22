@@ -82,7 +82,7 @@ npm run build-js
 
 ####build-js-vendor
 
-> Vendor build (bootstrap, jQuery, lodash, etc...)
+> Vendor build (Bootstrap, jQuery, LoDash, etc...)
 
 ```
 npm run build-js-vendor
@@ -209,8 +209,3 @@ exampleComponent.on('destroy', function(obj) {
 });
 ```
 
-###Style Guide / Rules
-
-* Style Guide - [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)
-* Protect against `new` - constructors can be called with or without `new`
-* Maintain chainability, methods return `this`
