@@ -94,7 +94,6 @@
     "browserify": "^8.1.1",
     "duplexer2": "0.0.2",
     "falafel": "^0.3.1",
-    "ghooks": "^0.3.2",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
     "inherits": "^2.0.1",
@@ -106,6 +105,7 @@
   "devDependencies": {
     "babel-tape-runner": "^1.1.0",
     "clean-css": "^3.4.2",
+    "ghooks": "^0.3.2",
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
     "jscs": "^2.1.1",
