@@ -41,13 +41,13 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 > If you want SASS linting, make sure you have a version of Ruby installed via [RVM](https://rvm.io/) or [Homebrew](http://brew.sh/). If you skip this step, the scss-lint will fail silently. If you have homebrew, installing ruby is extremely simple.
 
 ```
-brew install ruby
+brew install ruby && npm run install-scss-lint
 ```
 
 > Install the dependencies, this will trigger the initial builds on completion, once done you can simply run the server and start development.
 
 ```
-npm i
+npm i && npm run build
 ```
 
 ---
