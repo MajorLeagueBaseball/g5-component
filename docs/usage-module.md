@@ -148,7 +148,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "posttest": "echo 'tests successfully passed!'",
     "install-scss-lint": "gem install scss_lint -v '~> 0.40' || true",
     "lint": "jshint src/scripts/ || true",
-    "lint-sass": "scss-lint src/styles/*.scss || true",
+    "lint-sass": "scss-lint src/styles -e src/styles/lib/**/* || true",
     "prelint": "echo 'Checking code via JSHint...'",
     "postlint": "echo 'Code is lint free, great success!'",
     "postinstall": "npm run install-scss-lint && npm run build"
