@@ -124,7 +124,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     }
   },
   "scripts": {
-    "serve": "http-server -p 9966",
+    "serve": "http-server -c-1 -p 9966",
     "start": "npm run build && npm run serve",
     "start-dev": "npm run watch & npm run serve",
     "compress-images": "imagemin --progressive src/images/* src/images/build",
