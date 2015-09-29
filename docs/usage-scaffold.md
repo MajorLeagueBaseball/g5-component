@@ -22,8 +22,8 @@ const g5Component = require('./g5-component');
 window.onload = () => {
 
     let linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component-linescore'),
-        css: 'linescore linescore--game',
+        container: document.querySelector('.g5-component--linescore'),
+        css: 'g5-component--linescore-initiated',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
@@ -34,7 +34,7 @@ window.onload = () => {
 ```
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script src="/src/static/g5-component-cjs.js"></script>
 ```
@@ -42,15 +42,15 @@ window.onload = () => {
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script>
 
     require(['src/static/g5-component'], function(g5Component) {
 
         var linescoreComponent = g5Component({
-            container: document.querySelector('.g5-component-linescore'),
-            css: 'linescore linescore--game',
+            container: document.querySelector('.g5-component--linescore'),
+            css: 'g5-component--linescore-initiated',
             interval: 15000,
             path: '/src/data/linescore.json'
         });
@@ -65,15 +65,15 @@ window.onload = () => {
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script src="/src/static/g5-component.js"></script>
 
 <script>
 
     var linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component-linescore'),
-        css: 'linescore linescore--game',
+        container: document.querySelector('.g5-component--linescore'),
+        css: 'g5-component--linescore-initiated',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
@@ -103,8 +103,8 @@ const g5Component = require('./g5-component');
 window.onload = () => {
 
     let linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component-linescore'),
-        css: 'linescore linescore--game',
+        container: document.querySelector('.g5-component--linescore'),
+        css: 'g5-component--linescore-initiated',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
@@ -115,7 +115,7 @@ window.onload = () => {
 ```
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script src="/src/static/g5-component-vendor.js"></script>
 <script src="/src/static/g5-component-cjs-bundle.js"></script>
@@ -124,7 +124,7 @@ window.onload = () => {
 ####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd-split-builds.html)
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script>
 
@@ -138,8 +138,8 @@ window.onload = () => {
     require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
 
         var linescoreComponent = g5Component({
-            container: document.querySelector('.g5-component-linescore'),
-            css: 'linescore linescore--game',
+            container: document.querySelector('.g5-component--linescore'),
+            css: 'g5-component--linescore-initiated',
             interval: 15000,
             path: '/src/data/linescore.json'
         });
@@ -154,7 +154,7 @@ window.onload = () => {
 ####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global-split-builds.html)
 
 ```html
-<section class="g5-component g5-component-linescore"></section>
+<section class="g5-component g5-component--linescore"></section>
 
 <script src="/src/static/g5-component-vendor.js"></script>
 <script src="/src/static/g5-component-bundle.js"></script>
@@ -162,8 +162,8 @@ window.onload = () => {
 <script>
 
     var linescoreComponent = g5Component({
-        container: document.querySelector('.g5-component-linescore'),
-        css: 'linescore linescore--game',
+        container: document.querySelector('.g5-component--linescore'),
+        css: 'g5-component--linescore-initiated',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
