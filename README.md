@@ -7,32 +7,35 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 
 ---
 
-* event based
-* scalable architecture
-* completely self-contained
-* clean, well documented
+* [event based](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js), scalable, well tested architecture
+* ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
+* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60) in favor of Gulp/Grunt
+* clean, [well documented](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation) ([JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16))
 * consistent code and methodologies
-* simple workflow
-* environment agnostic code (UMD)
-* can be used as a scaffold and a module
-* ES6/ES2015 support via babel
-* Tape unit tests
-* Style guide (Airbnb) validation and test on commit
-* JS and SASS lint
-* BEM Syntax
-* Handlebars, LoDash, SASS, Bootstrap, jQuery
+* can be used as a scaffold or module
+* completely self-contained, environment agnostic code (UMD)
+* Tape unit tests via [babel-tape-runner](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
+* Style guide ([Airbnb](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)) validation, JS lint, and test [on commit](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L57)
+* [Image compression](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L64)
+* [BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+* [SCSS lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L85)
+* [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html)
+* [LoDash](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L12)
+* [SASS](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)
+* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.scss)
+* [jQuery](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L101)
 
 ---
 
 ###Setup
 
-> Install the package and use it as a module ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md))
+> Install the package and use it as a module, create new components quickly and efficiently ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md))
 
 ```
 npm i g5-component
 ```
 
-> Or clone the package and use it as a scaffold ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md))
+> Or clone the package and use it as a scaffold/baseline for your project ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md))
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
@@ -44,7 +47,7 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 brew install ruby
 ```
 
-> Install the dependencies, this will trigger the initial builds on completion, once done you can simply run the server and start development.
+> Install the dependencies and run the initial build, once done you can simply run the server and start development.
 
 ```
 npm i && npm run install-scss-lint && npm run build
@@ -54,7 +57,7 @@ npm i && npm run install-scss-lint && npm run build
 
 ###Server / Development
 
-> Server running on [http://localhost:9966](http://localhost:9966) with auto (split) builds [Ctrl+C] to kill server
+> Server running on [http://localhost:9966](http://localhost:9966) with auto - split builds (vendor dependencies are built separately for faster build times) [Ctrl+C] to kill server
 
 ```
 npm run start-dev
@@ -72,7 +75,7 @@ npm run start
 
 ###Commands
 
-####build-js
+####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L66)
 
 > Bundle build, without vendor dependencies
 
@@ -80,7 +83,7 @@ npm run start
 npm run build-js
 ```
 
-####build-js-vendor
+####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
 
 > Vendor build (Bootstrap, jQuery, LoDash, etc...)
 
@@ -88,7 +91,7 @@ npm run build-js
 npm run build-js-vendor
 ```
 
-####build-js-full
+####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L68)
 
 > Full build, including vendor and bundle
 
@@ -96,7 +99,7 @@ npm run build-js-vendor
 npm run build-js-full
 ```
 
-####build
+####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L73)
 
 > Full build, including vendor, bundle and CSS
 
@@ -104,7 +107,7 @@ npm run build-js-full
 npm run build
 ```
 
-####test
+####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
 
 > babel-tape-runner test
 
@@ -112,7 +115,7 @@ npm run build
 npm test
 ```
 
-####compress-images
+####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L64)
 
 > compresses all images in src/images/ and outputs to src/images/build
 
@@ -120,23 +123,23 @@ npm test
 npm run compress-images
 ```
 
-####lint
+####[lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L84)
 
-> JSHint, options set in .jshintrc
+> JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
 
 ```
 npm run lint
 ```
 
-####lint-sass
+####[lint-sass](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L85)
 
-> scss-lint, options set in .scss-lint.yml
+> scss-lint, options set in [.scss-lint.yml](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.scss-lint.yml)
 
 ```
 npm run lint-sass
 ```
 
-####minify-css
+####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L78)
 
 > minifies CSS via cleancss
 
@@ -148,7 +151,7 @@ npm run minify-css
 
 ###Options
 
-A single options Object shared between all Constructors
+A single shared options Object, easily add options and have them available throughout
 
 * `Element` __container__ - primary container
 * `String` __css__ - classes
@@ -158,6 +161,8 @@ A single options Object shared between all Constructors
 * `Boolean` __enablePolling__ - flag to enable/disable data polling
 
 ###Methods
+
+> Simple set of core methods
 
 ```js
 exampleComponent.init(); // initiates component
@@ -176,7 +181,7 @@ exampleComponent.attachEvents(); // attaches all events
 ```
 
 ```js
-exampleComponent.destroy(); // kills component instance
+exampleComponent.destroy(); // kills component instance, cleans everything out to prevent memory leaks
 ```
 
 ###Events
@@ -209,3 +214,15 @@ exampleComponent.on('destroy', function(obj) {
 });
 ```
 
+###Example Usage
+
+```js
+let linescoreComponent = g5Component({
+    container: document.querySelector('.g5-component--linescore'),
+    css: 'g5-component--linescore-initiated', // class to add after instantiation
+    interval: 15000, // polling interval
+    path: '/src/data/linescore.json' // data path (local or remote)
+});
+
+linescoreComponent.init();
+```
