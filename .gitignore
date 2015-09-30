@@ -19,3 +19,4 @@ dist
 /build
 /src/static/*.js
 /src/static/*.css
+/src/static/*.map
