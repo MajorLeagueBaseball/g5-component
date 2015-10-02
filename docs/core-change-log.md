@@ -1,5 +1,32 @@
 #Change Log
 
+###2.7
+
+* Took out the babel polyfill to avoid issues when using multiple components
+* Added es6-promise polyfill
+
+###2.6
+
+* Added CSS source maps
+* Running Babel polyfill by default
+
+###2.5
+
+* Disabled caching on server
+* Updated BEM syntax in examples
+* Updated documentation
+* Updated core methods
+
+###2.4
+
+* Updated dependencies
+* Updated setup instructions
+* Adjusted scss-lint to allow deep nesting
+
+###2.3
+
+* removing postinstall to avoid issues when used as module
+
 ###v2.2
 
 * Added SASS Lint
