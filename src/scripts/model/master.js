@@ -14,6 +14,7 @@ const util          = require('util');
 const utils         = require('./../utils/master');
 const EventEmitter  = require('events').EventEmitter;
 
+require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 /**
