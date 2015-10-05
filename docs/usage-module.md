@@ -33,11 +33,14 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 │   │   │   │   extender.js
 │   │   │   │   helpers.js
 │   │   │   │   master.js
+│   │   │   │   partials.js
 │   │   ├── index.js
 │   ├── styles/
 │   │   │   base.scss
 │   │   │   component.scss
 │   ├── template/
+│   │   ├── partials/
+│   │   │   │   example-partial.html
 │   │   │   component.html
 ├── test/
 │   │   component.js
@@ -56,6 +59,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 * __[src/static/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/static)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
 * __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
+* __[src/scripts/component/partials.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)__ - module for adding handlebars partials
 * __[src/scripts/component/master.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - module containing all component specific functionality (listeners, etc...)
 * __[src/scripts/index.js](https://github.com/gbabula/babu.la/blob/master/src/scripts/index.js)__ - component entry point, require g5-component and init your module in this file, then point browserify to this file to create the bundle
 * __[src/styles/base.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)__ - component specific styling
@@ -103,14 +107,16 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "component": false,
     "component-template": false,
     "component-extender": false,
-    "component-helpers": false
+    "component-helpers": false,
+    "component-partials": false
   },
   "aliasify": {
     "aliases": {
       "component": "./src/scripts/component/master.js",
       "component-template": "./src/template/component.html",
       "component-extender": "./src/scripts/component/extender.js",
-      "component-helpers": "./src/scripts/component/helpers.js"
+      "component-helpers": "./src/scripts/component/helpers.js",
+      "component-partials": "./src/scripts/component/partials.js"
     }
   },
   "browserify-shim": {
@@ -198,14 +204,16 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
     "component": false,
     "component-template": false,
     "component-extender": false,
-    "component-helpers": false
+    "component-helpers": false,
+    "component-partials": false
   },
   "aliasify": {
     "aliases": {
       "component": "./src/scripts/component/master.js",
       "component-template": "./src/template/component.html",
       "component-extender": "./src/scripts/component/extender.js",
-      "component-helpers": "./src/scripts/component/helpers.js"
+      "component-helpers": "./src/scripts/component/helpers.js",
+      "component-partials": "./src/scripts/component/partials.js"
     }
   }
 ```
@@ -245,7 +253,7 @@ Module for easily adding handlebars helpers
 /**
  *
  * @name helpers
- * @description handlebar helpers to be registered
+ * @description handlebars helpers to be registered
  *
  */
 let helpers = {
@@ -261,6 +269,23 @@ let helpers = {
 };
 
 module.exports = helpers;
+```
+
+#### Component Partials
+
+Module for easily adding handlebars partials
+
+```js
+/**
+ *
+ * @name partials
+ * @description handlebars partials to be registered
+ * @note paths must be hardcoded because Browserify can only do static string analysis
+ *
+ */
+let partials = {
+    'example-partial': require('../../template/partials/example-partial.html')
+};
 ```
 
 #### Component Master
