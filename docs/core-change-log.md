@@ -1,5 +1,9 @@
 #Change Log
 
+###2.8
+
+* Added handlebars partials support
+
 ###2.7
 
 * Took out the babel polyfill to avoid issues when using multiple components
