@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -50,7 +50,8 @@
     "component": "./src/scripts/component/master.js",
     "component-template": "./src/template/component.html",
     "component-extender": "./src/scripts/component/extender.js",
-    "component-helpers": "./src/scripts/component/helpers.js"
+    "component-helpers": "./src/scripts/component/helpers.js",
+    "component-partials": "./src/scripts/component/partials.js"
   },
   "config": {
     "ghooks": {
