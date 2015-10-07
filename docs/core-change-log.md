@@ -1,5 +1,9 @@
 #Change Log
 
+###2.9
+
+* Adjusted bundle builds
+
 ###2.8
 
 * Added handlebars partials support
