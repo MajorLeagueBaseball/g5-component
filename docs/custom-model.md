@@ -36,6 +36,7 @@ Create /src/scripts/model/master.js and inherit the prototype from the scaffold'
 'use strict';
 
 const util    = require('util');
+const assign  = require('lodash/object/assign');
 const g5Model = require('g5-component/model');
 
 /**
