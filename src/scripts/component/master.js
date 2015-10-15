@@ -11,8 +11,7 @@
 const $     = global.jQuery = require('jquery');
 const utils = require('./../utils/master');
 
-require('bootstrap-sass/assets/javascripts/bootstrap/tooltip');
-require('bootstrap-sass/assets/javascripts/bootstrap/popover');
+require('bootstrap/js/tooltip');
 
 /**
  *
@@ -52,7 +51,6 @@ let component = {
         utils.log('render component');
 
         this.$element.find('[data-toggle="tooltip"]').tooltip();
-        this.$element.find('[data-toggle="popover"]').popover();
 
         return this;
 
@@ -92,7 +90,6 @@ let component = {
     destroy() {
 
         this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
-        this.$element.find('[data-toggle="popover"]').popover('destroy');
         this.$element.off();
 
         return this;

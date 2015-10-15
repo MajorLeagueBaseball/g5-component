@@ -18,11 +18,10 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 * Style guide ([Airbnb](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)) validation, JS lint, and test [on commit](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L57)
 * [Image compression](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L64)
 * [BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-* [SCSS lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L85)
 * [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html)
 * [LoDash](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L12)
-* [SASS](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)
-* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.scss)
+* [LESS](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)
+* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.less)
 * [jQuery](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L101)
 
 ---
@@ -41,16 +40,10 @@ npm i g5-component
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
 ```
 
-> If you want SASS linting, make sure you have a version of Ruby installed via [RVM](https://rvm.io/) or [Homebrew](http://brew.sh/). If you skip this step, the scss-lint will fail silently. If you have homebrew, installing ruby is extremely simple.
-
-```
-brew install ruby
-```
-
 > Install the dependencies and run the initial build, once done you can simply run the server and start development.
 
 ```
-npm i && npm run install-scss-lint && npm run build
+npm i && npm run build
 ```
 
 ---
@@ -129,14 +122,6 @@ npm run compress-images
 
 ```
 npm run lint
-```
-
-####[lint-sass](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L85)
-
-> scss-lint, options set in [.scss-lint.yml](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.scss-lint.yml)
-
-```
-npm run lint-sass
 ```
 
 ####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L78)

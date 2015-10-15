@@ -1,25 +1,26 @@
 /**
  *
- * file: base.scss
+ * file: base.less
  * author: Grg Babula
  * description: simple base styling for the linescore component example
  *
  */
 
-$text-primary: #7f8c8d;
-$text-secondary: #639;
-$ui-primary: #ccc;
+@component: g5-component--linescore;
+@text-primary: #7f8c8d;
+@text-secondary: #639;
+@ui-primary: #ccc;
 
-.g5-component--linescore {
+.@{component} {
     box-sizing: border-box;
-    color: $text-primary;
+    color: @text-primary;
     font-size: 18px;
     line-height: 1.7em;
     margin: 0 auto;
     max-width: 600px;
 
     &__title {
-        color: $text-secondary;
+        color: @text-secondary;
     }
 
     &__linescore {
@@ -28,8 +29,8 @@ $ui-primary: #ccc;
 
     &__key,
     &__value {
-        background: lighten($ui-primary, 10);
-        border: 1px solid $ui-primary;
+        background: lighten(@ui-primary, 10);
+        border: 1px solid @ui-primary;
         border-radius: 2px;
         padding: 1em;
     }
@@ -39,7 +40,7 @@ $ui-primary: #ccc;
     }
 
     &__media {
-        border: 1px solid $ui-primary;
+        border: 1px solid @ui-primary;
         padding: 1em;
     }
 }
