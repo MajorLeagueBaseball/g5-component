@@ -1,5 +1,10 @@
 #Change Log
 
+###2.10
+
+* Updated examples and documentation
+* Adding class based on language (from opts)
+
 ###2.9
 
 * Adjusted bundle builds
