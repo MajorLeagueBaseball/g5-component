@@ -65,3 +65,138 @@ util.inherits(MasterModel, g5Model);
 
 module.exports = MasterModel;
 ```
+
+If you need a custom model, you'll probably want to override the `fetch` method and handle that by yourself. For example, if you need multiple data points, mash that data up here and simply emit a `data` event with the mashed up data set.
+
+
+```js
+/**
+ *
+ * @module model/master
+ * @description master model for the matchup component
+ * inherits methods and properties from the g5-component model
+ *
+ */
+
+'use strict';
+
+const util    = require('util');
+const assign  = require('lodash/object/assign');
+const isEqual = require('lodash/lang/isEqual');
+const g5Model = require('g5-component/model');
+
+/**
+ *
+ * @constructor MasterModel
+ * @param {Object} opts shared options Object
+ *
+ */
+function MasterModel(opts) {
+
+    if (!(this instanceof MasterModel)) {
+        return new MasterModel(opts);
+    }
+
+    g5Model.call(this);
+
+    this.opts = assign({
+        interval: 40000,
+        enablePolling: true,
+        path: ''
+    }, opts);
+
+}
+
+util.inherits(MasterModel, g5Model);
+
+/**
+ *
+ * @method fetch
+ * @description makes a GET request to specified path, emits data event, expecting JSON by default
+ * @returns {Object} this
+ *
+ */
+MasterModel.prototype.fetch = function() {
+
+    let _this = this;
+    let _opts = this.opts;
+
+    /**
+     *
+     * @function handleData
+     * @param {Object} response
+     * @returns {Object} response JSON
+     * @description handles response and returns JSON if successful
+     *
+     */
+    function handleData(response) {
+
+        if (response.status >= 400) {
+            throw response.status;
+        }
+
+        try {
+
+            return response.json();
+
+        } catch (e) {
+
+            throw e;
+
+        }
+
+    }
+
+    /**
+     *
+     * @function handleSuccess
+     * @param {Object} data parsed JSON
+     *
+     */
+    function handleSuccess(data={}) {
+
+        // required for data extender/normalizer
+        data = _this.extender(data, _opts);
+
+        // simple cache check
+        if (!isEqual(data, _this.dataCache)) {
+
+            _this.dataCache = data;
+
+            // this event will be picked up by the EventTower and passed to viewModel.refresh()
+            _this.emit('data', data);
+
+        }
+
+        _this.dataFetch = _opts.enablePolling && setTimeout(_this.fetch.bind(_this), _opts.interval);
+
+    }
+
+    /**
+     *
+     * @function handleError
+     * @param {Object} err
+     *
+     */
+    function handleError(err) {
+
+        _this.emit('data-error', err);
+
+    }
+
+    //
+    // TODO: mash up data, handle multiple paths in the options Object or remove that option and 
+    // abstract things away in the model
+    //
+
+    // fetch(_opts.path)
+        // .then(handleData)
+        // .then(handleSuccess)
+        // .catch(handleError);
+
+    return this;
+
+};
+
+module.exports = MasterModel;
+```
