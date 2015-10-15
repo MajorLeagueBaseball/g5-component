@@ -6,16 +6,20 @@
  *
  */
 
+$text-primary: #7f8c8d;
+$text-secondary: #639;
+$ui-primary: #ccc;
+
 .g5-component--linescore {
     box-sizing: border-box;
-    color: #7f8c8d;
-    line-height: 1.7em;
+    color: $text-primary;
     font-size: 18px;
+    line-height: 1.7em;
     margin: 0 auto;
     max-width: 600px;
 
     &__title {
-        color: rebeccapurple;
+        color: $text-secondary;
     }
 
     &__linescore {
@@ -24,8 +28,8 @@
 
     &__key,
     &__value {
-        background: #FDFDFD;
-        border: 1px solid #F9F9F9;
+        background: lighten($ui-primary, 10);
+        border: 1px solid $ui-primary;
         border-radius: 2px;
         padding: 1em;
     }
@@ -35,7 +39,7 @@
     }
 
     &__media {
-        border: 1px solid #666;
+        border: 1px solid $ui-primary;
         padding: 1em;
     }
 }

@@ -148,7 +148,7 @@ EventTower.prototype.attachEvents = function() {
      */
     _viewModel.on('data-error', function(err) {
 
-        _viewModel.hasError(err);
+        _viewModel.onDataError(err);
 
     });
 

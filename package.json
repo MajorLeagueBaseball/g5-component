@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "2.0.0",
+  "version": "2.0.9",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula",
   "license": "ISC",
@@ -50,7 +50,8 @@
     "component": "./src/scripts/component/master.js",
     "component-template": "./src/template/component.html",
     "component-extender": "./src/scripts/component/extender.js",
-    "component-helpers": "./src/scripts/component/helpers.js"
+    "component-helpers": "./src/scripts/component/helpers.js",
+    "component-partials": "./src/scripts/component/partials.js"
   },
   "config": {
     "ghooks": {
@@ -58,7 +59,7 @@
     }
   },
   "scripts": {
-    "serve": "http-server -p 9966",
+    "serve": "http-server -c-1 -p 9966",
     "start": "npm run build && npm run serve",
     "start-dev": "npm run watch & npm run serve",
     "compress-images": "imagemin --progressive src/images/* src/images/build",
@@ -68,30 +69,33 @@
     "build-js-full": "browserify src/scripts/g5-component.js --s 'g5-component' | uglifyjs -mc drop_console > src/static/g5-component.js",
     "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
     "build-css": "node-sass --include-path src/styles --include-path node_modules/bootstrap-sass/assets/stylesheets src/styles/component.scss src/static/g5-component.css",
-    "postbuild-css": "cleancss -o src/static/g5-component-min.css src/static/g5-component.css",
+    "prebuild-css": "npm run lint-sass",
+    "postbuild-css": "npm run minify-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
     "watch-js": "watchify -u bootstrap-sass -u jquery -u lodash -u isomorphic-fetch src/scripts/g5-component.js --s 'g5-component' -o src/static/g5-component-bundle.js -dv",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "watch-css": "nodemon -e scss -x 'npm run build-css'",
+    "minify-css": "cleancss --source-map -d -o src/static/g5-component-min.css src/static/g5-component.css",
     "watch": "npm run watch-js & npm run watch-css",
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
     "posttest": "echo 'tests successfully passed!'",
+    "install-scss-lint": "gem install scss_lint -v '~> 0.40' || true",
     "lint": "jshint src/scripts/ || true",
+    "lint-sass": "scss-lint src/styles -e src/styles/lib/**/* || true",
     "prelint": "echo 'Checking code via JSHint...'",
     "postlint": "echo 'Code is lint free, great success!'"
   },
   "dependencies": {
     "aliasify": "^1.7.2",
     "babel": "^5.5.6",
-    "babel-tape-runner": "^1.1.0",
     "babelify": "^6.1.2",
     "bootstrap-sass": "^3.3.5",
     "browserify": "^8.1.1",
     "duplexer2": "0.0.2",
+    "es6-promise": "^3.0.2",
     "falafel": "^0.3.1",
-    "ghooks": "^0.3.2",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
     "inherits": "^2.0.1",
@@ -101,13 +105,16 @@
     "readable-stream": "^1.0.33"
   },
   "devDependencies": {
+    "babel-tape-runner": "^1.1.0",
     "clean-css": "^3.4.2",
+    "ghooks": "^0.3.2",
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
     "jscs": "^2.1.1",
     "jshint": "^2.8.0",
     "node-sass": "^3.3.2",
     "nodemon": "^1.5.0",
+    "sass-lint": "^1.2.1",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",

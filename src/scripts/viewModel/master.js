@@ -43,12 +43,14 @@ function MasterViewModel(opts) {
         this.component = require('component');
         this.template = require('component-template');
         this.helpers = require('component-helpers');
+        this.partials = require('component-partials');
 
     } catch (e) {
 
         this.component = {};
         this.template = {};
         this.helpers = {};
+        this.partials = {};
 
     }
 
@@ -82,7 +84,8 @@ MasterViewModel.prototype.init = function() {
         this.instance = true;
         this.active = true;
 
-        this.addClass().addG5Attributes().registerHelpers();
+        this.addClass().addG5Attributes();
+        this.registerHelpers().registerPartials();
 
     }
 
@@ -151,6 +154,30 @@ MasterViewModel.prototype.registerHelpers = function(helpers = this.helpers) {
 
 /**
  *
+ * @method registerPartials
+ * @param {Object} partials
+ * @returns {Object} this
+ * @description method for registering handlebar partials
+ *
+ */
+MasterViewModel.prototype.registerPartials = function(partials = this.partials) {
+
+    if (size(partials)) {
+
+        forOwn(partials, function(item, key) {
+
+            Handlebars.registerPartial(key, item);
+
+        });
+
+    }
+
+    return this;
+
+};
+
+/**
+ *
  * @method reresh
  * @param {Object} data
  * @returns {Object} this
@@ -179,8 +206,8 @@ MasterViewModel.prototype.bindComponent = function() {
     if (!this.bound) {
 
         this.bound = true;
-        this.component.init(this.container);
         this.addG5Attributes();
+        this.component.init(this.container);
 
     }
 

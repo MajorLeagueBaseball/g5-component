@@ -69,8 +69,8 @@ G5Component.prototype.init = function() {
 
     if (!this.hasInstance()) {
 
-        this.model.init();
         this.viewModel.init();
+        this.model.init();
 
         this.emit('ready', this);
 

@@ -5,35 +5,16 @@
         01) BEM class names
         02) Bootstrap widgets
         03) Handlebars helpers (upcase helper with plain String and variable)
-        04) Data binding, including variable from component-extender (description)
+        04) Handlebars partials (button partial example)
+        05) Data binding, including variable from component-extender (description)
 
 -->
 
 <h3 class="g5-component--linescore__title">Bootstrap Widget {{ upcase 'Example' }}</h3>
 
-<button
-    class="btn btn-default"
-    data-toggle="tooltip"
-    data-placement="top"
-    title="Tooltip on top">
-    Tooltip on top
-</button>
-
-<button
-    class="btn btn-default"
-    data-toggle="tooltip"
-    data-placement="bottom"
-    title="Tooltip on bottom">
-    Tooltip on bottom
-</button>
-
-<button
-    class="btn btn-lg btn-danger"
-    data-toggle="popover"
-    title="Popover title"
-    data-content="And here's some amazing content.">
-    Click to toggle popover
-</button>
+{{> button }}
+{{> button }}
+{{> button }}
 
 <h3 class="g5-component--linescore__title">Game {{ upcase 'Data' }}</h3>
 

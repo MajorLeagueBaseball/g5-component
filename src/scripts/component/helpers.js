@@ -11,7 +11,7 @@
 /**
  *
  * @name helpers
- * @description handlebar helpers to be registered
+ * @description handlebars helpers to be registered
  *
  */
 let helpers = {

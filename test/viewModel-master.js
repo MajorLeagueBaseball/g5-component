@@ -44,6 +44,7 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
         st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');
         st.equal(typeof viewModel.registerHelpers, 'function', 'should have registerHelpers method');
+        st.equal(typeof viewModel.registerPartials, 'function', 'should have registerPartials method');
         st.equal(typeof viewModel.refresh, 'function', 'should have refresh method');
         st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
         st.equal(typeof viewModel.onDataError, 'function', 'should have onDataError method');
