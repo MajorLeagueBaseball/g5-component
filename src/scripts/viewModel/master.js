@@ -84,8 +84,10 @@ MasterViewModel.prototype.init = function() {
         this.instance = true;
         this.active = true;
 
-        this.addClass().addG5Attributes();
-        this.registerHelpers().registerPartials();
+        this.addClass();
+        this.addG5Attributes();
+        this.registerHelpers();
+        this.registerPartials();
 
     }
 
@@ -103,6 +105,7 @@ MasterViewModel.prototype.init = function() {
 MasterViewModel.prototype.addClass = function() {
 
     this.container.className += ' ' + this.opts.css;
+    this.container.className += ' g5-component--is-' + this.opts.i18n || 'en';
 
     if (this.active) {
         this.container.className += ' g5-component--is-visible';

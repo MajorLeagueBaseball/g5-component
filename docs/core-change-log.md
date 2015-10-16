@@ -1,52 +1,62 @@
 #Change Log
 
-###2.9
+###2.1.0
+
+* Reverting back to LESS, for various reasons
+* Cleaned up LESS usage, using nodemon for rebuilds, passing paths to lessc
+
+###2.0.10
+
+* Updated examples and documentation
+* Adding class based on language (from opts)
+
+###2.0.9
 
 * Adjusted bundle builds
 
-###2.8
+###2.0.8
 
 * Added handlebars partials support
 
-###2.7
+###2.0.7
 
 * Took out the babel polyfill to avoid issues when using multiple components
 * Added es6-promise polyfill
 
-###2.6
+###2.0.6
 
 * Added CSS source maps
 * Running Babel polyfill by default
 
-###2.5
+###2.0.5
 
 * Disabled caching on server
 * Updated BEM syntax in examples
 * Updated documentation
 * Updated core methods
 
-###2.4
+###2.0.4
 
 * Updated dependencies
 * Updated setup instructions
 * Adjusted scss-lint to allow deep nesting
 
-###2.3
+###2.0.3
 
 * removing postinstall to avoid issues when used as module
 
-###v2.2
+###v2.0.2
 
 * Added SASS Lint
 * Adjustment SASS
 * Documentation updates
 
-###v2.1
+###v2.0.1
 
 * Bug fixes
 * Event layer fixes
 
-###v2.0
+###v2.0.0
 
 * SASS support
 * Upgraded to bootstrap-sass

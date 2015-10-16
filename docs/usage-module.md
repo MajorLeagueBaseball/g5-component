@@ -14,7 +14,6 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 
 ```
 ├── .babelrc
-├── .scss-lint.yml
 ├── .editorconfig
 ├── .gitignore
 ├── .jscsrc
@@ -36,8 +35,8 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 │   │   │   │   partials.js
 │   │   ├── index.js
 │   ├── styles/
-│   │   │   base.scss
-│   │   │   component.scss
+│   │   │   base.less
+│   │   │   component.less
 │   ├── template/
 │   │   ├── partials/
 │   │   │   │   example-partial.html
@@ -50,7 +49,6 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 
 #### File Overview
 
-* __[.scss-lint.yml](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.scss-lint.yml)__ - SCSS lint configuration options
 * __[.editorconfig](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.editorconfig)__ - editor configuration options
 * __[.gitignore](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.gitignore)__ - files for Git to ignore
 * __[.jscsrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)__ - JSCS configuration
@@ -62,8 +60,8 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 * __[src/scripts/component/partials.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)__ - module for adding handlebars partials
 * __[src/scripts/component/master.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/master.js)__ - module containing all component specific functionality (listeners, etc...)
 * __[src/scripts/index.js](https://github.com/gbabula/babu.la/blob/master/src/scripts/index.js)__ - component entry point, require g5-component and init your module in this file, then point browserify to this file to create the bundle
-* __[src/styles/base.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.scss)__ - component specific styling
-* __[src/styles/component.scss](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.scss)__ - SASS entry point, all file references (bootstrap assets, etc...)
+* __[src/styles/base.less](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)__ - component specific styling
+* __[src/styles/component.less](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.less)__ - LESS entry point, all file references (bootstrap assets, etc...)
 * __[src/template/component.html](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html)__ - primary template for component
 * __[test/component.js](https://github.com/gbabula/babu.la/blob/master/test/component.js)__ - primary test for component
 * __package.json__ - all dependencies, npm scripts for browserify builds, and alias references (see below)
@@ -135,40 +133,36 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "start-dev": "npm run watch & npm run serve",
     "compress-images": "imagemin --progressive src/images/* src/images/build",
     "postcompress-images": "echo 'imagemin complete'",
-    "build-js": "browserify -u bootstrap-sass -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example-bundle.js",
-    "build-js-vendor": "browserify -r bootstrap-sass -r jquery -r lodash -r es6-promise -r isomorphic-fetch | uglifyjs -mc > src/static/fed-component-example-vendor.js",
+    "build-js": "browserify -u bootstrap -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example-bundle.js",
+    "build-js-vendor": "browserify -r bootstrap -r jquery -r lodash -r es6-promise -r isomorphic-fetch | uglifyjs -mc > src/static/fed-component-example-vendor.js",
     "build-js-full": "browserify src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example.js",
     "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
-    "build-css": "node-sass --include-path src/styles --include-path node_modules/bootstrap-sass/assets/stylesheets --include-path node_modules/g5-component/src/styles src/styles/component.scss src/static/fed-component-example.css",
-    "prebuild-css": "npm run lint-sass",
+    "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > src/static/fed-component-example.css",
     "postbuild-css": "npm run minify-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
-    "watch-js": "watchify -u bootstrap-sass -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' -o src/static/fed-component-exampe-bundle.js -dv",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "watch-js": "watchify -u bootstrap -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' -o src/static/fed-component-exampe-bundle.js -dv",
+    "watch-css": "nodemon -e less -x \"npm run build-css\"",
     "minify-css": "cleancss -o src/static/fed-component-example-min.css src/static/fed-component-example.css",
     "watch": "npm run watch-js & npm run watch-css",
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
     "posttest": "echo 'tests successfully passed!'",
-    "install-scss-lint": "gem install scss_lint -v '~> 0.40' || true",
     "lint": "jshint src/scripts/ || true",
-    "lint-sass": "scss-lint src/styles -e src/styles/lib/**/* || true",
     "prelint": "echo 'Checking code via JSHint...'",
     "postlint": "echo 'Code is lint free, great success!'",
-    "postinstall": "npm run install-scss-lint && npm run build"
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "aliasify": "^1.7.2",
     "babel": "^5.5.6",
     "babelify": "^6.1.2",
-    "bootstrap-sass": "^3.3.5",
+    "bootstrap": "^3.3.5",
     "browserify": "^8.1.1",
     "duplexer2": "0.0.2",
     "falafel": "^0.3.1",
-    "g5-component": "*",
-    "ghooks": "^0.3.2",
+    "g5-component": "~2.1.0",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
     "inherits": "^2.0.1",
@@ -180,13 +174,13 @@ Simplifies component development. The model, viewModel, and event layer is abstr
   "devDependencies": {
     "babel-tape-runner": "^1.1.0",
     "clean-css": "^3.4.2",
+    "ghooks": "^0.3.2",
     "http-server": "^0.8.0",
     "imagemin": "^3.2.0",
     "jscs": "^2.1.1",
     "jshint": "^2.8.0",
-    "node-sass": "^3.3.2",
+    "less": "^2.5.3",
     "nodemon": "^1.5.0",
-    "sass-lint": "^1.2.1",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.16",
@@ -295,8 +289,7 @@ Main file for all component specific JS. For consistency, primary methods should
 ```js
 const $ = global.jQuery = require('jquery');
 
-require('bootstrap-sass/assets/javascripts/bootstrap/tooltip');
-require('bootstrap-sass/assets/javascripts/bootstrap/popover');
+require('bootstrap/js/tooltip');
 
 /**
  *
@@ -336,7 +329,6 @@ let component = {
         console.log('render component');
 
         this.$element.find('[data-toggle="tooltip"]').tooltip();
-        this.$element.find('[data-toggle="popover"]').popover();
 
         return this;
 
@@ -375,7 +367,6 @@ let component = {
     destroy() {
 
         this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
-        this.$element.find('[data-toggle="popover"]').popover('destroy');
         this.$element.off();
 
         return this;
