@@ -20,7 +20,7 @@ const merge = require('lodash/object/merge');
  */
 function extender(data={}, opts={}) {
 
-    let game = data.data && data.data.game;
+    let { game } = data.data;
 
     return merge(data, {
         data: {
