@@ -79,10 +79,8 @@
     "watch": "npm run watch-js & npm run watch-css",
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
-    "posttest": "echo 'tests successfully passed!'",
     "lint": "jshint src/scripts/ || true",
-    "prelint": "echo 'Checking code via JSHint...'",
-    "postlint": "echo 'Code is lint free, great success!'"
+    "prelint": "echo 'Checking code via JSHint...'"
   },
   "dependencies": {
     "aliasify": "^1.7.2",
