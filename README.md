@@ -174,32 +174,32 @@ exampleComponent.destroy(); // kills component instance, cleans everything out t
 > Events must be attached before the component is initiated
 
 ```js
-exampleComponent.on('ready', function(obj) {
+exampleComponent.on('ready', (obj) => {
 
     // console.log('component model and viewModel have been initiated', obj);
 
 });
 
-exampleComponent.on('data', function(data) {
+exampleComponent.on('data', (data) => {
 
     // console.log('component data from model', data);
 
 });
 
-exampleComponent.on('data-error', function(err) {
+exampleComponent.on('data-error', (err) => {
 
     // console.log('component model data error', err);
 
 });
 
-exampleComponent.on('destroy', function(obj) {
+exampleComponent.on('destroy', (obj) => {
 
     // console.log('component instance killed', obj);
 
 });
 ```
 
-###Example Usage
+###Usage
 
 ```js
 let linescoreComponent = g5Component({
