@@ -17,7 +17,11 @@
     </head>
     <body>
 
-        <section class="g5-component g5-component--linescore"></section>
+        <main>
+
+            <section class="g5-component g5-component--linescore"></section>
+
+        </main>
 
         <!-- bundled JS -->
         <script src="/src/static/g5-component-vendor.js"></script>
@@ -33,6 +37,14 @@
                 path: '/src/data/linescore.json'
             });
 
+            // event usage example
+            linescoreComponent.on('ready', function(obj) {
+
+                console.log('component ready!', obj);
+
+            });
+
+            // init component
             linescoreComponent.init();
 
         </script>
