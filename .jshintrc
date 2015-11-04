@@ -27,6 +27,7 @@
     "devel": true,           // Development/debugging (alert, confirm, etc)
     "jquery": false,         // jQuery
     "node": true,            // Node.js
+    "validthis": true,
     "predef": [
         "require",
         "define",
