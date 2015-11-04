@@ -139,11 +139,12 @@ npm run minify-css
 A single shared options Object, easily add options and have them available throughout
 
 * `Element` __container__ - primary container
-* `String` __css__ - classes
+* `String` __css__ - classes to add after instantiation
 * `String` __i18n__ - localization
 * `Number` __interval__ - polling interval (ms)
-* `String` __path__ - data path (remote/local)
-* `Boolean` __enablePolling__ - flag to enable/disable data polling
+* `String` __path__ - data path to fetch (remote/local)
+* `Boolean` __enableFetch__ - flag to enable/disable initial data fetch (true by default)
+* `Boolean` __enablePolling__ - flag to enable/disable data polling (true by default)
 
 ###Methods
 
@@ -204,9 +205,9 @@ exampleComponent.on('destroy', (obj) => {
 ```js
 let exampleComponent = g5Component({
     container: document.querySelector('.g5-component--linescore'),
-    css: 'g5-component--linescore-initiated', // class to add after instantiation
-    interval: 15000, // polling interval
-    path: '/src/data/linescore.json' // data path (local or remote)
+    css: 'g5-component--linescore-initiated',
+    interval: 15000,
+    path: '/src/data/linescore.json'
 });
 
 exampleComponent.init();
