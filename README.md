@@ -170,7 +170,7 @@ exampleComponent.attachEvents(); // attaches all events
 exampleComponent.destroy(); // kills component instance, cleans everything out to prevent memory leaks
 ```
 
-###Events
+###Events / Listen
 
 > Events must be attached before the component is initiated
 
@@ -198,6 +198,18 @@ exampleComponent.on('destroy', (obj) => {
     // console.log('component instance killed', obj);
 
 });
+```
+
+###Events / Trigger
+
+> Events must be triggered after the component is initiated
+
+```js
+// 
+// Used with the `enableFetch` option (which toggles the initial data fetch), this 
+// event allows direct passing of a data Object via an event
+//
+exampleComponent.emit('synthetic-data', data);
 ```
 
 ###Usage

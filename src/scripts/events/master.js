@@ -100,6 +100,18 @@ EventTower.prototype.attachEvents = function() {
 
     /**
      *
+     * @event synthetic-data
+     * @param {Object} data
+     *
+     */
+    master.on('synthetic-data', (data) => {
+
+        viewModel.emit('data', data);
+
+    });
+
+    /**
+     *
      * @event data
      * @param {Object} data
      *
