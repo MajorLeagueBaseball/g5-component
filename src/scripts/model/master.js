@@ -40,16 +40,6 @@ function MasterModel(opts) {
     this.dataCache = {};
     this.dataFetch = null;
 
-    try {
-
-        this.extender = require('component-extender');
-
-    } catch (e) {
-
-        this.extender = require('./../component/extender');
-
-    }
-
     EventEmitter.call(this);
 
 }
@@ -126,8 +116,6 @@ MasterModel.prototype.fetch = function() {
      *
      */
     function handleSuccess(data={}) {
-
-        data = this.extender(data, opts);
 
         if (!isEqual(data, this.dataCache)) {
 

@@ -31,8 +31,6 @@ test('model-master test', function(t) {
         st.equal(typeof model.dataFetch, 'object', 'should have dataFetch property');
         st.equal(typeof model.instance, 'boolean', 'should have instance property');
 
-        st.ok(!!model.extender, 'model extender should be defined');
-
         st.end();
 
     });
