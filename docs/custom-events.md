@@ -76,6 +76,7 @@ EventTower.prototype.attachEvents = function() {
      */
     master.on('synthetic-data', (data) => {
 
+        master.emit('data', data);
         viewModel.emit('data', data);
 
     });
@@ -116,7 +117,7 @@ EventTower.prototype.attachEvents = function() {
      */
     viewModel.on('data', (data) => {
 
-        viewModel.refresh(data).bindComponent();
+        viewModel.bindComponent(data);
 
     });
 
