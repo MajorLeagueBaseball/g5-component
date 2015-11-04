@@ -2,10 +2,10 @@
 
 ###2.1.2
 
-# `model/viewModel` refactor
-# Moved data extender to viewModel layer
-# Docuentation for `synthetic-data` event
-# Updated tests
+* `model/viewModel` refactor
+* Moved data extender to viewModel layer
+* Docuentation for `synthetic-data` event
+* Updated tests
 
 ###2.1.1
 
