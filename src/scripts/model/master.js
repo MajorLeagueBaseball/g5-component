@@ -31,6 +31,7 @@ function MasterModel(opts) {
 
     this.opts = assign({
         interval: 40000,
+        enableFetch: true,
         enablePolling: true,
         path: ''
     }, opts);
@@ -64,7 +65,10 @@ util.inherits(MasterModel, EventEmitter);
  */
 MasterModel.prototype.init = function() {
 
-    if (!this.instance) {
+    let { instance } = this;
+    let { enableFetch } = this.opts;
+
+    if (enableFetch && !instance) {
 
         this.instance = true;
         this.fetch();
@@ -84,8 +88,8 @@ MasterModel.prototype.init = function() {
  */
 MasterModel.prototype.fetch = function() {
 
-    let _this = this;
-    let _opts = this.opts;
+    let { opts } = this;
+    let { path, enablePolling, interval } = opts;
 
     utils.log('fetch master model data');
 
@@ -123,16 +127,16 @@ MasterModel.prototype.fetch = function() {
      */
     function handleSuccess(data={}) {
 
-        data = _this.extender(data, _opts);
+        data = this.extender(data, opts);
 
-        if (!isEqual(data, _this.dataCache)) {
+        if (!isEqual(data, this.dataCache)) {
 
-            _this.dataCache = data;
-            _this.emit('data', data);
+            this.dataCache = data;
+            this.emit('data', data);
 
         }
 
-        _this.dataFetch = _opts.enablePolling && setTimeout(_this.fetch.bind(_this), _opts.interval);
+        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
     }
 
@@ -144,14 +148,14 @@ MasterModel.prototype.fetch = function() {
      */
     function handleError(err) {
 
-        _this.emit('data-error', err);
+        this.emit('data-error', err);
 
     }
 
-    fetch(_opts.path)
-        .then(handleData)
-        .then(handleSuccess)
-        .catch(handleError);
+    fetch(path)
+        .then(handleData.bind(this))
+        .then(handleSuccess.bind(this))
+        .catch(handleError.bind(this));
 
     return this;
 
@@ -166,7 +170,9 @@ MasterModel.prototype.fetch = function() {
  */
 MasterModel.prototype.start = function() {
 
-    this.dataFetch = !this.dataFetch && setTimeout(this.fetch, this.opts.interval);
+    let { interval } = this.opts;
+
+    this.dataFetch = !this.dataFetch && setTimeout(this.fetch, interval);
 
     return this;
 
