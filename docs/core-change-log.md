@@ -3,6 +3,7 @@
 ###2.1.1
 
 * Added `enableFetch` option
+* Added `synthetic-data` event
 * Added additional component helpers
 * General `model/viewModel/eventTower` refactor
 * Updated documentation
