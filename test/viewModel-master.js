@@ -33,6 +33,8 @@ test('viewModel-master test', function(t) {
         st.ok(!!viewModel.component, 'should have component JS defined');
         st.ok(!!viewModel.template, 'should have component Template defined');
         st.ok(!!viewModel.helpers, 'should have component Helpers defined');
+        st.ok(!!viewModel.partials, 'model partials should be defined');
+        st.ok(!!viewModel.extender, 'model extender should be defined');
 
         st.end();
 
@@ -45,7 +47,6 @@ test('viewModel-master test', function(t) {
         st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');
         st.equal(typeof viewModel.registerHelpers, 'function', 'should have registerHelpers method');
         st.equal(typeof viewModel.registerPartials, 'function', 'should have registerPartials method');
-        st.equal(typeof viewModel.refresh, 'function', 'should have refresh method');
         st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
         st.equal(typeof viewModel.onDataError, 'function', 'should have onDataError method');
         st.equal(typeof viewModel.hasInstance, 'function', 'should have hasInstance method');

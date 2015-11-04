@@ -44,6 +44,7 @@ function MasterViewModel(opts) {
         this.template = require('component-template');
         this.helpers = require('component-helpers');
         this.partials = require('component-partials');
+        this.extender = require('component-extender');
 
     } catch (e) {
 
@@ -51,6 +52,7 @@ function MasterViewModel(opts) {
         this.template = {};
         this.helpers = {};
         this.partials = {};
+        this.extender = {};
 
     }
 
@@ -104,8 +106,10 @@ MasterViewModel.prototype.init = function() {
  */
 MasterViewModel.prototype.addClass = function() {
 
-    this.container.className += ' ' + this.opts.css;
-    this.container.className += ' g5-component--is-' + this.opts.i18n || 'en';
+    let { css, i18n } = this.opts;
+
+    this.container.className += ' ' + css;
+    this.container.className += ' g5-component--is-' + i18n || 'en';
 
     if (this.active) {
         this.container.className += ' g5-component--is-visible';
@@ -181,30 +185,15 @@ MasterViewModel.prototype.registerPartials = function(partials = this.partials) 
 
 /**
  *
- * @method reresh
- * @param {Object} data
- * @returns {Object} this
- * @description refreshes data on viewModel
- *
- */
-MasterViewModel.prototype.refresh = function(data={}) {
-
-    utils.log('refreshing data on viewModel');
-
-    this.container.innerHTML = this.template(data);
-
-    return this;
-
-};
-
-/**
- *
  * @method bindComponent
+ * @param {Object} data
  * @returns {Object} this
  * @description attaches component specific functionality
  *
  */
-MasterViewModel.prototype.bindComponent = function() {
+MasterViewModel.prototype.bindComponent = function(data={}) {
+
+    data = this.extender(data, this.opts);
 
     if (!this.bound) {
 
@@ -213,6 +202,8 @@ MasterViewModel.prototype.bindComponent = function() {
         this.component.init(this.container);
 
     }
+
+    this.container.innerHTML = this.template(data);
 
     return this;
 
@@ -275,6 +266,8 @@ MasterViewModel.prototype.destroy = function() {
     this.component = null;
     this.template = null;
     this.helpers = null;
+    this.partials = null;
+    this.extender = null;
 
     this.container.outerHTML = '';
     this.container = null;
