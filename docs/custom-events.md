@@ -137,3 +137,4 @@ EventTower.prototype.attachEvents = function() {
 };
 
 module.exports = EventTower;
+```
