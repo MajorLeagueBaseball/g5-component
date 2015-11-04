@@ -202,12 +202,12 @@ exampleComponent.on('destroy', (obj) => {
 ###Usage
 
 ```js
-let linescoreComponent = g5Component({
+let exampleComponent = g5Component({
     container: document.querySelector('.g5-component--linescore'),
     css: 'g5-component--linescore-initiated', // class to add after instantiation
     interval: 15000, // polling interval
     path: '/src/data/linescore.json' // data path (local or remote)
 });
 
-linescoreComponent.init();
+exampleComponent.init();
 ```
