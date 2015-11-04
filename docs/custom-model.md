@@ -101,6 +101,7 @@ function MasterModel(opts) {
 
     this.opts = assign({
         interval: 40000,
+        enableFetch: true,
         enablePolling: true,
         path: ''
     }, opts);
@@ -118,8 +119,8 @@ util.inherits(MasterModel, g5Model);
  */
 MasterModel.prototype.fetch = function() {
 
-    let _this = this;
-    let _opts = this.opts;
+    let { opts } = this;
+    let { path, enablePolling, interval } = opts;
 
     /**
      *
@@ -155,44 +156,35 @@ MasterModel.prototype.fetch = function() {
      */
     function handleSuccess(data={}) {
 
-        // required for data extender/normalizer
-        data = _this.extender(data, _opts);
+        data = this.extender(data, opts);
 
-        // simple cache check
-        if (!isEqual(data, _this.dataCache)) {
+        if (!isEqual(data, this.dataCache)) {
 
-            _this.dataCache = data;
-
-            // this event will be picked up by the EventTower and passed to viewModel.refresh()
-            _this.emit('data', data);
+            this.dataCache = data;
+            this.emit('data', data);
 
         }
 
-        _this.dataFetch = _opts.enablePolling && setTimeout(_this.fetch.bind(_this), _opts.interval);
+        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
-    }
+    };
 
     /**
      *
      * @function handleError
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
     function handleError(err) {
 
-        _this.emit('data-error', err);
+        this.emit('data-error', err);
 
-    }
+    };
 
-    //
-    // TODO: mash up data, handle multiple paths in the options Object or remove that option and 
-    // abstract things away in the model
-    //
-
-    // fetch(_opts.path)
-        // .then(handleData)
-        // .then(handleSuccess)
-        // .catch(handleError);
+    fetch(path)
+        .then(handleData.bind(this))
+        .then(handleSuccess.bind(this))
+        .catch(handleError.bind(this));
 
     return this;
 

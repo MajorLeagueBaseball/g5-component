@@ -66,9 +66,7 @@ util.inherits(EventTower, g5EventTower);
  */
 EventTower.prototype.attachEvents = function() {
 
-    let _master = this.master;
-    let _model = this.model;
-    let _viewModel = this.viewModel;
+    let { master, model, viewModel } = this;
 
     /**
      *
@@ -76,23 +74,25 @@ EventTower.prototype.attachEvents = function() {
      * @param {Object} data
      *
      */
-    _model.on('data', function(data) {
+    model.on('data', (data) => {
 
-        _master.emit('data', data);
-        _viewModel.emit('data', data);
+        master.emit('data', data);
+        viewModel.emit('data', data);
 
     });
 
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
-    _model.on('data-error', function(err) {
+    model.on('data-error', (err) => {
 
-        _master.emit('data-error', err);
-        _viewModel.emit('data-error', err);
+        utils.log('error fetching model data :', err);
+
+        master.emit('data-error', err);
+        viewModel.emit('data-error', err);
 
     });
 
@@ -102,21 +102,21 @@ EventTower.prototype.attachEvents = function() {
      * @param {Object} data
      *
      */
-    _viewModel.on('data', function(data) {
+    viewModel.on('data', (data) => {
 
-        _viewModel.refresh(data).bindComponent();
+        viewModel.refresh(data).bindComponent();
 
     });
 
     /**
      *
      * @event data-error
-     * @param {Object} err
+     * @param {Number|Object} err
      *
      */
-    _viewModel.on('data-error', function(err) {
+    viewModel.on('data-error', (err) => {
 
-        _viewModel.onDataError(err);
+        viewModel.onDataError(err);
 
     });
 

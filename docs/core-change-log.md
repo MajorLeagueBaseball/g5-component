@@ -1,5 +1,12 @@
 #Change Log
 
+###2.1.1
+
+* Added `enableFetch` option
+* Added additional component helpers
+* General `model/viewModel/eventTower` refactor
+* Updated documentation
+
 ###2.1.0
 
 * Reverting back to LESS, for various reasons
