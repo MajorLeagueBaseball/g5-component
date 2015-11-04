@@ -11,6 +11,10 @@
 * [Custom viewModel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-viewModel.md)
 * [Custom Events](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-events.md)
 
+####Events
+
+* [Synthetic Data](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/events-synthetic-data.md)
+
 ####Notes
 
 * [Architecture](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-architecture.md)
