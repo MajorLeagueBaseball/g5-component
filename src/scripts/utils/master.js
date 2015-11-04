@@ -64,8 +64,7 @@ let utils = {
      */
     timestamp() {
 
-        let pad = utils.pad;
-        let months = utils.months;
+        let { pad, months } = utils;
         let d = new Date();
 
         let time = [
