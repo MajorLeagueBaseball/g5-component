@@ -20,9 +20,11 @@ const merge = require('lodash/object/merge');
  */
 function extender(data={}, opts={}) {
 
+    let { component } = opts;
     let { game } = data.data;
 
     return merge(data, {
+        component: component,
         data: {
             game: {
                 description: game.away_team_name + ' @ ' + game.home_team_name

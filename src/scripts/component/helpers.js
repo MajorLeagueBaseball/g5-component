@@ -25,7 +25,7 @@ let helpers = {
      */
     'upcase': function(s) {
 
-        return s.toUpperCase();
+        return s && s.toUpperCase();
 
     },
     /**

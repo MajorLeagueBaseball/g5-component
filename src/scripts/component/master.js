@@ -2,7 +2,8 @@
  *
  * @module component/master
  * @author Greg Babula
- * @description entry point for all component specific functionality
+ * @description entry point for all component specific functionality, jQuery and Bootstrap provided
+ * for example, however neither are required and only live on the component level
  *
  */
 
