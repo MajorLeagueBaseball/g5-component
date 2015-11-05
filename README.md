@@ -138,6 +138,7 @@ npm run minify-css
 
 A single shared options Object, easily add options and have them available throughout
 
+* `String` __component__ - component name
 * `Element` __container__ - primary container
 * `String` __css__ - classes to add after instantiation
 * `String` __i18n__ - localization
@@ -216,6 +217,7 @@ exampleComponent.emit('synthetic-data', data);
 
 ```js
 let exampleComponent = g5Component({
+    component: 'g5-component--linescore',
     container: document.querySelector('.g5-component--linescore'),
     css: 'g5-component--linescore-initiated',
     interval: 15000,
