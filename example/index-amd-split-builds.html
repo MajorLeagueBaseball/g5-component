@@ -10,7 +10,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="g5-component.js" />
 
-        <title>g5-component.js / AMD</title>
+        <title>g5-component.js / AMD / Split Builds</title>
 
         <!-- compiled CSS -->
         <link rel="stylesheet" href="/src/static/g5-component.css" />
@@ -35,6 +35,7 @@
             require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
 
                 var linescoreComponent = g5Component({
+                    component: 'g5-component--linescore',
                     container: document.querySelector('.g5-component--linescore'),
                     css: 'g5-component--linescore-initiated',
                     interval: 15000,
