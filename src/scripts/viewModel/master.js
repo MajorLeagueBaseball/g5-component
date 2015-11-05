@@ -10,6 +10,7 @@
 
 const util         = require('util');
 const assign       = require('lodash/object/assign');
+const isEqual      = require('lodash/lang/isEqual');
 const size         = require('lodash/collection/size');
 const forOwn       = require('lodash/object/forOwn');
 const utils        = require('./../utils/master');
@@ -33,6 +34,7 @@ function MasterViewModel(opts) {
     }, opts);
 
     this.container = this.opts.container;
+    this.dataCache = {};
 
     this.instance = false;
     this.active = false;
@@ -195,6 +197,13 @@ MasterViewModel.prototype.bindComponent = function(data={}) {
 
     data = this.extender(data, this.opts);
 
+    if (!isEqual(data, this.dataCache)) {
+
+        this.dataCache = data;
+        this.container.innerHTML = this.template(data);
+
+    }
+
     if (!this.bound) {
 
         this.bound = true;
@@ -202,8 +211,6 @@ MasterViewModel.prototype.bindComponent = function(data={}) {
         this.component.init(this.container);
 
     }
-
-    this.container.innerHTML = this.template(data);
 
     return this;
 
@@ -262,6 +269,8 @@ MasterViewModel.prototype.destroy = function() {
     this.instance = false;
     this.active = false;
     this.bound = false;
+
+    this.dataCache = {};
 
     this.component = null;
     this.template = null;
