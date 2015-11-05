@@ -88,7 +88,7 @@ function EventTower(master) {
 /**
  *
  * @method attachEvents
- * @description core attachEvents method, single location for all events
+ * @description core attachEvents method, attaches core and extender events
  * @returns {Object} this
  *
  */
@@ -98,70 +98,17 @@ EventTower.prototype.attachEvents = function() {
 
     utils.log('attach events');
 
-    /**
-     *
-     * @event synthetic-data
-     * @param {Object} data
-     *
-     */
-    master.on('synthetic-data', (data) => {
+    try {
 
-        master.emit('data', data);
-        viewModel.emit('data', data);
+        require('eventGroup')(master, model, viewModel);
+        require('eventGroupExtender')(master, model, viewModel);
 
-    });
+    } catch (e) {
 
-    /**
-     *
-     * @event data
-     * @param {Object} data
-     *
-     */
-    model.on('data', (data) => {
+        require('./group/group')(master, model, viewModel);
+        require('./group/extender')(master, model, viewModel);
 
-        master.emit('data', data);
-        viewModel.emit('data', data);
-
-    });
-
-    /**
-     *
-     * @event data-error
-     * @param {Number|Object} err
-     *
-     */
-    model.on('data-error', (err) => {
-
-        utils.log('error fetching model data :', err);
-
-        master.emit('data-error', err);
-        viewModel.emit('data-error', err);
-
-    });
-
-    /**
-     *
-     * @event data
-     * @param {Object} data
-     *
-     */
-    viewModel.on('data', (data) => {
-
-        viewModel.bindComponent(data);
-
-    });
-
-    /**
-     *
-     * @event data-error
-     * @param {Number|Object} err
-     *
-     */
-    viewModel.on('data-error', (err) => {
-
-        viewModel.onDataError(err);
-
-    });
+    }
 
     return this;
 
