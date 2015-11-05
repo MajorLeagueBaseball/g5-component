@@ -1,5 +1,14 @@
 #Change Log
 
+###2.1.3
+
+* `EventTower` refactor
+* Added `eventGroup` and `eventGroupExtender`
+* Added `component` option
+* Added simple data cache to the viewModel
+* Updated documentation 
+* Updated examples
+
 ###2.1.2
 
 * `model/viewModel` refactor
