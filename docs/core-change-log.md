@@ -1,5 +1,9 @@
 #Change Log
 
+###2.1.4
+
+* Updated `babel-tape-runner` dependency, staying at 1.2 to avoid issues
+
 ###2.1.3
 
 * `EventTower` refactor
