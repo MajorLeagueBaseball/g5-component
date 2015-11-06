@@ -102,7 +102,7 @@
     "readable-stream": "^1.0.33"
   },
   "devDependencies": {
-    "babel-tape-runner": "^1.1.0",
+    "babel-tape-runner": "~1.2.0",
     "clean-css": "^3.4.2",
     "ghooks": "^0.3.2",
     "http-server": "^0.8.0",
