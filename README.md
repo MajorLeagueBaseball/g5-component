@@ -12,7 +12,7 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 * scalable, well tested architecture
 * ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
 * Tape unit tests via [babel-tape-runner](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
-* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60) in favor of Gulp/Grunt
+* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L63) in favor of Gulp/Grunt
 * minimal, consistent code with [JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16) throughout
 * completely self-contained, can be used as a scaffold or module
 * UMD support
