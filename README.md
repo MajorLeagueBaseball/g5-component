@@ -7,22 +7,23 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 
 ---
 
-* [event based](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js), scalable, well tested architecture
+* [event based](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js)
+* [well documented](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation)
+* scalable, well tested architecture
 * ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
-* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60) in favor of Gulp/Grunt
-* clean, [well documented](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation) ([JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16))
-* consistent code and methodologies
-* can be used as a scaffold or module
-* completely self-contained, environment agnostic code (UMD)
 * Tape unit tests via [babel-tape-runner](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
-* Style guide ([Airbnb](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)) validation, JS lint, and test [on commit](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L57)
-* [Image compression](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L64)
-* [BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-* [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html)
+* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60) in favor of Gulp/Grunt
+* minimal, consistent code with [JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16) throughout
+* completely self-contained, can be used as a scaffold or module
+* UMD support
+* Style guide ([Airbnb](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)) validation, JS lint, and test [on commit](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60)
+* [Image compression](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
+* [BEM syntax](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)
+* [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html) with [helpers](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js) and [partials](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)
 * [LoDash](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L12)
 * [LESS](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)
-* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.less)
-* [jQuery](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L101)
+* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.less) (_optional_)
+* [jQuery](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L100) (_optional_)
 
 ---
 
@@ -68,7 +69,7 @@ npm run start
 
 ###Commands
 
-####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L66)
+####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L69)
 
 > Bundle build, without vendor dependencies
 
@@ -76,7 +77,7 @@ npm run start
 npm run build-js
 ```
 
-####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
+####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L70)
 
 > Vendor build (Bootstrap, jQuery, LoDash, etc...)
 
@@ -84,7 +85,7 @@ npm run build-js
 npm run build-js-vendor
 ```
 
-####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L68)
+####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L71)
 
 > Full build, including vendor and bundle
 
@@ -92,7 +93,7 @@ npm run build-js-vendor
 npm run build-js-full
 ```
 
-####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L73)
+####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L75)
 
 > Full build, including vendor, bundle and CSS
 
@@ -100,7 +101,7 @@ npm run build-js-full
 npm run build
 ```
 
-####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
+####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L82)
 
 > babel-tape-runner test
 
@@ -108,7 +109,7 @@ npm run build
 npm test
 ```
 
-####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L64)
+####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
 
 > compresses all images in src/images/ and outputs to src/images/build
 
@@ -124,7 +125,7 @@ npm run compress-images
 npm run lint
 ```
 
-####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L78)
+####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
 
 > minifies CSS via cleancss
 
