@@ -23,14 +23,13 @@ function extender(data={}, opts={}) {
     let { component } = opts;
     let { game } = data.data;
 
-    return merge(data, {
+    return {
         component: component,
-        data: {
-            game: {
-                description: game.away_team_name + ' @ ' + game.home_team_name
-            }
-        }
-    });
+        game: merge(game, {
+            description: game.away_team_name + ' @ ' + game.home_team_name
+        }),
+        copyright: data.copyright
+    };
 
 }
 
