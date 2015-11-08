@@ -3,50 +3,42 @@
     Examples Included:
 
         01) BEM class names
-        02) Bootstrap widgets
-        03) Handlebars helpers (upcase helper with plain String and variable)
-        04) Handlebars partials (button partial example)
-        05) Data binding, including variable from component-extender (description)
+        02) Bootstrap widget (tooltip on game media)
+        03) Handlebars helpers (upcase, ifAnd)
+        04) Handlebars partials (game-media partial)
+        05) Data binding, data from the component extender
 
 -->
 
-<h3 class="g5-component--linescore__title">Bootstrap Widget Example</h3>
+<h3 class="{{ component }}__title">Linescore</h3>
 
-{{> button }}
-{{> button }}
-{{> button }}
+<section class="{{ component }}__linescore">
+    {{#if game}}
+        <dl>
+            <dt class="{{ component }}__key"><strong>Home Team</strong></dt>
+            <dd class="{{ component }}__value">{{ upcase game.home_team_name }}</dd>
 
-<h3 class="g5-component--linescore__title">Linescore</h3>
+            <dt class="{{ component }}__key"><strong>Location</strong></dt>
+            <dd class="{{ component }}__value">{{ game.location }}</dd>
 
-<section class="g5-component--linescore__linescore">
-    {{#if data.game}}
-        {{#with data.game}}
-            <dl>
-                <dt class="g5-component--linescore__key"><strong>Home Team</strong></dt>
-                <dd class="g5-component--linescore__value">{{ upcase home_team_name }}</dd>
+            <dt class="{{ component }}__key"><strong>Game Date</strong></dt>
+            <dd class="{{ component }}__value">{{ game.original_date }}</dd>
 
-                <dt class="g5-component--linescore__key"><strong>Location</strong></dt>
-                <dd class="g5-component--linescore__value">{{ location }}</dd>
+            <dt class="{{ component }}__key"><strong>Game Description</strong></dt>
+            <dd class="{{ component }}__value">{{ game.description }}</dd>
 
-                <dt class="g5-component--linescore__key"><strong>Game Date</strong></dt>
-                <dd class="g5-component--linescore__value">{{ original_date }}</dd>
+            <dt class="{{ component }}__key"><strong>Game Time</strong></dt>
+            <dd class="{{ component }}__value">{{ game.time }}</dd>
 
-                <dt class="g5-component--linescore__key"><strong>Game Description</strong></dt>
-                <dd class="g5-component--linescore__value">{{ description }}</dd>
-
-                <dt class="g5-component--linescore__key"><strong>Game Time</strong></dt>
-                <dd class="g5-component--linescore__value">{{ time }}</dd>
-
-                <dt class="g5-component--linescore__key"><strong>Game Media</strong></dt>
-                <dd class="g5-component--linescore__value">
-                    {{#if game_media.media.thumbnail}}
-                        {{#with game_media.media}}
-                            <img src="{{ thumbnail }}" class="g5-component--linescore__media" alt="{{ title }}" />
-                        {{/with}}
-                    {{/if}}
+            {{#ifAnd game.game_media game.game_media.media}}
+                <dt class="{{ component }}__key"><strong>Game Media</strong></dt>
+                <dd class="{{ component }}__value">
+                    {{#with game.game_media.media}}
+                        {{> game-media component=../component }}
+                    {{/with}}
                 </dd>
-            </dl>
-        {{/with}}
+            {{/ifAnd}}
+        </dl>
     {{/if}}
 
     <article>

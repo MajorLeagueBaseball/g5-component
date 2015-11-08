@@ -16,7 +16,7 @@
  *
  */
 let partials = {
-    'button': require('../../template/partials/button.html')
+    'game-media': require('../../template/partials/game-media.html')
 };
 
 module.exports = partials;
