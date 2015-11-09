@@ -4,7 +4,7 @@ Using a custom model on the component level.
 
 #### package.json
 
-In package.json on the component level, set browser.model to false, add a reference to the scaffold's model, and add your custom model reference to aliasify.
+In package.json on the component level, set `browser.model` to false, add a reference to the scaffold's model, and add your custom model reference to aliasify.
 
 ```json
 "browser": {

@@ -4,7 +4,7 @@ Extending the core events with additional custom events
 
 #### package.json
 
-In `package.json` on the component level, set browser.eventGroupExtender to false, and add your custom eventGroupExtender reference to aliasify. For simplicity, try to maintain the same directory structure as the scaffold.
+In `package.json` on the component level, set `browser.eventGroupExtender` to false, and add your custom eventGroupExtender reference to aliasify. For simplicity, try to maintain the same directory structure as the scaffold.
 
 ```json
 "browser": {

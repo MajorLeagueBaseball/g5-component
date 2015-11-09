@@ -1,5 +1,12 @@
 #Change Log
 
+###2.1.5
+
+* Adjusted `viewModel`
+* Adjusted `component` instance, passing in the viewModel for reference
+* Revised example component
+* Updated documentation
+
 ###2.1.4
 
 * Updated `babel-tape-runner` dependency, staying at 1.2 to avoid issues

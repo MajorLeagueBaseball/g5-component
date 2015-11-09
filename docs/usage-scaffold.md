@@ -6,7 +6,7 @@ A [linescore component](https://github.com/MajorLeagueBaseball/g5-component/tree
 
 ####CommonJS
 
-> Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs.js
+> Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs.js (not implemented by default)
 
 ```js
 /**
@@ -22,6 +22,7 @@ const g5Component = require('./g5-component');
 window.onload = () => {
 
     let linescoreComponent = g5Component({
+        component: 'g5-component--linescore',
         container: document.querySelector('.g5-component--linescore'),
         css: 'g5-component--linescore-initiated',
         interval: 15000,
@@ -36,6 +37,7 @@ window.onload = () => {
 ```html
 <section class="g5-component g5-component--linescore"></section>
 
+<!-- bundled JS -->
 <script src="/src/static/g5-component-cjs.js"></script>
 ```
 
@@ -49,6 +51,7 @@ window.onload = () => {
     require(['src/static/g5-component'], function(g5Component) {
 
         var linescoreComponent = g5Component({
+            component: 'g5-component--linescore',
             container: document.querySelector('.g5-component--linescore'),
             css: 'g5-component--linescore-initiated',
             interval: 15000,
@@ -67,11 +70,13 @@ window.onload = () => {
 ```html
 <section class="g5-component g5-component--linescore"></section>
 
+<!-- bundled JS -->
 <script src="/src/static/g5-component.js"></script>
 
 <script>
 
     var linescoreComponent = g5Component({
+        component: 'g5-component--linescore',
         container: document.querySelector('.g5-component--linescore'),
         css: 'g5-component--linescore-initiated',
         interval: 15000,
@@ -87,7 +92,7 @@ window.onload = () => {
 
 ####CommonJS
 
-> Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs-bundle.js
+> Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs-bundle.js (not implemented by default)
 
 ```js
 /**
@@ -103,6 +108,7 @@ const g5Component = require('./g5-component');
 window.onload = () => {
 
     let linescoreComponent = g5Component({
+        component: 'g5-component--linescore',
         container: document.querySelector('.g5-component--linescore'),
         css: 'g5-component--linescore-initiated',
         interval: 15000,
@@ -117,6 +123,7 @@ window.onload = () => {
 ```html
 <section class="g5-component g5-component--linescore"></section>
 
+<!-- bundled JS -->
 <script src="/src/static/g5-component-vendor.js"></script>
 <script src="/src/static/g5-component-cjs-bundle.js"></script>
 ```
@@ -138,6 +145,7 @@ window.onload = () => {
     require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
 
         var linescoreComponent = g5Component({
+            component: 'g5-component--linescore',
             container: document.querySelector('.g5-component--linescore'),
             css: 'g5-component--linescore-initiated',
             interval: 15000,
@@ -156,12 +164,14 @@ window.onload = () => {
 ```html
 <section class="g5-component g5-component--linescore"></section>
 
+<!-- bundled JS -->
 <script src="/src/static/g5-component-vendor.js"></script>
 <script src="/src/static/g5-component-bundle.js"></script>
 
 <script>
 
     var linescoreComponent = g5Component({
+        component: 'g5-component--linescore',
         container: document.querySelector('.g5-component--linescore'),
         css: 'g5-component--linescore-initiated',
         interval: 15000,
