@@ -208,7 +208,7 @@ MasterViewModel.prototype.bindComponent = function(data={}) {
 
         this.bound = true;
         this.addG5Attributes();
-        this.component.init(this.container);
+        this.component.init(this);
 
     }
 
