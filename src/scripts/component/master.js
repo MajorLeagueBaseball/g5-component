@@ -17,24 +17,29 @@ require('bootstrap/js/tooltip');
 /**
  *
  * @name component
- * @description init, render, addEvents, and destroy methods are required for consistency
+ * @description init, render, addEvents, and destroy methods are required for consistency.
+ * The parent viewModel is passed in as a reference, for external communication events can
+ * be emitted via the parent
  *
  */
 let component = {
-    $element: undefined,
     /**
      *
      * @method init
-     * @param {Element} el
+     * @param {Object} parent viewModel
      * @returns {Object} this
-     * @description instantiates component
+     * @description instantiates component with a reference to the parent viewModel, properties on
+     * the parent reference should never be modified in any way
      *
      */
-    init(el) {
+    init(parent) {
 
-        el = el || document.querySelector('.g5-component');
+        let { opts, container } = parent;
 
-        this.$element = $(el);
+        this.opts = opts;
+        this.parent = parent;
+        this.$element = $(container);
+
         this.render().addEvents();
 
         return this;
@@ -60,7 +65,7 @@ let component = {
      *
      * @method addEvents
      * @returns {Object} this
-     * @description attaches component events, events should be delegated from primary element
+     * @description attaches component events, event listeners should be delegated from primary element
      *
      */
     addEvents() {
