@@ -156,8 +156,6 @@ MasterModel.prototype.fetch = function() {
      */
     function handleSuccess(data={}) {
 
-        data = this.extender(data, opts);
-
         if (!isEqual(data, this.dataCache)) {
 
             this.dataCache = data;
