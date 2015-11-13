@@ -165,7 +165,7 @@ MasterModel.prototype.fetch = function() {
 
         this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
-    };
+    }
 
     /**
      *
@@ -177,7 +177,7 @@ MasterModel.prototype.fetch = function() {
 
         this.emit('data-error', err);
 
-    };
+    }
 
     fetch(path)
         .then(handleData.bind(this))
