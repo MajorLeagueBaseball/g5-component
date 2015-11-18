@@ -1,5 +1,10 @@
 #Change Log
 
+###2.1.6
+
+* `model` refactor and bug fixes
+* Updated documentation
+
 ###2.1.5
 
 * Adjusted `viewModel`
