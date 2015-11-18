@@ -55,6 +55,7 @@ function MasterModel(opts) {
 
     this.opts = assign({
         interval: 40000,
+        enableFetch: true,
         enablePolling: true,
         path: ''
     }, opts);
@@ -163,8 +164,6 @@ MasterModel.prototype.fetch = function() {
 
         }
 
-        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
-
     }
 
     /**
@@ -183,6 +182,8 @@ MasterModel.prototype.fetch = function() {
         .then(handleData.bind(this))
         .then(handleSuccess.bind(this))
         .catch(handleError.bind(this));
+
+    this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
     return this;
 
