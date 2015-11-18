@@ -124,8 +124,6 @@ MasterModel.prototype.fetch = function() {
 
         }
 
-        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
-
     }
 
     /**
@@ -145,6 +143,8 @@ MasterModel.prototype.fetch = function() {
         .then(handleSuccess.bind(this))
         .catch(handleError.bind(this));
 
+    this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
+
     return this;
 
 };
@@ -160,7 +160,7 @@ MasterModel.prototype.start = function() {
 
     let { interval } = this.opts;
 
-    this.dataFetch = !this.dataFetch && setTimeout(this.fetch, interval);
+    this.dataFetch = setTimeout(this.fetch.bind(this), interval);
 
     return this;
 
