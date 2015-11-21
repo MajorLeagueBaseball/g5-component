@@ -81,7 +81,7 @@ npm run start
 | `path`             | `String`   | data path to fetch                        | `''`              |
 | `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
 | `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
-| `extendListeners`` | `Function` | callback Function executed after all event listeners have been added (element is passed in as a parameter) | `undefined` |
+| `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
 
 ###Methods
 
