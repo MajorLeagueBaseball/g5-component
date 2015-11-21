@@ -7,12 +7,12 @@ Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBas
 
 ---
 
+* ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
+* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L63) in favor of Gulp/Grunt
 * [event based](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js)
 * [well documented](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation)
 * scalable, well tested architecture
-* ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
 * Tape unit tests via [babel-tape-runner](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
-* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L63) in favor of Gulp/Grunt
 * minimal, consistent code with [JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16) throughout
 * completely self-contained, can be used as a scaffold or module
 * UMD support
@@ -67,86 +67,20 @@ npm run start
 
 ---
 
-###Commands
-
-####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L69)
-
-> Bundle build, without vendor dependencies
-
-```
-npm run build-js
-```
-
-####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L70)
-
-> Vendor build (Bootstrap, jQuery, LoDash, etc...)
-
-```
-npm run build-js-vendor
-```
-
-####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L71)
-
-> Full build, including vendor and bundle
-
-```
-npm run build-js-full
-```
-
-####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L75)
-
-> Full build, including vendor, bundle and CSS
-
-```
-npm run build
-```
-
-####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L82)
-
-> babel-tape-runner test
-
-```
-npm test
-```
-
-####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
-
-> compresses all images in src/images/ and outputs to src/images/build
-
-```
-npm run compress-images
-```
-
-####[lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L84)
-
-> JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
-
-```
-npm run lint
-```
-
-####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
-
-> minifies CSS via cleancss
-
-```
-npm run minify-css
-```
-
----
-
 ###Options
 
-A single shared options Object, easily add options and have them available throughout
+> A single shared options `Object`
 
-* `String` __component__ - component name
-* `Element` __container__ - primary container
-* `String` __css__ - classes to add after instantiation
-* `String` __i18n__ - localization
-* `Number` __interval__ - polling interval (ms)
-* `String` __path__ - data path to fetch (remote/local)
-* `Boolean` __enableFetch__ - flag to enable/disable initial data fetch (true by default)
-* `Boolean` __enablePolling__ - flag to enable/disable data polling (true by default)
+| Option          | Type      | Description                               | Default           |
+|:----------------|:----------|:------------------------------------------|:------------------|
+| `component`     | `String`  | component name/class                      | `g5-component--*` |
+| `container`     | `Element` | primary container                         | `''`              |
+| `css`           | `String`  | classes to add after instantiation        | `g5-component`    |
+| `i18n`          | `String`  | localization                              | `en`              |
+| `interval`      | `Number`  | polling interval                          | `40000`           |
+| `path`          | `String`  | data path to fetch                        | `''`              |
+| `enableFetch`   | `Boolean` | flag to enable/disable initial data fetch | `true`            |
+| `enablePolling` | `Boolean` | flag to enable/disable data polling       | `true`            |
 
 ###Methods
 
@@ -226,4 +160,91 @@ let exampleComponent = g5Component({
 });
 
 exampleComponent.init();
+```
+
+---
+
+###Commands
+
+####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L69)
+
+> Bundle build, without vendor dependencies
+
+```
+npm run build-js
+```
+
+####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L70)
+
+> Vendor build (Bootstrap, jQuery, LoDash, etc...)
+
+```
+npm run build-js-vendor
+```
+
+####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L71)
+
+> Full build, including vendor and bundle
+
+```
+npm run build-js-full
+```
+
+####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L75)
+
+> Full build, including vendor, bundle and CSS
+
+```
+npm run build
+```
+
+####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L82)
+
+> babel-tape-runner test
+
+```
+npm test
+```
+
+####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
+
+> compresses all images in src/images/ and outputs to src/images/build
+
+```
+npm run compress-images
+```
+
+####[lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L84)
+
+> JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
+
+```
+npm run lint
+```
+
+####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
+
+> minifies CSS via cleancss
+
+```
+npm run minify-css
+```
+
+---
+
+```
+                 
+                 
+                 
+                 
+ ██████╗ ███████╗
+██╔════╝ ██╔════╝
+██║  ███╗███████╗
+██║   ██║╚════██║
+╚██████╔╝███████║
+ ╚═════╝ ╚══════╝
+                 
+                 
+                 
+                 
 ```
