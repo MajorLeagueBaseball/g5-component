@@ -74,7 +74,7 @@ npm run start
 | Option          | Type      | Description                               | Default           |
 |:----------------|:----------|:------------------------------------------|:------------------|
 | `component`     | `String`  | component name/class                      | `g5-component--*` |
-| `container`     | `Element` | primary container                         | `''`              |
+| `container`     | `Element` | primary container                         | `undefined`       |
 | `css`           | `String`  | classes to add after instantiation        | `g5-component`    |
 | `i18n`          | `String`  | localization                              | `en`              |
 | `interval`      | `Number`  | polling interval                          | `40000`           |
@@ -233,18 +233,22 @@ npm run minify-css
 ---
 
 ```
-                 
-                 
-                 
-                 
- ██████╗ ███████╗
-██╔════╝ ██╔════╝
-██║  ███╗███████╗
-██║   ██║╚════██║
-╚██████╔╝███████║
- ╚═════╝ ╚══════╝
-                 
-                 
-                 
-                 
+                                                                                                         
+                                                                                                         
+                                                                                                         
+                                                                                                         
+                                                                                                         
+            ______
+            _\ _~-\___
+    =  = ==(____G5____D
+                \_____\___________________,-~~~~~~~`-.._
+                /     o O o o o o O O o o o o o o O o  |\_
+                `~-.__        ___..----..                  )
+                      `---~~\___________/------------`````
+                      =  ===(_________D
+                                                                                                         
+                                                                                                         
+                                                                                                         
+                                                                                                         
+                                                                                                         
 ```
