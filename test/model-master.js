@@ -8,11 +8,11 @@
 
 'use strict';
 
-const test          = require('tape');
-const MasterModel   = require('./../src/scripts/model/master');
-const EventEmitter  = require('events').EventEmitter;
+const test         = require('tape');
+const MasterModel  = require('./../src/scripts/model/master');
+const EventEmitter = require('events').EventEmitter;
 
-test('model-master test', function(t) {
+test('model-master test', (t) => {
 
     t.plan(7);
 
@@ -20,13 +20,16 @@ test('model-master test', function(t) {
         path: '/src/data/linescore.json'
     });
 
-    t.ok(model instanceof MasterModel, 'model should have instance of MasterModel');
-    t.ok(model instanceof EventEmitter, 'model should have instance of EventEmitter');
+    t.ok(model instanceof MasterModel, 'should have instance of MasterModel');
+    t.ok(model instanceof EventEmitter, 'should have instance of EventEmitter');
 
-    t.test('model should have expected properties', function(st) {
+    t.test('model should have expected properties', (st) => {
 
         st.equal(typeof model.opts, 'object', 'should have opts object');
-        st.equal(typeof model.opts.enablePolling, 'boolean', 'should have enablePolling property in opts object');
+        st.equal(typeof model.opts.interval, 'number', 'should have interval option');
+        st.equal(typeof model.opts.enablePolling, 'boolean', 'should have enablePolling option');
+        st.equal(typeof model.opts.enableFetch, 'boolean', 'should have enableFetch option');
+        st.equal(typeof model.opts.path, 'string', 'should have path option');
         st.equal(typeof model.dataCache, 'object', 'should have dataCache property');
         st.equal(typeof model.dataFetch, 'object', 'should have dataFetch property');
         st.equal(typeof model.instance, 'boolean', 'should have instance property');
@@ -35,7 +38,7 @@ test('model-master test', function(t) {
 
     });
 
-    t.test('model should have expected methods', function(st) {
+    t.test('model should have expected methods', (st) => {
 
         st.equal(typeof model.init, 'function', 'should have init method');
         st.equal(typeof model.fetch, 'function', 'should have fetch method');
@@ -47,7 +50,7 @@ test('model-master test', function(t) {
 
     });
 
-    t.test('model should have events', function(st) {
+    t.test('model should have events', (st) => {
 
         st.ok(model._events, 'model should have events Object');
 
@@ -55,7 +58,7 @@ test('model-master test', function(t) {
 
     });
 
-    t.test('init should create instance and poll data', function(st) {
+    t.test('init should create instance', (st) => {
 
         model.init();
 
@@ -65,7 +68,7 @@ test('model-master test', function(t) {
 
     });
 
-    t.test('destroy should invalidate instance', function(st) {
+    t.test('destroy should invalidate instance', (st) => {
 
         model.destroy();
 

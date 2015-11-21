@@ -12,7 +12,7 @@ const test         = require('tape');
 const g5Component  = require('./../src/scripts/g5-component');
 const EventEmitter = require('events').EventEmitter;
 
-test('g5-component core test', function(t) {
+test('g5-component core test', (t) => {
 
     t.plan(3);
 
@@ -25,7 +25,7 @@ test('g5-component core test', function(t) {
 
     t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventeEmitter');
 
-    t.test('g5Component should have expected properties', function(st) {
+    t.test('g5Component should have expected properties', (st) => {
 
         st.ok(!!linescoreComponent.model, 'should have model');
         st.ok(!!linescoreComponent.viewModel, 'should have viewModel');
@@ -38,7 +38,7 @@ test('g5-component core test', function(t) {
 
     });
 
-    t.test('g5Component should have expected methods', function(st) {
+    t.test('g5Component should have expected methods', (st) => {
 
         st.equal(typeof linescoreComponent.init, 'function', 'should have init method');
         st.equal(typeof linescoreComponent.hasInstance, 'function', 'should have hasInstance method');

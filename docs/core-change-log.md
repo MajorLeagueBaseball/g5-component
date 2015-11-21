@@ -3,6 +3,7 @@
 ###2.1.7 (upcoming release)
 
 * Added `extendListeners` option
+* Test cleanup
 * Updated documentation
 
 ###2.1.6 (current release)

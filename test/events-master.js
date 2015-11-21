@@ -11,7 +11,7 @@
 const test       = require('tape');
 const EventTower = require('./../src/scripts/events/master');
 
-test('events-master test', function(t) {
+test('events-master test', (t) => {
 
     t.plan(3);
 
@@ -19,7 +19,7 @@ test('events-master test', function(t) {
 
     t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 
-    t.test('eventTower should have expected properties', function(st) {
+    t.test('eventTower should have expected properties', (st) => {
 
         st.equal(typeof eventTower.model, 'object', 'should have model reference');
         st.equal(typeof eventTower.viewModel, 'object', 'should have viewModel reference');
@@ -28,7 +28,7 @@ test('events-master test', function(t) {
 
     });
 
-    t.test('eventTower should have expected methods', function(st) {
+    t.test('eventTower should have expected methods', (st) => {
 
         st.equal(typeof eventTower.attachEvents, 'function', 'should have attachEvents method');
         st.equal(typeof eventTower.detachEvents, 'function', 'should have detachEvents method');
