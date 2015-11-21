@@ -1,6 +1,11 @@
 #Change Log
 
-###2.1.6
+###2.1.7 (upcoming release)
+
+* Added `extendListeners` option
+* Updated documentation
+
+###2.1.6 (current release)
 
 * `model` refactor and bug fixes
 * Updated documentation

@@ -71,16 +71,17 @@ npm run start
 
 > A single shared options `Object`
 
-| Option          | Type      | Description                               | Default           |
-|:----------------|:----------|:------------------------------------------|:------------------|
-| `component`     | `String`  | component name/class                      | `g5-component--*` |
-| `container`     | `Element` | primary container                         | `undefined`       |
-| `css`           | `String`  | classes to add after instantiation        | `g5-component`    |
-| `i18n`          | `String`  | localization                              | `en`              |
-| `interval`      | `Number`  | polling interval                          | `40000`           |
-| `path`          | `String`  | data path to fetch                        | `''`              |
-| `enableFetch`   | `Boolean` | flag to enable/disable initial data fetch | `true`            |
-| `enablePolling` | `Boolean` | flag to enable/disable data polling       | `true`            |
+| Option             | Type       | Description                               | Default           |
+|:-------------------|:-----------|:------------------------------------------|:------------------|
+| `component`        | `String`   | component name/class                      | `g5-component--*` |
+| `container`        | `Element`  | primary container                         | `undefined`       |
+| `css`              | `String`   | classes to add after instantiation        | `g5-component`    |
+| `i18n`             | `String`   | localization                              | `en`              |
+| `interval`         | `Number`   | polling interval                          | `40000`           |
+| `path`             | `String`   | data path to fetch                        | `''`              |
+| `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
+| `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
+| `extendListeners`` | `Function` | callback Function executed after all event listeners have been added (element is passed in as a parameter) | `undefined` |
 
 ###Methods
 

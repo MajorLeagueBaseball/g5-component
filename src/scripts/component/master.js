@@ -9,8 +9,9 @@
 
 'use strict';
 
-const $     = global.jQuery = require('jquery');
-const utils = require('./../utils/master');
+const $          = global.jQuery = require('jquery');
+const utils      = require('./../utils/master');
+const isFunction = require('lodash/lang/isFunction');
 
 require('bootstrap/js/tooltip');
 
@@ -35,12 +36,13 @@ let component = {
     init(parent) {
 
         let { opts, container } = parent;
+        let { extendListeners } = opts;
 
         this.opts = opts;
         this.parent = parent;
         this.$element = $(container);
 
-        this.render().addEvents();
+        this.render().addEvents(extendListeners);
 
         return this;
 
@@ -68,7 +70,7 @@ let component = {
      * @description attaches component events, event listeners should be delegated from primary element
      *
      */
-    addEvents() {
+    addEvents(cb) {
 
         /**
          *
@@ -82,6 +84,10 @@ let component = {
             utils.log('list title click', e);
 
         });
+
+        if (isFunction(cb)) {
+            cb(this.$element[0]);
+        }
 
         return this;
 
