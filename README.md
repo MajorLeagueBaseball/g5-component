@@ -1,4 +1,4 @@
-#g5-component.js
+#[g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
 Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation))
 
