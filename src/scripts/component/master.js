@@ -66,6 +66,7 @@ let component = {
     /**
      *
      * @method addEvents
+     * @param {Function} cb
      * @returns {Object} this
      * @description attaches component events, event listeners should be delegated from primary element
      *
