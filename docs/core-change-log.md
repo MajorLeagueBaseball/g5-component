@@ -3,8 +3,10 @@
 ###2.1.7 (upcoming release)
 
 * Added `extendListeners` option
+* Fixed issue where aliasify was being alphabetically ordered before babelify, causing an error (WIP)
 * Test cleanup
 * Updated documentation
+* Updated NPM scripts
 
 ###2.1.6 (current release)
 
