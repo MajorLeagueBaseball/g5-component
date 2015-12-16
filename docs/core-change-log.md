@@ -5,6 +5,8 @@
 * Added `extendListeners` option
 * Fixed issue where aliasify was being alphabetically ordered before babelify, causing an error (WIP)
 * Changed `watch-js` task, using `nodemon` instead of `watchify` because of bundle-size issues [issue #14](https://github.com/MajorLeagueBaseball/g5-component/issues/14)
+* Updated `addClass` method in the `viewModel`
+* Fixed issue where the error class was being added multiple times
 * Test cleanup
 * Updated documentation
 * Updated NPM scripts

@@ -110,11 +110,11 @@ MasterViewModel.prototype.addClass = function() {
 
     let { css, i18n } = this.opts;
 
-    this.container.className += ' ' + css;
-    this.container.className += ' g5-component--is-' + i18n || 'en';
+    this.container.classList.add(css);
+    this.container.classList.add('g5-component--is-' + i18n || 'en');
 
     if (this.active) {
-        this.container.className += ' g5-component--is-visible';
+        this.container.classList.add('g5-component--is-visible');
     }
 
     return this;
@@ -228,7 +228,7 @@ MasterViewModel.prototype.onDataError = function(err) {
 
     utils.log('error: ' + err);
 
-    this.container.className += ' g5-component--is-error';
+    this.container.classList.add('g5-component--is-error');
 
     return this;
 
