@@ -76,7 +76,7 @@
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
-    "watch-js": "watchify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/g5-component.js --s 'g5-component' -o src/static/g5-component-bundle.js -dv",
+    "watch-js": "nodemon --debug --watch src/scripts/ --exec 'npm run build-js'",
     "watch-css": "nodemon -e less -x 'npm run build-css'",
     "minify-css": "cleancss --source-map -d -o src/static/g5-component-min.css src/static/g5-component.css",
     "watch": "npm run watch-js & npm run watch-css",
