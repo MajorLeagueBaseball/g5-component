@@ -115,7 +115,6 @@
     "nodemon": "^1.5.0",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
-    "uglify-js": "^2.4.16",
-    "watchify": "^2.2.1"
+    "uglify-js": "^2.4.16"
   }
 }
