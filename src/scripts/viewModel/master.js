@@ -42,7 +42,7 @@ function MasterViewModel(opts) {
 
     try {
 
-        this.component = require('component');
+        this.component = require('component')(this);
         this.template = require('component-template');
         this.helpers = require('component-helpers');
         this.partials = require('component-partials');
@@ -208,7 +208,7 @@ MasterViewModel.prototype.bindComponent = function(data={}) {
 
         this.bound = true;
         this.addG5Attributes();
-        this.component.init(this);
+        this.component.init(this.dataCache);
 
     }
 
