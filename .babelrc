@@ -1,3 +1,5 @@
 {
-  "ignore": false
+  "ignore": [
+    "bower_components"
+  ]
 }
