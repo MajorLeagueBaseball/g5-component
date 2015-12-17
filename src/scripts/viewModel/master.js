@@ -110,11 +110,11 @@ MasterViewModel.prototype.addClass = function() {
 
     let { css, i18n } = this.opts;
 
-    this.container.classList.add(css);
-    this.container.classList.add('g5-component--is-' + i18n || 'en');
+    this.container.className += ' ' + css;
+    this.container.className += ' g5-component--is-' + i18n || 'en';
 
     if (this.active) {
-        this.container.classList.add('g5-component--is-visible');
+        this.container.className += ' g5-component--is-visible';
     }
 
     return this;
@@ -226,9 +226,14 @@ MasterViewModel.prototype.bindComponent = function(data={}) {
  */
 MasterViewModel.prototype.onDataError = function(err) {
 
+    let elementClasses = this.container.classList;
+    let errorClass = 'g5-component--is-error';
+
     utils.log('error: ' + err);
 
-    this.container.classList.add('g5-component--is-error');
+    if (!elementClasses.contains(errorClass)) {
+        this.container.classList.add(errorClass);
+    }
 
     return this;
 
