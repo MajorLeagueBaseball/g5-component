@@ -1,6 +1,6 @@
 #Usage // Module
 
-Simplifies component development. The model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible, consistent, and scalable structure for development.
+> Simplifies component development. The model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible, consistent, and scalable structure for development.
 
 ---
 
@@ -49,6 +49,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
 
 #### File Overview
 
+* __[.babelrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.babelrc)__ - babel configuration options
 * __[.editorconfig](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.editorconfig)__ - editor configuration options
 * __[.gitignore](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.gitignore)__ - files for Git to ignore
 * __[.jscsrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)__ - JSCS configuration
@@ -133,26 +134,25 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "start-dev": "npm run watch & npm run serve",
     "compress-images": "imagemin --progressive src/images/* src/images/build",
     "postcompress-images": "echo 'imagemin complete'",
-    "build-js": "browserify -u bootstrap -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example-bundle.js",
-    "build-js-vendor": "browserify -r bootstrap -r jquery -r lodash -r es6-promise -r isomorphic-fetch | uglifyjs -mc > src/static/fed-component-example-vendor.js",
-    "build-js-full": "browserify src/scripts/index.js --s 'fed-component-example' | uglifyjs -mc drop_console > src/static/fed-component-example.js",
+    "build-js": "browserify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example-bundle.js",
+    "build-js-dev": "browserify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' > src/static/fed-component-example-bundle.js",    
+    "build-js-vendor": "browserify -r bootstrap -r jquery -r lodash -r es6-promise -r isomorphic-fetch | uglifyjs --enclose --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example-vendor.js",
+    "build-js-full": "browserify src/scripts/index.js --s 'fed-component-example' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example.js",
     "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
     "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > src/static/fed-component-example.css",
     "postbuild-css": "npm run minify-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
     "postbuild": "echo 'Builds are ready!'",
-    "watch-js": "watchify -u bootstrap -u jquery -u lodash -u es6-promise -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' -o src/static/fed-component-exampe-bundle.js -dv",
+    "watch-js": "nodemon --debug --watch src/scripts/ --exec 'npm run build-js-dev'",
     "watch-css": "nodemon -e less -x \"npm run build-css\"",
     "minify-css": "cleancss -o src/static/fed-component-example-min.css src/static/fed-component-example.css",
     "watch": "npm run watch-js & npm run watch-css",
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
-    "posttest": "echo 'tests successfully passed!'",
     "lint": "jshint src/scripts/ || true",
     "prelint": "echo 'Checking code via JSHint...'",
-    "postlint": "echo 'Code is lint free, great success!'",
-    "postinstall": "npm run build"
+    "postinstall": "bower i && npm run build"
   },
   "dependencies": {
     "aliasify": "^1.7.2",
@@ -162,7 +162,7 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "browserify": "^8.1.1",
     "duplexer2": "0.0.2",
     "falafel": "^0.3.1",
-    "g5-component": "~2.1.0",
+    "g5-component": "~2.2.0",
     "handlebars": "^3.0.3",
     "hbsfy": "^2.2.1",
     "inherits": "^2.0.1",
@@ -183,15 +183,14 @@ Simplifies component development. The model, viewModel, and event layer is abstr
     "nodemon": "^1.5.0",
     "tap-spec": "^4.0.2",
     "tape": "^4.0.0",
-    "uglify-js": "^2.4.16",
-    "watchify": "^2.2.1"
+    "uglify-js": "^2.4.16"
   }
 }
 ```
 
 #### Component File Reference
 
-Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead. If need be, the core model and/or viewModel can also be changed if necessary, however it should inherit it's prototype from the g5-component model to maintain expected methods.
+> Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead. If need be, the core model and/or viewModel can also be changed if necessary, however it should inherit it's prototype from the g5-component model to maintain expected methods.
 
 ```json
   "browser": {
@@ -214,9 +213,9 @@ Aliasify is used to make sure we are pointing to your component-specific files. 
 
 #### Component Extender
 
-When the model successfully returns data, that data can then be manipulated and/or extended with new properties in the component extender. For example, if you need a game date property, and that property does not exist in your data set - instead of making your markup more verbose, you can add that property to the extender and it will then be available in your template.
+> When the model successfully returns data, that data can then be manipulated and/or extended with new properties in the component extender. For example, if you need a game date property, and that property does not exist in your data set - instead of making your markup more verbose, you can add that property to the extender and it will then be available in your template.
 
-The component extender is a required file (provided by default) and should always return an Object.
+> The component extender is a required file (provided by default) and should always return an Object.
 
 ```js
 const merge = require('lodash/object/merge');
@@ -241,7 +240,7 @@ module.exports = extender;
 
 #### Component Helpers
 
-Module for easily adding handlebars helpers
+> Module for easily adding handlebars helpers
 
 ```js
 /**
@@ -267,7 +266,7 @@ module.exports = helpers;
 
 #### Component Partials
 
-Module for easily adding handlebars partials
+> Module for easily adding handlebars partials
 
 ```js
 /**
@@ -284,35 +283,39 @@ let partials = {
 
 #### Component Master
 
-Main file for all component specific JS. For consistency, primary methods should remain the same between components. The example below is using jQuery and bootstrap, however keep in mind jQuery and bootstrap are not used anywhere else in the project - so if you dont need either, simply dont import the modules.
+> Main file for all component specific JS. For consistency, primary methods should remain the same between components. The example below is using jQuery and bootstrap, however keep in mind jQuery and bootstrap are not used anywhere else in the project - so if you dont need either, simply dont import the modules.
 
 ```js
 const $ = global.jQuery = require('jquery');
+const isFunction = require('lodash/lang/isFunction');
 
 require('bootstrap/js/tooltip');
 
 /**
  *
  * @name component
- * @description init, render, addEvents, and destroy methods are required for consistency
+ * @description init, render, addEvents, and destroy methods are required for consistency.
+ * The parent viewModel is passed in as a reference, for external communication events can
+ * be emitted via the parent
  *
  */
 let component = {
-    $element: undefined,
     /**
      *
      * @method init
-     * @param {Element} el
+     * @param {Object} data
      * @returns {Object} this
-     * @description instantiates component
+     * @description instantiates component with a reference to the parent viewModel, properties on
+     * the parent reference should never be modified in any way
      *
      */
-    init(el) {
+    init(data={}) {
 
-        el = el || document.querySelector('.g5-component');
+        let { opts } = this;
+        let { extendListeners } = opts;
 
-        this.$element = $(el);
-        this.render().addEvents();
+        this.dataCache = data;
+        this.render().addEvents(extendListeners);
 
         return this;
 
@@ -336,16 +339,18 @@ let component = {
     /**
      *
      * @method addEvents
+     * @param {Function} cb
      * @returns {Object} this
-     * @description attaches component events, events should be delegated from primary element
+     * @description attaches component events, event listeners should be delegated from primary element
      *
      */
-    addEvents() {
+    addEvents(cb) {
 
         /**
          *
          * @event click
          * @param {Object} e event
+         * @description simple event example
          *
          */
         this.$element.on('click', 'dt', function(e) {
@@ -353,6 +358,10 @@ let component = {
             console.log('list title click', e);
 
         });
+
+        if (isFunction(cb)) {
+            cb(this.$element[0]);
+        }
 
         return this;
 
@@ -374,5 +383,25 @@ let component = {
     }
 };
 
-module.exports = component;
+/**
+ *
+ * @function componentFactory
+ * @param {Object} parent
+ * @returns {Object}
+ *
+ */
+function componentFactory(parent={}) {
+
+    let { opts, container, dataCache } = parent;
+
+    return Object.assign(Object.create(component), {
+        $element: $(container),
+        parent,
+        dataCache,
+        opts
+    });
+
+}
+
+module.exports = componentFactory;
 ```
