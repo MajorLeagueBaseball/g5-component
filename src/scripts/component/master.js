@@ -27,21 +27,18 @@ let component = {
     /**
      *
      * @method init
-     * @param {Object} parent viewModel
+     * @param {Object} data
      * @returns {Object} this
      * @description instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way
      *
      */
-    init(parent) {
+    init(data={}) {
 
-        let { opts, container } = parent;
+        let { opts } = this;
         let { extendListeners } = opts;
 
-        this.opts = opts;
-        this.parent = parent;
-        this.$element = $(container);
-
+        this.dataCache = data;
         this.render().addEvents(extendListeners);
 
         return this;
@@ -110,4 +107,24 @@ let component = {
     }
 };
 
-module.exports = component;
+/**
+ *
+ * @function componentFactory
+ * @param {Object} parent
+ * @returns {Object}
+ *
+ */
+function componentFactory(parent={}) {
+
+    let { opts, container, dataCache } = parent;
+
+    return Object.assign(Object.create(component), {
+        $element: $(container),
+        parent,
+        dataCache,
+        opts
+    });
+
+}
+
+module.exports = componentFactory;
