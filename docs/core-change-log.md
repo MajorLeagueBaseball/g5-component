@@ -1,6 +1,6 @@
 #Change Log
 
-###2.1.7
+###2.1.7 (current release)
 
 * Added `extendListeners` option
 * Changed `watch-js` task, using `nodemon` instead of `watchify` because of bundle-size issues [issue #14](https://github.com/MajorLeagueBaseball/g5-component/issues/14)
@@ -10,7 +10,7 @@
 * Updated documentation
 * Updated NPM scripts
 
-###2.1.6 (current release)
+###2.1.6
 
 * `model` refactor and bug fixes
 * Updated documentation
