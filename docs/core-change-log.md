@@ -1,6 +1,13 @@
 #Change Log
 
-###2.1.7 (current release)
+###2.2.0 (current release)
+
+* Updated `viewModel`
+* Updated component architecture, returning factory instead of an Object 
+* Adjusted `.babelrc`, not passing `bower_components` (if any) through `babelify`
+* Updated documentation
+
+###2.1.7
 
 * Added `extendListeners` option
 * Changed `watch-js` task, using `nodemon` instead of `watchify` because of bundle-size issues [issue #14](https://github.com/MajorLeagueBaseball/g5-component/issues/14)
