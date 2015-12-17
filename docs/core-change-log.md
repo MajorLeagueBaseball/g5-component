@@ -1,6 +1,10 @@
 #Change Log
 
-###2.2.0 (current release)
+###2.2.0 (_current release_)
+
+> Updated minor version number because of breaking changes in this release. 
+
+> Before updating to this version, please adjust `component/master.js` to return a factory (see provided example)
 
 * Updated `viewModel`
 * Updated component architecture, returning factory instead of an Object 
@@ -102,18 +106,18 @@
 
 * removing postinstall to avoid issues when used as module
 
-###v2.0.2
+###2.0.2
 
 * Added SASS Lint
 * Adjustment SASS
 * Documentation updates
 
-###v2.0.1
+###2.0.1
 
 * Bug fixes
 * Event layer fixes
 
-###v2.0.0
+###2.0.0
 
 * SASS support
 * Upgraded to bootstrap-sass
