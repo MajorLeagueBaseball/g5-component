@@ -1,5 +1,11 @@
 #Change Log
 
+###2.2.1 (_upcoming release_)
+
+* Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
+* Updated `.jscsrc` defaults
+* Updated documentation
+
 ###2.2.0 (_current release_)
 
 > Updated minor version number because of breaking changes in this release. 
