@@ -8,14 +8,14 @@
 
 'use strict';
 
-const util         = require('util');
-const assign       = require('lodash/object/assign');
-const isEqual      = require('lodash/lang/isEqual');
-const size         = require('lodash/collection/size');
-const forOwn       = require('lodash/object/forOwn');
-const utils        = require('./../utils/master');
+const util = require('util');
+const assign = require('lodash/object/assign');
+const isEqual = require('lodash/lang/isEqual');
+const size = require('lodash/collection/size');
+const forOwn = require('lodash/object/forOwn');
+const utils = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
-const Handlebars   = require('hbsfy/runtime');
+const Handlebars = require('hbsfy/runtime');
 
 /**
  *

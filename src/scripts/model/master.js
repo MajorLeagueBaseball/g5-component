@@ -8,11 +8,11 @@
 
 'use strict';
 
-const assign        = require('lodash/object/assign');
-const isEqual       = require('lodash/lang/isEqual');
-const util          = require('util');
-const utils         = require('./../utils/master');
-const EventEmitter  = require('events').EventEmitter;
+const assign = require('lodash/object/assign');
+const isEqual = require('lodash/lang/isEqual');
+const util = require('util');
+const utils = require('./../utils/master');
+const EventEmitter = require('events').EventEmitter;
 
 require('es6-promise').polyfill();
 require('isomorphic-fetch');

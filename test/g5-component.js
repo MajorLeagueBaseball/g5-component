@@ -8,8 +8,8 @@
 
 'use strict';
 
-const test         = require('tape');
-const g5Component  = require('./../src/scripts/g5-component');
+const test = require('tape');
+const g5Component = require('./../src/scripts/g5-component');
 const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', (t) => {

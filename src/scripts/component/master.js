@@ -9,10 +9,10 @@
 
 'use strict';
 
-const $          = global.jQuery = require('jquery');
-const utils      = require('./../utils/master');
-const assign     = require('lodash/object/assign');
-const create     = require('lodash/object/create');
+const $ = global.jQuery = require('jquery');
+const utils = require('./../utils/master');
+const assign = require('lodash/object/assign');
+const create = require('lodash/object/create');
 const isFunction = require('lodash/lang/isFunction');
 
 require('bootstrap/js/tooltip');

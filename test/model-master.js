@@ -8,8 +8,8 @@
 
 'use strict';
 
-const test         = require('tape');
-const MasterModel  = require('./../src/scripts/model/master');
+const test = require('tape');
+const MasterModel = require('./../src/scripts/model/master');
 const EventEmitter = require('events').EventEmitter;
 
 test('model-master test', (t) => {

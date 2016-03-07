@@ -8,11 +8,11 @@
 
 'use strict';
 
-const size          = require('lodash/collection/size');
-const each          = require('lodash/collection/each');
-const every         = require('lodash/collection/every');
-const utils         = require('./../utils/master');
-const EventEmitter  = require('events').EventEmitter;
+const size = require('lodash/collection/size');
+const each = require('lodash/collection/each');
+const every = require('lodash/collection/every');
+const utils = require('./../utils/master');
+const EventEmitter = require('events').EventEmitter;
 
 /**
  *
