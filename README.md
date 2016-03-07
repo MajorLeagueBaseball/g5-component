@@ -167,7 +167,7 @@ exampleComponent.init();
 
 ###Commands
 
-####[build-js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L69)
+####build-js
 
 > Bundle build, without vendor dependencies
 
@@ -175,7 +175,7 @@ exampleComponent.init();
 npm run build-js
 ```
 
-####[build-js-vendor](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L70)
+####build-js-vendor
 
 > Vendor build (Bootstrap, jQuery, LoDash, etc...)
 
@@ -183,7 +183,7 @@ npm run build-js
 npm run build-js-vendor
 ```
 
-####[build-js-full](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L71)
+####build-js-full
 
 > Full build, including vendor and bundle
 
@@ -191,7 +191,7 @@ npm run build-js-vendor
 npm run build-js-full
 ```
 
-####[build](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L75)
+####build
 
 > Full build, including vendor, bundle and CSS
 
@@ -199,7 +199,7 @@ npm run build-js-full
 npm run build
 ```
 
-####[test](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L82)
+####test
 
 > babel-tape-runner test
 
@@ -207,7 +207,7 @@ npm run build
 npm test
 ```
 
-####[compress-images](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
+####compress-images
 
 > compresses all images in src/images/ and outputs to src/images/build
 
@@ -215,7 +215,7 @@ npm test
 npm run compress-images
 ```
 
-####[lint](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L84)
+####lint
 
 > JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
 
@@ -223,7 +223,7 @@ npm run compress-images
 npm run lint
 ```
 
-####[minify-css](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
+####minify-css
 
 > minifies CSS via cleancss
 
