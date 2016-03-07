@@ -3,6 +3,7 @@
 ###2.2.1 (_upcoming release_)
 
 * Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
+* Updated `watch-js` NPM script to reload on template updates
 * Updated `.jscsrc` defaults
 * Updated documentation
 
