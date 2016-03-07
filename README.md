@@ -1,29 +1,9 @@
 #[g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
-Browserify Component Scaffold ([documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation))
+Browserify Component Scaffold ([introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md) - [documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation))
 
 [![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
-
----
-
-* ES6/ES2015 support via [babel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L34)
-* [NPM scripts](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L63) in favor of Gulp/Grunt
-* [event based](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/events/master.js)
-* [well documented](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation)
-* scalable, well tested architecture
-* Tape unit tests via [babel-tape-runner](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L80)
-* minimal, consistent code with [JSDoc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L16) throughout
-* completely self-contained, can be used as a scaffold or module
-* UMD support
-* Style guide ([Airbnb](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)) validation, JS lint, and test [on commit](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L60)
-* [Image compression](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L67)
-* [BEM syntax](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)
-* [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html) with [helpers](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js) and [partials](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)
-* [LoDash](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/g5-component.js#L12)
-* [LESS](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/base.less)
-* [Bootstrap](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/styles/component.less) (_optional_)
-* [jQuery](https://github.com/MajorLeagueBaseball/g5-component/blob/master/package.json#L100) (_optional_)
 
 ---
 
