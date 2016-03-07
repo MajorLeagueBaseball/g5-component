@@ -2,6 +2,7 @@
 
 ####Usage
 
+* [Introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md)
 * [Module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 * [Scaffold](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md)
 
