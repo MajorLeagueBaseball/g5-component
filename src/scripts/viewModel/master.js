@@ -1,7 +1,7 @@
 /**
  *
  * @module viewModel/master
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description master viewModel, view layer related functionality
  *
  */

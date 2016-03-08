@@ -4,7 +4,7 @@
 
         01) BEM class names
         02) Bootstrap widget (tooltip on game media)
-        03) Handlebars helpers (upcase, ifAnd)
+        03) Handlebars helpers (ifAnd)
         04) Handlebars partials (game-media partial)
         05) Data binding, data from the component extender
 
@@ -16,7 +16,7 @@
     {{#if game}}
         <dl>
             <dt class="{{ component }}__key"><strong>Home Team</strong></dt>
-            <dd class="{{ component }}__value">{{ upcase game.home_team_name }}</dd>
+            <dd class="{{ component }}__value">{{ game.home_team_name }}</dd>
 
             <dt class="{{ component }}__key"><strong>Location</strong></dt>
             <dd class="{{ component }}__value">{{ game.location }}</dd>

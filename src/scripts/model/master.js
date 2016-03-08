@@ -1,7 +1,7 @@
 /**
  *
  * @module model/master
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description master model, data layer
  *
  */

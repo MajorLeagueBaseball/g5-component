@@ -1,7 +1,7 @@
 /**
  *
  * @module events/group/extender
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description extended/custom events
  *
  */

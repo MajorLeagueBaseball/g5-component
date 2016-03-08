@@ -1,7 +1,7 @@
 /**
  *
  * @module component/extender
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description module for extending data after its been retrieved by the model
  *
  */

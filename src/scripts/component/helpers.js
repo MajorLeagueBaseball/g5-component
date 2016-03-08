@@ -1,7 +1,7 @@
 /**
  *
  * @module component/helpers
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description module for adding handlebars helpers
  *
  */
@@ -15,19 +15,6 @@
  *
  */
 let helpers = {
-    /**
-     *
-     * @method upcase
-     * @description example helper, transforms text to uppercase
-     * @param {String} s
-     * @returns {String} lowercase String
-     *
-     */
-    'upcase': function(s) {
-
-        return s && s.toUpperCase();
-
-    },
     /**
      *
      * @function ifOr
@@ -62,6 +49,20 @@ let helpers = {
         } else {
             return options.inverse(this);
         }
+
+    },
+    /**
+     *
+     * @function withItem
+     * @description access object value with a variable key
+     * @param {Object} obj
+     * @param {Object} options
+     * @returns {Function}
+     *
+     */
+    'withItem': function(obj, options) {
+
+        return options.fn(obj[options.hash.key]);
 
     }
 };

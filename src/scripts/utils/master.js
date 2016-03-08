@@ -1,7 +1,7 @@
 /**
  *
  * @module utils/master
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description simple utility functions
  *
  */

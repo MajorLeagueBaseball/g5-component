@@ -1,7 +1,7 @@
 /**
  *
  * @module component/partials
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description module for adding handlebars partials
  *
  */

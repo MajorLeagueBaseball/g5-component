@@ -1,7 +1,7 @@
 /**
  *
  * @module events/master
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description event communication hub, mediates events between master, model, and viewModel
  *
  */

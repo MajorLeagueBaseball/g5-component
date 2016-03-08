@@ -1,7 +1,7 @@
 /**
  *
  * @module g5-component
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description Browserify Component Scaffold
  *
  */

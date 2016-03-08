@@ -1,7 +1,7 @@
 /**
  *
  * @module component/master
- * @author Greg Babula
+ * @author Greg Babula [greg.babula@mlb.com]
  * @description entry point for all component specific functionality, jQuery and Bootstrap provided
  * for example, however neither are required and only live within this file
  *
@@ -67,7 +67,7 @@ let component = {
      * @method addEvents
      * @param {Function} cb
      * @returns {Object} this
-     * @description attaches component events, event listeners should be delegated from primary element
+     * @description adds component events, event listeners should be delegated from primary element
      *
      */
     addEvents(cb) {
@@ -79,7 +79,7 @@ let component = {
          * @description simple event example
          *
          */
-        this.$element.on('click', 'dt', function(e) {
+        this.$element.on('click', 'dt', (e) => {
 
             utils.log('list title click', e);
 
@@ -96,7 +96,7 @@ let component = {
      *
      * @method destroy
      * @returns {Object} this
-     * @description detaches component functionality, events must be cleaned up to prevent memory leaks
+     * @description detaches component functionality, events must be cleaned up
      *
      */
     destroy() {
