@@ -42,14 +42,24 @@
                     path: '/src/data/linescore.json'
                 });
 
+                //
                 // event usage example
+                //
                 linescoreComponent.on('ready', function(obj) {
-
                     console.log('component ready!', obj);
-
                 });
 
+                linescoreComponent.on('data', function(data) {
+                    console.log('component data set ->', data);
+                });
+
+                linescoreComponent.on('data-error', function(err) {
+                    console.log('component error ->', err);
+                });
+
+                //
                 // init component
+                //
                 linescoreComponent.init();
 
             });
