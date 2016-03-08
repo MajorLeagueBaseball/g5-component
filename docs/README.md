@@ -21,6 +21,7 @@
 * [Architecture](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-architecture.md)
 * [Usage](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-notes.md)
 * [Change Log](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-change-log.md)
+* [TODO List](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-todo-list.md)
 
 ####Reference
 

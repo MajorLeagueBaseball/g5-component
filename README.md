@@ -1,37 +1,144 @@
 #[g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
-Browserify Component Scaffold ([introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md) - [documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation))
+Browserify Component Scaffold 
 
 [![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
+[![GitHub issues](https://img.shields.io/github/issues/MajorLeagueBaseball/g5-component.svg)](https://github.com/MajorLeagueBaseball/g5-component/issues)
+
+---
+
+* [Introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md)
+* [Documentation](https://github.com/MajorLeagueBaseball/g5-component/tree/master/docs#documentation)
+* [Change Log](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-change-log.md)
 
 ---
 
 ###Setup
 
-> Install the package and use it as a module, create new components quickly and efficiently ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md))
+> Install the package and [use it as a module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 
 ```
 npm i g5-component
 ```
 
-> Or clone the package and use it as a scaffold/baseline for your project ([documentation](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md))
+> Or clone the repo and use it as a [scaffold/boilerplate](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md) for your component
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
 ```
 
-> Install the dependencies and run the initial build, once done you can simply run the server and start development.
+###Install
+
+> Install dependencies, run the initial build, and start the development server
 
 ```
-npm i && npm run build
+npm i && npm run build && npm run start-dev
+```
+
+---
+
+###Usage Example
+
+> Based on the provided linescore example
+
+```html
+<section class="g5-component g5-component--linescore"></section>
+```
+
+```js
+let linescoreComponent = g5Component({
+    component: 'g5-component--linescore',
+    container: document.querySelector('.g5-component--linescore'),
+    css: 'g5-component--linescore-initiated',
+    interval: 15000,
+    path: '/src/data/linescore.json'
+});
+
+linescoreComponent.init();
+```
+
+---
+
+###Options
+
+> A single shared options `Object`
+
+| Option             | Type       | Description                               | Default           |
+|:-------------------|:-----------|:------------------------------------------|:------------------|
+| `component`        | `String`   | component name/class                      | `''`              |
+| `container`        | `Element`  | primary container                         | `''`              |
+| `css`              | `String`   | classes to add after instantiation        | `g5-component`    |
+| `i18n`             | `String`   | localization                              | `en`              |
+| `interval`         | `Number`   | polling interval                          | `40000`           |
+| `path`             | `String`   | data path to fetch (remote or local)      | `''`              |
+| `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
+| `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
+| `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
+
+###Methods
+
+> Simple set of core methods
+
+```js
+linescoreComponent.init(); // initiates component
+```
+
+```js
+linescoreComponent.hasInstance(); // checks if container has an instance of g5-component
+```
+
+```js
+linescoreComponent.detachEvents(); // detaches all events
+```
+
+```js
+linescoreComponent.attachEvents(); // attaches all events
+```
+
+```js
+linescoreComponent.destroy(); // kills component instance, cleans everything out to prevent memory leaks
+```
+
+###Events / Listen
+
+> Events must be attached before the component is instantiated
+
+```js
+linescoreComponent.on('ready', (obj) => {
+    // console.log('component model and viewModel have been initiated', obj);
+});
+
+linescoreComponent.on('data', (data) => {
+    // console.log('component data from model', data);
+});
+
+linescoreComponent.on('data-error', (err) => {
+    // console.log('component model data error', err);
+});
+
+linescoreComponent.on('destroy', (obj) => {
+    // console.log('component instance killed', obj);
+});
+```
+
+###Events / Trigger
+
+> Events must be triggered after the component is instantiated
+
+```js
+// 
+// Used with the `enableFetch` option (which toggles the initial data fetch), this 
+// event allows direct passing of a data Object via an event
+//
+linescoreComponent.emit('synthetic-data', data);
 ```
 
 ---
 
 ###Server / Development
 
-> Server running on [http://localhost:9966](http://localhost:9966) with auto - split builds (vendor dependencies are built separately for faster build times) [Ctrl+C] to kill server
+> Server running on [http://localhost:9966](http://localhost:9966) with automatic split builds (vendor dependencies are built separately for faster build times) [Ctrl+C] to kill server
 
 ```
 npm run start-dev
@@ -47,133 +154,11 @@ npm run start
 
 ---
 
-###Options
-
-> A single shared options `Object`
-
-| Option             | Type       | Description                               | Default           |
-|:-------------------|:-----------|:------------------------------------------|:------------------|
-| `component`        | `String`   | component name/class                      | `g5-component--*` |
-| `container`        | `Element`  | primary container                         | `undefined`       |
-| `css`              | `String`   | classes to add after instantiation        | `g5-component`    |
-| `i18n`             | `String`   | localization                              | `en`              |
-| `interval`         | `Number`   | polling interval                          | `40000`           |
-| `path`             | `String`   | data path to fetch                        | `''`              |
-| `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
-| `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
-| `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
-
-###Methods
-
-> Simple set of core methods
-
-```js
-exampleComponent.init(); // initiates component
-```
-
-```js
-exampleComponent.hasInstance(); // checks if container has an instance of g5-component
-```
-
-```js
-exampleComponent.detachEvents(); // detaches all events
-```
-
-```js
-exampleComponent.attachEvents(); // attaches all events
-```
-
-```js
-exampleComponent.destroy(); // kills component instance, cleans everything out to prevent memory leaks
-```
-
-###Events / Listen
-
-> Events must be attached before the component is initiated
-
-```js
-exampleComponent.on('ready', (obj) => {
-
-    // console.log('component model and viewModel have been initiated', obj);
-
-});
-
-exampleComponent.on('data', (data) => {
-
-    // console.log('component data from model', data);
-
-});
-
-exampleComponent.on('data-error', (err) => {
-
-    // console.log('component model data error', err);
-
-});
-
-exampleComponent.on('destroy', (obj) => {
-
-    // console.log('component instance killed', obj);
-
-});
-```
-
-###Events / Trigger
-
-> Events must be triggered after the component is initiated
-
-```js
-// 
-// Used with the `enableFetch` option (which toggles the initial data fetch), this 
-// event allows direct passing of a data Object via an event
-//
-exampleComponent.emit('synthetic-data', data);
-```
-
-###Usage
-
-```js
-let exampleComponent = g5Component({
-    component: 'g5-component--linescore',
-    container: document.querySelector('.g5-component--linescore'),
-    css: 'g5-component--linescore-initiated',
-    interval: 15000,
-    path: '/src/data/linescore.json'
-});
-
-exampleComponent.init();
-```
-
----
-
 ###Commands
-
-####build-js
-
-> Bundle build, without vendor dependencies
-
-```
-npm run build-js
-```
-
-####build-js-vendor
-
-> Vendor build (Bootstrap, jQuery, LoDash, etc...)
-
-```
-npm run build-js-vendor
-```
-
-####build-js-full
-
-> Full build, including vendor and bundle
-
-```
-npm run build-js-full
-```
 
 ####build
 
-> Full build, including vendor, bundle and CSS
+> Builds JS, CSS, and compresses images
 
 ```
 npm run build
@@ -181,10 +166,18 @@ npm run build
 
 ####test
 
-> babel-tape-runner test
+> runs test directory through the babel-tape-runner
 
 ```
 npm test
+```
+
+####lint
+
+> lint via JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
+
+```
+npm run lint
 ```
 
 ####compress-images
@@ -193,22 +186,6 @@ npm test
 
 ```
 npm run compress-images
-```
-
-####lint
-
-> JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
-
-```
-npm run lint
-```
-
-####minify-css
-
-> minifies CSS via cleancss
-
-```
-npm run minify-css
 ```
 
 ---

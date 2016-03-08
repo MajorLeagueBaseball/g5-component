@@ -1,4 +1,4 @@
-#Usage // Intro
+#Usage // Introduction
 
 Easy components with [g5-component.js](https://github.com/MajorLeagueBaseball/g5-component/) :package: (_Browserify Component Scaffold_) 
 

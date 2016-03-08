@@ -1,5 +1,11 @@
 #Architecture
 
+---
+
+:warning: Documentation in need of review
+
+---
+
 The component, model, and viewModel all receive an instance of the [EventEmitter](https://nodejs.org/api/events.html).
 
 The layers never communicate directly with each other, instead, an event tower mediates events between layers.

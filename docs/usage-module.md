@@ -4,7 +4,9 @@
 
 ---
 
-:construction: Component Generator - Coming Soon.
+:warning: Documentation in need of review
+
+:construction: Component Generator - Coming Soon
 
 ---
 
