@@ -3,9 +3,12 @@
 ###2.2.1 (_upcoming release_)
 
 * Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
+* Adjusted `component/helpers`, removed `upcase` helper and replaced with a more useful `withItem` helper
 * Updated `watch-js` NPM script to reload on template updates
 * Updated `.jscsrc` defaults
+* Updated examples
 * Updated documentation
+* Cleanup
 
 ###2.2.0 (_current release_)
 
