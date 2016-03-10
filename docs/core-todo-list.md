@@ -1,7 +1,11 @@
 #TODO
 
 * Add `start` and `stop` events
-* Adjust `viewModel`, pass in larger dependencies via options
+* Update to new version of `babel`
+* Update to new version of `LoDash`
+* Improve debugging, allow for easier stack traces
+* Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
+* Use native modules instead of CommonJS
 * Overall cleanup and refactor
 * Normalize global options `Object`, improve defaults
 * Improve documentation
