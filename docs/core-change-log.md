@@ -4,6 +4,7 @@
 
 * Simplified included example
 * Added `start` and `stop` events
+* Added additional examples of events and methods
 * Updated documentation
 
 ###2.2.1 (_current release_)
