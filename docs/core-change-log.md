@@ -1,6 +1,11 @@
 #Change Log
 
-###2.2.1 (_upcoming release_)
+###2.3.0 (_upcoming release_)
+
+* Added `start` and `stop` events
+* Updated documentation
+
+###2.2.1 (_current release_)
 
 * Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
 * Adjusted `component/helpers`, removed `upcase` helper and replaced with a more useful `withItem` helper
@@ -10,7 +15,7 @@
 * Updated documentation
 * Cleanup
 
-###2.2.0 (_current release_)
+###2.2.0
 
 > Updated minor version number because of breaking changes in this release. 
 
