@@ -132,6 +132,18 @@ linescoreComponent.on('destroy', (obj) => {
 // event allows direct passing of a data Object via an event
 //
 linescoreComponent.emit('synthetic-data', data);
+
+//
+// stops data polling on component
+// event is ignored if data polling is already stopped
+//
+linescoreComponent.emit('stop');
+
+//
+// resumes data polling on component
+// event is ignored if already polling data
+//
+linescoreComponent.emit('start');
 ```
 
 ---

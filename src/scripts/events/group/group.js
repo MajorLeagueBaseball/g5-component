@@ -33,6 +33,28 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
     /**
      *
+     * @event start
+     *
+     */
+    master.on('start', () => {
+
+        model.emit('start');
+
+    });
+
+    /**
+     *
+     * @event stop
+     *
+     */
+    master.on('stop', () => {
+
+        model.emit('stop');
+
+    });
+
+    /**
+     *
      * @event data
      * @param {Object} data
      *
@@ -54,6 +76,28 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
         master.emit('data-error', err);
         viewModel.emit('data-error', err);
+
+    });
+
+    /**
+     *
+     * @event start
+     *
+     */
+    model.on('start', () => {
+
+        model.start();
+
+    });
+
+    /**
+     *
+     * @event stop
+     *
+     */
+    model.on('stop', () => {
+
+        model.stop();
 
     });
 
