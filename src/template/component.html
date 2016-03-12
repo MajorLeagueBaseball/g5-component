@@ -7,41 +7,35 @@
         03) Handlebars helpers (ifAnd)
         04) Handlebars partials (game-media partial)
         05) Data binding, data from the component extender
+        06) Extended properties (css, version)
 
 -->
 
-<h3 class="{{ component }}__title">Linescore</h3>
+<div class="{{ css }}" data-version="{{ version }}">
+    <h3 class="{{ component }}__title">MLB Linescore</h3>
 
-<section class="{{ component }}__linescore">
-    {{#if game}}
-        <dl>
-            <dt class="{{ component }}__key"><strong>Home Team</strong></dt>
-            <dd class="{{ component }}__value">{{ game.home_team_name }}</dd>
+    <dl>
+        <dt class="{{ component }}__key"><strong>Home Team</strong></dt>
+        <dd class="{{ component }}__value">{{ game.home_team_name }}</dd>
 
-            <dt class="{{ component }}__key"><strong>Location</strong></dt>
-            <dd class="{{ component }}__value">{{ game.location }}</dd>
+        <dt class="{{ component }}__key"><strong>Location</strong></dt>
+        <dd class="{{ component }}__value">{{ game.location }}</dd>
 
-            <dt class="{{ component }}__key"><strong>Game Date</strong></dt>
-            <dd class="{{ component }}__value">{{ game.original_date }}</dd>
+        <dt class="{{ component }}__key"><strong>Game Date</strong></dt>
+        <dd class="{{ component }}__value">{{ game.original_date }}</dd>
 
-            <dt class="{{ component }}__key"><strong>Game Description</strong></dt>
-            <dd class="{{ component }}__value">{{ game.description }}</dd>
+        <dt class="{{ component }}__key"><strong>Game Time</strong></dt>
+        <dd class="{{ component }}__value">{{ game.time }}</dd>
 
-            <dt class="{{ component }}__key"><strong>Game Time</strong></dt>
-            <dd class="{{ component }}__value">{{ game.time }}</dd>
+        {{#ifAnd game.game_media game.game_media.media}}
+            <dt class="{{ component }}__key"><strong>Game Media</strong></dt>
+            <dd class="{{ component }}__value">
+                {{#with game.game_media.media}}
+                    {{> game-media component=../component }}
+                {{/with}}
+            </dd>
+        {{/ifAnd}}
+    </dl>
 
-            {{#ifAnd game.game_media game.game_media.media}}
-                <dt class="{{ component }}__key"><strong>Game Media</strong></dt>
-                <dd class="{{ component }}__value">
-                    {{#with game.game_media.media}}
-                        {{> game-media component=../component }}
-                    {{/with}}
-                </dd>
-            {{/ifAnd}}
-        </dl>
-    {{/if}}
-
-    <article>
-        <small>{{ copyright }}</small>
-    </article>
-</section>
+    <p><small>{{ copyright }}</small></p>
+</div>

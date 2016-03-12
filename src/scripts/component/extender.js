@@ -2,13 +2,29 @@
  *
  * @module component/extender
  * @author Greg Babula [greg.babula@mlb.com]
- * @description module for extending data after its been retrieved by the model
+ * @description component data extender
  *
  */
 
 'use strict';
 
-const merge = require('lodash/object/merge');
+const pkg = require('./../../../package');
+
+/**
+ *
+ * @function getGameClasses
+ * @description creates game classes based on input
+ * @param {Object} opts
+ * @returns {String}
+ *
+ */
+function getGameClasses(opts={}) {
+
+    let { component } = opts;
+
+    return `${component}__container ${component}__container--example`;
+
+}
 
 /**
  *
@@ -20,15 +36,18 @@ const merge = require('lodash/object/merge');
  */
 function extender(data={}, opts={}) {
 
+    let { game, subject, copyright } = data;
     let { component } = opts;
-    let { game } = data.data;
+    let { version } = pkg;
+
+    let css = getGameClasses(opts);
 
     return {
-        component: component,
-        game: merge(game, {
-            description: game.away_team_name + ' @ ' + game.home_team_name
-        }),
-        copyright: data.copyright
+        css,
+        component,
+        version,
+        game,
+        copyright
     };
 
 }

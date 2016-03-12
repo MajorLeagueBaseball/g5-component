@@ -2,6 +2,7 @@
 
 ###2.3.0 (_upcoming release_)
 
+* Simplified included example
 * Added `start` and `stop` events
 * Updated documentation
 
