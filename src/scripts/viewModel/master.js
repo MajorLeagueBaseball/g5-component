@@ -2,7 +2,7 @@
  *
  * @module viewModel/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description master viewModel, view layer related functionality
+ * @description master viewModel, setup Handlebars and baseline view
  *
  */
 
@@ -149,7 +149,7 @@ MasterViewModel.prototype.registerHelpers = function(helpers = this.helpers) {
 
     if (size(helpers)) {
 
-        forOwn(helpers, function(item, key) {
+        forOwn(helpers, (item, key) => {
 
             Handlebars.registerHelper(key, item);
 
@@ -173,7 +173,7 @@ MasterViewModel.prototype.registerPartials = function(partials = this.partials) 
 
     if (size(partials)) {
 
-        forOwn(partials, function(item, key) {
+        forOwn(partials, (item, key) => {
 
             Handlebars.registerPartial(key, item);
 

@@ -16,13 +16,7 @@ const EventEmitter = require('events').EventEmitter;
 /**
  *
  * @constructor G5Component
- * @param {Object}   opts shared options Object
- * @param {Element}  opts.container primary container
- * @param {String}   opts.css classes
- * @param {String}   opts.i18n localization
- * @param {Number}   opts.interval polling interval
- * @param {String}   opts.path data path
- * @param {Boolean}  opts.enablePolling
+ * @param {Object} opts shared options Object
  *
  */
 function G5Component(opts) {
@@ -32,8 +26,13 @@ function G5Component(opts) {
     }
 
     this.opts = assign({
+        css: 'g5-component',
         container: undefined,
-        i18n: 'en'
+        i18n: 'en',
+        interval: 40000,
+        enableFetch: true,
+        enablePolling: true,
+        path: ''
     }, opts);
 
     try {

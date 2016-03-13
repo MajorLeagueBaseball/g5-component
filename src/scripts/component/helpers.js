@@ -2,7 +2,7 @@
  *
  * @module component/helpers
  * @author Greg Babula [greg.babula@mlb.com]
- * @description module for adding handlebars helpers
+ * @description handlebars helpers
  *
  */
 

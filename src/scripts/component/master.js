@@ -2,8 +2,8 @@
  *
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description entry point for all component specific functionality, jQuery and Bootstrap provided
- * for example, however neither are required and only live within this file
+ * @description entry point for all component specific functionality
+ * jQuery and Bootstrap provided for example, however neither are required
  *
  */
 

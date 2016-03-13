@@ -127,7 +127,7 @@ EventTower.prototype.detachEvents = function() {
 
     utils.log('detach events');
 
-    each(_eventGroup, function(obj) {
+    each(_eventGroup, (obj) => {
         detachEvents(obj);
     });
 
