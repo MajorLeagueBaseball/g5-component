@@ -120,6 +120,14 @@ linescoreComponent.on('data-error', (err) => {
 linescoreComponent.on('destroy', (obj) => {
     // console.log('component instance killed', obj);
 });
+
+linescoreComponent.on('start', () => {
+    // console.log('component start fetch');
+});
+
+linescoreComponent.on('stop', () => {
+    // console.log('component stop fetch');
+});
 ```
 
 ###Events / Trigger
