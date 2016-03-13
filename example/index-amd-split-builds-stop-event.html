@@ -45,6 +45,13 @@
                 });
 
                 //
+                // event usage example
+                //
+                linescoreComponent.on('stop', function() {
+                    console.log('stop fetch');
+                });
+
+                //
                 // init component
                 //
                 linescoreComponent.init();
@@ -54,8 +61,6 @@
                 // polling is set to 5000ms, so it should fetch twice before its stopped
                 //
                 setTimeout(function() {
-
-                    console.log('stop polling');
 
                     linescoreComponent.emit('stop');
 
