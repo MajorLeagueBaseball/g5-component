@@ -1,13 +1,13 @@
 #Change Log
 
-###2.3.0 (_upcoming release_)
+###2.3.0 (_current release_)
 
 * Simplified included example
 * Added `start` and `stop` events
 * Added additional examples of events and methods
 * Updated documentation
 
-###2.2.1 (_current release_)
+###2.2.1
 
 * Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
 * Adjusted `component/helpers`, removed `upcase` helper and replaced with a more useful `withItem` helper
