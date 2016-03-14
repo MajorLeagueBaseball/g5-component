@@ -1,6 +1,11 @@
 #Change Log
 
-###2.3.0 (_current release_)
+###2.3.1 (_current release_)
+
+* Patch release
+* Revert options change
+
+###2.3.0
 
 * Simplified included example
 * Added `start` and `stop` events

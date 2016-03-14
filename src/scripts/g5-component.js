@@ -26,13 +26,8 @@ function G5Component(opts) {
     }
 
     this.opts = assign({
-        css: 'g5-component',
         container: undefined,
-        i18n: 'en',
-        interval: 40000,
-        enableFetch: true,
-        enablePolling: true,
-        path: ''
+        i18n: 'en'
     }, opts);
 
     try {
