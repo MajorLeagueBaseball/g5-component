@@ -2,6 +2,16 @@
 
 Passing in data via a `synthetic-data` event.
 
+This event allows you to pass in a raw data `Object` to the component.
+
+
+#### Use Cases
+
+* disable fetch during instantiation and pass in data yourself
+* disable fetch via the `stop` event (`x` amount of time after instantiation) and pass in data when needed
+
+---
+
 #### Instantiation
 
 > Set the enableFetch option to false to prevent the component from doing the initial data fetch
@@ -9,14 +19,13 @@ Passing in data via a `synthetic-data` event.
 ```js
 let exampleComponent = g5Component({
     container: document.querySelector('.g5-component--linescore'),
-    css: 'g5-component--linescore-initiated',
     enableFetch: false
 });
 
 exampleComponent.init();
 ```
 
-### Trigger Event
+#### Trigger Event
 
 > Events can be triggered after the component has been instantaited
 
