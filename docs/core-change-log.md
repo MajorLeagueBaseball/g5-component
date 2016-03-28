@@ -1,5 +1,9 @@
 #Change Log
 
+###2.3.2 (_upcoming release_)
+
+* simplified examples
+
 ###2.3.1 (_current release_)
 
 * Patch release
