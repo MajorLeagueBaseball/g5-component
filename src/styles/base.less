@@ -7,40 +7,30 @@
  */
 
 @component: g5-component--linescore;
-@text-primary: #7f8c8d;
-@text-secondary: #639;
-@ui-primary: #ccc;
 
 .@{component} {
     box-sizing: border-box;
-    color: @text-primary;
+    font-family: @font-family-sans-serif;
     font-size: 18px;
     line-height: 1.7em;
     margin: 0 auto;
     max-width: 600px;
 
     &__title {
-        color: @text-secondary;
+        .page-header;
+        color: @brand-primary;
     }
 
-    &__linescore {
-        padding: 0 0 3em 0;
-    }
-
-    &__key,
-    &__value {
-        background: lighten(@ui-primary, 10);
-        border: 1px solid @ui-primary;
-        border-radius: 2px;
-        padding: 1em;
-    }
-
-    &__value {
-        background: none;
+    &__list {
+        .list-unstyled;
     }
 
     &__media {
-        border: 1px solid @ui-primary;
-        padding: 1em;
+        .img-thumbnail;
+    }
+
+    &__copyright {
+        .small;
+        .visible-lg;
     }
 }

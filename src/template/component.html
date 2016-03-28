@@ -14,7 +14,7 @@
 <div class="{{ css }}" data-version="{{ version }}">
     <h3 class="{{ component }}__title">MLB Linescore</h3>
 
-    <dl>
+    <dl class="{{ component }}__list">
         <dt class="{{ component }}__key"><strong>Home Team</strong></dt>
         <dd class="{{ component }}__value">{{ game.home_team_name }}</dd>
 
@@ -25,7 +25,7 @@
         <dd class="{{ component }}__value">{{ game.original_date }}</dd>
 
         <dt class="{{ component }}__key"><strong>Game Time</strong></dt>
-        <dd class="{{ component }}__value">{{ game.time }}</dd>
+        <dd class="{{ component }}__value">{{ game.time }}PM</dd>
 
         {{#ifAnd game.game_media game.game_media.media}}
             <dt class="{{ component }}__key"><strong>Game Media</strong></dt>
@@ -37,5 +37,5 @@
         {{/ifAnd}}
     </dl>
 
-    <p><small>{{ copyright }}</small></p>
+    <p class="{{ component }}__copyright"><small>{{ copyright }}</small></p>
 </div>

@@ -2,7 +2,10 @@
 
 ###2.3.2 (_upcoming release_)
 
-* simplified examples
+* added `gzip-css` NPM script
+* updated `postbuild-css` NPM script to include `gzip-css`
+* LESS cleanup, import bootstrap assets via `(reference)`
+* simplified/updated example landing page
 
 ###2.3.1 (_current release_)
 
