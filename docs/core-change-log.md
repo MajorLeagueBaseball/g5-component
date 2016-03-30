@@ -2,6 +2,7 @@
 
 ###2.3.2 (_upcoming release_)
 
+* added documentation for all events
 * added `gzip-css` NPM script
 * updated `postbuild-css` NPM script to include `gzip-css`
 * LESS cleanup, import bootstrap assets via `(reference)`
