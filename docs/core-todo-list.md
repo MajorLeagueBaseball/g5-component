@@ -11,7 +11,7 @@
 - [ ] Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
 - [ ] Use native modules instead of CommonJS
 - [ ] Overall cleanup and refactor
-- [ ] Normalize global options `Object`, improve defaults
+- [x] Normalize global options `Object`, improve defaults
 - [ ] Add architecture diagram
 - [ ] Simplify NPM scripts (especially full/split builds)
 - [ ] Add additional examples
