@@ -3,7 +3,7 @@
 - [x] Add `start` and `stop` events
 - [ ] Improve documentation
 - [ ] Document all NPM scripts
-- [ ] Document all baseline events
+- [x] Document all baseline events
 - [ ] Document all baseline methods
 - [ ] Update to new version of `babel`
 - [ ] Update to new version of `LoDash`
