@@ -9,7 +9,7 @@
 'use strict';
 
 const util = require('util');
-const assign = require('lodash/object/assign');
+const assign = require('lodash.assign');
 const utils = require('./utils/master');
 const EventEmitter = require('events').EventEmitter;
 
@@ -41,6 +41,8 @@ function G5Component(opts) {
         this.model = require('./model/master')(this.opts);
         this.viewModel = require('./viewModel/master')(this.opts);
         this.eventTower = require('./events/master')(this);
+
+        utils.log(e, 'the override model/viewModel/eventTower were not imported.');
 
     }
 

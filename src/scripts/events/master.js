@@ -8,9 +8,9 @@
 
 'use strict';
 
-const size = require('lodash/collection/size');
-const each = require('lodash/collection/each');
-const every = require('lodash/collection/every');
+const size = require('lodash.size');
+const each = require('lodash.foreach');
+const every = require('lodash.every');
 const utils = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
 
@@ -107,6 +107,8 @@ EventTower.prototype.attachEvents = function() {
 
         require('./group/group')(master, model, viewModel);
         require('./group/extender')(master, model, viewModel);
+
+        utils.log(e, 'the override eventGroup/eventGroupExtender were not imported.');
 
     }
 

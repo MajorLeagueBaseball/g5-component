@@ -1,6 +1,10 @@
 #Change Log
 
-###2.3.2 (_upcoming release_)
+###3.0.0
+
+* updated dependencies, notably babel now 6+ and lodash now 4+
+
+###2.3.2
 
 * added documentation for all events
 * added `gzip-css` NPM script
@@ -8,7 +12,7 @@
 * LESS cleanup, import bootstrap assets via `(reference)`
 * simplified/updated example landing page
 
-###2.3.1 (_current release_)
+###2.3.1
 
 * Patch release
 * Revert options change

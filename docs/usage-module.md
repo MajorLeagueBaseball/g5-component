@@ -220,7 +220,7 @@
 > The component extender is a required file (provided by default) and should always return an Object.
 
 ```js
-const merge = require('lodash/object/merge');
+const merge = require('lodash.merge');
 
 /**
  *
@@ -289,9 +289,9 @@ let partials = {
 
 ```js
 const $ = global.jQuery = require('jquery');
-const assign = require('lodash/object/assign');
-const create = require('lodash/object/create');
-const isFunction = require('lodash/lang/isFunction');
+const assign = require('lodash.assign');
+const create = require('lodash.create');
+const isFunction = require('lodash.isFunction');
 
 require('bootstrap/js/tooltip');
 
