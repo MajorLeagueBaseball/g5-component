@@ -36,7 +36,7 @@ Create /src/scripts/viewModel/master.js and inherit the prototype from the scaff
 'use strict';
 
 const util        = require('util');
-const assign      = require('lodash/object/assign');
+const assign      = require('lodash.assign');
 const g5ViewModel = require('g5-component/viewModel');
 
 /**

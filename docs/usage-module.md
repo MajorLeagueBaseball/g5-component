@@ -289,7 +289,7 @@ let partials = {
 
 ```js
 const $ = global.jQuery = require('jquery');
-const assign = require('lodash/object/assign');
+const assign = require('lodash.assign');
 const create = require('lodash/object/create');
 const isFunction = require('lodash/lang/isFunction');
 

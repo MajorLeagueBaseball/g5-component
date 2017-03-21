@@ -11,9 +11,9 @@
 
 const $ = global.jQuery = require('jquery');
 const utils = require('./../utils/master');
-const assign = require('lodash/object/assign');
-const create = require('lodash/object/create');
-const isFunction = require('lodash/lang/isFunction');
+const assign = require('lodash.assign');
+const create = require('lodash.create');
+const isFunction = require('lodash.isfunction');
 
 require('bootstrap/js/tooltip');
 

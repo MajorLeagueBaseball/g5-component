@@ -36,7 +36,7 @@ Create /src/scripts/model/master.js and inherit the prototype from the scaffold'
 'use strict';
 
 const util    = require('util');
-const assign  = require('lodash/object/assign');
+const assign  = require('lodash.assign');
 const g5Model = require('g5-component/model');
 
 /**
@@ -82,7 +82,7 @@ If you need a custom model, you'll probably want to override the `fetch` method 
 'use strict';
 
 const util    = require('util');
-const assign  = require('lodash/object/assign');
+const assign  = require('lodash.assign');
 const isEqual = require('lodash/lang/isEqual');
 const g5Model = require('g5-component/model');
 

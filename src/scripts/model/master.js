@@ -8,8 +8,8 @@
 
 'use strict';
 
-const assign = require('lodash/object/assign');
-const isEqual = require('lodash/lang/isEqual');
+const assign = require('lodash.assign');
+const isEqual = require('lodash.isequal');
 const util = require('util');
 const utils = require('./../utils/master');
 const EventEmitter = require('events').EventEmitter;
