@@ -42,6 +42,8 @@ function G5Component(opts) {
         this.viewModel = require('./viewModel/master')(this.opts);
         this.eventTower = require('./events/master')(this);
 
+        utils.log(e, 'the override model/viewModel/eventTower were not imported.');
+
     }
 
     EventEmitter.call(this);

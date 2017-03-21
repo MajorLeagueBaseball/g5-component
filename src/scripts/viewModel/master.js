@@ -56,6 +56,8 @@ function MasterViewModel(opts) {
         this.partials = {};
         this.extender = {};
 
+        utils.log(e, 'the override template group was not imported.');
+
     }
 
     EventEmitter.call(this);
