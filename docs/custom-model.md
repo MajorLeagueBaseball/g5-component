@@ -83,7 +83,7 @@ If you need a custom model, you'll probably want to override the `fetch` method 
 
 const util    = require('util');
 const assign  = require('lodash.assign');
-const isEqual = require('lodash/lang/isEqual');
+const isEqual = require('lodash.isequal');
 const g5Model = require('g5-component/model');
 
 /**
