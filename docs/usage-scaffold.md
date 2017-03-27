@@ -1,10 +1,10 @@
-#Usage // Scaffold
+# Usage // Scaffold
 
 A [linescore component](https://github.com/MajorLeagueBaseball/g5-component/tree/master/example) example is included in this repo for demonstraton purposes
 
-##Full Build
+## Full Build
 
-####CommonJS
+#### CommonJS
 
 > Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs.js (not implemented by default)
 
@@ -41,7 +41,7 @@ window.onload = () => {
 <script src="/src/static/g5-component-cjs.js"></script>
 ```
 
-####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
+#### [AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd.html)
 
 ```html
 <section class="g5-component g5-component--linescore"></section>
@@ -65,7 +65,7 @@ window.onload = () => {
 </script>
 ```
 
-####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
+#### [Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global.html)
 
 ```html
 <section class="g5-component g5-component--linescore"></section>
@@ -88,9 +88,9 @@ window.onload = () => {
 </script>
 ```
 
-##Split Build
+## Split Build
 
-####CommonJS
+#### CommonJS
 
 > Assuming an index.js file in src/scripts which would be bundled by Browserify and output g5-component-cjs-bundle.js (not implemented by default)
 
@@ -128,7 +128,7 @@ window.onload = () => {
 <script src="/src/static/g5-component-cjs-bundle.js"></script>
 ```
 
-####[AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd-split-builds.html)
+#### [AMD](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-amd-split-builds.html)
 
 ```html
 <section class="g5-component g5-component--linescore"></section>
@@ -159,7 +159,7 @@ window.onload = () => {
 </script>
 ```
 
-####[Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global-split-builds.html)
+#### [Global](https://github.com/MajorLeagueBaseball/g5-component/blob/master/example/index-global-split-builds.html)
 
 ```html
 <section class="g5-component g5-component--linescore"></section>
