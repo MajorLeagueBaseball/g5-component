@@ -1,4 +1,4 @@
-#Usage // Module
+# Usage // Module
 
 > Simplifies component development. The model, viewModel, and event layer is abstracted for you via the g5-component module. This setup allows you to worry about the component level alone, while providing a flexible, consistent, and scalable structure for development.
 
