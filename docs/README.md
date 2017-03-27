@@ -1,18 +1,18 @@
-#Documentation
+# Documentation
 
-####Usage
+#### Usage
 
 * [Introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md)
 * [Module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 * [Scaffold](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md)
 
-####Component
+#### Component
 
 * [Custom Model](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-model.md)
 * [Custom viewModel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-viewModel.md)
 * [Custom Events](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-events.md)
 
-####Events
+#### Events
 
 * [Ready](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/events-ready.md)
 * [Start](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/events-start.md)
@@ -22,14 +22,14 @@
 * [Destroy](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/events-destroy.md)
 * [Synthetic Data](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/events-synthetic-data.md)
 
-####Notes
+#### Notes
 
 * [Architecture](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-architecture.md)
 * [Usage](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-notes.md)
 * [Change Log](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-change-log.md)
 * [TODO List](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-todo-list.md)
 
-####Reference
+#### Reference
 
 * [Fetch](https://fetch.spec.whatwg.org/)
 * [Browserify Handbook](https://github.com/substack/browserify-handbook)
