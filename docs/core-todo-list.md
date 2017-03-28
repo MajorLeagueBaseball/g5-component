@@ -1,12 +1,12 @@
-#TODO
+# TODO
 
 - [x] Add `start` and `stop` events
 - [ ] Improve documentation
 - [ ] Document all NPM scripts
 - [x] Document all baseline events
 - [ ] Document all baseline methods
-- [ ] Update to new version of `babel`
-- [ ] Update to new version of `LoDash`
+- [x] Update to new version of `babel`
+- [x] Update to new version of `LoDash`
 - [ ] Improve debugging, allow for easier stack traces
 - [ ] Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
 - [ ] Use native modules instead of CommonJS

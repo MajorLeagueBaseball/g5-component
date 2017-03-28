@@ -1,4 +1,4 @@
-#Data
+# Data
 
 Event emitted after a successful data fetch
 

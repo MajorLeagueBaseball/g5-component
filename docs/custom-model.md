@@ -1,4 +1,4 @@
-#Custom Model
+# Custom Model
 
 Using a custom model on the component level.
 

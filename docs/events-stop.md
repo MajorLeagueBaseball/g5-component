@@ -1,4 +1,4 @@
-#Stop
+# Stop
 
 Stop polling at any time using the `stop` event.
 

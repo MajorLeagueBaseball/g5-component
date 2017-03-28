@@ -1,4 +1,4 @@
-#Synthetic Data
+# Synthetic Data
 
 Passing in data via a `synthetic-data` event.
 

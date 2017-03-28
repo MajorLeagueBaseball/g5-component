@@ -1,4 +1,4 @@
-#Custom viewModel
+# Custom viewModel
 
 Using a custom viewModel on the component level.
 

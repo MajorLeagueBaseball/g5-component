@@ -1,4 +1,4 @@
-#Data-Error
+# Data-Error
 
 Event emitted on error
 
