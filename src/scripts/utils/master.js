@@ -6,14 +6,12 @@
  *
  */
 
-'use strict';
-
 /**
  *
  * @name utils
  *
  */
-let utils = {
+const utils = {
     months: [
         'Jan',
         'Feb',
@@ -36,12 +34,12 @@ let utils = {
      */
     log() {
 
-        let timestamp = utils.timestamp;
-        let args = Array.prototype.slice.call(arguments);
+        const timestamp = utils.timestamp;
+        const args = Array.prototype.slice.call(arguments);
 
-        args.unshift(timestamp() + ' - g5-component :');
+        args.unshift(`${timestamp()} - g5-component :`);
 
-        console.log.apply(console, args);
+        console.log(...args);
 
     },
     /**
@@ -53,7 +51,7 @@ let utils = {
      */
     pad(n) {
 
-        return n < 10 ? '0' + n.toString(10) : n.toString(10);
+        return n < 10 ? `0${n.toString(10)}` : n.toString(10);
 
     },
     /**
@@ -64,10 +62,10 @@ let utils = {
      */
     timestamp() {
 
-        let { pad, months } = utils;
-        let d = new Date();
+        const { pad, months } = utils;
+        const d = new Date();
 
-        let time = [
+        const time = [
             pad(d.getHours()),
             pad(d.getMinutes()),
             pad(d.getSeconds())
@@ -78,4 +76,4 @@ let utils = {
     }
 };
 
-module.exports = utils;
+export default utils;

@@ -9,14 +9,14 @@
 'use strict';
 
 const test = require('tape');
-const MasterModel = require('./../src/scripts/model/master');
+const MasterModel = require('./../src/scripts/model/master').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('model-master test', (t) => {
 
     t.plan(7);
 
-    let model = MasterModel({
+    let model = new MasterModel({
         path: '/src/data/linescore.json'
     });
 

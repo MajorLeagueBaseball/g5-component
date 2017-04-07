@@ -7,15 +7,7 @@
  *
  */
 
-'use strict';
-
-const $ = global.jQuery = require('jquery');
-const utils = require('./../utils/master');
-const assign = require('lodash.assign');
-const create = require('lodash.create');
-const isFunction = require('lodash.isfunction');
-
-require('bootstrap/js/tooltip');
+import utils from './../utils/master';
 
 /**
  *
@@ -25,7 +17,7 @@ require('bootstrap/js/tooltip');
  * be emitted via the parent
  *
  */
-let component = {
+class Component {
     /**
      *
      * @method init
@@ -37,15 +29,15 @@ let component = {
      */
     init(data={}) {
 
-        let { opts } = this;
-        let { extendListeners } = opts;
+        const { opts } = this;
+        const { extendListeners } = opts;
 
         this.dataCache = data;
         this.render().addEvents(extendListeners);
 
         return this;
 
-    },
+    }
     /**
      *
      * @method render
@@ -57,11 +49,9 @@ let component = {
 
         utils.log('render component');
 
-        this.$element.find('[data-toggle="tooltip"]').tooltip();
-
         return this;
 
-    },
+    }
     /**
      *
      * @method addEvents
@@ -85,13 +75,13 @@ let component = {
 
         });
 
-        if (isFunction(cb)) {
+        if (cb instanceof Function) {
             cb(this.$element[0]);
         }
 
         return this;
 
-    },
+    }
     /**
      *
      * @method destroy
@@ -107,7 +97,7 @@ let component = {
         return this;
 
     }
-};
+}
 
 /**
  *
@@ -118,15 +108,17 @@ let component = {
  */
 function componentFactory(parent={}) {
 
-    let { opts, container, dataCache } = parent;
+    const { opts, element, container, dataCache } = parent;
 
-    return assign(create(component), {
-        $element: $(container),
-        parent,
-        dataCache,
-        opts
-    });
+    const component = new Component();
+
+    component.dataCache = dataCache;
+    component.element = element || container;
+    component.parent = parent;
+    component.opts = opts;
+
+    return component;
 
 }
 
-module.exports = componentFactory;
+export default componentFactory;

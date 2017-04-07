@@ -6,8 +6,6 @@
  *
  */
 
-'use strict';
-
 /**
  *
  * @function eventGroup
@@ -127,4 +125,4 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
 }
 
-module.exports = eventGroup;
+export default eventGroup;

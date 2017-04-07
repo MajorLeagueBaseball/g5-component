@@ -6,16 +6,15 @@
  *
  */
 
-'use strict';
+import assign from 'lodash.assign';
+import isEqual from 'lodash.isequal';
+import utils from './../utils/master';
+import { EventEmitter } from 'events';
 
-const assign = require('lodash.assign');
-const isEqual = require('lodash.isequal');
-const util = require('util');
-const utils = require('./../utils/master');
-const EventEmitter = require('events').EventEmitter;
+import es6Promise from 'es6-promise';
+es6Promise.polyfill();
 
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
 /**
  *
@@ -23,183 +22,180 @@ require('isomorphic-fetch');
  * @param {Object} opts shared options Object
  *
  */
-function MasterModel(opts) {
+class MasterModel extends EventEmitter {
 
-    if (!(this instanceof MasterModel)) {
-        return new MasterModel(opts);
+    constructor(opts) {
+
+        super();
+
+        this.opts = assign({
+            interval: 40000,
+            enableFetch: true,
+            enablePolling: true,
+            path: ''
+        }, opts);
+
+        this.instance = false;
+        this.dataCache = {};
+        this.dataFetch = null;
+
     }
 
-    this.opts = assign({
-        interval: 40000,
-        enableFetch: true,
-        enablePolling: true,
-        path: ''
-    }, opts);
+    /**
+     *
+     * @method init
+     * @description initiates master model, begins initial data fetch
+     * @returns {Object} this
+     *
+     */
+    init() {
 
-    this.instance = false;
-    this.dataCache = {};
-    this.dataFetch = null;
+        const { instance } = this;
+        const { enableFetch } = this.opts;
 
-    EventEmitter.call(this);
+        if (enableFetch && !instance) {
 
+            this.instance = true;
+            this.fetch();
+
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method fetch
+     * @description makes a GET request to specified path, emits data event, expecting JSON by default
+     * @returns {Object} this
+     *
+     */
+    fetch() {
+
+        const { opts } = this;
+        const { path, enablePolling, interval } = opts;
+
+        utils.log('fetch master model data');
+
+        /**
+         *
+         * @function handleData
+         * @param {Object} response
+         * @returns {Object} response JSON
+         * @description handles response and returns JSON if successful
+         *
+         */
+        function handleData(response) {
+
+            if (response.status >= 400) {
+                throw response.status;
+            }
+
+            try {
+
+                return response.json();
+
+            } catch (e) {
+
+                throw e;
+
+            }
+
+        }
+
+        /**
+         *
+         * @function handleSuccess
+         * @param {Object} data parsed JSON
+         *
+         */
+        function handleSuccess(data={}) {
+
+            if (!isEqual(data, this.dataCache)) {
+
+                this.dataCache = data;
+                this.emit('data', data);
+
+            }
+
+        }
+
+        /**
+         *
+         * @function handleError
+         * @param {Number|Object} err
+         *
+         */
+        function handleError(err) {
+
+            this.emit('data-error', err);
+
+        }
+
+        fetch(path)
+            .then(handleData.bind(this))
+            .then(handleSuccess.bind(this))
+            .catch(handleError.bind(this));
+
+        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method start
+     * @returns {Object} this
+     * @description initiates data polling
+     *
+     */
+    start() {
+
+        const { interval } = this.opts;
+
+        this.dataFetch = setTimeout(this.fetch.bind(this), interval);
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method stop
+     * @returns {Object} this
+     * @description halts data polling
+     *
+     */
+    stop() {
+
+        if (this.dataFetch) {
+            clearTimeout(this.dataFetch);
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method destroy
+     * @returns {Object} this
+     * @description stops polling and kills instance
+     *
+     */
+    destroy() {
+
+        this.stop();
+
+        this.instance = false;
+        this.dataCache = {};
+        this.dataFetch = null;
+
+        return this;
+
+    }
 }
 
-util.inherits(MasterModel, EventEmitter);
-
-/**
- *
- * @method init
- * @description initiates master model, begins initial data fetch
- * @returns {Object} this
- *
- */
-MasterModel.prototype.init = function() {
-
-    let { instance } = this;
-    let { enableFetch } = this.opts;
-
-    if (enableFetch && !instance) {
-
-        this.instance = true;
-        this.fetch();
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method fetch
- * @description makes a GET request to specified path, emits data event, expecting JSON by default
- * @returns {Object} this
- *
- */
-MasterModel.prototype.fetch = function() {
-
-    let { opts } = this;
-    let { path, enablePolling, interval } = opts;
-
-    utils.log('fetch master model data');
-
-    /**
-     *
-     * @function handleData
-     * @param {Object} response
-     * @returns {Object} response JSON
-     * @description handles response and returns JSON if successful
-     *
-     */
-    function handleData(response) {
-
-        if (response.status >= 400) {
-            throw response.status;
-        }
-
-        try {
-
-            return response.json();
-
-        } catch (e) {
-
-            throw e;
-
-        }
-
-    }
-
-    /**
-     *
-     * @function handleSuccess
-     * @param {Object} data parsed JSON
-     *
-     */
-    function handleSuccess(data={}) {
-
-        if (!isEqual(data, this.dataCache)) {
-
-            this.dataCache = data;
-            this.emit('data', data);
-
-        }
-
-    }
-
-    /**
-     *
-     * @function handleError
-     * @param {Number|Object} err
-     *
-     */
-    function handleError(err) {
-
-        this.emit('data-error', err);
-
-    }
-
-    fetch(path)
-        .then(handleData.bind(this))
-        .then(handleSuccess.bind(this))
-        .catch(handleError.bind(this));
-
-    this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
-
-    return this;
-
-};
-
-/**
- *
- * @method start
- * @returns {Object} this
- * @description initiates data polling
- *
- */
-MasterModel.prototype.start = function() {
-
-    let { interval } = this.opts;
-
-    this.dataFetch = setTimeout(this.fetch.bind(this), interval);
-
-    return this;
-
-};
-
-/**
- *
- * @method stop
- * @returns {Object} this
- * @description halts data polling
- *
- */
-MasterModel.prototype.stop = function() {
-
-    if (this.dataFetch) {
-        clearTimeout(this.dataFetch);
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method destroy
- * @returns {Object} this
- * @description stops polling and kills instance
- *
- */
-MasterModel.prototype.destroy = function() {
-
-    this.stop();
-
-    this.instance = false;
-    this.dataCache = {};
-    this.dataFetch = null;
-
-    return this;
-
-};
-
-module.exports = MasterModel;
+export default MasterModel;

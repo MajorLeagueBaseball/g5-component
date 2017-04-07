@@ -6,13 +6,12 @@
  *
  */
 
-'use strict';
-
-const size = require('lodash.size');
-const each = require('lodash.foreach');
-const every = require('lodash.every');
-const utils = require('./../utils/master');
-const EventEmitter = require('events').EventEmitter;
+import size from 'lodash.size';
+import each from 'lodash.foreach';
+import every from 'lodash.every';
+import utils from './../utils/master';
+import { EventEmitter } from 'events';
+import dependencies from './../dependencies/container';
 
 /**
  *
@@ -37,7 +36,7 @@ function hasEventEmitter(obj) {
  */
 function detachEvents(target) {
 
-    let hasEvents = target && hasEventEmitter(target) && size(target._events);
+    const hasEvents = target && hasEventEmitter(target) && size(target._events);
 
     if (hasEvents) {
         target.removeAllListeners();
@@ -52,89 +51,80 @@ function detachEvents(target) {
  * @description mediates events between master, model and viewModel
  *
  */
-function EventTower(master) {
+class EventTower {
 
-    if (!(this instanceof EventTower)) {
-        return new EventTower(master);
-    }
+    constructor(master) {
 
-    this.master = master;
-    this.model = master && master.model || {};
-    this.viewModel = master && master.viewModel || {};
-
-    //
-    // ensure all targets have an instance of
-    // EventEmitter before proceeding to attach events
-    //
-    if (every([this.master, this.model, this.viewModel], hasEventEmitter)) {
+        this.master = master;
+        this.model = master && master.model || {};
+        this.viewModel = master && master.viewModel || {};
 
         //
-        // attach events to a single instnace
+        // ensure all targets have an instance of
+        // EventEmitter before proceeding to attach events
         //
-        if (!this.master.hasInstance()) {
-            this.attachEvents();
-        }
+        if (every([this.master, this.model, this.viewModel], hasEventEmitter)) {
 
-    } else {
+            //
+            // attach events to a single instnace
+            //
+            if (!this.master.hasInstance()) {
+                this.attachEvents();
+            }
 
-        if (this.master) {
-            throw Error('EventEmitter is required on all main Constructors');
+        } else {
+
+            if (this.master) {
+                throw Error('EventEmitter is required on all main Constructors');
+            }
+
         }
 
     }
 
+    /**
+     *
+     * @method attachEvents
+     * @description core attachEvents method, attaches core and extender events
+     * @returns {Object} this
+     *
+     */
+    attachEvents() {
+
+        const { master, model, viewModel } = this;
+
+        utils.log('attach events');
+
+        dependencies.eventGroup(master, model, viewModel);
+        dependencies.eventGroupExtender(master, model, viewModel);
+
+        // require('./group/group')(master, model, viewModel);
+        // require('./group/extender')(master, model, viewModel);
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method detachEvents
+     * @description detaches all events
+     * @returns {Object} this
+     *
+     */
+    detachEvents() {
+
+        const _eventGroup = [this.master, this.model, this.viewModel];
+
+        utils.log('detach events');
+
+        each(_eventGroup, (obj) => {
+            detachEvents(obj);
+        });
+
+        return this;
+
+    }
 }
 
-/**
- *
- * @method attachEvents
- * @description core attachEvents method, attaches core and extender events
- * @returns {Object} this
- *
- */
-EventTower.prototype.attachEvents = function() {
-
-    let { master, model, viewModel } = this;
-
-    utils.log('attach events');
-
-    try {
-
-        require('eventGroup')(master, model, viewModel);
-        require('eventGroupExtender')(master, model, viewModel);
-
-    } catch (e) {
-
-        require('./group/group')(master, model, viewModel);
-        require('./group/extender')(master, model, viewModel);
-
-        utils.log(e, 'the override eventGroup/eventGroupExtender were not imported.');
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method detachEvents
- * @description detaches all events
- * @returns {Object} this
- *
- */
-EventTower.prototype.detachEvents = function() {
-
-    let _eventGroup = [this.master, this.model, this.viewModel];
-
-    utils.log('detach events');
-
-    each(_eventGroup, (obj) => {
-        detachEvents(obj);
-    });
-
-    return this;
-
-};
-
-module.exports = EventTower;
+export default EventTower;

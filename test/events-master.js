@@ -9,13 +9,13 @@
 'use strict';
 
 const test = require('tape');
-const EventTower = require('./../src/scripts/events/master');
+const EventTower = require('./../src/scripts/events/master').default;
 
 test('events-master test', (t) => {
 
     t.plan(3);
 
-    let eventTower = EventTower();
+    let eventTower = new EventTower();
 
     t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 
