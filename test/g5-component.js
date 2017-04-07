@@ -9,7 +9,7 @@
 'use strict';
 
 const test = require('tape');
-const g5Component = require('./../src/scripts/g5-component');
+const g5Component = require('./../src/scripts/g5-component').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', (t) => {
@@ -23,7 +23,7 @@ test('g5-component core test', (t) => {
         path: '/src/data/linescore.json'
     });
 
-    t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventeEmitter');
+    t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventEmitter');
 
     t.test('g5Component should have expected properties', (st) => {
 

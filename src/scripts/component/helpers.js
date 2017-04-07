@@ -6,15 +6,13 @@
  *
  */
 
-'use strict';
-
 /**
  *
  * @name helpers
  * @description handlebars helpers to be registered
  *
  */
-let helpers = {
+const helpers = {
     /**
      *
      * @function ifOr
@@ -67,4 +65,4 @@ let helpers = {
     }
 };
 
-module.exports = helpers;
+export default helpers;

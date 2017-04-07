@@ -6,7 +6,7 @@
  *
  */
 
-'use strict';
+import gameMedia from '../../template/partials/game-media.html';
 
 /**
  *
@@ -15,8 +15,8 @@
  * @note paths must be hardcoded because Browserify can only do static string analysis
  *
  */
-let partials = {
-    'game-media': require('../../template/partials/game-media.html')
+const partials = {
+    'game-media': gameMedia
 };
 
-module.exports = partials;
+export default partials;

@@ -6,9 +6,7 @@
  *
  */
 
-'use strict';
-
-const pkg = require('./../../../package');
+import pkg from './../../../package.json';
 
 /**
  *
@@ -20,7 +18,7 @@ const pkg = require('./../../../package');
  */
 function getGameClasses(opts={}) {
 
-    let { component } = opts;
+    const { component } = opts;
 
     return `${component}__container ${component}__container--example`;
 
@@ -36,11 +34,11 @@ function getGameClasses(opts={}) {
  */
 function extender(data={}, opts={}) {
 
-    let { game, subject, copyright } = data;
-    let { component } = opts;
-    let { version } = pkg;
+    const { game, subject, copyright } = data;
+    const { component } = opts;
+    const { version } = pkg;
 
-    let css = getGameClasses(opts);
+    const css = getGameClasses(opts);
 
     return {
         css,
@@ -52,4 +50,4 @@ function extender(data={}, opts={}) {
 
 }
 
-module.exports = extender;
+export default extender;

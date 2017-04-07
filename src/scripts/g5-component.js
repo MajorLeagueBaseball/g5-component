@@ -6,12 +6,10 @@
  *
  */
 
-'use strict';
-
-const util = require('util');
-const assign = require('lodash.assign');
-const utils = require('./utils/master');
-const EventEmitter = require('events').EventEmitter;
+import assign from 'lodash.assign';
+import utils from './utils/master';
+import { EventEmitter } from 'events';
+import dependencies from './dependencies/container';
 
 /**
  *
@@ -19,123 +17,116 @@ const EventEmitter = require('events').EventEmitter;
  * @param {Object} opts shared options Object
  *
  */
-function G5Component(opts) {
+class G5Component extends EventEmitter {
 
-    if (!(this instanceof G5Component)) {
-        return new G5Component(opts);
-    }
+    constructor(opts) {
 
-    this.opts = assign({
-        container: undefined,
-        i18n: 'en'
-    }, opts);
+        super();
 
-    try {
+        this.opts = assign({
+            container: undefined,
+            i18n: 'en'
+        }, opts);
 
-        this.model = require('model')(this.opts);
-        this.viewModel = require('viewModel')(this.opts);
-        this.eventTower = require('eventTower')(this);
-
-    } catch (e) {
-
-        this.model = require('./model/master')(this.opts);
-        this.viewModel = require('./viewModel/master')(this.opts);
-        this.eventTower = require('./events/master')(this);
-
-        utils.log(e, 'the override model/viewModel/eventTower were not imported.');
+        this.model = new dependencies.Model(this.opts);
+        this.viewModel = new dependencies.ViewModel(this.opts);
+        this.eventTower = new dependencies.EventTower(this);
 
     }
 
-    EventEmitter.call(this);
+    /**
+     *
+     * @method init
+     * @description initiates model and viewModel
+     * @returns {Object} this
+     *
+     */
+    init() {
 
+        utils.log('init');
+
+        if (!this.hasInstance()) {
+
+            this.viewModel.init();
+            this.model.init();
+
+            this.emit('ready', this);
+
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method detachEvents
+     * @description detaches all events
+     * @returns {Object} this
+     *
+     */
+    detachEvents() {
+
+        this.eventTower.detachEvents();
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method attachEvents
+     * @description attaches all events
+     * @returns {Object} this
+     *
+     */
+    attachEvents() {
+
+        this.eventTower.attachEvents();
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method hasInstance
+     * @description checks if active instance exists on container
+     * @returns {Boolean}
+     *
+     */
+    hasInstance() {
+
+        return this.viewModel.hasInstance();
+
+    }
+
+    /**
+     *
+     * @method destroy
+     * @description kills component instance
+     * @returns {Object} this
+     *
+     */
+    destroy() {
+
+        this.emit('destroy', this);
+
+        this.detachEvents();
+        this.model.destroy();
+        this.viewModel.destroy();
+
+        return this;
+
+    }
 }
 
-util.inherits(G5Component, EventEmitter);
-
-/**
- *
- * @method init
- * @description initiates model and viewModel
- * @returns {Object} this
- *
- */
-G5Component.prototype.init = function() {
-
-    utils.log('init');
-
-    if (!this.hasInstance()) {
-
-        this.viewModel.init();
-        this.model.init();
-
-        this.emit('ready', this);
-
-    }
-
-    return this;
-
+const g5ComponentFactory = function (opts) {
+    return new G5Component(opts);
+};
+g5ComponentFactory.prototype = {
+    constructor: G5Component,
+    name: 'G5Component'
 };
 
-/**
- *
- * @method detachEvents
- * @description detaches all events
- * @returns {Object} this
- *
- */
-G5Component.prototype.detachEvents = function() {
-
-    this.eventTower.detachEvents();
-
-    return this;
-
-};
-
-/**
- *
- * @method attachEvents
- * @description attaches all events
- * @returns {Object} this
- *
- */
-G5Component.prototype.attachEvents = function() {
-
-    this.eventTower.attachEvents();
-
-    return this;
-
-};
-
-/**
- *
- * @method hasInstance
- * @description checks if active instance exists on container
- * @returns {Boolean}
- *
- */
-G5Component.prototype.hasInstance = function() {
-
-    return this.viewModel.hasInstance();
-
-};
-
-/**
- *
- * @method destroy
- * @description kills component instance
- * @returns {Object} this
- *
- */
-G5Component.prototype.destroy = function() {
-
-    this.emit('destroy', this);
-
-    this.detachEvents();
-    this.model.destroy();
-    this.viewModel.destroy();
-
-    return this;
-
-};
-
-module.exports = G5Component;
+export default g5ComponentFactory;
