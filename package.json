@@ -30,6 +30,7 @@
     "jquery"
   ],
   "main": "src/scripts/g5-component.js",
+  "module": "src/scripts/g5-component.js",
   "browserify": {
     "transform": [
       "babelify",

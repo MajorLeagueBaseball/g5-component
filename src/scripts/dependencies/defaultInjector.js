@@ -11,18 +11,19 @@ import EventTower from './../events/master';
 import eventGroup from './../events/group/group';
 import eventGroupExtender from './../events/group/extender';
 
-import container from './container';
-
 /**
  *
- * This is the default dependency arrangement of G5Component.
- * You can provide overrides by assigning them into the dependency injection container,
+ * This is the default dependency arrangement of G5Component used standalone.
+ *
+ * You can provide overrides by assigning them into the G5 dependency injection container,
  * as demonstrated in this function.
  *
- * @module defaultInjector
+ * These types are open for extension by your overrides.
+ *
+ * @param {object} container
  *
  */
-export default function () {
+export default function (container) {
 
     container.component = component;
     container.template = template;
