@@ -16,22 +16,12 @@
     "url": "https://github.com/MajorLeagueBaseball/g5-component/issues"
   },
   "keywords": [
-    "component",
-    "component scaffold",
-    "browserify",
-    "browserify component",
-    "browserify scaffold",
-    "MVVM",
-    "events",
-    "event based",
-    "event based components",
-    "scaffold",
     "base",
-    "application base",
-    "base scaffold",
-    "handlebars",
-    "bootstrap",
-    "jquery"
+    "component",
+    "scaffold",
+    "browserify",
+    "MVVM",
+    "events"
   ],
   "main": "src/scripts/g5-component.js",
   "module": "src/scripts/g5-component.js",
