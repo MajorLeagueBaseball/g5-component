@@ -6,8 +6,7 @@
  *
  */
 
-import assign from 'lodash.assign';
-import isEqual from 'lodash.isequal';
+import { isEqual, assign } from './../dependencies/nodash';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
 

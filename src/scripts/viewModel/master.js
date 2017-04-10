@@ -6,11 +6,7 @@
  *
  */
 
-import util from 'util';
-import assign from 'lodash.assign';
-import isEqual from 'lodash.isequal';
-import size from 'lodash.size';
-import forOwn from 'lodash.forown';
+import { isEqual, assign } from './../dependencies/nodash';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
 import Handlebars from 'hbsfy/runtime';
@@ -132,13 +128,14 @@ class MasterViewModel extends EventEmitter {
      */
     registerHelpers(helpers = this.helpers) {
 
-        if (size(helpers)) {
+        const keys = Object.keys(helpers);
 
-            forOwn(helpers, (item, key) => {
+        for (let i = 0; i < keys.length; ++i) {
 
-                Handlebars.registerHelper(key, item);
+            const key = keys[i];
+            const item = helpers[key];
 
-            });
+            Handlebars.registerHelper(key, item);
 
         }
 
@@ -156,13 +153,14 @@ class MasterViewModel extends EventEmitter {
      */
     registerPartials(partials = this.partials) {
 
-        if (size(partials)) {
+        const keys = Object.keys(partials);
 
-            forOwn(partials, (item, key) => {
+        for (let i = 0; i < keys.length; ++i) {
 
-                Handlebars.registerPartial(key, item);
+            const key = keys[i];
+            const item = partials[key];
 
-            });
+            Handlebars.registerPartial(key, item);
 
         }
 

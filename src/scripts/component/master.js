@@ -18,6 +18,7 @@ import utils from './../utils/master';
  *
  */
 class Component {
+
     /**
      *
      * @method init
@@ -38,6 +39,7 @@ class Component {
         return this;
 
     }
+
     /**
      *
      * @method render
@@ -52,6 +54,7 @@ class Component {
         return this;
 
     }
+
     /**
      *
      * @method addEvents
@@ -82,6 +85,7 @@ class Component {
         return this;
 
     }
+
     /**
      *
      * @method destroy
@@ -97,6 +101,7 @@ class Component {
         return this;
 
     }
+
 }
 
 /**

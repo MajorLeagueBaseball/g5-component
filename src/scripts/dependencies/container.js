@@ -1,6 +1,6 @@
 /**
  *
- * @module g5-component-dependency-container
+ * @module dependency/container
  * @desc a dependency (injection) container.
  *
  * When the base G5Component initializes, it will use the implementations/dependencies

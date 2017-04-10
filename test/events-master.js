@@ -15,7 +15,9 @@ test('events-master test', (t) => {
 
     t.plan(3);
 
-    let eventTower = new EventTower();
+    let eventTower = new EventTower({
+        hasInstance: () => true
+    });
 
     t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 

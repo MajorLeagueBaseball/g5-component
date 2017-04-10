@@ -1,3 +1,15 @@
+/**
+ *
+ * @module defaultInjector
+ * @desc This is the default dependency arrangement of G5Component when used as a standalone.
+ *
+ * You can provide overrides by assigning them into the G5 dependency injection container,
+ * as demonstrated in this function.
+ *
+ * These types are open for extension by your overrides.
+ *
+ */
+
 import component from './../component/master';
 import template from './../../template/component.html';
 import helpers from './../component/helpers';
@@ -13,17 +25,10 @@ import eventGroupExtender from './../events/group/extender';
 
 /**
  *
- * This is the default dependency arrangement of G5Component used standalone.
- *
- * You can provide overrides by assigning them into the G5 dependency injection container,
- * as demonstrated in this function.
- *
- * These types are open for extension by your overrides.
- *
  * @param {object} container
  *
  */
-export default function (container) {
+export function inject(container) {
 
     container.component = component;
     container.template = template;
@@ -37,5 +42,22 @@ export default function (container) {
 
     container.eventGroup = eventGroup;
     container.eventGroupExtender = eventGroupExtender;
+
+}
+
+export default {
+
+    component,
+    template,
+    helpers,
+    partials,
+    extender,
+
+    Model,
+    ViewModel,
+    EventTower,
+
+    eventGroup,
+    eventGroupExtender
 
 };

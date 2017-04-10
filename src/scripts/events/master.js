@@ -6,39 +6,20 @@
  *
  */
 
-import size from 'lodash.size';
-import each from 'lodash.foreach';
-import every from 'lodash.every';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
 import dependencies from './../dependencies/container';
 
 /**
  *
- * @function hasEventEmitter
- * @param {Object} obj
- * @returns {Boolean}
- * @description returns true if given obj has an instance of EventEmitter
- *
- */
-function hasEventEmitter(obj) {
-
-    return obj && obj instanceof EventEmitter;
-
-}
-
-/**
- *
  * @function detachEvents
  * @param {Object} target
- * @description checks if a given target has events, proceeds to remove if true
+ * @description removes events if target is an EventEmitter.
  *
  */
 function detachEvents(target) {
 
-    const hasEvents = target && hasEventEmitter(target) && size(target._events);
-
-    if (hasEvents) {
+    if (target instanceof EventEmitter) {
         target.removeAllListeners();
     }
 
@@ -63,7 +44,9 @@ class EventTower {
         // ensure all targets have an instance of
         // EventEmitter before proceeding to attach events
         //
-        if (every([this.master, this.model, this.viewModel], hasEventEmitter)) {
+        if ([this.master, this.model, this.viewModel].filter((item) => {
+                return item instanceof EventEmitter;
+            }).length < 3) {
 
             //
             // attach events to a single instnace
@@ -98,9 +81,6 @@ class EventTower {
         dependencies.eventGroup(master, model, viewModel);
         dependencies.eventGroupExtender(master, model, viewModel);
 
-        // require('./group/group')(master, model, viewModel);
-        // require('./group/extender')(master, model, viewModel);
-
         return this;
 
     }
@@ -114,13 +94,11 @@ class EventTower {
      */
     detachEvents() {
 
-        const _eventGroup = [this.master, this.model, this.viewModel];
+        const eventGroup = [this.master, this.model, this.viewModel];
 
         utils.log('detach events');
 
-        each(_eventGroup, (obj) => {
-            detachEvents(obj);
-        });
+        eventGroup.forEach(detachEvents);
 
         return this;
 
