@@ -2,7 +2,11 @@
   "name": "g5-component",
   "version": "3.0.0-alpha.1",
   "description": "Browserify Component Scaffold",
-  "author": "Greg Babula",
+  "author": "Greg Babula <greg.babula@mlb.com>",
+  "contributors": [
+    "Adam Pirani <adam.pirani@mlb.com>",
+    "George Fu <george.fu@mlb.com>"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
