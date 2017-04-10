@@ -2,7 +2,7 @@
  *
  * @module component/partials
  * @author Greg Babula [greg.babula@mlb.com]
- * @description handlebars partials reference
+ * @desc handlebars partials reference
  *
  */
 
@@ -11,7 +11,7 @@ import gameMedia from '../../template/partials/game-media.html';
 /**
  *
  * @name partials
- * @description handlebars partials to be registered
+ * @desc handlebars partials to be registered
  * @note paths must be hardcoded because Browserify can only do static string analysis
  *
  */

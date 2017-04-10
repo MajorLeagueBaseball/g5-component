@@ -2,7 +2,7 @@
  *
  * @module events/group
  * @author Greg Babula [greg.babula@mlb.com]
- * @description all standard/core events
+ * @desc all standard/core events
  *
  */
 

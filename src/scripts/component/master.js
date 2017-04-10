@@ -2,7 +2,7 @@
  *
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description entry point for all component specific functionality
+ * @desc entry point for all component specific functionality
  * jQuery and Bootstrap provided for example, however neither are required
  *
  */
@@ -12,7 +12,7 @@ import utils from './../utils/master';
 /**
  *
  * @class Component
- * @description init, render, addEvents, and destroy methods are required for consistency.
+ * @desc init, render, addEvents, and destroy methods are required for consistency.
  * The parent viewModel is passed in as a reference, for external communication events can
  * be emitted via the parent
  *
@@ -24,7 +24,7 @@ class Component {
      * @method init
      * @param {Object} data
      * @returns {Object} this
-     * @description instantiates component with a reference to the parent viewModel, properties on
+     * @desc instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way
      *
      */
@@ -44,7 +44,7 @@ class Component {
      *
      * @method render
      * @returns {Object} this
-     * @description attaches component functionality
+     * @desc attaches component functionality
      *
      */
     render() {
@@ -60,7 +60,7 @@ class Component {
      * @method addEvents
      * @param {Function} cb
      * @returns {Object} this
-     * @description adds component events, event listeners should be delegated from primary element
+     * @desc adds component events, event listeners should be delegated from primary element
      *
      */
     addEvents(cb) {
@@ -69,7 +69,7 @@ class Component {
          *
          * @event click
          * @param {Object} e event
-         * @description simple event example
+         * @desc simple event example
          *
          */
         this.$element.on('click', 'dt', (e) => {
@@ -90,7 +90,7 @@ class Component {
      *
      * @method destroy
      * @returns {Object} this
-     * @description detaches component functionality, events must be cleaned up
+     * @desc detaches component functionality, events must be cleaned up
      *
      */
     destroy() {

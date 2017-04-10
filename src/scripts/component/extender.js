@@ -2,7 +2,7 @@
  *
  * @module component/extender
  * @author Greg Babula [greg.babula@mlb.com]
- * @description component data extender
+ * @desc component data extender
  *
  */
 
@@ -11,7 +11,7 @@ import pkg from './../../../package.json';
 /**
  *
  * @function getGameClasses
- * @description creates game classes based on input
+ * @desc creates game classes based on input
  * @param {Object} opts
  * @returns {String}
  *

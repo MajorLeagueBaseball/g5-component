@@ -2,7 +2,7 @@
  *
  * @module viewModel/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description master viewModel, setup Handlebars and baseline view
+ * @desc master viewModel, setup Handlebars and baseline view
  *
  */
 
@@ -23,7 +23,6 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @param {Object} opts shared options Object
-     * @param {Object} dependencyInjection containing an implementation of component,
      * template, helpers, partials, and extender.
      *
      */
@@ -53,7 +52,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method init
-     * @description initiates viewModel
+     * @desc initiates viewModel
      * @returns {Object} this
      *
      */
@@ -88,7 +87,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method addClass
-     * @description adds classes based on options and component state
+     * @desc adds classes based on options and component state
      * @returns {Object} this
      *
      */
@@ -110,7 +109,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method addG5Attributes
-     * @description adds base component attributes
+     * @desc adds base component attributes
      * @returns {Object} this
      *
      */
@@ -128,7 +127,7 @@ class MasterViewModel extends EventEmitter {
      * @method registerHelpers
      * @param {Object} helpers
      * @returns {Object} this
-     * @description method for registering handlebar helpers
+     * @desc method for registering handlebar helpers
      *
      */
     registerHelpers(helpers = this.helpers) {
@@ -153,7 +152,7 @@ class MasterViewModel extends EventEmitter {
      * @method registerPartials
      * @param {Object} partials
      * @returns {Object} this
-     * @description method for registering handlebar partials
+     * @desc method for registering handlebar partials
      *
      */
     registerPartials(partials = this.partials) {
@@ -178,7 +177,7 @@ class MasterViewModel extends EventEmitter {
      * @method bindComponent
      * @param {Object} data
      * @returns {Object} this
-     * @description attaches component specific functionality
+     * @desc attaches component specific functionality
      *
      */
     bindComponent(data={}) {
@@ -208,7 +207,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method onDataError
      * @param {Number|Object} err
-     * @description method triggered on error
+     * @desc method triggered on error
      * @returns {Object} this
      *
      */
@@ -230,7 +229,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method hasInstance
-     * @description checks if container has an active instance
+     * @desc checks if container has an active instance
      * @returns {Boolean}
      *
      */
@@ -252,7 +251,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method destroy
      * @returns {Object} this
-     * @description kills viewModel instance
+     * @desc kills viewModel instance
      *
      */
     destroy() {

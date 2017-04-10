@@ -2,7 +2,7 @@
  *
  * @module model/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description master model
+ * @desc master model
  *
  */
 
@@ -48,7 +48,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method init
-     * @description initiates master model, begins initial data fetch
+     * @desc initiates master model, begins initial data fetch
      * @returns {Object} this
      *
      */
@@ -71,7 +71,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method fetch
-     * @description makes a GET request to specified path, emits data event, expecting JSON by default
+     * @desc makes a GET request to specified path, emits data event, expecting JSON by default
      * @returns {Object} this
      *
      */
@@ -87,7 +87,7 @@ class MasterModel extends EventEmitter {
          * @function handleData
          * @param {Object} response
          * @returns {Object} response JSON
-         * @description handles response and returns JSON if successful
+         * @desc handles response and returns JSON if successful
          *
          */
         function handleData(response) {
@@ -152,7 +152,7 @@ class MasterModel extends EventEmitter {
      *
      * @method start
      * @returns {Object} this
-     * @description initiates data polling
+     * @desc initiates data polling
      *
      */
     start() {
@@ -169,7 +169,7 @@ class MasterModel extends EventEmitter {
      *
      * @method stop
      * @returns {Object} this
-     * @description halts data polling
+     * @desc halts data polling
      *
      */
     stop() {
@@ -186,7 +186,7 @@ class MasterModel extends EventEmitter {
      *
      * @method destroy
      * @returns {Object} this
-     * @description stops polling and kills instance
+     * @desc stops polling and kills instance
      *
      */
     destroy() {

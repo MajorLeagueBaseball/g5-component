@@ -2,7 +2,7 @@
  *
  * @module utils/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description simple utility functions
+ * @desc simple utility functions
  *
  */
 
@@ -29,7 +29,7 @@ const utils = {
     /**
      *
      * @method log
-     * @description simple log function with a timestamp
+     * @desc simple log function with a timestamp
      *
      */
     log() {

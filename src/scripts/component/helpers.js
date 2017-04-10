@@ -2,14 +2,14 @@
  *
  * @module component/helpers
  * @author Greg Babula [greg.babula@mlb.com]
- * @description handlebars helpers
+ * @desc handlebars helpers
  *
  */
 
 /**
  *
  * @name helpers
- * @description handlebars helpers to be registered
+ * @desc handlebars helpers to be registered
  *
  */
 const helpers = {
@@ -52,7 +52,7 @@ const helpers = {
     /**
      *
      * @function withItem
-     * @description access object value with a variable key
+     * @desc access object value with a variable key
      * @param {Object} obj
      * @param {Object} options
      * @returns {Function}

@@ -2,7 +2,7 @@
  *
  * @module events/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description event communication hub, mediates events between master, model, and viewModel
+ * @desc event communication hub, mediates events between master, model, and viewModel
  *
  */
 
@@ -14,7 +14,7 @@ import dependencies from './../dependencies/container';
  *
  * @function detachEvents
  * @param {Object} target
- * @description removes events if target is an EventEmitter.
+ * @desc removes events if target is an EventEmitter.
  *
  */
 function detachEvents(target) {
@@ -28,7 +28,7 @@ function detachEvents(target) {
 /**
  *
  * @class EventTower
- * @description mediates events between master, model and viewModel
+ * @desc mediates events between master, model and viewModel
  *
  */
 class EventTower {
@@ -72,7 +72,7 @@ class EventTower {
     /**
      *
      * @method attachEvents
-     * @description core attachEvents method, attaches core and extender events
+     * @desc core attachEvents method, attaches core and extender events
      * @returns {Object} this
      *
      */
@@ -92,7 +92,7 @@ class EventTower {
     /**
      *
      * @method detachEvents
-     * @description detaches all events
+     * @desc detaches all events
      * @returns {Object} this
      *
      */

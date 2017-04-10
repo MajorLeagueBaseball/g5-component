@@ -2,7 +2,7 @@
  *
  * @module g5-component
  * @author Greg Babula [greg.babula@mlb.com]
- * @description Browserify Component Scaffold
+ * @desc Browserify Component Scaffold
  *
  */
 
@@ -42,7 +42,7 @@ class G5Component extends EventEmitter {
     /**
      *
      * @method init
-     * @description initiates model and viewModel
+     * @desc initiates model and viewModel
      * @returns {Object} this
      *
      */
@@ -66,7 +66,7 @@ class G5Component extends EventEmitter {
     /**
      *
      * @method detachEvents
-     * @description detaches all events
+     * @desc detaches all events
      * @returns {Object} this
      *
      */
@@ -81,7 +81,7 @@ class G5Component extends EventEmitter {
     /**
      *
      * @method attachEvents
-     * @description attaches all events
+     * @desc attaches all events
      * @returns {Object} this
      *
      */
@@ -96,7 +96,7 @@ class G5Component extends EventEmitter {
     /**
      *
      * @method hasInstance
-     * @description checks if active instance exists on container
+     * @desc checks if active instance exists on container
      * @returns {Boolean}
      *
      */
@@ -109,7 +109,7 @@ class G5Component extends EventEmitter {
     /**
      *
      * @method destroy
-     * @description kills component instance
+     * @desc kills component instance
      * @returns {Object} this
      *
      */
