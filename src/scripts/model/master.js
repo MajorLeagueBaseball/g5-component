@@ -201,6 +201,7 @@ class MasterModel extends EventEmitter {
         return this;
 
     }
+
 }
 
 export default MasterModel;

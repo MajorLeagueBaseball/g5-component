@@ -129,6 +129,7 @@ class EventTower {
         return this;
 
     }
+
 }
 
 export default EventTower;

@@ -279,6 +279,7 @@ class MasterViewModel extends EventEmitter {
         return this;
 
     }
+
 }
 
 export default MasterViewModel;

@@ -124,11 +124,13 @@ class G5Component extends EventEmitter {
         return this;
 
     }
+
 }
 
 const g5ComponentFactory = function (opts) {
     return new G5Component(opts);
 };
+
 g5ComponentFactory.prototype = {
     constructor: G5Component,
     name: 'G5Component'
