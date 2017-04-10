@@ -1,3 +1,9 @@
+/**
+ *
+ * @module defaultInjector
+ *
+ */
+
 import component from './../component/master';
 import template from './../../template/component.html';
 import helpers from './../component/helpers';

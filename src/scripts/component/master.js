@@ -11,7 +11,7 @@ import utils from './../utils/master';
 
 /**
  *
- * @name component
+ * @class Component
  * @description init, render, addEvents, and destroy methods are required for consistency.
  * The parent viewModel is passed in as a reference, for external communication events can
  * be emitted via the parent

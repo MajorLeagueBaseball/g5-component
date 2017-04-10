@@ -17,8 +17,8 @@ import dependencies from './../dependencies/container';
  *
  * @function hasEventEmitter
  * @param {Object} obj
- * @returns {Boolean}
  * @description returns true if given obj has an instance of EventEmitter
+ * @returns {Boolean}
  *
  */
 function hasEventEmitter(obj) {
@@ -46,13 +46,17 @@ function detachEvents(target) {
 
 /**
  *
- * @constructor EventTower
- * @param {Object} master
+ * @class EventTower
  * @description mediates events between master, model and viewModel
  *
  */
 class EventTower {
 
+    /**
+     *
+     * @param {Object} master
+     *
+     */
     constructor(master) {
 
         this.master = master;

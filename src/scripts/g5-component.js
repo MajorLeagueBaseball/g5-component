@@ -13,12 +13,17 @@ import dependencies from './dependencies/container';
 
 /**
  *
- * @constructor G5Component
- * @param {Object} opts shared options Object
+ * @class G5Component
+ * @extends EventEmitter
  *
  */
 class G5Component extends EventEmitter {
 
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
     constructor(opts) {
 
         super();

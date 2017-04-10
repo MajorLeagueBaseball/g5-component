@@ -1,7 +1,7 @@
 /**
  *
- * @module g5-component-dependency-container
- * @desc a dependency (injection) container.
+ * @module container
+ * @desc dependency (injection) container.
  *
  * When the base G5Component initializes, it will use the implementations/dependencies
  * assigned to this container.
@@ -21,8 +21,11 @@
 
 export default {
 
-    // MasterViewModel
-
+    /**
+     *
+     * MasterViewModel
+     *
+     */
     component: () => {
         return {
             /** @method init */
@@ -37,16 +40,20 @@ export default {
     partials: {},
     extender: {},
 
-
-    // G5Component
-
+    /**
+     *
+     * G5Component
+     *
+     */
     Model: class {},
     ViewModel: class {},
     EventTower: class {},
 
-
-    // EventTower
-
+    /**
+     *
+     * EventTower
+     *
+     */
     eventGroup: () => {
         return {};
     },
