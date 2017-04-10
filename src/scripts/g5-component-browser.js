@@ -1,6 +1,8 @@
 /**
  *
- * @module g5ComponentBrowser
+ * @module g5-component-browser
+ *
+ * @todo allow export default to generate name of bundle
  *
  * This is both a default and an example component implementation.
  *
@@ -15,7 +17,9 @@ import container from './dependencies/container';
 
 inject(container);
 
-// use named export at the top level
-// @todo allow export default to generate name of bundle
-
+/**
+ *
+ * use named export at the top level
+ *
+ */
 module.exports = g5Component;

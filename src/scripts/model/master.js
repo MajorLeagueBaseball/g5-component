@@ -17,12 +17,17 @@ import 'isomorphic-fetch';
 
 /**
  *
- * @constructor MasterModel
- * @param {Object} opts shared options Object
+ * @class MasterModel
+ * @extends EventEmitter
  *
  */
 class MasterModel extends EventEmitter {
 
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
     constructor(opts) {
 
         super();
@@ -195,6 +200,7 @@ class MasterModel extends EventEmitter {
         return this;
 
     }
+
 }
 
 export default MasterModel;

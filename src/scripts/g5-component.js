@@ -13,12 +13,17 @@ import dependencies from './dependencies/container';
 
 /**
  *
- * @constructor G5Component
- * @param {Object} opts shared options Object
+ * @class G5Component
+ * @extends EventEmitter
  *
  */
 class G5Component extends EventEmitter {
 
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
     constructor(opts) {
 
         super();
@@ -119,11 +124,20 @@ class G5Component extends EventEmitter {
         return this;
 
     }
+
 }
 
+/**
+ *
+ * @param {object} opts
+ * @returns {G5Component}
+ * @desc allows g5Component initialization without 'operator new'.
+ *
+ */
 const g5ComponentFactory = function (opts) {
     return new G5Component(opts);
 };
+
 g5ComponentFactory.prototype = {
     constructor: G5Component,
     name: 'G5Component'

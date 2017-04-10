@@ -14,14 +14,19 @@ import dependencies from './../dependencies/container';
 
 /**
  *
- * @constructor MasterViewModel
- * @param {Object} opts shared options Object
- * @param {Object} dependencyInjection containing an implementation of component, template,
- *                                     helpers, partials, and extender.
+ * @class MasterViewModel
+ * @extends EventEmitter
  *
  */
 class MasterViewModel extends EventEmitter {
 
+    /**
+     *
+     * @param {Object} opts shared options Object
+     * @param {Object} dependencyInjection containing an implementation of component,
+     * template, helpers, partials, and extender.
+     *
+     */
     constructor(opts) {
 
         super();
@@ -272,6 +277,7 @@ class MasterViewModel extends EventEmitter {
         return this;
 
     }
+
 }
 
 export default MasterViewModel;

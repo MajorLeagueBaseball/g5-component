@@ -27,13 +27,17 @@ function detachEvents(target) {
 
 /**
  *
- * @constructor EventTower
- * @param {Object} master
+ * @class EventTower
  * @description mediates events between master, model and viewModel
  *
  */
 class EventTower {
 
+    /**
+     *
+     * @param {Object} master
+     *
+     */
     constructor(master) {
 
         this.master = master;
@@ -103,6 +107,7 @@ class EventTower {
         return this;
 
     }
+
 }
 
 export default EventTower;
