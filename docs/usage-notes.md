@@ -1,6 +1,6 @@
-#Usage // Notes
+# Usage // Notes
 
-####Git Hooks with Tower
+#### Git Hooks with Tower
 
 > The Tower GIT client has an issue with ghooks as noted in [this issue](https://github.com/gtramontina/ghooks/issues/18)
 

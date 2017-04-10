@@ -1,4 +1,4 @@
-#Ready
+# Ready
 
 Event fired after `model` and `viewModel` instantiation.
 

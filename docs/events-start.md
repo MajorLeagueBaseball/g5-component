@@ -1,4 +1,4 @@
-#Start
+# Start
 
 Restart or resume polling at any time using the `start` event.
 

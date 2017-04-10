@@ -1,4 +1,4 @@
-#[g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
+# [g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
 Browserify Component Scaffold 
 
@@ -14,7 +14,7 @@ Browserify Component Scaffold
 
 ---
 
-###Setup
+### Setup
 
 > Install the package and [use it as a module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 
@@ -28,7 +28,7 @@ npm i g5-component
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
 ```
 
-###Install
+### Install
 
 > Install dependencies, run the initial build, and start the development server
 
@@ -38,7 +38,7 @@ npm i && npm run build && npm run start-dev
 
 ---
 
-###Usage Example
+### Usage Example
 
 > Based on the provided linescore example
 
@@ -60,7 +60,7 @@ linescoreComponent.init();
 
 ---
 
-###Options
+### Options
 
 > A single shared options `Object`
 
@@ -76,7 +76,7 @@ linescoreComponent.init();
 | `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
 | `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
 
-###Methods
+### Methods
 
 > Simple set of core methods
 
@@ -100,7 +100,7 @@ linescoreComponent.attachEvents(); // attaches all events
 linescoreComponent.destroy(); // kills component instance, cleans everything out to prevent memory leaks
 ```
 
-###Events / Listen
+### Events / Listen
 
 > Events must be attached before the component is instantiated
 
@@ -130,7 +130,7 @@ linescoreComponent.on('stop', () => {
 });
 ```
 
-###Events / Trigger
+### Events / Trigger
 
 > Events must be triggered after the component is instantiated
 
@@ -156,7 +156,7 @@ linescoreComponent.emit('start');
 
 ---
 
-###Server / Development
+### Server / Development
 
 > Server running on [http://localhost:9966](http://localhost:9966) with automatic split builds (vendor dependencies are built separately for faster build times) [Ctrl+C] to kill server
 
@@ -164,7 +164,7 @@ linescoreComponent.emit('start');
 npm run start-dev
 ```
 
-###Server
+### Server
 
 > Server running on [http://localhost:9966](http://localhost:9966) with full build [Ctrl+C] to kill server
 
@@ -174,9 +174,9 @@ npm run start
 
 ---
 
-###Commands
+### Commands
 
-####build
+#### build
 
 > Builds JS, CSS, and compresses images
 
@@ -184,7 +184,7 @@ npm run start
 npm run build
 ```
 
-####test
+#### test
 
 > runs test directory through the babel-tape-runner
 
@@ -192,7 +192,7 @@ npm run build
 npm test
 ```
 
-####lint
+#### lint
 
 > lint via JSHint, options set in [.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)
 
@@ -200,7 +200,7 @@ npm test
 npm run lint
 ```
 
-####compress-images
+#### compress-images
 
 > compresses all images in src/images/ and outputs to src/images/build
 
