@@ -72,14 +72,14 @@ class Component {
          * @desc simple event example
          *
          */
-        this.$element.on('click', 'dt', (e) => {
+        this.element.addEventListener('click', (e) => {
 
-            utils.log('list title click', e);
+            utils.log('list click', e);
 
         });
 
         if (cb instanceof Function) {
-            cb(this.$element[0]);
+            cb(this.element);
         }
 
         return this;
@@ -95,8 +95,7 @@ class Component {
      */
     destroy() {
 
-        this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
-        this.$element.off();
+        this.element.removeEventListener('click');
 
         return this;
 
