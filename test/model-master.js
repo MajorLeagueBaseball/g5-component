@@ -8,6 +8,7 @@
 
 'use strict';
 
+global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const test = require('tape');
 const MasterModel = require('./../src/scripts/model/master').default;
 const EventEmitter = require('events').EventEmitter;

@@ -29,12 +29,11 @@
 
             requirejs.config({
                 paths: {
-                    'g5-component-vendor': '../dist/g5-component-vendor',
-                    'g5-component-bundle': '../dist/g5-component-bundle'
+                    'g5-component': '../dist/g5-component'
                 }
             });
 
-            require(['g5-component-vendor', 'g5-component-bundle'], function(vendor, g5Component) {
+            require(['g5-component'], function(g5Component) {
 
                 var linescoreComponent = g5Component({
                     component: 'g5-component--linescore',

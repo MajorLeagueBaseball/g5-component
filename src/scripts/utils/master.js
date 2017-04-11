@@ -12,6 +12,7 @@
  *
  */
 const utils = {
+
     months: [
         'Jan',
         'Feb',
@@ -26,22 +27,34 @@ const utils = {
         'Nov',
         'Dec'
     ],
+
     /**
      *
      * @method log
-     * @desc simple log function with a timestamp
+     * @param {...*} args
+     * @desc simple log function with a timestamp and stack trace.
      *
      */
-    log() {
+    log(...args) {
 
         const timestamp = utils.timestamp;
-        const args = Array.prototype.slice.call(arguments);
 
         args.unshift(`${timestamp()} - g5-component :`);
+
+        /**
+         * If you want stack traces in your logs, enable below.
+         */
+
+        // let trace = (new Error().stack || '').split('\n');
+        // trace.shift();
+        // trace[0] = '';
+        // trace = trace.join('\n');
+        // args.push(trace);
 
         console.log(...args);
 
     },
+
     /**
      *
      * @method pad
@@ -54,6 +67,7 @@ const utils = {
         return n < 10 ? `0${n.toString(10)}` : n.toString(10);
 
     },
+
     /**
      *
      * @method timestamp
@@ -74,6 +88,7 @@ const utils = {
         return [d.getDate(), months[d.getMonth()], time].join(' ');
 
     }
+
 };
 
 export default utils;
