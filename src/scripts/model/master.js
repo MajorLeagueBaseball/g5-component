@@ -10,11 +10,6 @@ import { isEqual, assign } from './../dependencies/nodash';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
 
-import es6Promise from 'es6-promise';
-es6Promise.polyfill();
-
-import 'isomorphic-fetch';
-
 /**
  *
  * @class MasterModel
@@ -84,37 +79,21 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @function handleData
-         * @param {Object} response
-         * @returns {Object} response JSON
-         * @desc handles response and returns JSON if successful
+         * @type {Function} <object(string)>
+         * @param {string} response
+         * @returns {Object}
+         * @desc example pass-through function
          *
          */
-        function handleData(response) {
-
-            if (response.status >= 400) {
-                throw response.status;
-            }
-
-            try {
-
-                return response.json();
-
-            } catch (e) {
-
-                throw e;
-
-            }
-
-        }
+        const handleData = (response) => JSON.parse(response);
 
         /**
          *
-         * @function handleSuccess
+         * @type {Function} <void(object)>
          * @param {Object} data parsed JSON
          *
          */
-        function handleSuccess(data={}) {
+        const handleSuccess = (data={}) => {
 
             if (!isEqual(data, this.dataCache)) {
 
@@ -123,28 +102,57 @@ class MasterModel extends EventEmitter {
 
             }
 
-        }
+        };
 
         /**
          *
-         * @function handleError
+         * @type {Function} <void(Error)>
          * @param {Number|Object} err
          *
          */
-        function handleError(err) {
+        const handleError = (err) => {
 
             this.emit('data-error', err);
 
-        }
+        };
 
-        fetch(path)
-            .then(handleData.bind(this))
-            .then(handleSuccess.bind(this))
-            .catch(handleError.bind(this));
+        this.xhr(path, handleError, handleData, handleSuccess);
 
         this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
         return this;
+
+    }
+
+    /**
+     * @param {string} url data location.
+     * @param {Function} handleError <*(Error)> an error handler, for when disaster strikes.
+     * @param {...Function} handleSuccess any number of success handlers, piped in order.
+     */
+    xhr(url, handleError, ...handleSuccess) {
+
+        const request = new XMLHttpRequest();
+
+        request.onreadystatechange = () => {
+
+            if (request.readyState === XMLHttpRequest.DONE) {
+
+                try {
+
+                    [request.responseText, ...handleSuccess].reduce((a, b) => b(a));
+
+                } catch (error) {
+
+                    handleError(error);
+
+                }
+
+            }
+
+        };
+
+        request.open('GET', url, true);
+        request.send();
 
     }
 

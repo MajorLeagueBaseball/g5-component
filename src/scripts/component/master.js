@@ -57,6 +57,19 @@ class Component {
 
     /**
      *
+     * @param {Event} e
+     * @desc an example click event.
+     * Event handler functions should be L-values to allow unbinding.
+     *
+     */
+    static onClick(e) {
+
+        utils.log('list click', e);
+
+    }
+
+    /**
+     *
      * @method addEvents
      * @param {Function} cb
      * @returns {Object} this
@@ -72,11 +85,7 @@ class Component {
          * @desc simple event example
          *
          */
-        this.element.addEventListener('click', (e) => {
-
-            utils.log('list click', e);
-
-        });
+        this.element.addEventListener('click', Component.onClick);
 
         if (cb instanceof Function) {
             cb(this.element);
@@ -95,7 +104,7 @@ class Component {
      */
     destroy() {
 
-        this.element.removeEventListener('click');
+        this.element.removeEventListener('click', Component.onClick);
 
         return this;
 

@@ -36,6 +36,7 @@ class G5Component extends EventEmitter {
         this.model = new dependencies.Model(this.opts);
         this.viewModel = new dependencies.ViewModel(this.opts);
         this.eventTower = new dependencies.EventTower(this);
+        this.dependencies = dependencies;
 
     }
 
@@ -137,6 +138,8 @@ class G5Component extends EventEmitter {
 const g5ComponentFactory = function (opts) {
     return new G5Component(opts);
 };
+
+g5ComponentFactory.dependencies = dependencies;
 
 g5ComponentFactory.prototype = {
     constructor: G5Component,
