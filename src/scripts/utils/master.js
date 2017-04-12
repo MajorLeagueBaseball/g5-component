@@ -40,6 +40,12 @@ const utils = {
         const timestamp = utils.timestamp;
         args.unshift(`${timestamp()} - g5-component :`);
 
+        for (let i = 0; i < args.length; ++i) {
+            if (args[i] instanceof Error) {
+                return this.trace(...args);
+            }
+        }
+
         console.log(...args);
 
     },

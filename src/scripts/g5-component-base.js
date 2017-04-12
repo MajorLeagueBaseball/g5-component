@@ -11,7 +11,7 @@
  *
  */
 
-import g5Component from './g5-component';
+import G5Component from './g5-component';
 import { inject } from './dependencies/defaultInjector';
 import container from './dependencies/container';
 
@@ -22,4 +22,6 @@ inject(container);
  * use named export at the top level
  *
  */
-module.exports = g5Component;
+module.exports = function (opts) {
+    return new G5Component(opts, container);
+};
