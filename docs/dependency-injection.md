@@ -116,7 +116,9 @@ export default function createG5ComponentExtensionImplementation() {
 }
 ```
 
-4. *Custom*. To take full control, you will need to fully implement the interface of the base types by
+##### (2) Custom
+
+To take full control, you will need to fully implement the interface of the base types by
 reviewing the g5 source code. In this case, to prevent bundle bloat, you can individually import the base
 implementations that you are not overriding in order to have all members present in the dependency container.
 
