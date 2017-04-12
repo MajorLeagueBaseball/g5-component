@@ -17,6 +17,7 @@
 <body>
 
 <main>
+    <kbd>> npm run build-js-composition-demo</kbd>
     <section class="g5-component g5-component--composition"></section>
 </main>
 
@@ -26,33 +27,41 @@
 <!-- AMD implementation -->
 <script>
 
-    require(['../example/dist/g5-component-composition'], function(Row) {
+    require(['../example/dist/g5-component-composition'], function(List) {
 
-        var row = Row({
-            component: 'g5-component--linescore',
+        var list = List({
+
             container: document.querySelector('.g5-component--composition'),
+            component: 'g5-component--linescore',
             css: 'g5-component--linescore-initiated',
-            interval: 15000,
-            path: '/src/data/linescore.json',
             rows: [
-                'hello',
-                'world',
-                '',
-                'this is an example of component composition'
-            ]
+                '(RF) hello',
+                '(CF) world',
+                '(LF)',
+                '(1B)',
+                '(2B)',
+                '(SS)',
+                '(3B)',
+                '(C)',
+                '(P) this is an example of component composition'
+            ],
+
+            interval: 15000,
+            path: '/src/data/linescore.json'
+
         });
 
         //
         // event usage example
         //
-        row.on('ready', function(obj) {
+        list.on('ready', function(obj) {
             console.log('component ready!', obj);
         });
 
         //
         // init component
         //
-        row.init();
+        list.init();
 
     });
 
