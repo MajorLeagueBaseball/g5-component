@@ -116,7 +116,7 @@ export default function createG5ComponentExtensionImplementation() {
 }
 ```
 
-##### (2) Custom
+##### (4) Custom
 
 To take full control, you will need to fully implement the interface of the base types by
 reviewing the g5 source code. In this case, to prevent bundle bloat, you can individually import the base
