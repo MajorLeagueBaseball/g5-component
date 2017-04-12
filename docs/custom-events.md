@@ -2,32 +2,17 @@
 
 Extending the core events with additional custom events
 
-#### package.json
-
-In `package.json` on the component level, set `browser.eventGroupExtender` to false, and add your custom eventGroupExtender reference to aliasify. For simplicity, try to maintain the same directory structure as the scaffold.
-
-```json
-"browser": {
-  "eventGroupExtender": false
-},
-"aliasify": {
-  "aliases": {
-    "eventGroupExtener": "./src/scripts/events/group/extener.js"
-  }
-}
-```
+See also [dependency injection](./dependency-injection.md).
 
 #### eventGroupExtender
 
 ```js
-/**
- *
- * @module events/group/extender
- * @description extended/custom events
- *
- */
+import g5Component from 'g5-component';
+import { inject } from 'g5-component/dependencies/defaultInjector';
 
-'use strict';
+const container = {};
+
+inject(container); // add base implementations.
 
 /**
  *
@@ -37,7 +22,7 @@ In `package.json` on the component level, set `browser.eventGroupExtender` to fa
  * @param {Object} viewModel
  *
  */
-function eventGroup(master={}, model={}, viewModel={}) {
+container.eventGroup = function eventGroup(master={}, model={}, viewModel={}) {
 
     //
     // custom events
@@ -45,5 +30,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
 }
 
-module.exports = eventGroup;
+export default function createG5Component() {
+    return new g5Component(opts, container);
+}
 ```

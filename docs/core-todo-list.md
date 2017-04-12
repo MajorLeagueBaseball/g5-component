@@ -9,7 +9,7 @@
 - [x] Update to new version of `LoDash`
 - [ ] Improve debugging, allow for easier stack traces
 - [ ] Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
-- [ ] Use native modules instead of CommonJS
+- [x] Use native modules instead of CommonJS
 - [ ] Overall cleanup and refactor
 - [x] Normalize global options `Object`, improve defaults
 - [ ] Add architecture diagram

@@ -1,8 +1,10 @@
 # Change Log
 
-### 3.0.0
+### 3.0.0 (currently in development)
 
-* updated dependencies, notably `babel` now 6+ and `lodash` now 4+
+* Refactor module type to static ESM.
+* Dependency injection using ESM or runtime code instead of browserify configurations.
+* Update all dependencies to latest as of March 2017, notably Babel 6+.
 
 ### 2.3.2
 

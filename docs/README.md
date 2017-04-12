@@ -9,7 +9,7 @@
 #### Component
 
 * [Custom Model](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-model.md)
-* [Custom viewModel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-viewModel.md)
+* [Custom ViewModel](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-viewModel.md)
 * [Custom Events](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/custom-events.md)
 
 #### Events

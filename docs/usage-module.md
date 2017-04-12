@@ -27,8 +27,6 @@
 │   │   README.md
 │   │   ├── build/
 │   │   │   README.md
-│   ├── static/
-│   │   │   README.md
 │   ├── scripts/
 │   │   ├── component/
 │   │   │   │   extender.js
@@ -57,7 +55,7 @@
 * __[.jscsrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)__ - JSCS configuration
 * __[.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)__ - JSHint settings
 * __[src/data/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
-* __[src/static/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/static)__ - directory for builds
+* __[dist/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/static)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
 * __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
 * __[src/scripts/component/partials.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)__ - module for adding handlebars partials
@@ -92,7 +90,6 @@
   "browserify": {
     "transform": [
       "babelify",
-      "aliasify",
       [
         "hbsfy",
         {
@@ -103,90 +100,62 @@
       ]
     ]
   },
-  "browser": {
-    "jquery": "./node_modules/jquery/dist/jquery.js",
-    "component": false,
-    "component-template": false,
-    "component-extender": false,
-    "component-helpers": false,
-    "component-partials": false
-  },
-  "aliasify": {
-    "aliases": {
-      "component": "./src/scripts/component/master.js",
-      "component-template": "./src/template/component.html",
-      "component-extender": "./src/scripts/component/extender.js",
-      "component-helpers": "./src/scripts/component/helpers.js",
-      "component-partials": "./src/scripts/component/partials.js"
-    }
-  },
-  "browserify-shim": {
-    "jquery": {
-      "exports": "$"
-    }
-  },
   "config": {
     "ghooks": {
       "pre-commit": "cat src/scripts/**/*.js | jscs --esnext --preset=airbnb && npm run lint && npm test"
     }
   },
-  "scripts": {
-    "serve": "http-server -c-1 -p 9966",
-    "start": "npm run build && npm run serve",
-    "start-dev": "npm run watch & npm run serve",
-    "compress-images": "imagemin --progressive src/images/* src/images/build",
-    "postcompress-images": "echo 'imagemin complete'",
-    "build-js": "browserify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example-bundle.js",
-    "build-js-dev": "browserify -u bootstrap -u jquery -u lodash -u isomorphic-fetch src/scripts/index.js --s 'fed-component-example' > src/static/fed-component-example-bundle.js",    
-    "build-js-vendor": "browserify -r bootstrap -r jquery -r lodash -r es6-promise -r isomorphic-fetch | uglifyjs --enclose --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example-vendor.js",
-    "build-js-full": "browserify src/scripts/index.js --s 'fed-component-example' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > src/static/fed-component-example.js",
-    "build-js-all": "npm run build-js-vendor && npm run build-js && npm run build-js-full",
-    "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > src/static/fed-component-example.css",
-    "postbuild-css": "npm run minify-css",
-    "build": "npm run build-js-all && npm run build-css && npm run compress-images",
-    "prebuild": "echo 'Running all builds...'",
-    "postbuild": "echo 'Builds are ready!'",
-    "watch-js": "nodemon --debug --watch src/scripts/ --exec 'npm run build-js-dev'",
-    "watch-css": "nodemon -e less -x \"npm run build-css\"",
-    "minify-css": "cleancss -o src/static/fed-component-example-min.css src/static/fed-component-example.css",
-    "watch": "npm run watch-js & npm run watch-css",
-    "test": "babel-tape-runner test/*.js | tap-spec",
-    "pretest": "echo 'Checking code via babel-tape-runner'",
-    "lint": "jshint src/scripts/ || true",
-    "prelint": "echo 'Checking code via JSHint...'",
-    "postinstall": "bower i && npm run build"
-  },
-  "dependencies": {
-    "aliasify": "^1.7.2",
-    "babel": "^5.5.6",
-    "babelify": "^6.1.2",
-    "bootstrap": "^3.3.5",
-    "browserify": "^8.1.1",
-    "duplexer2": "0.0.2",
-    "falafel": "^0.3.1",
-    "g5-component": "~2.2.0",
-    "handlebars": "^3.0.3",
-    "hbsfy": "^2.2.1",
-    "inherits": "^2.0.1",
-    "isomorphic-fetch": "^2.1.0",
-    "jquery": "^2.1.4",
-    "lodash": "^3.10.0",
-    "readable-stream": "^1.0.33"
-  },
-  "devDependencies": {
-    "babel-tape-runner": "^1.1.0",
-    "clean-css": "^3.4.2",
-    "ghooks": "^0.3.2",
-    "http-server": "^0.8.0",
-    "imagemin": "^3.2.0",
-    "jscs": "^2.1.1",
-    "jshint": "^2.8.0",
-    "less": "^2.5.3",
-    "nodemon": "^1.5.0",
-    "tap-spec": "^4.0.2",
-    "tape": "^4.0.0",
-    "uglify-js": "^2.4.16"
-  }
+ "scripts": {
+     "serve": "http-server -c-1 -p 9966",
+     "start": "npm run build && npm run serve",
+     "start-dev": "npm run watch & npm run serve",
+     "compress-images": "imagemin --progressive src/images/* src/images/build",
+     "postcompress-images": "echo 'imagemin complete'",
+     "build-js": "browserify src/scripts/g5-component-browser.js --s 'g5-component' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > dist/g5-component.min.js",
+     "build-js-dev": "browserify src/scripts/g5-component-browser.js --s 'g5-component' > dist/g5-component.js",
+     "build-js-all": "npm run build-js && npm run build-js",
+     "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > dist/g5-component.css",
+     "postbuild-css": "npm run minify-css && npm run gzip-css",
+     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
+     "prebuild": "echo 'Running all builds...'",
+     "postbuild": "npm run disk-usage; echo 'Builds are ready!'",
+     "watch-js": "nodemon --debug -e js,html --watch src/scripts/ --watch src/template/ --exec 'npm run build-js-dev'",
+     "watch-css": "nodemon -e less -x 'npm run build-css'",
+     "minify-css": "cleancss --source-map -d -o dist/g5-component-min.css dist/g5-component.css",
+     "gzip-css": "gzip -c -f -9 dist/g5-component-min.css > dist/g5-component-min.css.gz",
+     "watch": "npm run watch-js & npm run watch-css",
+     "test": "babel-tape-runner test/*.js | tap-spec",
+     "pretest": "echo 'Checking code via babel-tape-runner'",
+     "lint": "jshint src/scripts/ || true",
+     "disk-usage": "du -sh ./dist/*",
+     "prelint": "echo 'Checking code via JSHint...'"
+   },
+   "dependencies": {
+     "babel-core": "^6.24.0",
+     "babel-preset-es2015": "^6.24.0",
+     "babelify": "^7.3.0",
+     "browserify": "^14.1.0",
+     "handlebars": "^4.0.6",
+     "hbsfy": "^2.7.0"
+   },
+   "devDependencies": {
+     "babel-tape-runner": "^2.0.1",
+     "bootstrap": "^3.3.7",
+     "clean-css": "^4.0.9",
+     "clean-css-cli": "^4.0.9",
+     "ghooks": "^2.0.0",
+     "http-server": "^0.9.0",
+     "imagemin": "^5.2.2",
+     "imagemin-cli": "^3.0.0",
+     "jscs": "^3.0.7",
+     "jshint": "^2.9.4",
+     "less": "^2.7.2",
+     "nodemon": "^1.11.0",
+     "tap-spec": "^4.1.1",
+     "tape": "^4.6.3",
+     "uglify-js": "^2.8.14",
+     "xmlhttprequest": "^1.8.0"
+   }
 }
 ```
 

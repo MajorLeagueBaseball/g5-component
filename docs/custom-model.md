@@ -1,24 +1,8 @@
 # Custom Model
 
-Using a custom model on the component level.
+Providing a Model implementation in a custom g5Component.
 
-#### package.json
-
-In package.json on the component level, set `browser.model` to false, add a reference to the scaffold's model, and add your custom model reference to aliasify.
-
-```json
-"browser": {
-  "model": false,
-  "g5-component/model": "./node_modules/g5-component/src/scripts/model/master.js"
-},
-"aliasify": {
-  "aliases": {
-    "model": "./src/scripts/model/master.js"
-  }
-}
-```
-
-What's going on here? You're telling Browserify that you don't want to load the scaffolds model by setting it to false. You then add the model property to aliasify with the path to your custom model. The browser reference to g5-component/model is set so that we can easily reference it in our custom model.
+See also [dependency injection](./dependency-injection.md).
 
 #### model/master.js
 
@@ -33,38 +17,36 @@ Create /src/scripts/model/master.js and inherit the prototype from the scaffold'
  *
  */
 
-'use strict';
-
-const util    = require('util');
-const assign  = require('lodash.assign');
-const g5Model = require('g5-component/model');
+const G5BaseModel = require('g5-component/src/scripts/model/master');
 
 /**
  *
- * @constructor MasterModel
- * @param {Object} opts shared options Object
+ * @module MasterModel
  *
  */
-function MasterModel(opts) {
+export default class MasterModel extends G5BaseModel {
 
-    if (!(this instanceof MasterModel)) {
-        return new MasterModel(opts);
+
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
+    constructor(opts) {
+
+        super(opts);
+
+        this.opts = assign({
+            interval: 40000,
+            enableFetch: true,
+            enablePolling: true,
+            path: ''
+        }, opts);
+
     }
-
-    g5Model.call(this);
-
-    this.opts = assign({
-        interval: 40000,
-        enableFetch: true,
-        enablePolling: true,
-        path: ''
-    }, opts);
 
 }
 
-util.inherits(MasterModel, g5Model);
-
-module.exports = MasterModel;
 ```
 
 If you need a custom model, you'll probably want to override the `fetch` method and handle that by yourself. For example, if you need multiple data points, mash that data up here and simply emit a `data` event with the mashed up data set.

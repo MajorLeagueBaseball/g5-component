@@ -28,10 +28,7 @@ Easy components with [g5-component.js](https://github.com/MajorLeagueBaseball/g5
 
 * [Browserify](http://browserify.org/)
 * [Handlebars templating](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/template/component.html) with baseline [helpers](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js) and [partials](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)
-* [LoDash](https://lodash.com/)
 * [LESS](http://lesscss.org/) with BEM syntax
-* Bootstrap (_optional_)
-* jQuery (_optional_)
 
 ### Consistency
 

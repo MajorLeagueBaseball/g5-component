@@ -2,23 +2,7 @@
 
 Using a custom viewModel on the component level.
 
-#### package.json
-
-In package.json on the component level, set browser.viewModel to false, add a reference to the scaffold's viewModel, and add your custom viewModel reference to aliasify.
-
-```json
-"browser": {
-  "viewModel": false,
-  "g5-component/viewModel": "./node_modules/g5-component/src/scripts/viewModel/master.js"
-},
-"aliasify": {
-  "aliases": {
-    "viewModel": "./src/scripts/viewModel/master.js"
-  }
-}
-```
-
-What's going on here? You're telling Browserify that you don't want to load the scaffolds viewModel by setting it to false. You then add the viewModel property to aliasify with the path to your custom viewModel. The browser reference to g5-component/viewModel is set so that we can easily reference it in our custom viewModel.
+See also [dependency injection](./dependency-injection.md).
 
 #### viewModel/master.js
 

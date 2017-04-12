@@ -22,9 +22,10 @@ class G5Component extends EventEmitter {
     /**
      *
      * @param {Object} opts shared options Object
+     * @param {Object} di containing customizations for the g5 component.
      *
      */
-    constructor(opts) {
+    constructor(opts, di = dependencies) {
 
         super();
 
@@ -33,10 +34,17 @@ class G5Component extends EventEmitter {
             i18n: 'en'
         }, opts);
 
-        this.model = new dependencies.Model(this.opts);
-        this.viewModel = new dependencies.ViewModel(this.opts);
-        this.eventTower = new dependencies.EventTower(this);
-        this.dependencies = dependencies;
+        /**
+         *
+         * Dependencies references are copied at instantiation.
+         * @type {Object}
+         *
+         */
+        const implementations = this.dependencies = assign({}, di);
+
+        this.model = new implementations.Model(this.opts);
+        this.viewModel = new implementations.ViewModel(this.opts, implementations);
+        this.eventTower = new implementations.EventTower(this);
 
     }
 
@@ -131,12 +139,13 @@ class G5Component extends EventEmitter {
 /**
  *
  * @param {object} opts
+ * @param {object} dependencies injection container.
  * @returns {G5Component}
  * @desc allows g5Component initialization without 'operator new'.
  *
  */
-const g5ComponentFactory = function (opts) {
-    return new G5Component(opts);
+const g5ComponentFactory = function (opts, dependencies) {
+    return new G5Component(opts, dependencies);
 };
 
 g5ComponentFactory.dependencies = dependencies;

@@ -25,8 +25,10 @@ class MasterViewModel extends EventEmitter {
      * @param {Object} opts shared options Object
      * template, helpers, partials, and extender.
      *
+     * @param {object} [dependencyContainer = dependencies] A container with the component implementation(s) to use.
+     *
      */
-    constructor(opts) {
+    constructor(opts, dependencyContainer = dependencies) {
 
         super();
 
@@ -41,11 +43,11 @@ class MasterViewModel extends EventEmitter {
         this.active = false;
         this.bound = false;
 
-        this.component = dependencies.component(this);
-        this.template = dependencies.template;
-        this.helpers = dependencies.helpers;
-        this.partials = dependencies.partials;
-        this.extender = dependencies.extender;
+        this.component = dependencyContainer.component(this);
+        this.template = dependencyContainer.template;
+        this.helpers = dependencyContainer.helpers;
+        this.partials = dependencyContainer.partials;
+        this.extender = dependencyContainer.extender;
 
     }
 

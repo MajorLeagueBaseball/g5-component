@@ -8,7 +8,6 @@
 
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
-import dependencies from './../dependencies/container';
 
 /**
  *
@@ -44,6 +43,8 @@ class EventTower {
         this.model = master && master.model || {};
         this.viewModel = master && master.viewModel || {};
 
+        this.dependencies = master.dependencies;
+
         //
         // ensure all targets have an instance of
         // EventEmitter before proceeding to attach events
@@ -78,7 +79,7 @@ class EventTower {
      */
     attachEvents() {
 
-        const { master, model, viewModel } = this;
+        const { master, model, viewModel, dependencies } = this;
 
         utils.log('attach events');
 
