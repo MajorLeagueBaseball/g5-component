@@ -6,7 +6,7 @@
  *
  */
 
-import { isEqual, assign } from './../dependencies/nodash';
+import { isEqual, assign } from './../utils/nodash';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
 import Handlebars from 'hbsfy/runtime';

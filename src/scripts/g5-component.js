@@ -6,7 +6,7 @@
  *
  */
 
-import { assign } from './dependencies/nodash';
+import { assign } from './utils/nodash';
 import utils from './utils/master';
 import { EventEmitter } from 'events';
 import dependencies from './dependencies/container';

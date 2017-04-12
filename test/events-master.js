@@ -11,7 +11,7 @@
 const test = require('tape');
 const EventTower = require('./../src/scripts/events/master').default;
 const EventEmitter = require('events').EventEmitter;
-const assign = require('./../src/scripts/dependencies/nodash').assign;
+const assign = require('./../src/scripts/utils/nodash').assign;
 
 test('events-master test', (t) => {
 
