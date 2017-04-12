@@ -196,7 +196,7 @@ class MasterViewModel extends EventEmitter {
                 this.container.innerHTML = '';
                 this.container.appendChild(template);
             } else {
-                this.container.innerHTML = this.template(data);
+                this.container.innerHTML = template;
             }
 
         }
