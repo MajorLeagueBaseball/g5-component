@@ -12,11 +12,11 @@ npm-debug.log
 
 # Project Files #
 #################
-dist
 .tmp
 .todo
 .idea
 /build
-/src/static/*.js
-/src/static/*.css
-/src/static/*.map
+/dist/*.js
+/dist/*.css
+/dist/*.gz
+/dist/*.map
