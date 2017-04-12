@@ -25,8 +25,14 @@ inject(container); // add base implementations.
 container.eventGroup = function eventGroup(master={}, model={}, viewModel={}) {
 
     //
-    // custom events
+    // All 3 are EventEmitters.
     //
+    master.on('eventA', () => {
+
+        model.emit('eventB');
+        viewModel.emit('eventC', { /* data */ });
+
+    });
 
 }
 

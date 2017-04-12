@@ -2,47 +2,33 @@
 
 Using a custom viewModel on the component level.
 
-See also [dependency injection](./dependency-injection.md).
+See also [dependency injection](./dependency-injection.md) on how to inject your custom implementation.
 
 #### viewModel/master.js
 
 Create /src/scripts/viewModel/master.js and inherit the prototype from the scaffold's viewModel (to maintain expected core methods and instance of EventEmitter). You can then easily add new methods or override existing ones.
 
 ```js
-/**
- *
- * @module viewModel/master
- * @description master viewModel, view layer related functionality
- * inherits methods and properties from the g5-component viewModel
- *
- */
+import assign from 'lodash.assign';
+import G5ViewModel from 'g5-component/src/scripts/viewModel/master';
 
-'use strict';
+export default MasterViewModel extends G5ViewModel {
 
-const util        = require('util');
-const assign      = require('lodash.assign');
-const g5ViewModel = require('g5-component/viewModel');
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
+    constructor(opts) {
 
-/**
- *
- * @constructor MasterViewModel
- * @param {Object} opts shared options Object
- *
- */
-function MasterViewModel(opts) {
+        g5ViewModel.call(this);
 
-    if (!(this instanceof MasterViewModel)) {
-        return new MasterViewModel(opts);
+        this.opts = assign({
+            css: 'g5-component'
+        }, opts);
+
     }
-
-    g5ViewModel.call(this);
-
-    this.opts = assign({
-        css: 'g5-component'
-    }, opts);
 
 }
 
-util.inherits(MasterViewModel, g5ViewModel);
-
-module.exports = MasterViewModel;
+```
