@@ -189,7 +189,15 @@ class MasterViewModel extends EventEmitter {
         if (!isEqual(data, this.dataCache)) {
 
             this.dataCache = data;
-            this.container.innerHTML = this.template(data);
+
+            const template = this.template(data);
+
+            if (typeof HTMLElement === 'function' && template instanceof HTMLElement) {
+                this.container.innerHTML = '';
+                this.container.appendChild(template);
+            } else {
+                this.container.innerHTML = this.template(data);
+            }
 
         }
 
@@ -208,17 +216,17 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method onDataError
-     * @param {Number|Object} err
+     * @param {Number|Object} error
      * @desc method triggered on error
      * @returns {Object} this
      *
      */
-    onDataError(err) {
+    onDataError(error) {
 
         const elementClasses = this.container.classList;
         const errorClass = 'g5-component--is-error';
 
-        utils.log(`error: ${err}`);
+        utils.trace(error);
 
         if (!elementClasses.contains(errorClass)) {
             this.container.classList.add(errorClass);

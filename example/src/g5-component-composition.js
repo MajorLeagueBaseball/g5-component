@@ -25,14 +25,22 @@ class Row extends G5Component {
         };
 
         implementation.template = function (data) {
-            return `<li>${data}</li>`;
+
+            const li = document.createElement('li');
+            li.innerHTML = data;
+            li.addEventListener('click', () => {
+                console.log(data);
+            });
+
+            return li;
+
         };
 
         super(opts, implementation);
 
     }
 
-    toString() {
+    template() {
         return this.implementations.template(
             this.implementations.extender(null, this.opts)
         );
@@ -51,7 +59,17 @@ class List extends G5Component {
         };
 
         implementation.template = function (data) {
-            return `<ul>${data.map(row => new Row({ row })).join('')}</ul>`;
+
+            const list = document.createElement('ul');
+
+            for (const row of data) { // note; Symbol not for production
+
+                list.appendChild(new Row({ row }).template());
+
+            }
+
+            return list;
+
         };
 
         super(opts, implementation);
