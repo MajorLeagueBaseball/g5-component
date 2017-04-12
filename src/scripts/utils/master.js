@@ -51,7 +51,7 @@ const utils = {
      * @desc still simple log function with a timestamp and stack trace.
      *
      */
-    log(...args) {
+    trace(...args) {
 
         const timestamp = utils.timestamp;
 
