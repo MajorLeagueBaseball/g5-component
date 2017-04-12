@@ -13,9 +13,6 @@
 
 import G5Component from './g5-component';
 import { inject } from './dependencies/defaultInjector';
-import container from './dependencies/container';
-
-inject(container);
 
 /**
  *
@@ -23,5 +20,5 @@ inject(container);
  *
  */
 module.exports = function (opts) {
-    return new G5Component(opts, container);
+    return new G5Component(opts, inject({}));
 };
