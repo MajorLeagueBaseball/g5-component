@@ -17,7 +17,7 @@ import dependencies from './dependencies/container';
  * @extends EventEmitter
  *
  */
-class G5Component extends EventEmitter {
+export default class G5Component extends EventEmitter {
 
     /**
      *
@@ -40,7 +40,7 @@ class G5Component extends EventEmitter {
          * @type {Object}
          *
          */
-        const implementations = this.dependencies = assign({}, di);
+        const implementations = this.implementations = assign({}, di);
 
         this.model = new implementations.Model(this.opts);
         this.viewModel = new implementations.ViewModel(this.opts, implementations);
@@ -134,25 +134,11 @@ class G5Component extends EventEmitter {
 
     }
 
+    /**
+     * @returns {Object} the default dependency container.
+     */
+    static get dependencies() {
+        return dependencies;
+    }
+
 }
-
-/**
- *
- * @param {object} opts
- * @param {object} dependencies injection container.
- * @returns {G5Component}
- * @desc allows g5Component initialization without 'operator new'.
- *
- */
-const g5ComponentFactory = function (opts, dependencies) {
-    return new G5Component(opts, dependencies);
-};
-
-g5ComponentFactory.dependencies = dependencies;
-
-g5ComponentFactory.prototype = {
-    constructor: G5Component,
-    name: 'G5Component'
-};
-
-export default g5ComponentFactory;

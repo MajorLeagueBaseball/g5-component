@@ -26,6 +26,7 @@ import eventGroupExtender from './../events/group/extender';
 /**
  *
  * @param {object} container
+ * @returns {object}
  *
  */
 export function inject(container) {
@@ -42,6 +43,8 @@ export function inject(container) {
 
     container.eventGroup = eventGroup;
     container.eventGroupExtender = eventGroupExtender;
+
+    return container;
 
 }
 

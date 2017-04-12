@@ -2,7 +2,7 @@
 
 ###### DRAFT Apr 12 2017
 
-Living in the `document` requires following the tree structure of HTML.
+Living in the browser `document` requires following the tree structure of HTML.
 
 To allow this, components should have a quality known as [composability](https://en.wikipedia.org/wiki/Composability).
 
@@ -11,4 +11,8 @@ and have at most one parent component (basic tree structure).
 
 Furthermore, we aim to provide composability without the need to create multiple repositories or node modules.
 
-# TODO: link to example*
+#### Example
+
+First `npm run build` and then `npm run build-js-composition-demo` and `npm run serve`.
+
+The example is visible at `localhost:9966/example/composition.html`.

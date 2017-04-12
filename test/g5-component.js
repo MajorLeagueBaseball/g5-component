@@ -9,14 +9,14 @@
 'use strict';
 
 const test = require('tape');
-const g5Component = require('./../src/scripts/g5-component').default;
+const G5Component = require('./../src/scripts/g5-component').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', (t) => {
 
     t.plan(3);
 
-    let linescoreComponent = g5Component({
+    let linescoreComponent = new G5Component({
         container: null,
         css: 'g5-component-linescore linescore linescore--game',
         interval: 15000,

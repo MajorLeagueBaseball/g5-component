@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Browserify Component Scaffold" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="g5-component.js" />
+
+    <title>g5-component.js / AMD</title>
+
+    <link rel="stylesheet" href="/dist/g5-component-min.css.gz" />
+</head>
+<body>
+
+<main>
+    <section class="g5-component g5-component--composition"></section>
+</main>
+
+<!-- AMD -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.18/require.min.js"></script>
+
+<!-- AMD implementation -->
+<script>
+
+    require(['../example/dist/g5-component-composition'], function(Row) {
+
+        var row = Row({
+            component: 'g5-component--linescore',
+            container: document.querySelector('.g5-component--composition'),
+            css: 'g5-component--linescore-initiated',
+            interval: 15000,
+            path: '/src/data/linescore.json',
+            rows: [
+                'hello',
+                'world',
+                '',
+                'this is an example of component composition'
+            ]
+        });
+
+        //
+        // event usage example
+        //
+        row.on('ready', function(obj) {
+            console.log('component ready!', obj);
+        });
+
+        //
+        // init component
+        //
+        row.init();
+
+    });
+
+</script>
+
+</body>
+</html>

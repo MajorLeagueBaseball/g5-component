@@ -43,7 +43,7 @@ class EventTower {
         this.model = master && master.model || {};
         this.viewModel = master && master.viewModel || {};
 
-        this.dependencies = master.dependencies;
+        this.implementations = master.implementations;
 
         //
         // ensure all targets have an instance of
@@ -79,12 +79,12 @@ class EventTower {
      */
     attachEvents() {
 
-        const { master, model, viewModel, dependencies } = this;
+        const { master, model, viewModel, implementations } = this;
 
         utils.log('attach events');
 
-        dependencies.eventGroup(master, model, viewModel);
-        dependencies.eventGroupExtender(master, model, viewModel);
+        implementations.eventGroup(master, model, viewModel);
+        implementations.eventGroupExtender(master, model, viewModel);
 
         return this;
 
