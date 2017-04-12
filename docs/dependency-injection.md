@@ -6,7 +6,7 @@ On [wikipedia](https://en.wikipedia.org/wiki/Dependency_injection).
 
 DI for the g5-component is not different from the standard concept.
 
-To aid [composability](./composition), the `G5Component` constructor has an optional second argument that acts as a dependency
+To aid [composability](./composition.md), the `G5Component` constructor has an optional second argument that acts as a dependency
 injection container.
 
 ```js
