@@ -32,7 +32,23 @@ const utils = {
      *
      * @method log
      * @param {...*} args
-     * @desc simple log function with a timestamp and stack trace.
+     * @desc simple log function with a timestamp.
+     *
+     */
+    log(...args) {
+
+        const timestamp = utils.timestamp;
+        args.unshift(`${timestamp()} - g5-component :`);
+
+        console.log(...args);
+
+    },
+
+    /**
+     *
+     * @method trace
+     * @param {...*} args
+     * @desc still simple log function with a timestamp and stack trace.
      *
      */
     log(...args) {
@@ -41,15 +57,11 @@ const utils = {
 
         args.unshift(`${timestamp()} - g5-component :`);
 
-        /**
-         * If you want stack traces in your logs, enable below.
-         */
-
-        // let trace = (new Error().stack || '').split('\n');
-        // trace.shift();
-        // trace[0] = '';
-        // trace = trace.join('\n');
-        // args.push(trace);
+        let trace = (new Error().stack || '').split('\n');
+        trace.shift();
+        trace[0] = '';
+        trace = trace.join('\n');
+        args.push(trace);
 
         console.log(...args);
 

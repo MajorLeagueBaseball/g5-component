@@ -126,10 +126,10 @@ class MasterModel extends EventEmitter {
 
     /**
      * @param {string} url data location.
-     * @param {Function} uhOh <*(Error)> an error handler.
-     * @param {...Function} yep any number of success handlers.
+     * @param {Function} handleError <*(Error)> an error handler, for when disaster strikes.
+     * @param {...Function} handleSuccess any number of success handlers, piped in order.
      */
-    xhr(url, uhOh, ...yep) {
+    xhr(url, handleError, ...handleSuccess) {
 
         const request = new XMLHttpRequest();
 
@@ -139,11 +139,11 @@ class MasterModel extends EventEmitter {
 
                 try {
 
-                    [request.responseText, ...yep].reduce((a, b) => b(a));
+                    [request.responseText, ...handleSuccess].reduce((a, b) => b(a));
 
                 } catch (error) {
 
-                    uhOh(error);
+                    handleError(error);
 
                 }
 

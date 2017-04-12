@@ -38,7 +38,6 @@
       ]
     ]
   },
-  "browser": {},
   "config": {
     "ghooks": {
       "pre-commit": "cat src/scripts/**/*.js | jscs --preset=airbnb; npm run lint; npm test"
@@ -57,7 +56,7 @@
     "postbuild-css": "npm run minify-css && npm run gzip-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
     "prebuild": "echo 'Running all builds...'",
-    "postbuild": "npm run du; echo 'Builds are ready!'",
+    "postbuild": "npm run disk-usage; echo 'Builds are ready!'",
     "watch-js": "nodemon --debug -e js,html --watch src/scripts/ --watch src/template/ --exec 'npm run build-js-dev'",
     "watch-css": "nodemon -e less -x 'npm run build-css'",
     "minify-css": "cleancss --source-map -d -o dist/g5-component-min.css dist/g5-component.css",
@@ -66,7 +65,7 @@
     "test": "babel-tape-runner test/*.js | tap-spec",
     "pretest": "echo 'Checking code via babel-tape-runner'",
     "lint": "jshint src/scripts/ || true",
-    "du": "du -sh ./dist/*",
+    "disk-usage": "du -sh ./dist/*",
     "prelint": "echo 'Checking code via JSHint...'"
   },
   "dependencies": {
