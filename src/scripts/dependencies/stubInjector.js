@@ -6,7 +6,7 @@
  *
  */
 
-import stub from './container';
+import { stub } from './container';
 
 /**
  *
@@ -16,11 +16,13 @@ import stub from './container';
  */
 export function inject(container) {
 
-    for (const key in stub) {
+    const copy = stub();
 
-        if (stub.hasOwnProperty(key)) {
+    for (const key in copy) {
 
-            container[key] = stub[key];
+        if (copy.hasOwnProperty(key)) {
+
+            container[key] = copy[key];
 
         }
 
