@@ -11,6 +11,7 @@
 
 import G5Component from './../../../src/scripts/g5-component';
 import { inject } from './../../../src/scripts/dependencies/lightInjector';
+import { inject as stub } from './../../../src/scripts/dependencies/stubInjector';
 
 /**
  *
@@ -45,7 +46,7 @@ class Row extends G5Component {
          * Only stub functionality as baseline.
          * @type {Object}
          */
-        const implementation = G5Component.stub();
+        const implementation = stub({});
 
         /**
          *
@@ -103,7 +104,7 @@ class List extends G5Component {
     constructor(opts) {
 
         /**
-         * For the List, its implementation uses the G5Component baseline instead of the stubs like with Row.
+         * For the List, its implementation uses the G5Component light injector instead of the stubs like with Row.
          * @type {Object}
          */
         const implementation = inject({});

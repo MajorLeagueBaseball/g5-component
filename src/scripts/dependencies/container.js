@@ -16,7 +16,7 @@
  *
  */
 
-export default {
+export const stub = {
 
     /**
      *
@@ -56,3 +56,15 @@ export default {
     }
 
 };
+
+export default (() => {
+
+    const defaultDependencyContainer = {};
+
+    for (const key in stub) {
+        defaultDependencyContainer[key] = stub[key];
+    }
+
+    return defaultDependencyContainer;
+
+})();

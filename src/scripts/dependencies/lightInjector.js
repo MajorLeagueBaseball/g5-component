@@ -3,7 +3,6 @@
  * @module lightInjector
  * @desc this variation injects the G5Component baseline M/VM/Events implementation, but without Handlebars.
  *
- *
  */
 
 import component from './../component/master';

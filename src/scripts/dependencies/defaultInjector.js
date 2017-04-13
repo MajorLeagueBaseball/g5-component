@@ -1,12 +1,11 @@
 /**
  *
  * @module defaultInjector
- * @desc This injector assigns the baseline G5Component implementations into a container, which is a step
- * up from the stubs found in ./dependencies.
+ * @desc This injector assigns the baseline G5Component implementations into a container,
+ * along with the handlebars runtime.
  *
  * This is suitable for most components as a starting point, with most customization being applied to the
  * component group (component, template, helpers, partials, extender).
- *
  *
  */
 

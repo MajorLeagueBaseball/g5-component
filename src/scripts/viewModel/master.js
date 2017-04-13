@@ -135,7 +135,7 @@ class MasterViewModel extends EventEmitter {
      */
     registerHelpers(helpers = this.helpers) {
 
-        this.register('Helpers', helpers);
+        this.register('Helper', helpers);
 
     }
 
@@ -149,7 +149,7 @@ class MasterViewModel extends EventEmitter {
      */
     registerPartials(partials = this.partials) {
 
-        this.register('Partials', partials);
+        this.register('Partial', partials);
 
     }
 

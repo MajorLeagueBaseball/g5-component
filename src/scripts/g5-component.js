@@ -134,16 +134,4 @@ export default class G5Component extends EventEmitter {
 
     }
 
-    /**
-     * @returns {Object} a shallow copy of the stub dependency container.
-     *                   For components that want to get started with minimal implementation.
-     */
-    static stub() {
-        const stub = {};
-        for (const key in dependencies) {
-            stub[key] = dependencies[key];
-        }
-        return stub;
-    }
-
 }

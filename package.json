@@ -68,9 +68,9 @@
     "disk-usage": "du -sh ./dist/*",
     "prelint": "echo 'Checking code via JSHint...'",
 
-    "build-js-composition-demo": "browserify example/src/composition/g5-component-composition.js --s 'g5-component' > example/dist/g5-component-composition.js",
-    "build-js-simple-demo": "browserify example/src/simple/g5-component-simple.js --s 'g5-component' > example/dist/g5-component-simple.js",
-    "build-demo": "npm run build-js-composition-demo; npm run build-js-simple-demo"
+    "build-js-composition-example": "browserify example/src/composition/g5-component-composition.js --s 'g5-component' > example/dist/g5-component-composition.js",
+    "build-js-simple-example": "browserify example/src/simple/g5-component-simple.js --s 'g5-component' > example/dist/g5-component-simple.js",
+    "build-examples": "npm run build-js-composition-example; npm run build-js-simple-example;"
   },
   "dependencies": {
     "babel-core": "^6.24.0",
