@@ -1,12 +1,12 @@
 /**
  *
  * @module defaultInjector
- * @desc This is the default dependency arrangement of G5Component when used as a standalone.
+ * @desc This injector assigns the baseline G5Component implementations into a container, which is a step
+ * up from the stubs found in ./dependencies.
  *
- * You can provide overrides by assigning them into the G5 dependency injection container,
- * as demonstrated in this function.
+ * This is suitable for most components as a starting point, with most customization being applied to the
+ * component group (component, template, helpers, partials, extender).
  *
- * These types are open for extension by your overrides.
  *
  */
 
@@ -22,6 +22,8 @@ import EventTower from './../events/master';
 
 import eventGroup from './../events/group/group';
 import eventGroupExtender from './../events/group/extender';
+
+import Handlebars from 'hbsfy/runtime';
 
 /**
  *
@@ -44,6 +46,8 @@ export function inject(container) {
     container.eventGroup = eventGroup;
     container.eventGroupExtender = eventGroupExtender;
 
+    container.Handlebars = Handlebars;
+
     return container;
 
 }
@@ -61,6 +65,8 @@ export default {
     EventTower,
 
     eventGroup,
-    eventGroupExtender
+    eventGroupExtender,
+
+    Handlebars
 
 };

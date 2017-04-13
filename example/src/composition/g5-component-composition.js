@@ -9,8 +9,8 @@
  *
  */
 
-import G5Component from './../../src/scripts/g5-component';
-import { inject } from './../../src/scripts/dependencies/defaultInjector';
+import G5Component from './../../../src/scripts/g5-component';
+import { inject } from './../../../src/scripts/dependencies/lightInjector';
 
 /**
  *
@@ -45,7 +45,7 @@ class Row extends G5Component {
          * Only stub functionality as baseline.
          * @type {Object}
          */
-        const implementation = G5Component.dependencies;
+        const implementation = G5Component.stub();
 
         /**
          *
@@ -157,7 +157,7 @@ class List extends G5Component {
  * @see ./../composition.html in examples folder.
  *
  */
-module.exports = function (opts) {
+module.exports = function g5ComponentComposition(opts) {
 
     return new List(opts);
 

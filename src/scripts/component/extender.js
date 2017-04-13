@@ -4,25 +4,9 @@
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc component data extender
  *
- */
-
-import pkg from './../../../package.json';
-
-/**
- *
- * @function getGameClasses
- * @desc creates game classes based on input
- * @param {Object} opts
- * @returns {String}
+ * @see ./example/simple/component/extender
  *
  */
-function getGameClasses(opts={}) {
-
-    const { component } = opts;
-
-    return `${component}__container ${component}__container--example`;
-
-}
 
 /**
  *
@@ -34,19 +18,7 @@ function getGameClasses(opts={}) {
  */
 function extender(data={}, opts={}) {
 
-    const { game, subject, copyright } = data;
-    const { component } = opts;
-    const { version } = pkg;
-
-    const css = getGameClasses(opts);
-
-    return {
-        css,
-        component,
-        version,
-        game,
-        copyright
-    };
+    return data;
 
 }
 

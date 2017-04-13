@@ -4,18 +4,15 @@
  * @desc dependency (injection) container.
  *
  * When the base G5Component initializes, it will use the implementations/dependencies
- * assigned to this container.
+ * assigned to this container unless explicitly provided a different dependency container.
  *
- * An extending or custom g5Component will implement most if not all of these elements.
- * For the implementation interface needed for each of these dependencies, please (see) ...
+ * By default this container contains only stubs.
  *
- * @see ./defaultInjector.js
- *
- * and the types that it injects. Your implementations may also elect to use those default types
- * as base classes for extension.
+ * An extending or custom G5Component will implement most if not all of these elements in a new container,
+ * either by extending the baseline implementations within the g5-component module, or independently.
  *
  * You can also inject other external dependencies here for general component-level use, such as
- * moment, jQuery, etc.
+ * moment, jQuery, Handlebars, etc.
  *
  */
 
@@ -28,17 +25,14 @@ export default {
      */
     component: () => {
         return {
-            /** @method init */
-            /** @method addEvents */
-            /** @method render */
+            init: () => {},
             destroy: () => {}
         }
     },
-
     template: {},
     helpers: {},
     partials: {},
-    extender: {},
+    extender: (data) => data,
 
     /**
      *

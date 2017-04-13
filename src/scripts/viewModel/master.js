@@ -9,7 +9,6 @@
 import { isEqual, assign } from './../utils/nodash';
 import utils from './../utils/master';
 import { EventEmitter } from 'events';
-import Handlebars from 'hbsfy/runtime';
 import dependencies from './../dependencies/container';
 
 /**
@@ -48,6 +47,8 @@ class MasterViewModel extends EventEmitter {
         this.helpers = implementations.helpers;
         this.partials = implementations.partials;
         this.extender = implementations.extender;
+
+        this.Handlebars = implementations.Handlebars;
 
     }
 
@@ -134,18 +135,7 @@ class MasterViewModel extends EventEmitter {
      */
     registerHelpers(helpers = this.helpers) {
 
-        const keys = Object.keys(helpers);
-
-        for (let i = 0; i < keys.length; ++i) {
-
-            const key = keys[i];
-            const item = helpers[key];
-
-            Handlebars.registerHelper(key, item);
-
-        }
-
-        return this;
+        this.register('Helpers', helpers);
 
     }
 
@@ -159,14 +149,33 @@ class MasterViewModel extends EventEmitter {
      */
     registerPartials(partials = this.partials) {
 
-        const keys = Object.keys(partials);
+        this.register('Partials', partials);
+
+    }
+
+    /**
+     *
+     * @param {String} type "Partials" or "Helpers"
+     * @param {Object} from container of partials or helpers.
+     * @private
+     *
+     */
+    register(type, from) {
+
+        const { Handlebars } = this;
+
+        if (!Handlebars) {
+            return this;
+        }
+
+        const keys = Object.keys(from);
 
         for (let i = 0; i < keys.length; ++i) {
 
             const key = keys[i];
-            const item = partials[key];
+            const item = from[key];
 
-            Handlebars.registerPartial(key, item);
+            Handlebars['register' + type](key, item);
 
         }
 
