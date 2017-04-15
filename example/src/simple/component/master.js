@@ -3,7 +3,11 @@
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc entry point for all component specific functionality
- * jQuery and Bootstrap provided for example, however neither are required
+ * 
+ * Instead of importing dependencies such as moment or jQuery here explicitly, consider
+ * making them runtime requirements, such as via parent.opts or parent.dependencies (arbitrary examples).
+ *
+ * You can then provide them from the component initialization site and make an Error-throwing check for them in this constructor.
  *
  */
 
@@ -30,6 +34,13 @@ class Component {
         this.element = element || container;
         this.parent = parent;
         this.opts = opts;
+        
+        /**
+         * example of a required dependency
+         */
+        // if (!this.opts.moment) {
+        //     throw new Error('Missing dependency in initialization: moment');
+        // }
 
     }
 
