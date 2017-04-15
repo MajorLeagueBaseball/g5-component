@@ -55,7 +55,7 @@
 * __[.jscsrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jscsrc)__ - JSCS configuration
 * __[.jshintrc](https://github.com/MajorLeagueBaseball/g5-component/blob/master/.jshintrc)__ - JSHint settings
 * __[src/data/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/data)__ - data directory, required only if you plan on using a local data source
-* __[dist/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/src/static)__ - directory for builds
+* __[dist/](https://github.com/MajorLeagueBaseball/g5-component/tree/master/dist)__ - directory for builds
 * __[src/scripts/component/extender.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/extender.js)__ - module for extending/transforming data (post fetch via model), most likely use case is adding a property that does not exist in data, or adding a new property that is a combination of properties that you get back from the data
 * __[src/scripts/component/helpers.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/helpers.js)__ - module for adding handlebars helpers
 * __[src/scripts/component/partials.js](https://github.com/MajorLeagueBaseball/g5-component/blob/master/src/scripts/component/partials.js)__ - module for adding handlebars partials
