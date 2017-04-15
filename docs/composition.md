@@ -13,6 +13,6 @@ Furthermore, we aim to provide composability without the need to create multiple
 
 #### Example
 
-First `npm run build` and then `npm run build-js-composition-demo` and `npm run serve`.
+First `npm run build` and then `npm run build-examples` and `npm run serve`.
 
 The example is visible at `localhost:9966/example/composition.html`.
