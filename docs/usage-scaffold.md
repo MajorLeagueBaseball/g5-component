@@ -94,7 +94,8 @@ Previous versions of the g5-component provided NPM scripts to make a split build
 large vendor dependencies such as jQuery. Since then, developers have been using various ways of injecting dependencies
 so this feature has been removed for simplicity.
 
-It is instead recommended that you simply inject your dependencies at the component initialization site.
+It is instead recommended that you simply inject your dependencies at the component initialization site as part of the
+original input parameters.
 
 ```html
 <section class="g5-component g5-component--linescore"></section>
@@ -106,7 +107,9 @@ It is instead recommended that you simply inject your dependencies at the compon
         container: document.querySelector('.g5-component--linescore'),
         css: 'g5-component--linescore-initiated',
         interval: 15000,
-        path: '/src/data/linescore.json'
+        path: '/src/data/linescore.json',
+        
+        YOUR_DEPENDENCY_HERE: YOUR_DEPENDENCY_HERE
     });
 
     linescoreComponent.init();
