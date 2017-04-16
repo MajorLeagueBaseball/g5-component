@@ -21,9 +21,7 @@ class MasterViewModel extends EventEmitter {
 
     /**
      *
-     * @param {Object} opts shared options Object
-     * template, helpers, partials, and extender.
-     *
+     * @param {Object} opts shared options Object, template, helpers, partials, and extender.
      * @param {object} [implementations = dependencies] A container with the component implementation(s) to use.
      *
      */
@@ -129,8 +127,8 @@ class MasterViewModel extends EventEmitter {
      *
      * @method registerHelpers
      * @param {Object} helpers
-     * @returns {Object} this
      * @desc method for registering handlebar helpers
+     * @returns {Object} this
      *
      */
     registerHelpers(helpers = this.helpers) {
@@ -143,8 +141,8 @@ class MasterViewModel extends EventEmitter {
      *
      * @method registerPartials
      * @param {Object} partials
-     * @returns {Object} this
      * @desc method for registering handlebar partials
+     * @returns {Object} this
      *
      */
     registerPartials(partials = this.partials) {
@@ -155,9 +153,9 @@ class MasterViewModel extends EventEmitter {
 
     /**
      *
+     * @access private
      * @param {String} type "Partials" or "Helpers"
      * @param {Object} from container of partials or helpers.
-     * @private
      *
      */
     register(type, from) {
@@ -187,8 +185,8 @@ class MasterViewModel extends EventEmitter {
      *
      * @method bindComponent
      * @param {Object} data
-     * @returns {Object} this
      * @desc attaches component specific functionality
+     * @returns {Object} this
      *
      */
     bindComponent(data={}) {
@@ -269,8 +267,8 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method destroy
-     * @returns {Object} this
      * @desc kills viewModel instance
+     * @returns {Object} this
      *
      */
     destroy() {

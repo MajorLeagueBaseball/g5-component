@@ -53,10 +53,8 @@ class MasterModel extends EventEmitter {
         const { enableFetch } = this.opts;
 
         if (enableFetch && !instance) {
-
             this.instance = true;
             this.fetch();
-
         }
 
         return this;
@@ -81,8 +79,8 @@ class MasterModel extends EventEmitter {
          *
          * @type {Function} <object(string)>
          * @param {string} response
-         * @returns {Object}
          * @desc example pass-through function
+         * @returns {Object}
          *
          */
         const handleData = (response) => JSON.parse(response);
@@ -96,10 +94,8 @@ class MasterModel extends EventEmitter {
         const handleSuccess = (data={}) => {
 
             if (!isEqual(data, this.dataCache)) {
-
                 this.dataCache = data;
                 this.emit('data', data);
-
             }
 
         };
@@ -111,9 +107,7 @@ class MasterModel extends EventEmitter {
          *
          */
         const handleError = (err) => {
-
             this.emit('data-error', err);
-
         };
 
         this.xhr(path, handleError, handleData, handleSuccess);
@@ -125,9 +119,11 @@ class MasterModel extends EventEmitter {
     }
 
     /**
+     *
      * @param {string} url data location.
      * @param {Function} handleError <*(Error)> an error handler, for when disaster strikes.
      * @param {...Function} handleSuccess any number of success handlers, piped in order.
+     *
      */
     xhr(url, handleError, ...handleSuccess) {
 
@@ -159,8 +155,8 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method start
-     * @returns {Object} this
      * @desc initiates data polling
+     * @returns {Object} this
      *
      */
     start() {
@@ -176,8 +172,8 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method stop
-     * @returns {Object} this
      * @desc halts data polling
+     * @returns {Object} this
      *
      */
     stop() {
@@ -193,8 +189,8 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method destroy
-     * @returns {Object} this
      * @desc stops polling and kills instance
+     * @returns {Object} this
      *
      */
     destroy() {

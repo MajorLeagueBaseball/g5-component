@@ -15,6 +15,7 @@ import eventGroup from './../events/group/group';
 
 /**
  *
+ * @function inject
  * @param {object} container
  * @returns {object}
  *

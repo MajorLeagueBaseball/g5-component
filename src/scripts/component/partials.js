@@ -3,7 +3,6 @@
  * @module component/partials
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc handlebars partials reference
- *
  * @see ./example/simple/component/partials
  *
  */

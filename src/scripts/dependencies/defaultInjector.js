@@ -26,6 +26,7 @@ import Handlebars from 'hbsfy/runtime';
 
 /**
  *
+ * @function inject
  * @param {object} container
  * @returns {object}
  *

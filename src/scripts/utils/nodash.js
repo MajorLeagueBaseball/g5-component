@@ -9,11 +9,8 @@
  *
  * @param {object} base an object which receives all the keys of the rest.
  * @param {...object} rest
- *
- * @returns {object} Mutates the base object.
- *
  * @desc assignment is made starting with the first rest argument.
- *
+ * @returns {object} Mutates the base object.
  *
  */
 export function assign(base, ...rest) {
@@ -45,7 +42,6 @@ export function assign(base, ...rest) {
  *
  * @param {object} a
  * @param {object} b
- *
  * @returns {boolean} a and b are data-wise equal.
  *
  */

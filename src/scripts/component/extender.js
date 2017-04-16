@@ -3,7 +3,6 @@
  * @module component/extender
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc component data extender
- *
  * @see ./example/simple/component/extender
  *
  */
@@ -17,9 +16,7 @@
  *
  */
 function extender(data={}, opts={}) {
-
     return data;
-
 }
 
 export default extender;

@@ -10,6 +10,7 @@ import { stub } from './container';
 
 /**
  *
+ * @function inject
  * @param {object} container
  * @returns {object}
  *
@@ -19,13 +20,9 @@ export function inject(container) {
     const copy = stub();
 
     for (const key in copy) {
-
         if (copy.hasOwnProperty(key)) {
-
             container[key] = copy[key];
-
         }
-
     }
 
     return container;

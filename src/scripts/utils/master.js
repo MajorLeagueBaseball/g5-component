@@ -65,8 +65,10 @@ const utils = {
 
         let trace = (new Error().stack || '').split('\n');
         trace.shift();
+
         trace[0] = '';
         trace = trace.join('\n');
+
         args.push(trace);
 
         console.log(...args);

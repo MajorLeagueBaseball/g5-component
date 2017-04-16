@@ -3,7 +3,7 @@
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc entry point for all component specific functionality
- * 
+ *
  * Instead of importing dependencies such as moment or jQuery here explicitly, consider
  * making them runtime requirements, such as via parent.opts or parent.dependencies (arbitrary examples).
  *
@@ -24,7 +24,9 @@ import utils from './../../../../src/scripts/utils/master';
 class Component {
 
     /**
+     *
      * @param {G5Component|Object} parent
+     *
      */
     constructor(parent) {
 
@@ -34,9 +36,11 @@ class Component {
         this.element = element || container;
         this.parent = parent;
         this.opts = opts;
-        
+
         /**
-         * example of a required dependency
+         *
+         * example of a required options/dependency
+         *
          */
         // if (!this.opts.moment) {
         //     throw new Error('Missing dependency in initialization: moment');
@@ -48,9 +52,9 @@ class Component {
      *
      * @method init
      * @param {Object} data
-     * @returns {Object} this
      * @desc instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way
+     * @returns {Object} this
      *
      */
     init(data={}) {
@@ -83,8 +87,7 @@ class Component {
     /**
      *
      * @param {Event} e
-     * @desc an example click event.
-     * Event handler functions should be L-values to allow unbinding.
+     * @desc an example click event. Event handler functions should be L-values to allow unbinding.
      *
      */
     static onClick(e) {
@@ -97,8 +100,8 @@ class Component {
      *
      * @method addEvents
      * @param {Function} cb
-     * @returns {Object} this
      * @desc adds component events, event listeners should be delegated from primary element
+     * @returns {Object} this
      *
      */
     addEvents(cb) {

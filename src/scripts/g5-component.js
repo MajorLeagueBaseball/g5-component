@@ -36,8 +36,8 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
-         * Dependencies references are copied at instantiation.
          * @type {Object}
+         * @desc Dependencies references are copied at instantiation.
          *
          */
         const implementations = this.implementations = assign({}, di);

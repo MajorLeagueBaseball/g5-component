@@ -22,17 +22,18 @@ import partials from './component/partials';
 import Model from './model/master';
 
 /**
- * Default injector provides baseline.
+ *
  * @type {Object}
+ * @desc Default injector provides baseline.
+ *
  */
 const implementation = inject({});
 
 /**
  *
- * Override component group and Model specifically.
+ * @desc Override component group and Model specifically.
  *
  */
-
 implementation.extender = extender;
 implementation.helpers = helpers;
 implementation.component = component;
@@ -41,7 +42,7 @@ implementation.Model = Model;
 
 /**
  *
- * use named export at the top level
+ * @desc use named export at the top level
  *
  */
 module.exports = function g5Component(opts) {

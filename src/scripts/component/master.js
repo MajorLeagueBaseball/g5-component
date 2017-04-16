@@ -3,7 +3,6 @@
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
  * @desc entry point for all component specific functionality
- *
  * @see ./example/simple/component/master
  *
  */
@@ -19,7 +18,9 @@
 class Component {
 
     /**
+     *
      * @param {G5Component|Object} parent
+     *
      */
     constructor(parent) {
 
@@ -36,9 +37,9 @@ class Component {
      *
      * @method init
      * @param {Object} data
-     * @returns {Object} this
      * @desc instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way.
+     * @returns {Object} this
      *
      */
     init(data={}) {
@@ -52,8 +53,8 @@ class Component {
     /**
      *
      * @method destroy
-     * @returns {Object} this
      * @desc detaches component functionality, events must be cleaned up
+     * @returns {Object} this
      *
      */
     destroy() {

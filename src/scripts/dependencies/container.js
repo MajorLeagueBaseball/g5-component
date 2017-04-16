@@ -17,6 +17,7 @@
  */
 
 export function stub() {
+
     return {
 
         /**
@@ -57,6 +58,7 @@ export function stub() {
         }
 
     };
+
 }
 
 export default stub();

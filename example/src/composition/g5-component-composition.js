@@ -1,7 +1,6 @@
 /**
  *
  * @module g5-component-composition
- *
  * @desc This is an example of component composition, the organization of more than one g5Component instance to form
  * a larger component, like with Voltron, the Power Rangers, etc.
  *
@@ -50,9 +49,9 @@ class Row extends G5Component {
 
         /**
          *
-         * For example's expedience, our Row component will accept data through its constructor: opts.
          * @param {object} data
          * @param {object} opts
+         * @desc For example's expedience, our Row component will accept data through its constructor: opts.
          * @returns {object}
          *
          */
@@ -62,10 +61,9 @@ class Row extends G5Component {
 
         /**
          *
-         * Also for expedience, our template will directly return an HTML element instead of
-         * using a Handlebars template as would normally be the case.
-         *
          * @param {Object} data
+         * @desc Also for expedience, our template will directly return an HTML element instead of
+         * using a Handlebars template as would normally be the case.
          * @returns {HTMLElement} (implementations of [template] can also return a string)
          *
          */
@@ -104,16 +102,18 @@ class List extends G5Component {
     constructor(opts) {
 
         /**
-         * For the List, its implementation uses the G5Component light injector instead of the stubs like with Row.
+         *
          * @type {Object}
+         * @desc For the List, its implementation uses the G5Component light injector instead of the stubs like with Row.
+         *
          */
         const implementation = inject({});
 
         /**
          *
-         * Nothing to do for our simple data extender.
          * @param {object} data
          * @param {object} opts
+         * @desc Nothing to do for our simple data extender.
          * @returns {object}
          *
          */
@@ -123,9 +123,8 @@ class List extends G5Component {
 
         /**
          *
-         * Again demonstrating a direct template function in lieu of a hbsfy-compiled function.
-         *
          * @param {Object} data
+         * @desc Again demonstrating a direct template function in lieu of a hbsfy-compiled function.
          * @returns {HTMLElement} (implementations of [template] can also return a string)
          *
          */
@@ -134,9 +133,7 @@ class List extends G5Component {
             const list = document.createElement('ul');
 
             for (const row of data) { // note: Symbol not for production
-
                 list.appendChild(new Row({ row }).template());
-
             }
 
             return list;
@@ -152,9 +149,8 @@ class List extends G5Component {
 /**
  *
  * @param {object} opts
+ * @desc Exporting the traditional component factory at the top level.
  * @returns {List}
- *
- * Exporting the traditional component factory at the top level.
  * @see ./../composition.html in examples folder.
  *
  */
