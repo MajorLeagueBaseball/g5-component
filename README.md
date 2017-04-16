@@ -1,8 +1,8 @@
 # [g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
-Browserify Component Scaffold 
+_Browserify Component Scaffold._
 
-[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
+[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 [![GitHub issues](https://img.shields.io/github/issues/MajorLeagueBaseball/g5-component.svg)](https://github.com/MajorLeagueBaseball/g5-component/issues)
 
@@ -19,7 +19,7 @@ Browserify Component Scaffold
 > Install the package and [use it as a module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 
 ```
-npm i g5-component
+npm i g5-component --save
 ```
 
 > Or clone the repo and use it as a [scaffold/boilerplate](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md) for your component
@@ -64,17 +64,17 @@ linescoreComponent.init();
 
 > A single shared options `Object`
 
-| Option             | Type       | Description                               | Default           |
-|:-------------------|:-----------|:------------------------------------------|:------------------|
-| `component`        | `String`   | component name/class                      | `''`              |
-| `container`        | `Element`  | primary container                         | `''`              |
-| `css`              | `String`   | classes to add after instantiation        | `g5-component`    |
-| `i18n`             | `String`   | localization                              | `en`              |
-| `interval`         | `Number`   | polling interval                          | `40000`           |
-| `path`             | `String`   | data path to fetch (remote or local)      | `''`              |
-| `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
-| `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
-| `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
+| Option            | Type       | Description                                                 | Default        |
+|:------------------|:-----------|:------------------------------------------------------------|:---------------|
+| `component`       | `String`   | component name/class                                        | `''`           |
+| `container`       | `Element`  | primary container                                           | `''`           |
+| `css`             | `String`   | classes to add after instantiation                          | `g5-component` |
+| `i18n`            | `String`   | localization                                                | `en`           |
+| `interval`        | `Number`   | polling interval                                            | `40000`        |
+| `path`            | `String`   | data path to fetch (remote or local)                        | `''`           |
+| `enableFetch`     | `Boolean`  | flag to enable/disable initial data fetch                   | `true`         |
+| `enablePolling`   | `Boolean`  | flag to enable/disable data polling                         | `true`         |
+| `extendListeners` | `Function` | callback executed after all event listeners have been added | `undefined`    |
 
 ### Methods
 
@@ -135,8 +135,8 @@ linescoreComponent.on('stop', () => {
 > Events must be triggered after the component is instantiated
 
 ```js
-// 
-// Used with the `enableFetch` option (which toggles the initial data fetch), this 
+//
+// Used with the `enableFetch` option (which toggles the initial data fetch), this
 // event allows direct passing of a data Object via an event
 //
 linescoreComponent.emit('synthetic-data', data);
@@ -212,18 +212,18 @@ npm run compress-images
 
 ### Browser Support
 
-![Chrome](https://imgur.com/0G4BkQl.png) | ![Firefox](https://imgur.com/6CouqBy.png) | ![IE](https://imgur.com/24kW1zX.png) | ![Opera](https://i.imgur.com/FixcIOT.png) | ![Safari](https://i.imgur.com/MPkK0Si.png)
---- | --- | --- | --- | --- |
- ✔ | ✔ | 10+ ✔ | ✔ | 6.1+ ✔ |
+| ![Chrome](https://imgur.com/0G4BkQl.png) | ![Firefox](https://imgur.com/6CouqBy.png) | ![IE](https://imgur.com/24kW1zX.png) | ![Opera](https://i.imgur.com/FixcIOT.png) | ![Safari](https://i.imgur.com/MPkK0Si.png) |
+|:-----------------------------------------|:------------------------------------------|:-------------------------------------|:------------------------------------------|:-------------------------------------------|
+| ✔                                        | ✔                                         | 10+ ✔                                | ✔                                         | 6.1+ ✔                                     |
 
 ---
 
 ```
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
+
+
+
+
+
             ______
             _\ _~-\___
     =  = ==(____G5____D
@@ -232,9 +232,9 @@ npm run compress-images
                 `~-.__        ___..----..                  )
                       `---~~\___________/------------`````
                       =  ===(_________D
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
+
+
+
+
+
 ```
