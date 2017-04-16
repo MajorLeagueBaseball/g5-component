@@ -1,6 +1,6 @@
 # Custom viewModel
 
-Using a custom viewModel on the component level.
+_Using a custom viewModel on the component level._
 
 See also [dependency injection](./dependency-injection.md) on how to inject your custom implementation.
 

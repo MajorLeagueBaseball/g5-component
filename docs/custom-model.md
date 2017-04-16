@@ -1,12 +1,12 @@
 # Custom Model
 
-Providing a Model implementation in a custom g5Component.
+_Providing a Model implementation in a custom g5Component._
 
 See also [dependency injection](./dependency-injection.md) for how to emplace/inject your custom model.
 
 #### model/master.js
 
-Create /src/scripts/model/master.js and inherit the prototype from the scaffold's model (to maintain expected core methods and instance of EventEmitter). You can then easily add new methods or override existing ones.
+Create `/src/scripts/model/master.js` and inherit the prototype from the scaffold's model (to maintain expected core methods and instance of `EventEmitter`). You can then easily add new methods or override existing ones.
 
 ```js
 /**
@@ -22,10 +22,10 @@ import G5BaseModel from 'g5-component/src/scripts/model/master';
 /**
  *
  * @module MasterModel
+ * @extends G5BaseModel
  *
  */
 export default class MasterModel extends G5BaseModel {
-
 
     /**
      *
@@ -46,16 +46,15 @@ export default class MasterModel extends G5BaseModel {
     }
 
 }
-
 ```
 
-If you need a further customized model, you'll probably want to override the `fetch` method and handle that by yourself. For example, if you need multiple data points, mash that data up here and simply emit a `data` event with the mashed up data set.
+If you need a further customized model, you'll probably want to override the `fetch`
+method and handle that by yourself. For example, if you need multiple data points, mash that
+data up here and simply emit a `data` event with the mashed up data set.
 
 
 ```js
-
 export default class MasterModel extends G5BaseModel {
-
 
     /**
      *
@@ -156,6 +155,6 @@ export default class MasterModel extends G5BaseModel {
         return this;
 
     }
-}
 
+}
 ```

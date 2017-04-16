@@ -1,9 +1,9 @@
 # Change Log
 
-### 3.0.0 (currently in development)
+### 3.0.0 _(currently in development)_
 
 * Refactor module type to static ESM.
-* Dependency injection using ESM or runtime code instead of browserify configurations.
+* Dependency injection using ESM or runtime code instead of Browserify configurations.
 * Update all dependencies to latest as of March 2017, notably Babel 6+.
 
 ### 2.3.2
@@ -28,7 +28,7 @@
 
 ### 2.2.1
 
-* Adjusted `component/master`, using LoDash versions of `Object.create` and `Object.assign`.
+* Adjusted `component/master`, using `lodash` versions of `Object.create` and `Object.assign`.
 * Adjusted `component/helpers`, removed `upcase` helper and replaced with a more useful `withItem` helper
 * Updated `watch-js` NPM script to reload on template updates
 * Updated `.jscsrc` defaults
@@ -38,12 +38,12 @@
 
 ### 2.2.0
 
-> Updated minor version number because of breaking changes in this release. 
+> Updated minor version number because of breaking changes in this release.
 
 > Before updating to this version, please adjust `component/master.js` to return a factory (see provided example)
 
 * Updated `viewModel`
-* Updated component architecture, returning factory instead of an Object 
+* Updated component architecture, returning factory instead of an `Object`
 * Adjusted `.babelrc`, not passing `bower_components` (if any) through `babelify`
 * Updated documentation
 
@@ -65,13 +65,13 @@
 ### 2.1.5
 
 * Adjusted `viewModel`
-* Adjusted `component` instance, passing in the viewModel for reference
+* Adjusted `component` instance, passing in the `viewModel` for reference
 * Revised example component
 * Updated documentation
 
 ### 2.1.4
 
-* Updated `babel-tape-runner` dependency, staying at 1.2 to avoid issues
+* Updated `babel-tape-runner` dependency, staying at `1.2` to avoid issues
 
 ### 2.1.3
 
@@ -79,14 +79,14 @@
 * Added `eventGroup` and `eventGroupExtender`
 * Added `component` option
 * Added simple data cache to the viewModel
-* Updated documentation 
+* Updated documentation
 * Updated examples
 
 ### 2.1.2
 
 * `model/viewModel` refactor
 * Moved data extender to viewModel layer
-* Docuentation for `synthetic-data` event
+* Documentation for `synthetic-data` event
 * Updated tests
 
 ### 2.1.1
@@ -94,18 +94,18 @@
 * Added `enableFetch` option
 * Added `synthetic-data` event
 * Added additional component helpers
-* General `model/viewModel/eventTower` refactor
+* General `model`/`viewModel`/`eventTower` refactor
 * Updated documentation
 
 ### 2.1.0
 
 * Reverting back to LESS, for various reasons
-* Cleaned up LESS usage, using nodemon for rebuilds, passing paths to lessc
+* Cleaned up LESS usage, using `nodemon` for rebuilds, passing paths to `lessc`
 
 ### 2.0.10
 
 * Updated examples and documentation
-* Adding class based on language (from opts)
+* Adding class based on language _(from opts)_
 
 ### 2.0.9
 
@@ -118,7 +118,7 @@
 ### 2.0.7
 
 * Took out the babel polyfill to avoid issues when using multiple components
-* Added es6-promise polyfill
+* Added `es6-promise` polyfill
 
 ### 2.0.6
 
@@ -136,11 +136,11 @@
 
 * Updated dependencies
 * Updated setup instructions
-* Adjusted scss-lint to allow deep nesting
+* Adjusted `scss-lint` to allow deep nesting
 
 ### 2.0.3
 
-* removing postinstall to avoid issues when used as module
+* removing `postinstall` to avoid issues when used as module
 
 ### 2.0.2
 
@@ -156,19 +156,19 @@
 ### 2.0.0
 
 * SASS support
-* Upgraded to bootstrap-sass
+* Upgraded to `bootstrap-sass`
 * BEM syntax addition and examples
 * Adjusted CSS build
-* Added CSS minification (via cleancss)
-* Added image compression (via imagemin)
+* Added CSS minification (via `cleancss`)
+* Added image compression (via `imagemin`)
 * Added handlebars helpers
 * viewModel updates and adjustments
 * Updated core styling and class hooks
 * Updated NPM scripts
-* Updated watch-css process
+* Updated `watch-css` process
 * Updated tests
 * Updated JSCS rules
 * Updated documentation and examples
 * Adjusted dependencies
 * Updated and simplified setup
-* Other improvements and enhancements 
+* Other improvements and enhancements

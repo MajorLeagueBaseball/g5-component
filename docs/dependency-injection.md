@@ -4,13 +4,12 @@
 
 On [wikipedia](https://en.wikipedia.org/wiki/Dependency_injection).
 
-DI for the g5-component is not different from the standard concept.
+DI for the `g5-component` is not different from the standard concept.
 
-To aid [composability](./composition.md), the `G5Component` constructor has an optional second argument that acts as a dependency
-injection container.
+To aid [composability](./composition.md), the `G5Component` constructor has an
+optional second argument that acts as a dependency injection container.
 
 ```js
-
 class G5Component extends EventEmitter {
 
     /**
@@ -19,20 +18,25 @@ class G5Component extends EventEmitter {
      * @param {Object} dependencies containing customizations for the g5 component.
      *
      */
-    constructor(opts, di = dependencies) {  // <-- this guy.
-...
+    constructor(opts, di = dependencies) {
+        // ...
+    }
+
+}
 ```
 
 When a g5Component is instantiated, it makes a (shallow) copy of this container, and uses the implementations
-provided therein to construct its well... _component_ parts (Model, ViewModel, EventTower, `component`, event & data extenders etc.)
+provided therein to construct its well... _component_ parts (`Model`, `ViewModel`, `EventTower`, `component`, event & data extenders etc...)
 
-Its basic structure is as follows, in which *each member is required*:
+__Its basic structure is as follows, in which *each member is required*:__
 
 ```js
 export default {
 
     /**
+     *
      * Used by ViewModel (which itself can also be provided)
+     *
      */
     component: () => {
         return {
@@ -48,14 +52,18 @@ export default {
     extender: {},
 
     /**
+     *
      * Used by G5Component
+     *
      */
     Model: class {},
     ViewModel: class {},
     EventTower: class {},
 
     /**
+     *
      * Used by EventTower
+     *
      */
     eventGroup: () => {
         return {};
@@ -79,8 +87,8 @@ For example, a minor view sub-component can only implement the template member.
 
 ##### (2) Base
 
-The `g5-component` module contains base implementations of all the required members. The module also provides a
-default implementation injector which adds all base implementations.
+The `g5-component` module contains base implementations of all the required members.
+The module also provides a default implementation injector which adds all base implementations.
 
 ```js
 import g5Component from 'g5-component';

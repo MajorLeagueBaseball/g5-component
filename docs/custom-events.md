@@ -1,8 +1,10 @@
 # Custom Events
 
-Extending the core events with additional custom events
+_Extending the core events with additional custom events._
 
 See also [dependency injection](./dependency-injection.md).
+
+---
 
 #### eventGroupExtender
 
