@@ -12,12 +12,9 @@
 
         <title>g5-component.js / AMD</title>
 
-        <!-- Compiled/Minified CSS -->
-        <!-- <link rel="stylesheet" href="/dist/g5-component-min.css" /> -->
         <link rel="stylesheet" href="/dist/g5-component-min.css.gz" />
     </head>
     <body>
-
         <main>
             <section class="g5-component g5-component--linescore"></section>
         </main>
@@ -55,9 +52,7 @@
                 // polling is set to 5000ms, so it should fetch twice before its stopped
                 //
                 setTimeout(function() {
-
                     linescoreComponent.emit('stop');
-
                 }, 11000);
 
                 //
@@ -74,6 +69,5 @@
             });
 
         </script>
-
     </body>
 </html>

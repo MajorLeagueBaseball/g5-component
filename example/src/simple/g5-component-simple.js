@@ -37,7 +37,6 @@ implementation.extender = extender;
 implementation.helpers = helpers;
 implementation.component = component;
 implementation.partials = partials;
-
 implementation.Model = Model;
 
 /**
