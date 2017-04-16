@@ -1,20 +1,42 @@
+######################
 # OS generated files #
 ######################
+
 .DS_Store
 ehthumbs.db
 Icon?
 Thumbs.db
 
+##############
 # Node Files #
 ##############
+
 node_modules
 npm-debug.log
 
+#############
+# Dot Files #
+#############
+
+*.tmp
+*.log
+*.todo
+*.idea
+.eslintrc.json
+.devflow-session
+
+#################
 # Project Files #
 #################
+
 .tmp
 .todo
 .idea
+
+################
+# Distribution #
+################
+
 /build
 /dist/*.js
 /dist/*.css
