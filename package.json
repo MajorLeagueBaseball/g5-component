@@ -51,7 +51,7 @@
     "postcompress-images": "echo 'imagemin complete'",
     "build-js": "browserify src/scripts/g5-component.js --s 'g5-component' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > dist/g5-component.min.js",
     "build-js-dev": "browserify src/scripts/g5-component.js --s 'g5-component' > dist/g5-component.js",
-    "build-js-all": "npm run build-js && npm run build-js",
+    "build-js-all": "npm run build-js-dev && npm run build-js",
     "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > dist/g5-component.css",
     "postbuild-css": "npm run minify-css && npm run gzip-css",
     "build": "npm run build-js-all && npm run build-css && npm run compress-images",
@@ -70,7 +70,7 @@
 
     "build-js-composition-example": "browserify example/src/composition/g5-component-composition.js --s 'g5-component' > example/dist/g5-component-composition.js",
     "build-js-simple-example": "browserify example/src/simple/g5-component-simple.js --s 'g5-component' > example/dist/g5-component-simple.js",
-    "build-examples": "npm run build-js-composition-example; npm run build-js-simple-example;"
+    "build-examples": "npm run build-js-composition-example; npm run build-js-simple-example; du -sh ./example/dist/*"
   },
   "dependencies": {
     "babel-core": "^6.24.0",
