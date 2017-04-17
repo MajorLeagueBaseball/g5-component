@@ -98,7 +98,7 @@ class MasterModel extends EventEmitter {
         const { opts } = this;
         const { path, enablePolling, interval } = opts;
 
-        utils.log('fetch master model data');
+        utils.log(`Fetching data from path: ${path}`);
 
         /**
          *

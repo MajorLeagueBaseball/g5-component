@@ -80,7 +80,7 @@ export default class G5Component extends EventEmitter {
      */
     init() {
 
-        utils.log('init');
+        utils.log('Initiate G5Component instance.');
 
         if (!this.hasInstance()) {
 
@@ -105,6 +105,8 @@ export default class G5Component extends EventEmitter {
      */
     detachEvents() {
 
+        utils.log('Detaching events...');
+
         this.eventTower.detachEvents();
 
         return this;
@@ -120,6 +122,8 @@ export default class G5Component extends EventEmitter {
      *
      */
     attachEvents() {
+
+        utils.log('Attaching events...');
 
         this.eventTower.attachEvents();
 
@@ -151,6 +155,8 @@ export default class G5Component extends EventEmitter {
      *
      */
     destroy() {
+
+        utils.log('Destroying G5Component instance.');
 
         this.emit('destroy', this);
 
