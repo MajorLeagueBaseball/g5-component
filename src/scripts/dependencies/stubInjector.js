@@ -1,8 +1,8 @@
 /**
  *
  * @module stubInjector
- * @desc This injector assigns the minimal stub dependencies. This is the lowest functionality level that can
- * be provided to a component.
+ * @desc This injector assigns the minimal stub dependencies.
+ * This is the lowest functionality level that can be provided to a component.
  *
  */
 

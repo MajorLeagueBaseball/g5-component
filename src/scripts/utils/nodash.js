@@ -7,6 +7,7 @@
 
 /**
  *
+ * @function assign
  * @param {object} base an object which receives all the keys of the rest.
  * @param {...object} rest
  * @desc assignment is made starting with the first rest argument.
@@ -40,9 +41,11 @@ export function assign(base, ...rest) {
 
 /**
  *
+ * @function isEqual
  * @param {object} a
  * @param {object} b
  * @returns {boolean} a and b are data-wise equal.
+ * @note true equality check via stringify
  *
  */
 export function isEqual(a, b) {

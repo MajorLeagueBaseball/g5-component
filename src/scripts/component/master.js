@@ -2,7 +2,6 @@
  *
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc entry point for all component specific functionality
  * @see ./example/simple/component/master
  *
  */
@@ -10,7 +9,8 @@
 /**
  *
  * @class Component
- * @desc init, render, addEvents, and destroy methods are required for consistency.
+ * @desc entry point for all component specific functionality
+ * @note init, render, addEvents, and destroy methods are required for consistency.
  * The parent viewModel is passed in as a reference, for external communication events can
  * be emitted via the parent
  *
@@ -35,6 +35,7 @@ class Component {
 
     /**
      *
+     * @access public
      * @method init
      * @param {Object} data
      * @desc instantiates component with a reference to the parent viewModel, properties on
@@ -52,6 +53,7 @@ class Component {
 
     /**
      *
+     * @access public
      * @method destroy
      * @desc detaches component functionality, events must be cleaned up
      * @returns {Object} this
@@ -67,6 +69,7 @@ class Component {
 
 /**
  *
+ * @access public
  * @function componentFactory
  * @param {Object} parent
  * @returns {Component}

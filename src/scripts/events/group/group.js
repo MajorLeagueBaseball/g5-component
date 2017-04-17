@@ -2,7 +2,6 @@
  *
  * @module events/group
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc all standard/core events
  *
  */
 
@@ -12,6 +11,7 @@
  * @param {Object} master
  * @param {Object} model
  * @param {Object} viewModel
+ * @desc attaches base events to all core dependencies
  *
  */
 function eventGroup(master={}, model={}, viewModel={}) {

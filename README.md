@@ -1,6 +1,6 @@
 # [g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
-_Browserify Component Scaffold._
+_Event based Browserify component scaffold._  :baseball:
 
 [![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)

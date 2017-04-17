@@ -2,7 +2,6 @@
  *
  * @module events/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc event communication hub, mediates events between master, model, and viewModel
  *
  */
 
@@ -27,7 +26,7 @@ function detachEvents(target) {
 /**
  *
  * @class EventTower
- * @desc mediates events between master, model and viewModel
+ * @desc Event communication hub, mediates events between core implementations.
  *
  */
 class EventTower {

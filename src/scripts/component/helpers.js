@@ -2,7 +2,6 @@
  *
  * @module component/helpers
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc handlebars helpers
  * @see ./example/simple/component/helpers
  *
  */

@@ -2,7 +2,6 @@
  *
  * @module g5-component
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc Browserify Component Scaffold
  *
  */
 
@@ -15,6 +14,7 @@ import dependencies from './dependencies/container';
  *
  * @class G5Component
  * @extends EventEmitter
+ * @desc Event based Browserify component scaffold.
  *
  */
 export default class G5Component extends EventEmitter {
@@ -42,16 +42,39 @@ export default class G5Component extends EventEmitter {
          */
         const implementations = this.implementations = assign({}, di);
 
+        /**
+         *
+         * @type {MasterModel}
+         * @desc Models are the heart of any component containing the
+         * interactive data as well as a large part of the logic surrounding it.
+         *
+         */
         this.model = new implementations.Model(this.opts);
+
+        /**
+         *
+         * @type {MasterViewModel}
+         * @desc Pure-code representation of the data and operations on a UI.
+         *
+         */
         this.viewModel = new implementations.ViewModel(this.opts, implementations);
+
+        /**
+         *
+         * @type {EventTower}
+         * @desc Event communication hub, mediates events between core implementations.
+         *
+         */
         this.eventTower = new implementations.EventTower(this);
 
     }
 
     /**
      *
+     * @access public
      * @method init
-     * @desc initiates model and viewModel
+     * @desc initiates implemnentations
+     * @emits {ready}
      * @returns {Object} this
      *
      */
@@ -74,8 +97,9 @@ export default class G5Component extends EventEmitter {
 
     /**
      *
+     * @access public
      * @method detachEvents
-     * @desc detaches all events
+     * @desc detaches all EventTower events
      * @returns {Object} this
      *
      */
@@ -89,8 +113,9 @@ export default class G5Component extends EventEmitter {
 
     /**
      *
+     * @access public
      * @method attachEvents
-     * @desc attaches all events
+     * @desc attaches all EventTower events
      * @returns {Object} this
      *
      */
@@ -104,8 +129,9 @@ export default class G5Component extends EventEmitter {
 
     /**
      *
+     * @access public
      * @method hasInstance
-     * @desc checks if active instance exists on container
+     * @desc checks if active instance exists on the primary container
      * @returns {Boolean}
      *
      */
@@ -117,8 +143,10 @@ export default class G5Component extends EventEmitter {
 
     /**
      *
+     * @access public
      * @method destroy
-     * @desc kills component instance
+     * @desc destroys core instance and all implementations
+     * @emits {destroy}
      * @returns {Object} this
      *
      */

@@ -2,13 +2,13 @@
  *
  * @module utils/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc simple utility functions
  *
  */
 
 /**
  *
  * @name utils
+ * @desc simple utility functions
  *
  */
 const utils = {
@@ -27,7 +27,6 @@ const utils = {
         'Nov',
         'Dec'
     ],
-
     /**
      *
      * @method log

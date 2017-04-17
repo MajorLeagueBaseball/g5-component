@@ -2,7 +2,6 @@
  *
  * @module viewModel/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc master viewModel, setup Handlebars and baseline view
  *
  */
 
@@ -15,6 +14,7 @@ import dependencies from './../dependencies/container';
  *
  * @class MasterViewModel
  * @extends EventEmitter
+ * @desc Pure-code representation of the data and operations on a UI.
  *
  */
 class MasterViewModel extends EventEmitter {
@@ -267,7 +267,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method destroy
-     * @desc kills viewModel instance
+     * @desc completely destroys the current instance, and all children
      * @returns {Object} this
      *
      */

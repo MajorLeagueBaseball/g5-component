@@ -2,7 +2,6 @@
  *
  * @module model/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @desc master model
  *
  */
 
@@ -14,6 +13,8 @@ import { EventEmitter } from 'events';
  *
  * @class MasterModel
  * @extends EventEmitter
+ * @desc The heart of any component containing the interactive data as
+ * well as a large part of the logic surrounding it.
  *
  */
 class MasterModel extends EventEmitter {
@@ -27,6 +28,11 @@ class MasterModel extends EventEmitter {
 
         super();
 
+        /**
+         *
+         * @type {Object}
+         *
+         */
         this.opts = assign({
             interval: 40000,
             enableFetch: true,
@@ -34,8 +40,27 @@ class MasterModel extends EventEmitter {
             path: ''
         }, opts);
 
+        /**
+         *
+         * @type {Boolean}
+         *
+         */
         this.instance = false;
+
+        /**
+         *
+         * @type {Object}
+         * @desc data cache stored in memory
+         * @note also used for comparison to determine if a fetch is needed
+         *
+         */
         this.dataCache = {};
+
+        /**
+         *
+         * @type {Number} timeout ID or null
+         *
+         */
         this.dataFetch = null;
 
     }
@@ -43,7 +68,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method init
-     * @desc initiates master model, begins initial data fetch
+     * @desc initiates model and triggers initial data fetch.
      * @returns {Object} this
      *
      */
@@ -89,6 +114,7 @@ class MasterModel extends EventEmitter {
          *
          * @type {Function} <void(object)>
          * @param {Object} data parsed JSON
+         * @emits {data}
          *
          */
         const handleSuccess = (data={}) => {
@@ -104,6 +130,7 @@ class MasterModel extends EventEmitter {
          *
          * @type {Function} <void(Error)>
          * @param {Number|Object} err
+         * @emits {data-error}
          *
          */
         const handleError = (err) => {
@@ -155,13 +182,14 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method start
-     * @desc initiates data polling
+     * @desc begins data polling
      * @returns {Object} this
      *
      */
     start() {
 
-        const { interval } = this.opts;
+        const { opts } = this;
+        const { interval } = opts;
 
         this.dataFetch = setTimeout(this.fetch.bind(this), interval);
 
@@ -172,7 +200,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method stop
-     * @desc halts data polling
+     * @desc stops data polling
      * @returns {Object} this
      *
      */
@@ -189,7 +217,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @method destroy
-     * @desc stops polling and kills instance
+     * @desc stops data polling and destroys instance
      * @returns {Object} this
      *
      */
