@@ -7,6 +7,39 @@
 
 /**
  *
+ * @returns {Log|Function<void(...args)>} logging function that has a bound instance of utils.Log.
+ *
+ */
+export function Log() {
+
+    this.store = [];
+
+    const fn = function (...args) {
+        utils.log(this, ...args)
+    }.bind(this);
+    fn.store = this.store;
+    Object.setPrototypeOf(fn, Log.prototype);
+
+    return fn;
+
+}
+Log.prototype = {
+
+    /**
+     *
+     * @desc write the entire store to console.
+     *
+     */
+    toConsole: function () {
+        for (let i = 0; i < this.store.length; ++i) {
+            console.log(...this.store[i]);
+        }
+    }
+
+};
+
+/**
+ *
  * @name utils
  * @desc simple utility functions
  *
@@ -36,16 +69,13 @@ const utils = {
      */
     log(...args) {
 
-        const timestamp = utils.timestamp;
-        args.unshift(`${timestamp()} - g5-component :`);
-
         for (let i = 0; i < args.length; ++i) {
             if (args[i] instanceof Error) {
-                return this.trace(...args);
+                return utils.trace(...args);
             }
         }
 
-        console.log(...args);
+        utils.sink(args);
 
     },
 
@@ -58,10 +88,6 @@ const utils = {
      */
     trace(...args) {
 
-        const timestamp = utils.timestamp;
-
-        args.unshift(`${timestamp()} - g5-component :`);
-
         let trace = (new Error().stack || '').split('\n');
         trace.shift();
 
@@ -70,7 +96,32 @@ const utils = {
 
         args.push(trace);
 
-        console.log(...args);
+        utils.sink(args);
+
+    },
+
+    /**
+     *
+     * @access private
+     * @param {*[]} args
+     * @desc directly log or store the input array.
+     *
+     */
+    sink(args) {
+
+        const timestamp = `${utils.timestamp()} - g5-component :`;
+
+        if (args[0] instanceof Log) {
+
+            const output = [timestamp].concat(args.slice(1));
+
+            args[0].store.push(output);
+
+        } else {
+
+            console.log(timestamp, ...args);
+
+        }
 
     },
 

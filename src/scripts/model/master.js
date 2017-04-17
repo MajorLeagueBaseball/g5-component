@@ -22,11 +22,14 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @param {Object} opts shared options Object
+     * @param {G5Component} parent reference to access the logger.
      *
      */
-    constructor(opts) {
+    constructor(opts, parent) {
 
         super();
+
+        this.parent = parent;
 
         /**
          *
@@ -95,10 +98,12 @@ class MasterModel extends EventEmitter {
      */
     fetch() {
 
-        const { opts } = this;
+        const { opts, parent } = this;
         const { path, enablePolling, interval } = opts;
 
-        utils.log(`Fetching data from path: ${path}`);
+        if (parent && parent.log instanceof Function) {
+            parent.log(`Fetching data from path: ${path}`);
+        }
 
         /**
          *

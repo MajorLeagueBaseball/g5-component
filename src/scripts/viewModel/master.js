@@ -22,10 +22,10 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @param {Object} opts shared options Object, template, helpers, partials, and extender.
-     * @param {object} [implementations = dependencies] A container with the component implementation(s) to use.
+     * @param {G5Component|Object} parent A container with the component implementation(s) to use.
      *
      */
-    constructor(opts, implementations = dependencies) {
+    constructor(opts, parent) {
 
         super();
 
@@ -40,6 +40,10 @@ class MasterViewModel extends EventEmitter {
         this.active = false;
         this.bound = false;
 
+        this.parent = parent;
+
+        const implementations = parent.implementations;
+
         this.component = implementations.component(this);
         this.template = implementations.template;
         this.helpers = implementations.helpers;
@@ -47,6 +51,7 @@ class MasterViewModel extends EventEmitter {
         this.extender = implementations.extender;
 
         this.Handlebars = implementations.Handlebars;
+
 
     }
 

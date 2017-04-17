@@ -80,8 +80,6 @@ class EventTower {
 
         const { master, model, viewModel, implementations } = this;
 
-        utils.log('attach events');
-
         implementations.eventGroup(master, model, viewModel);
         implementations.eventGroupExtender(master, model, viewModel);
 
@@ -99,8 +97,6 @@ class EventTower {
     detachEvents() {
 
         const eventGroup = [this.master, this.model, this.viewModel];
-
-        utils.log('detach events');
 
         eventGroup.forEach(detachEvents);
 

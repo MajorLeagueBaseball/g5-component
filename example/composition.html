@@ -25,9 +25,11 @@
         <!-- AMD implementation -->
         <script>
 
+            var list;
+
             require(['../example/dist/g5-component-composition'], function(List) {
 
-                var list = List({
+                list = List({
                     container: document.querySelector('.g5-component--composition'),
                     component: 'g5-component--linescore',
                     css: 'g5-component--linescore-initiated',

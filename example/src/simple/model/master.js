@@ -13,17 +13,18 @@ export default class extends G5Model {
     /**
      *
      * @param {Object} opts shared options Object
+     * @param {G5Component} parent
      *
      */
-    constructor(opts) {
+    constructor(opts, parent) {
 
         opts.enableFetch = true;
         opts.enablePolling = true;
         opts.interval = 60000;
 
-        util.log('Using custom model with hard-coded interval.');
-
         super(opts);
+
+        parent.log('Using custom model with hard-coded interval.');
 
     }
 

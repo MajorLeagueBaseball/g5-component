@@ -6,9 +6,9 @@
  */
 
 import { assign } from './utils/nodash';
-import utils from './utils/master';
 import { EventEmitter } from 'events';
 import dependencies from './dependencies/container';
+import { Log } from './utils/master';
 
 /**
  *
@@ -44,12 +44,20 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
+         * @type {Function<void(...args)>}
+         * @desc default: log storage in memory to avoid excess console output.
+         *
+         */
+        this.log = implementations.log || new Log();
+
+        /**
+         *
          * @type {MasterModel}
          * @desc Models are the heart of any component containing the
          * interactive data as well as a large part of the logic surrounding it.
          *
          */
-        this.model = new implementations.Model(this.opts);
+        this.model = new implementations.Model(this.opts, this);
 
         /**
          *
@@ -57,7 +65,7 @@ export default class G5Component extends EventEmitter {
          * @desc Pure-code representation of the data and operations on a UI.
          *
          */
-        this.viewModel = new implementations.ViewModel(this.opts, implementations);
+        this.viewModel = new implementations.ViewModel(this.opts, this);
 
         /**
          *
@@ -80,7 +88,7 @@ export default class G5Component extends EventEmitter {
      */
     init() {
 
-        utils.log('Initiate G5Component instance.');
+        this.log('Initiate G5Component instance.');
 
         if (!this.hasInstance()) {
 
@@ -105,7 +113,7 @@ export default class G5Component extends EventEmitter {
      */
     detachEvents() {
 
-        utils.log('Detaching events...');
+        this.log('Detaching events...');
 
         this.eventTower.detachEvents();
 
@@ -123,7 +131,7 @@ export default class G5Component extends EventEmitter {
      */
     attachEvents() {
 
-        utils.log('Attaching events...');
+        this.log('Attaching events...');
 
         this.eventTower.attachEvents();
 
@@ -156,7 +164,7 @@ export default class G5Component extends EventEmitter {
      */
     destroy() {
 
-        utils.log('Destroying G5Component instance.');
+        this.log('Destroying G5Component instance.');
 
         this.emit('destroy', this);
 

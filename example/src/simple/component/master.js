@@ -25,7 +25,7 @@ class Component {
 
     /**
      *
-     * @param {G5Component|Object} parent
+     * @param {ViewModel|Object} parent
      *
      */
     constructor(parent) {
@@ -35,6 +35,7 @@ class Component {
         this.dataCache = dataCache;
         this.element = element || container;
         this.parent = parent;
+        this.g5Component = this.parent.parent;
         this.opts = opts;
 
         /**
@@ -45,6 +46,8 @@ class Component {
         // if (!this.opts.moment) {
         //     throw new Error('Missing dependency in initialization: moment');
         // }
+
+        this.onClick = Component.onClick.bind(this);
 
     }
 
@@ -78,7 +81,7 @@ class Component {
      */
     render() {
 
-        utils.log('render component');
+        this.g5Component.log('render component');
 
         return this;
 
@@ -92,7 +95,7 @@ class Component {
      */
     static onClick(e) {
 
-        utils.log('list click', e);
+        this.g5Component.log('list click', e);
 
     }
 
@@ -113,7 +116,7 @@ class Component {
          * @desc simple event example
          *
          */
-        this.element.addEventListener('click', Component.onClick);
+        this.element.addEventListener('click', this.onClick);
 
         if (cb instanceof Function) {
             cb(this.element);
@@ -132,7 +135,7 @@ class Component {
      */
     destroy() {
 
-        this.element.removeEventListener('click', Component.onClick);
+        this.element.removeEventListener('click', this.onClick);
 
         return this;
 
