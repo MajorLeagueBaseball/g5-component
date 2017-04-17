@@ -27,7 +27,7 @@
   "module": "src/scripts/g5-component.js",
   "browserify": {
     "transform": [
-      "babelify",
+      ["babelify", { "presets": ["es2015"] }],
       [
         "hbsfy",
         {
@@ -84,7 +84,7 @@
     "babel-tape-runner": "^2.0.1",
     "bootstrap": "^3.3.7",
     "clean-css": "^4.0.9",
-    "clean-css-cli": "^4.0.9",
+    "clean-css-cli": "^4.0.12",
     "ghooks": "^2.0.0",
     "http-server": "^0.9.0",
     "imagemin": "^5.2.2",
