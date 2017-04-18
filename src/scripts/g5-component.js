@@ -31,7 +31,8 @@ export default class G5Component extends EventEmitter {
 
         this.opts = assign({
             container: undefined,
-            i18n: 'en'
+            i18n: 'en',
+            log: new Log()
         }, opts);
 
         /**
@@ -44,20 +45,12 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
-         * @type {Function<void(...args)>}
-         * @desc default: log storage in memory to avoid excess console output.
-         *
-         */
-        this.log = implementations.log || new Log();
-
-        /**
-         *
          * @type {MasterModel}
          * @desc Models are the heart of any component containing the
          * interactive data as well as a large part of the logic surrounding it.
          *
          */
-        this.model = new implementations.Model(this.opts, this);
+        this.model = new implementations.Model(this.opts);
 
         /**
          *
@@ -65,7 +58,7 @@ export default class G5Component extends EventEmitter {
          * @desc Pure-code representation of the data and operations on a UI.
          *
          */
-        this.viewModel = new implementations.ViewModel(this.opts, this);
+        this.viewModel = new implementations.ViewModel(this.opts, implementations);
 
         /**
          *
@@ -74,6 +67,15 @@ export default class G5Component extends EventEmitter {
          *
          */
         this.eventTower = new implementations.EventTower(this);
+
+        /**
+         *
+         * @type {Function<*(...args)>} a function that can log any number of arguments.
+         * @desc by default the output will be stored in memory at [this.log.store].
+         * Can be printed to console with [this.log.toConsole()].
+         *
+         */
+        this.log = this.opts.log;
 
     }
 

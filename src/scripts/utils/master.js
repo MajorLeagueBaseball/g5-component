@@ -90,14 +90,12 @@ const utils = {
      */
     trace(...args) {
 
-        let trace = (new Error().stack || '').split('\n');
+        const trace = (new Error().stack || '').split('\n');
 
         trace.shift();
-
         trace[0] = '';
-        trace = trace.join('\n');
 
-        args.push(trace);
+        args.push(trace.join('\n'));
 
         utils.sink(args);
 
@@ -130,18 +128,25 @@ const utils = {
      *
      * @method pad
      * @param {Number} n
+     * @param {Number} digits
      * @returns {String} padded number
      *
      */
-    pad(n) {
+    pad(n, digits = 2) {
 
-        return n < 10 ? `0${n.toString(10)}` : n.toString(10);
+        let number = n.toString(10);
+
+        while (number.length < digits) {
+            number = '0' + number;
+        }
+
+        return number;
 
     },
     /**
      *
      * @method timestamp
-     * @returns {String} timestamp (i.e. 26 Feb 16:19:34)
+     * @returns {String} timestamp (i.e. 26 Feb 16:19:34.123)
      *
      */
     timestamp() {
@@ -153,7 +158,7 @@ const utils = {
             pad(d.getHours()),
             pad(d.getMinutes()),
             pad(d.getSeconds())
-        ].join(':');
+        ].join(':') + '.' + pad(d.getMilliseconds(), 3);
 
         return [d.getDate(), months[d.getMonth()], time].join(' ');
 

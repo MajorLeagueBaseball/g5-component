@@ -35,7 +35,6 @@ class Component {
         this.dataCache = dataCache;
         this.element = element || container;
         this.parent = parent;
-        this.g5Component = this.parent.parent;
         this.opts = opts;
 
         /**
@@ -81,7 +80,7 @@ class Component {
      */
     render() {
 
-        this.g5Component.log('render component');
+        this.opts.log('render component');
 
         return this;
 
@@ -95,7 +94,7 @@ class Component {
      */
     static onClick(e) {
 
-        this.g5Component.log('list click', e);
+        this.opts.log('list click', e);
 
     }
 

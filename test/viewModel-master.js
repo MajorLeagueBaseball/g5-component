@@ -10,14 +10,13 @@
 
 const test = require('tape');
 const MasterViewModel = require('./../src/scripts/viewModel/master').default;
-const G5Component = require('./../src/scripts/g5-component').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('viewModel-master test', (t) => {
 
     t.plan(6);
 
-    let viewModel = new MasterViewModel(null, new G5Component({}));
+    let viewModel = new MasterViewModel();
 
     viewModel.container = {};
     viewModel.component.destroy = () => {};
