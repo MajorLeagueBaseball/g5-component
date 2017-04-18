@@ -35,29 +35,21 @@
                     path: '/src/data/linescore.json'
                 });
 
-                //
                 // event usage example
-                //
                 linescoreComponent.on('ready', function(obj) {
                     console.log('component ready!', obj);
                 });
 
-                //
                 // init component
-                //
                 linescoreComponent.init();
 
-                //
                 // after 11000ms stop polling
                 // polling is set to 5000ms, so it should fetch twice before its stopped
-                //
                 setTimeout(function() {
                     linescoreComponent.emit('stop');
                 }, 11000);
 
-                //
                 // after 40000ms destroy the component
-                //
                 setTimeout(function() {
 
                     console.log('destroy component');
