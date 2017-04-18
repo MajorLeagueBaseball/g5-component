@@ -7,6 +7,7 @@
 
 /**
  *
+ * @function Log
  * @returns {Log|Function<void(...args)>} logging function that has a bound instance of utils.Log.
  *
  */
@@ -17,12 +18,14 @@ export function Log() {
     const fn = function (...args) {
         utils.log(this, ...args)
     }.bind(this);
+
     fn.store = this.store;
     Object.setPrototypeOf(fn, Log.prototype);
 
     return fn;
 
 }
+
 Log.prototype = {
 
     /**
@@ -78,7 +81,6 @@ const utils = {
         utils.sink(args);
 
     },
-
     /**
      *
      * @method trace
@@ -89,6 +91,7 @@ const utils = {
     trace(...args) {
 
         let trace = (new Error().stack || '').split('\n');
+
         trace.shift();
 
         trace[0] = '';
@@ -99,7 +102,6 @@ const utils = {
         utils.sink(args);
 
     },
-
     /**
      *
      * @access private
@@ -124,7 +126,6 @@ const utils = {
         }
 
     },
-
     /**
      *
      * @method pad
@@ -137,7 +138,6 @@ const utils = {
         return n < 10 ? `0${n.toString(10)}` : n.toString(10);
 
     },
-
     /**
      *
      * @method timestamp
