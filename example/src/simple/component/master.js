@@ -11,7 +11,7 @@
  *
  */
 
-import utils from './../../../../src/scripts/utils/master';
+import { Component as BasicComponent } from './../../../../src/scripts/component/master';
 
 /**
  *
@@ -21,7 +21,7 @@ import utils from './../../../../src/scripts/utils/master';
  * be emitted via the parent
  *
  */
-class Component {
+class Component extends BasicComponent {
 
     /**
      *
@@ -30,12 +30,7 @@ class Component {
      */
     constructor(parent) {
 
-        const { opts, element, container, dataCache } = parent;
-
-        this.dataCache = dataCache;
-        this.element = element || container;
-        this.parent = parent;
-        this.opts = opts;
+        super(parent);
 
         /**
          *
@@ -59,7 +54,7 @@ class Component {
      * @returns {Object} this
      *
      */
-    init(data={}) {
+    init(data = {}) {
 
         const { opts } = this;
         const { extendListeners } = opts;
@@ -80,7 +75,7 @@ class Component {
      */
     render() {
 
-        this.opts.log('render component');
+        this.log('render component');
 
         return this;
 
@@ -94,7 +89,7 @@ class Component {
      */
     static onClick(e) {
 
-        this.opts.log('list click', e);
+        this.log('list click', e);
 
     }
 

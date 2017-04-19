@@ -26,20 +26,19 @@ export function Log() {
 
 }
 
-Log.prototype = {
+Log.prototype = Object.create(Function.prototype);
 
-    /**
-     *
-     * @desc write the entire store to console.
-     *
-     */
-    toConsole: function () {
-        for (let i = 0; i < this.store.length; ++i) {
-            console.log(...this.store[i]);
-        }
+/**
+ *
+ * @desc write the entire store to console.
+ *
+ */
+Log.prototype.toConsole = function () {
+    for (let i = 0; i < this.store.length; ++i) {
+        console.log(...this.store[i]);
     }
-
 };
+
 
 /**
  *

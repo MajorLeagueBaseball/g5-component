@@ -9,6 +9,7 @@
 'use strict';
 
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
 const test = require('tape');
 const MasterModel = require('./../src/scripts/model/master').default;
 const EventEmitter = require('events').EventEmitter;
@@ -41,6 +42,7 @@ test('model-master test', (t) => {
 
     t.test('model should have expected methods', (st) => {
 
+        st.equal(typeof model.log, 'function', 'should have log method');
         st.equal(typeof model.init, 'function', 'should have init method');
         st.equal(typeof model.fetch, 'function', 'should have fetch method');
         st.equal(typeof model.start, 'function', 'should have start method');

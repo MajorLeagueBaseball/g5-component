@@ -45,6 +45,7 @@ test('viewModel-master test', (t) => {
 
     t.test('viewModel should have expected methods', (st) => {
 
+        st.equal(typeof viewModel.log, 'function', 'should have log method');
         st.equal(typeof viewModel.init, 'function', 'should have init method');
         st.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
         st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');

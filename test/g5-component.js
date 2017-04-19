@@ -40,6 +40,7 @@ test('g5-component core test', (t) => {
 
     t.test('g5Component should have expected methods', (st) => {
 
+        st.equal(typeof linescoreComponent.log, 'function', 'should have log method');
         st.equal(typeof linescoreComponent.init, 'function', 'should have init method');
         st.equal(typeof linescoreComponent.hasInstance, 'function', 'should have hasInstance method');
         st.equal(typeof linescoreComponent.detachEvents, 'function', 'should have detachEvents method');

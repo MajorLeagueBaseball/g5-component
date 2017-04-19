@@ -48,6 +48,8 @@ class MasterViewModel extends EventEmitter {
 
         this.Handlebars = implementations.Handlebars;
 
+        this.log = this.opts.log || utils.log;
+
     }
 
     /**

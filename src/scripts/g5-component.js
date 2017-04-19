@@ -9,6 +9,7 @@ import { assign } from './utils/nodash';
 import { EventEmitter } from 'events';
 import dependencies from './dependencies/container';
 import { Log } from './utils/master';
+import utils from './utils/master';
 
 /**
  *
@@ -34,6 +35,12 @@ export default class G5Component extends EventEmitter {
             i18n: 'en',
             log: new Log()
         }, opts);
+
+        if (!(this.opts.log instanceof Function)) {
+            const typeError = new TypeError('opts.log must be a function.');
+            utils.trace(typeError);
+            throw typeError;
+        }
 
         /**
          *
@@ -72,7 +79,9 @@ export default class G5Component extends EventEmitter {
          *
          * @type {Function<*(...args)>} a function that can log any number of arguments.
          * @desc by default the output will be stored in memory at [this.log.store].
-         * Can be printed to console with [this.log.toConsole()].
+         *
+         * @example this.log('hello', { world: 'world' }, true, 42); // logs to memory store
+         * @example this.log.toConsole(); // prints entire memory store
          *
          */
         this.log = this.opts.log;

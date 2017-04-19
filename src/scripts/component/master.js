@@ -6,6 +6,8 @@
  *
  */
 
+import utils from './../utils/master';
+
 /**
  *
  * @class Component
@@ -15,21 +17,52 @@
  * be emitted via the parent
  *
  */
-class Component {
+export class Component {
 
     /**
      *
-     * @param {G5Component|Object} parent
+     * @param {ViewModel|Object} parent
      *
      */
     constructor(parent) {
 
         const { opts, element, container, dataCache } = parent;
 
+        /**
+         *
+         * @type {Object}
+         *
+         */
         this.dataCache = dataCache;
+
+        /**
+         *
+         * @type {HTMLElement}
+         *
+         */
         this.element = element || container;
+
+        /**
+         *
+         * @type {ViewModel}
+         *
+         */
         this.parent = parent;
+
+        /**
+         *
+         * @type {Object}
+         *
+         */
         this.opts = opts;
+
+        /**
+         *
+         * @type {Function<*(...args)>} a logging function.
+         * @see G5Component()
+         *
+         */
+        this.log = this.opts.log || utils.log;
 
     }
 
@@ -43,7 +76,7 @@ class Component {
      * @returns {Object} this
      *
      */
-    init(data={}) {
+    init(data = {}) {
 
         this.dataCache = data;
 
@@ -71,11 +104,11 @@ class Component {
  *
  * @access public
  * @function componentFactory
- * @param {Object} parent
+ * @param {ViewModel|Object} parent
  * @returns {Component}
  *
  */
-export default function componentFactory(parent={}) {
+export default function componentFactory(parent = {}) {
 
     return new Component(parent);
 

@@ -6,8 +6,8 @@
  */
 
 import { isEqual, assign } from './../utils/nodash';
-import utils from './../utils/master';
 import { EventEmitter } from 'events';
+import utils from './../utils/master';
 
 /**
  *
@@ -63,6 +63,14 @@ class MasterModel extends EventEmitter {
          */
         this.dataFetch = null;
 
+        /**
+         *
+         * @type {Function<*(...args)>} a logging function.
+         * @see G5Component()
+         *
+         */
+        this.log = this.opts.log || utils.log;
+
     }
 
     /**
@@ -98,9 +106,7 @@ class MasterModel extends EventEmitter {
         const { opts, parent } = this;
         const { path, enablePolling, interval } = opts;
 
-        if (opts.log instanceof Function) {
-            opts.log(`Fetching data from path: ${path}`);
-        }
+        this.log(`Fetching data from path: ${path}`);
 
         /**
          *
