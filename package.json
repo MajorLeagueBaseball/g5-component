@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-alpha.5",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula <greg.babula@mlb.com>",
   "contributors": [
