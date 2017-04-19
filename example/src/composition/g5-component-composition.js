@@ -154,7 +154,7 @@ class List extends G5Component {
  * @see ./../composition.html in examples folder.
  *
  */
-module.exports = function g5ComponentComposition(opts) {
+module.exports = function factory(opts) {
 
     return new List(opts);
 

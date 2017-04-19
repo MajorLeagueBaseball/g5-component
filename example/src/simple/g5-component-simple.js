@@ -21,30 +21,40 @@ import partials from './component/partials';
 
 import Model from './model/master';
 
-/**
- *
- * @type {Object}
- * @desc Default injector provides baseline.
- *
- */
-const implementation = inject({});
+class SimpleComponent extends G5Component {
 
-/**
- *
- * @desc Override component group and Model specifically.
- *
- */
-implementation.extender = extender;
-implementation.helpers = helpers;
-implementation.component = component;
-implementation.partials = partials;
-implementation.Model = Model;
+    constructor(opts) {
+
+        /**
+         *
+         * @type {Object}
+         * @desc Default injector provides baseline.
+         *
+         */
+        const implementation = inject({});
+
+        /**
+         *
+         * @desc Override component group and Model specifically.
+         *
+         */
+        implementation.extender = extender;
+        implementation.helpers = helpers;
+        implementation.component = component;
+        implementation.partials = partials;
+        implementation.Model = Model;
+
+        super(opts, implementation);
+
+    }
+
+}
 
 /**
  *
  * @desc use named export at the top level
  *
  */
-module.exports = function g5Component(opts) {
-    return new G5Component(opts, implementation);
+module.exports = function factory(opts) {
+    return new SimpleComponent(opts);
 };

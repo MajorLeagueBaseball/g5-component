@@ -4,7 +4,7 @@
 
 On [wikipedia](https://en.wikipedia.org/wiki/Dependency_injection).
 
-DI for the `g5-component` is not different from the standard concept.
+Dependency injection for a `g5-component` is not different from the standard concept.
 
 To aid [composability](./composition.md), the `G5Component` constructor has an
 optional second argument that acts as a dependency injection container.
@@ -75,15 +75,38 @@ export default {
 };
 ```
 
-### There are 4 types of usage for each member of the DI container.
+### There are 4 types or levels of implementation for each member of the dependency container above.
 
 ##### (1) Stub
 
-As shown above, only a minimal stub object or empty class is provided. That functionality will then be
+As shown above, only a minimal stub object or empty class is provided to conform to the expected type of the member.
+
+That functionality will then be
 largely absent from the resulting component. You can for example elect to use the stub implementations if your component
-is a composition sub-component that has little inherent functionality.
+is a (composition) sub-component that has little inherent functionality.
 
 For example, a minor view sub-component can only implement the template member.
+
+```js
+import G5Component from 'g5-component';
+import { inject as stub } from 'g5-component/src/scripts/dependencies/stubInjector';
+
+class StubComponent extends G5Component {
+
+    constructor(opts) {
+
+        const implementation = {};
+
+        super(opts, stub(implementation));
+
+    ]
+
+}
+
+export default function factory() {
+    return new StubComponent(opts, container);
+}
+```
 
 ##### (2) Base
 
@@ -91,15 +114,48 @@ The `g5-component` module contains base implementations of all the required memb
 The module also provides a default implementation injector which adds all base implementations.
 
 ```js
-import g5Component from 'g5-component';
-import { inject } from 'g5-component/dependencies/defaultInjector';
+import G5Component from 'g5-component';
+import { inject as base } from 'g5-component/src/scripts/dependencies/defaultInjector';
 
-const container = {};
+class DefaultComponent extends G5Component {
 
-inject(container); // container receives base implementations of all required elements.
+    constructor(opts) {
 
-export default function createG5ComponentBaseImplementation() {
-    return new g5Component(opts, container);
+        const implementation = {};
+
+        super(opts, base(implementation));
+
+    ]
+
+}
+
+export default function factory() {
+    return new DefaultComponent(opts, container);
+}
+```
+
+##### (2a) Light
+
+There is a variation of the base injector which excludes Handlebars for a lighter bundle.
+
+```js
+import G5Component from 'g5-component';
+import { inject as light } from 'g5-component/src/scripts/dependencies/lightInjector';
+
+class LightComponent extends G5Component {
+
+    constructor(opts) {
+
+        const implementation = {};
+
+        super(opts, light(implementation));
+
+    ]
+
+}
+
+export default function factory() {
+    return new LightComponent(opts, container);
 }
 ```
 
@@ -108,47 +164,61 @@ export default function createG5ComponentBaseImplementation() {
 You can also extend any of the base implementations.
 
 ```js
-import g5Component from 'g5-component';
-import { inject } from 'g5-component/dependencies/defaultInjector';
+import G5Component from 'g5-component/src/scripts/g5-component';
+import { inject } from 'g5-component/src/scripts/dependencies/defaultInjector';
+import G5BaseModel from 'g5-component/src/scripts/model/master';
 
-const container = {};
+class ExtensionComponent extends G5Component {
 
-inject(container);
+    constructor(opts) {
 
-container.Model = class YourCustomModel extends container.Model {
-    /* ... */
-}
+        const implementation = inject({});
 
-export default function createG5ComponentExtensionImplementation() {
-    return new g5Component(opts, container);
+        implementation.Model = class extends G5BaseModel {
+
+            // ... usually done in a different file, shown here inline for simplicity.
+
+        };
+
+        super(opts, implementation);
+
+    }
+
 }
 ```
 
 ##### (4) Custom
 
 To take full control, you will need to fully implement the interface of the base types by
-reviewing the g5 source code. In this case, to prevent bundle bloat, you can individually import the base
+reviewing the G5 source code. In this case, to prevent bundle bloat, you can individually import the base
 implementations that you are not overriding in order to have all members present in the dependency container.
 
 ```js
-import g5Component from 'g5-component';
-
-// use base implementations for those you are not customizing.
+import G5Component from 'g5-component/src/scripts/g5-component';
+import { inject as stub } from 'g5-component/src/scripts/dependencies/stubInjector';
 import ViewModel from 'g5-component/src/scripts/viewModel/master';
 import EventTower from 'g5-component/src/scripts/events/master';
-// etc.
 
-const container = {
-    ...
-    Model: class {
-        /* ... custom implementation that matches the base interface */
-    },
-    ViewModel,
-    EventTower
-    ...
-};
+class FullyCustomizedModelComponent extends G5Component {
 
-export default function createG5ComponentCustomImplementation() {
-    return new g5Component(opts, container);
+    constructor(opts) {
+
+        const implementation = inject({});
+
+        implementation.Model = class { // does not extend base G5Model
+
+            // ... usually done in a different file, shown here inline for simplicity.
+
+        };
+
+        implementation.ViewModel = ViewModel;
+        implementation.EventTower = EventTower;
+
+        // ...
+
+        super(opts, implementation);
+
+    }
+
 }
 ```

@@ -52,6 +52,12 @@ If you need a further customized model, you'll probably want to override the `fe
 method and handle that by yourself. For example, if you need multiple data points, mash that
 data up here and simply emit a `data` event with the mashed up data set.
 
+As of V3, Promise and fetch are no longer polyfilled globally, so if you need to use them you should
+import them explicitly in your custom implementation.
+
+Instead, you may call the `void xhr(String url, Function onError, ...Function onSuccess)` method, which takes a url,
+ an error handler, and any number of piped success handler functions.
+
 
 ```js
 export default class MasterModel extends G5BaseModel {
@@ -78,83 +84,64 @@ export default class MasterModel extends G5BaseModel {
 
     }
 
-    /**
-     *
-     * @method fetch
-     * @description makes a GET request to specified path, emits data event, expecting JSON by default
-     * @returns {Object} this
-     *
-     */
-    fetch() {
+   /**
+    *
+    * @method fetch
+    * @desc makes a GET request to specified path, emits data event, expecting JSON by default
+    * @returns {Object} this
+    *
+    */
+   fetch() {
 
-        let { opts } = this;
-        let { path, enablePolling, interval } = opts;
+       const { opts, parent } = this;
+       const { path, enablePolling, interval } = opts;
 
-        /**
-         *
-         * @function handleData
-         * @param {Object} response
-         * @returns {Object} response JSON
-         * @description handles response and returns JSON if successful
-         *
-         */
-        function handleData(response) {
+       this.log(`Fetching data from path: ${path}`);
 
-            if (response.status >= 400) {
-                throw response.status;
-            }
+       /**
+        *
+        * @type {Function} <object(string)>
+        * @param {string} response
+        * @desc example pass-through function
+        * @returns {Object}
+        *
+        */
+       const handleData = (response) => JSON.parse(response);
 
-            try {
+       /**
+        *
+        * @type {Function} <void(object)>
+        * @param {Object} data parsed JSON
+        * @emits {data}
+        *
+        */
+       const handleSuccess = (data={}) => {
 
-                return response.json();
+           if (!isEqual(data, this.dataCache)) {
+               this.dataCache = data;
+               this.emit('data', data);
+           }
 
-            } catch (e) {
+       };
 
-                throw e;
+       /**
+        *
+        * @type {Function} <void(Error)>
+        * @param {Number|Object} err
+        * @emits {data-error}
+        *
+        */
+       const handleError = (err) => {
+           this.emit('data-error', err);
+       };
 
-            }
+       this.xhr(path, handleError, handleData, handleSuccess);
 
-        }
+       this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
 
-        /**
-         *
-         * @function handleSuccess
-         * @param {Object} data parsed JSON
-         *
-         */
-        function handleSuccess(data={}) {
+       return this;
 
-            if (!isEqual(data, this.dataCache)) {
-
-                this.dataCache = data;
-                this.emit('data', data);
-
-            }
-
-        }
-
-        /**
-         *
-         * @function handleError
-         * @param {Number|Object} err
-         *
-         */
-        function handleError(err) {
-
-            this.emit('data-error', err);
-
-        }
-
-        fetch(path)
-            .then(handleData.bind(this))
-            .then(handleSuccess.bind(this))
-            .catch(handleError.bind(this));
-
-        this.dataFetch = enablePolling && setTimeout(this.fetch.bind(this), interval);
-
-        return this;
-
-    }
+   }
 
 }
 ```

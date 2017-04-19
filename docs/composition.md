@@ -16,3 +16,5 @@ Furthermore, we aim to provide composability without the need to create multiple
 First `npm run build` and then `npm run build-examples` and `npm run serve`.
 
 The example is visible at `localhost:9966/example/composition.html`.
+
+Source code at [example/src/composision](./../example/src/composition).

@@ -10,9 +10,9 @@ _General library feature tracking._
 - [x] Document all baseline events
 - [ ] Document all baseline methods
 - [x] Update to new version of `babel`
-- [x] Update to new version of `LoDash`
+- [x] Update to new version of `LoDash` (removed)
 - [x] Improve debugging, allow for easier stack traces (https://github.com/MajorLeagueBaseball/g5-component/pull/20 adds `util.trace(...args)`)
-- [ ] Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
+- [x] Adjust `viewModel`, pass in larger dependencies via options (i.e. `jQuery`)
 - [x] Use native modules instead of CommonJS (https://github.com/MajorLeagueBaseball/g5-component/pull/20)
 - [x] Use Classes instead of prototypal inheritance (https://github.com/MajorLeagueBaseball/g5-component/pull/20)
 - [x] Reconsider inheritance of `viewModel`, `model`, etc... (https://github.com/MajorLeagueBaseball/g5-component/pull/20)
@@ -20,7 +20,7 @@ _General library feature tracking._
 - [ ] Overall cleanup and refactor
 - [x] Normalize global options `Object`, improve defaults
 - [ ] Add architecture diagram
-- [ ] Simplify NPM scripts _(especially full/split builds)_
+- [x] Simplify NPM scripts _(especially full/split builds)_ (PR #20 removed split builds)
 - [ ] Add additional examples
 - [ ] Add `postcss` and `autoprefixer`
 - [ ] Refactor `tape` tests

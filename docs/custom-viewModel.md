@@ -9,7 +9,7 @@ See also [dependency injection](./dependency-injection.md) on how to inject your
 Create /src/scripts/viewModel/master.js and inherit the prototype from the scaffold's viewModel (to maintain expected core methods and instance of EventEmitter). You can then easily add new methods or override existing ones.
 
 ```js
-import assign from 'lodash.assign';
+import { assign } from 'g5-component/src/scripts/utils/nodash';
 import G5ViewModel from 'g5-component/src/scripts/viewModel/master';
 
 export default MasterViewModel extends G5ViewModel {

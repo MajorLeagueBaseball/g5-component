@@ -111,9 +111,9 @@
      "start-dev": "npm run watch & npm run serve",
      "compress-images": "imagemin --progressive src/images/* src/images/build",
      "postcompress-images": "echo 'imagemin complete'",
-     "build-js": "browserify src/scripts/g5-component-browser.js --s 'g5-component' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > dist/g5-component.min.js",
-     "build-js-dev": "browserify src/scripts/g5-component-browser.js --s 'g5-component' > dist/g5-component.js",
-     "build-js-all": "npm run build-js && npm run build-js",
+     "build-js": "browserify src/scripts/g5-component.js --s 'g5-component' | uglifyjs --mangle --compress drop_console,drop_debugger,dead_code,unused > dist/g5-component.min.js",
+     "build-js-dev": "browserify src/scripts/g5-component.js --s 'g5-component' > dist/g5-component.js",
+     "build-js-all": "npm run build-js-dev && npm run build-js",
      "build-css": "lessc --include-path=node_modules/bootstrap/less:src/styles src/styles/component.less > dist/g5-component.css",
      "postbuild-css": "npm run minify-css && npm run gzip-css",
      "build": "npm run build-js-all && npm run build-css && npm run compress-images",
@@ -129,20 +129,18 @@
      "lint": "jshint src/scripts/ || true",
      "disk-usage": "du -sh ./dist/*",
      "prelint": "echo 'Checking code via JSHint...'"
-   },
+    },
    "dependencies": {
      "babel-core": "^6.24.0",
      "babel-preset-es2015": "^6.24.0",
      "babelify": "^7.3.0",
      "browserify": "^14.1.0",
      "handlebars": "^4.0.6",
-     "hbsfy": "^2.7.0"
-   },
-   "devDependencies": {
+     "hbsfy": "^2.7.0",
      "babel-tape-runner": "^2.0.1",
      "bootstrap": "^3.3.7",
      "clean-css": "^4.0.9",
-     "clean-css-cli": "^4.0.9",
+     "clean-css-cli": "^4.0.12",
      "ghooks": "^2.0.0",
      "http-server": "^0.9.0",
      "imagemin": "^5.2.2",
@@ -155,6 +153,8 @@
      "tape": "^4.6.3",
      "uglify-js": "^2.8.14",
      "xmlhttprequest": "^1.8.0"
+   },
+   "devDependencies": {
    }
 }
 ```

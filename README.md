@@ -18,8 +18,11 @@ _Event based Browserify component scaffold._  :baseball:
 
 > Install the package and [use it as a module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 
+Development tools are `dependencies` of `g5-component` to allow you to install `g5-component` as a `devDependency` and
+still be able to run all the command line build scripts.
+
 ```
-npm i g5-component --save
+npm i g5-component --save-dev
 ```
 
 > Or clone the repo and use it as a [scaffold/boilerplate](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md) for your component
@@ -35,6 +38,8 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 ```
 npm i && npm run build && npm run start-dev
 ```
+
+You can also separately `npm run serve` and `npm run watch` instead of `start-dev` to see server and build information in different tabs.
 
 ---
 
@@ -75,6 +80,7 @@ linescoreComponent.init();
 | `enableFetch`     | `Boolean`  | flag to enable/disable initial data fetch                   | `true`         |
 | `enablePolling`   | `Boolean`  | flag to enable/disable data polling                         | `true`         |
 | `extendListeners` | `Function` | callback executed after all event listeners have been added | `undefined`    |
+| `log`             | `Function` | an arbitrary log function                                   | (memory sink)  |
 
 ### Methods
 
@@ -94,6 +100,11 @@ linescoreComponent.detachEvents(); // detaches all events
 
 ```js
 linescoreComponent.attachEvents(); // attaches all events
+```
+
+```js
+linescoreComponent.log(...args); // by default, logs to a memory array. Can be overridden in opts.
+linescoreComponent.log.toConsole(); // print default memory array to console.
 ```
 
 ```js
