@@ -159,29 +159,6 @@
 }
 ```
 
-#### Component File Reference
-
-> Aliasify is used to make sure we are pointing to your component-specific files. The internal g5-component browser references are set to false to make sure Browserify doesn't try to load those instead. If need be, the core model and/or viewModel can also be changed if necessary, however it should inherit it's prototype from the g5-component model to maintain expected methods.
-
-```json
-  "browser": {
-    "component": false,
-    "component-template": false,
-    "component-extender": false,
-    "component-helpers": false,
-    "component-partials": false
-  },
-  "aliasify": {
-    "aliases": {
-      "component": "./src/scripts/component/master.js",
-      "component-template": "./src/template/component.html",
-      "component-extender": "./src/scripts/component/extender.js",
-      "component-helpers": "./src/scripts/component/helpers.js",
-      "component-partials": "./src/scripts/component/partials.js"
-    }
-  }
-```
-
 #### Component Extender
 
 > When the model successfully returns data, that data can then be manipulated and/or extended with new properties in the component extender. For example, if you need a game date property, and that property does not exist in your data set - instead of making your markup more verbose, you can add that property to the extender and it will then be available in your template.
@@ -189,7 +166,7 @@
 > The component extender is a required file (provided by default) and should always return an Object.
 
 ```js
-const merge = require('lodash.merge');
+import merge from 'lodash.merge';
 
 /**
  *
@@ -206,7 +183,7 @@ function extender(data={}) {
 
 }
 
-module.exports = extender;
+export default extender;
 ```
 
 #### Component Helpers
@@ -220,7 +197,7 @@ module.exports = extender;
  * @description handlebars helpers to be registered
  *
  */
-let helpers = {
+const helpers = {
     /**
      *
      * @method upcase
@@ -232,149 +209,146 @@ let helpers = {
     }
 };
 
-module.exports = helpers;
+export default helpers;
 ```
 
 #### Component Partials
 
 > Module for easily adding handlebars partials
 
+The handlebars plugin/transform for Browserify allows import of html files, which are converted
+ to functions that accept data objects and return strings `Function<String(Object)>`.
+
 ```js
+
+import example from '../../template/partials/example-partial.html';
+
 /**
  *
  * @name partials
  * @description handlebars partials to be registered
  * @note paths must be hardcoded because Browserify can only do static string analysis
  *
+ * Also callable in JS:
+ * @example partials['example-partial']({}); // HTML string.
+ *
  */
-let partials = {
-    'example-partial': require('../../template/partials/example-partial.html')
+const partials = {
+    'example-partial': example
 };
+
 ```
 
 #### Component Master
 
-> Main file for all component specific JS. For consistency, primary methods should remain the same between components. The example below is using jQuery and bootstrap, however keep in mind jQuery and bootstrap are not used anywhere else in the project - so if you dont need either, simply dont import the modules.
+> Main file for all component specific JS. For consistency, primary methods should remain the same between components.
 
 ```js
-const $ = global.jQuery = require('jquery');
-const assign = require('lodash.assign');
-const create = require('lodash.create');
-const isFunction = require('lodash.isFunction');
-
-require('bootstrap/js/tooltip');
 
 /**
  *
- * @name component
- * @description init, render, addEvents, and destroy methods are required for consistency.
+ * @class Component
+ * @desc entry point for all component specific functionality
+ * @note init, render, addEvents, and destroy methods are required for consistency.
  * The parent viewModel is passed in as a reference, for external communication events can
  * be emitted via the parent
  *
  */
-let component = {
+export class Component {
+
     /**
      *
-     * @method init
-     * @param {Object} data
-     * @returns {Object} this
-     * @description instantiates component with a reference to the parent viewModel, properties on
-     * the parent reference should never be modified in any way
+     * @param {ViewModel|Object} parent
      *
      */
-    init(data={}) {
+    constructor(parent) {
 
-        let { opts } = this;
-        let { extendListeners } = opts;
-
-        this.dataCache = data;
-        this.render().addEvents(extendListeners);
-
-        return this;
-
-    },
-    /**
-     *
-     * @method render
-     * @returns {Object} this
-     * @description attaches component functionality
-     *
-     */
-    render() {
-
-        console.log('render component');
-
-        this.$element.find('[data-toggle="tooltip"]').tooltip();
-
-        return this;
-
-    },
-    /**
-     *
-     * @method addEvents
-     * @param {Function} cb
-     * @returns {Object} this
-     * @description attaches component events, event listeners should be delegated from primary element
-     *
-     */
-    addEvents(cb) {
+        const { opts, element, container, dataCache } = parent;
 
         /**
          *
-         * @event click
-         * @param {Object} e event
-         * @description simple event example
+         * @type {Object}
          *
          */
-        this.$element.on('click', 'dt', function(e) {
+        this.dataCache = dataCache;
 
-            console.log('list title click', e);
+        /**
+         *
+         * @type {HTMLElement}
+         *
+         */
+        this.element = element || container;
 
-        });
+        /**
+         *
+         * @type {ViewModel}
+         *
+         */
+        this.parent = parent;
 
-        if (isFunction(cb)) {
-            cb(this.$element[0]);
-        }
+        /**
+         *
+         * @type {Object}
+         *
+         */
+        this.opts = opts;
 
-        return this;
+        /**
+         *
+         * @type {Function<*(...args)>} a logging function.
+         * @see G5Component()
+         *
+         */
+        this.log = this.opts.log || utils.log;
 
-    },
+    }
+
     /**
      *
-     * @method destroy
+     * @access public
+     * @method init
+     * @param {Object} data
+     * @desc instantiates component with a reference to the parent viewModel, properties on
+     * the parent reference should never be modified in any way.
      * @returns {Object} this
-     * @description detaches component functionality, events must be cleaned up to prevent memory leaks
      *
      */
-    destroy() {
+    init(data = {}) {
 
-        this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
-        this.$element.off();
+        this.dataCache = data;
 
         return this;
 
     }
-};
 
-/**
- *
- * @function componentFactory
- * @param {Object} parent
- * @returns {Object}
- *
- */
-function componentFactory(parent={}) {
+    /**
+     *
+     * @access public
+     * @method destroy
+     * @desc detaches component functionality, events must be cleaned up
+     * @returns {Object} this
+     *
+     */
+    destroy() {
 
-    let { opts, container, dataCache } = parent;
+        return this;
 
-    return assign(create(component), {
-        $element: $(container),
-        parent,
-        dataCache,
-        opts
-    });
+    }
 
 }
 
-module.exports = componentFactory;
+/**
+ *
+ * @access public
+ * @function componentFactory
+ * @param {ViewModel|Object} parent
+ * @returns {Component}
+ *
+ */
+export default function componentFactory(parent = {}) {
+
+    return new Component(parent);
+
+}
+
 ```

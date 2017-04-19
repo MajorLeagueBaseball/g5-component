@@ -5,7 +5,6 @@
 * [Introduction](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-intro.md)
 * [Architecture](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-architecture.md)
 * [Module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
-* [Scaffold](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md)
 * [Notes](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-notes.md)
 * [Change Log](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/core-change-log.md)
 

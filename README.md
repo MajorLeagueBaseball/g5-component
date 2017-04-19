@@ -25,7 +25,7 @@ still be able to run all the command line build scripts.
 npm i g5-component --save-dev
 ```
 
-> Or clone the repo and use it as a [scaffold/boilerplate](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md) for your component
+> Or clone the repo and use it as a scaffold/boilerplate for your component
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
