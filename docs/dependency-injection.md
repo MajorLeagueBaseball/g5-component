@@ -103,8 +103,8 @@ class StubComponent extends G5Component {
 
 }
 
-export default function factory() {
-    return new StubComponent(opts, container);
+export default function factory(opts) {
+    return new StubComponent(opts);
 }
 ```
 
@@ -129,8 +129,8 @@ class DefaultComponent extends G5Component {
 
 }
 
-export default function factory() {
-    return new DefaultComponent(opts, container);
+export default function factory(opts) {
+    return new DefaultComponent(opts);
 }
 ```
 
@@ -154,8 +154,8 @@ class LightComponent extends G5Component {
 
 }
 
-export default function factory() {
-    return new LightComponent(opts, container);
+export default function factory(opts) {
+    return new LightComponent(opts);
 }
 ```
 
