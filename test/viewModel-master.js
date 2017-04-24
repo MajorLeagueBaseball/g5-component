@@ -9,14 +9,14 @@
 'use strict';
 
 const test = require('tape');
-const MasterViewModel = require('./../src/scripts/viewModel/master');
+const MasterViewModel = require('./../src/scripts/viewModel/master').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('viewModel-master test', (t) => {
 
     t.plan(6);
 
-    let viewModel = MasterViewModel();
+    let viewModel = new MasterViewModel();
 
     viewModel.container = {};
     viewModel.component.destroy = () => {};
@@ -45,6 +45,7 @@ test('viewModel-master test', (t) => {
 
     t.test('viewModel should have expected methods', (st) => {
 
+        st.equal(typeof viewModel.log, 'function', 'should have log method');
         st.equal(typeof viewModel.init, 'function', 'should have init method');
         st.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
         st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');

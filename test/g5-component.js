@@ -9,21 +9,21 @@
 'use strict';
 
 const test = require('tape');
-const g5Component = require('./../src/scripts/g5-component');
+const G5Component = require('./../src/scripts/g5-component').default;
 const EventEmitter = require('events').EventEmitter;
 
 test('g5-component core test', (t) => {
 
     t.plan(3);
 
-    let linescoreComponent = g5Component({
+    let linescoreComponent = new G5Component({
         container: null,
         css: 'g5-component-linescore linescore linescore--game',
         interval: 15000,
         path: '/src/data/linescore.json'
     });
 
-    t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventeEmitter');
+    t.ok(linescoreComponent instanceof EventEmitter, 'g5Component should have instance of EventEmitter');
 
     t.test('g5Component should have expected properties', (st) => {
 
@@ -40,6 +40,7 @@ test('g5-component core test', (t) => {
 
     t.test('g5Component should have expected methods', (st) => {
 
+        st.equal(typeof linescoreComponent.log, 'function', 'should have log method');
         st.equal(typeof linescoreComponent.init, 'function', 'should have init method');
         st.equal(typeof linescoreComponent.hasInstance, 'function', 'should have hasInstance method');
         st.equal(typeof linescoreComponent.detachEvents, 'function', 'should have detachEvents method');

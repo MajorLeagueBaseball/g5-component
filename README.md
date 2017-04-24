@@ -1,8 +1,8 @@
 # [g5-component.js](https://youtu.be/sr9_GfeoCjk?t=35s)
 
-Browserify Component Scaffold 
+_Event based Browserify component scaffold._  :baseball:
 
-[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component) 
+[![NPM version](http://img.shields.io/npm/v/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 [![NPM license](http://img.shields.io/npm/l/g5-component.svg?style=flat-square)](https://www.npmjs.org/package/g5-component)
 [![GitHub issues](https://img.shields.io/github/issues/MajorLeagueBaseball/g5-component.svg)](https://github.com/MajorLeagueBaseball/g5-component/issues)
 
@@ -18,11 +18,14 @@ Browserify Component Scaffold
 
 > Install the package and [use it as a module](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-module.md)
 
+Development tools are `dependencies` of `g5-component` to allow you to install `g5-component` as a `devDependency` and
+still be able to run all the command line build scripts.
+
 ```
-npm i g5-component
+npm i g5-component --save-dev
 ```
 
-> Or clone the repo and use it as a [scaffold/boilerplate](https://github.com/MajorLeagueBaseball/g5-component/blob/master/docs/usage-scaffold.md) for your component
+> Or clone the repo and use it as a scaffold/boilerplate for your component
 
 ```
 git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-component
@@ -35,6 +38,8 @@ git clone https://github.com/MajorLeagueBaseball/g5-component.git && cd g5-compo
 ```
 npm i && npm run build && npm run start-dev
 ```
+
+You can also separately `npm run serve` and `npm run watch` instead of `start-dev` to see server and build information in different tabs.
 
 ---
 
@@ -64,17 +69,18 @@ linescoreComponent.init();
 
 > A single shared options `Object`
 
-| Option             | Type       | Description                               | Default           |
-|:-------------------|:-----------|:------------------------------------------|:------------------|
-| `component`        | `String`   | component name/class                      | `''`              |
-| `container`        | `Element`  | primary container                         | `''`              |
-| `css`              | `String`   | classes to add after instantiation        | `g5-component`    |
-| `i18n`             | `String`   | localization                              | `en`              |
-| `interval`         | `Number`   | polling interval                          | `40000`           |
-| `path`             | `String`   | data path to fetch (remote or local)      | `''`              |
-| `enableFetch`      | `Boolean`  | flag to enable/disable initial data fetch | `true`            |
-| `enablePolling`    | `Boolean`  | flag to enable/disable data polling       | `true`            |
-| `extendListeners`  | `Function` | callback executed after all event listeners have been added   | `undefined` |
+| Option            | Type       | Description                                                 | Default        |
+|:------------------|:-----------|:------------------------------------------------------------|:---------------|
+| `component`       | `String`   | component name/class                                        | `''`           |
+| `container`       | `Element`  | primary container                                           | `''`           |
+| `css`             | `String`   | classes to add after instantiation                          | `g5-component` |
+| `i18n`            | `String`   | localization                                                | `en`           |
+| `interval`        | `Number`   | polling interval                                            | `40000`        |
+| `path`            | `String`   | data path to fetch (remote or local)                        | `''`           |
+| `enableFetch`     | `Boolean`  | flag to enable/disable initial data fetch                   | `true`         |
+| `enablePolling`   | `Boolean`  | flag to enable/disable data polling                         | `true`         |
+| `extendListeners` | `Function` | callback executed after all event listeners have been added | `undefined`    |
+| `log`             | `Function` | an arbitrary log function                                   | (memory sink)  |
 
 ### Methods
 
@@ -94,6 +100,11 @@ linescoreComponent.detachEvents(); // detaches all events
 
 ```js
 linescoreComponent.attachEvents(); // attaches all events
+```
+
+```js
+linescoreComponent.log(...args); // by default, logs to a memory array. Can be overridden in opts.
+linescoreComponent.log.toConsole(); // print default memory array to console.
 ```
 
 ```js
@@ -135,8 +146,8 @@ linescoreComponent.on('stop', () => {
 > Events must be triggered after the component is instantiated
 
 ```js
-// 
-// Used with the `enableFetch` option (which toggles the initial data fetch), this 
+//
+// Used with the `enableFetch` option (which toggles the initial data fetch), this
 // event allows direct passing of a data Object via an event
 //
 linescoreComponent.emit('synthetic-data', data);
@@ -212,18 +223,18 @@ npm run compress-images
 
 ### Browser Support
 
-![Chrome](https://imgur.com/0G4BkQl.png) | ![Firefox](https://imgur.com/6CouqBy.png) | ![IE](https://imgur.com/24kW1zX.png) | ![Opera](https://i.imgur.com/FixcIOT.png) | ![Safari](https://i.imgur.com/MPkK0Si.png)
---- | --- | --- | --- | --- |
- ✔ | ✔ | 10+ ✔ | ✔ | 6.1+ ✔ |
+| ![Chrome](https://imgur.com/0G4BkQl.png) | ![Firefox](https://imgur.com/6CouqBy.png) | ![IE](https://imgur.com/24kW1zX.png) | ![Opera](https://i.imgur.com/FixcIOT.png) | ![Safari](https://i.imgur.com/MPkK0Si.png) |
+|:-----------------------------------------|:------------------------------------------|:-------------------------------------|:------------------------------------------|:-------------------------------------------|
+| ✔                                        | ✔                                         | 10+ ✔                                | ✔                                         | 6.1+ ✔                                     |
 
 ---
 
 ```
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
+
+
+
+
+
             ______
             _\ _~-\___
     =  = ==(____G5____D
@@ -232,9 +243,9 @@ npm run compress-images
                 `~-.__        ___..----..                  )
                       `---~~\___________/------------`````
                       =  ===(_________D
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
-                                                                                                         
+
+
+
+
+
 ```

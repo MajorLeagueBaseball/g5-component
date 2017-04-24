@@ -1,64 +1,34 @@
 # Custom viewModel
 
-Using a custom viewModel on the component level.
+_Using a custom viewModel on the component level._
 
-#### package.json
-
-In package.json on the component level, set browser.viewModel to false, add a reference to the scaffold's viewModel, and add your custom viewModel reference to aliasify.
-
-```json
-"browser": {
-  "viewModel": false,
-  "g5-component/viewModel": "./node_modules/g5-component/src/scripts/viewModel/master.js"
-},
-"aliasify": {
-  "aliases": {
-    "viewModel": "./src/scripts/viewModel/master.js"
-  }
-}
-```
-
-What's going on here? You're telling Browserify that you don't want to load the scaffolds viewModel by setting it to false. You then add the viewModel property to aliasify with the path to your custom viewModel. The browser reference to g5-component/viewModel is set so that we can easily reference it in our custom viewModel.
+See also [dependency injection](./dependency-injection.md) on how to inject your custom implementation.
 
 #### viewModel/master.js
 
 Create /src/scripts/viewModel/master.js and inherit the prototype from the scaffold's viewModel (to maintain expected core methods and instance of EventEmitter). You can then easily add new methods or override existing ones.
 
 ```js
-/**
- *
- * @module viewModel/master
- * @description master viewModel, view layer related functionality
- * inherits methods and properties from the g5-component viewModel
- *
- */
+import { assign } from 'g5-component/src/scripts/utils/nodash';
+import G5ViewModel from 'g5-component/src/scripts/viewModel/master';
 
-'use strict';
+export default MasterViewModel extends G5ViewModel {
 
-const util        = require('util');
-const assign      = require('lodash.assign');
-const g5ViewModel = require('g5-component/viewModel');
+    /**
+     *
+     * @param {Object} opts shared options Object
+     *
+     */
+    constructor(opts) {
 
-/**
- *
- * @constructor MasterViewModel
- * @param {Object} opts shared options Object
- *
- */
-function MasterViewModel(opts) {
+        g5ViewModel.call(this);
 
-    if (!(this instanceof MasterViewModel)) {
-        return new MasterViewModel(opts);
+        this.opts = assign({
+            css: 'g5-component'
+        }, opts);
+
     }
-
-    g5ViewModel.call(this);
-
-    this.opts = assign({
-        css: 'g5-component'
-    }, opts);
 
 }
 
-util.inherits(MasterViewModel, g5ViewModel);
-
-module.exports = MasterViewModel;
+```

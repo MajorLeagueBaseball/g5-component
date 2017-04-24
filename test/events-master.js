@@ -9,13 +9,19 @@
 'use strict';
 
 const test = require('tape');
-const EventTower = require('./../src/scripts/events/master');
+const EventTower = require('./../src/scripts/events/master').default;
+const EventEmitter = require('events').EventEmitter;
+const assign = require('./../src/scripts/utils/nodash').assign;
 
 test('events-master test', (t) => {
 
     t.plan(3);
 
-    let eventTower = EventTower();
+    let eventTower = new EventTower(assign(new EventEmitter, {
+        hasInstance: () => true,
+        model: new EventEmitter,
+        viewModel: new EventEmitter,
+    }));
 
     t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 

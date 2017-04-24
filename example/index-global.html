@@ -12,18 +12,15 @@
 
         <title>g5-component.js / Browser Global</title>
 
-        <!-- Compiled/Minified CSS -->
-        <!-- <link rel="stylesheet" href="/dist/g5-component-min.css" /> -->
-        <link rel="stylesheet" href="/dist/g5-component-min.css.gz" />
+        <link rel="stylesheet" href="./../dist/g5-component-min.css.gz" />
     </head>
     <body>
-
         <main>
             <section class="g5-component g5-component--linescore"></section>
         </main>
 
         <!-- bundled JS -->
-        <script src="/dist/g5-component.js"></script>
+        <script src="./dist/g5-component-simple.js"></script>
 
         <!-- browser global implementation -->
         <script>
@@ -36,19 +33,17 @@
                 path: '/src/data/linescore.json'
             });
 
-            //
             // event usage example
-            //
             linescoreComponent.on('ready', function(obj) {
                 console.log('component ready!', obj);
             });
 
-            //
             // init component
-            //
             linescoreComponent.init();
 
-        </script>
+            // expose logs to console
+            linescoreComponent.log.toConsole();
 
+        </script>
     </body>
 </html>

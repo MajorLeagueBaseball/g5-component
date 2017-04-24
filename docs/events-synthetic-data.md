@@ -32,7 +32,7 @@ exampleComponent.init();
 ```js
 //
 // data must be an Object and will be passed to the viewModel 
-// where it will be extended via the component extender
+// where it will be extended via the component (data) extender
 //
 exampleComponent.emit('synthetic-data', data);
 ```

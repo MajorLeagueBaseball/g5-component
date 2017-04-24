@@ -2,131 +2,114 @@
  *
  * @module component/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description entry point for all component specific functionality
- * jQuery and Bootstrap provided for example, however neither are required
+ * @see ./example/simple/component/master
  *
  */
 
-'use strict';
-
-const $ = global.jQuery = require('jquery');
-const utils = require('./../utils/master');
-const assign = require('lodash.assign');
-const create = require('lodash.create');
-const isFunction = require('lodash.isfunction');
-
-require('bootstrap/js/tooltip');
+import utils from './../utils/master';
 
 /**
  *
- * @name component
- * @description init, render, addEvents, and destroy methods are required for consistency.
+ * @class Component
+ * @desc entry point for all component specific functionality
+ * @note init, render, addEvents, and destroy methods are required for consistency.
  * The parent viewModel is passed in as a reference, for external communication events can
  * be emitted via the parent
  *
  */
-let component = {
+export class Component {
+
     /**
      *
-     * @method init
-     * @param {Object} data
-     * @returns {Object} this
-     * @description instantiates component with a reference to the parent viewModel, properties on
-     * the parent reference should never be modified in any way
+     * @param {ViewModel|Object} parent
      *
      */
-    init(data={}) {
+    constructor(parent) {
 
-        let { opts } = this;
-        let { extendListeners } = opts;
-
-        this.dataCache = data;
-        this.render().addEvents(extendListeners);
-
-        return this;
-
-    },
-    /**
-     *
-     * @method render
-     * @returns {Object} this
-     * @description attaches component functionality
-     *
-     */
-    render() {
-
-        utils.log('render component');
-
-        this.$element.find('[data-toggle="tooltip"]').tooltip();
-
-        return this;
-
-    },
-    /**
-     *
-     * @method addEvents
-     * @param {Function} cb
-     * @returns {Object} this
-     * @description adds component events, event listeners should be delegated from primary element
-     *
-     */
-    addEvents(cb) {
+        const { opts, element, container, dataCache } = parent;
 
         /**
          *
-         * @event click
-         * @param {Object} e event
-         * @description simple event example
+         * @type {Object}
          *
          */
-        this.$element.on('click', 'dt', (e) => {
+        this.dataCache = dataCache;
 
-            utils.log('list title click', e);
+        /**
+         *
+         * @type {HTMLElement}
+         *
+         */
+        this.element = element || container;
 
-        });
+        /**
+         *
+         * @type {ViewModel}
+         *
+         */
+        this.parent = parent;
 
-        if (isFunction(cb)) {
-            cb(this.$element[0]);
-        }
+        /**
+         *
+         * @type {Object}
+         *
+         */
+        this.opts = opts;
 
-        return this;
+        /**
+         *
+         * @type {Function<*(...args)>} a logging function.
+         * @see G5Component()
+         *
+         */
+        this.log = this.opts.log || utils.log;
 
-    },
+    }
+
     /**
      *
-     * @method destroy
+     * @access public
+     * @method init
+     * @param {Object} data
+     * @desc instantiates component with a reference to the parent viewModel, properties on
+     * the parent reference should never be modified in any way.
      * @returns {Object} this
-     * @description detaches component functionality, events must be cleaned up
      *
      */
-    destroy() {
+    init(data = {}) {
 
-        this.$element.find('[data-toggle="tooltip"]').tooltip('destroy');
-        this.$element.off();
+        this.dataCache = data;
 
         return this;
 
     }
-};
 
-/**
- *
- * @function componentFactory
- * @param {Object} parent
- * @returns {Object}
- *
- */
-function componentFactory(parent={}) {
+    /**
+     *
+     * @access public
+     * @method destroy
+     * @desc detaches component functionality, events must be cleaned up
+     * @returns {Object} this
+     *
+     */
+    destroy() {
 
-    let { opts, container, dataCache } = parent;
+        return this;
 
-    return assign(create(component), {
-        $element: $(container),
-        parent,
-        dataCache,
-        opts
-    });
+    }
 
 }
 
-module.exports = componentFactory;
+/**
+ *
+ * @access public
+ * @function componentFactory
+ * @param {ViewModel|Object} parent
+ * @returns {Component}
+ *
+ */
+export default function componentFactory(parent = {}) {
+
+    return new Component(parent);
+
+}

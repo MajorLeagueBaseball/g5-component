@@ -2,11 +2,8 @@
  *
  * @module events/group
  * @author Greg Babula [greg.babula@mlb.com]
- * @description all standard/core events
  *
  */
-
-'use strict';
 
 /**
  *
@@ -14,6 +11,7 @@
  * @param {Object} master
  * @param {Object} model
  * @param {Object} viewModel
+ * @desc attaches base events to all core dependencies
  *
  */
 function eventGroup(master={}, model={}, viewModel={}) {
@@ -127,4 +125,4 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
 }
 
-module.exports = eventGroup;
+export default eventGroup;

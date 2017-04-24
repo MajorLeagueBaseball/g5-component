@@ -2,294 +2,300 @@
  *
  * @module viewModel/master
  * @author Greg Babula [greg.babula@mlb.com]
- * @description master viewModel, setup Handlebars and baseline view
  *
  */
 
-'use strict';
-
-const util = require('util');
-const assign = require('lodash.assign');
-const isEqual = require('lodash.isequal');
-const size = require('lodash.size');
-const forOwn = require('lodash.forown');
-const utils = require('./../utils/master');
-const EventEmitter = require('events').EventEmitter;
-const Handlebars = require('hbsfy/runtime');
+import { isEqual, assign } from './../utils/nodash';
+import utils from './../utils/master';
+import { EventEmitter } from 'events';
+import dependencies from './../dependencies/container';
 
 /**
  *
- * @constructor MasterViewModel
- * @param {Object} opts shared options Object
+ * @class MasterViewModel
+ * @extends EventEmitter
+ * @desc Pure-code representation of the data and operations on a UI.
  *
  */
-function MasterViewModel(opts) {
+class MasterViewModel extends EventEmitter {
 
-    if (!(this instanceof MasterViewModel)) {
-        return new MasterViewModel(opts);
-    }
+    /**
+     *
+     * @param {Object} opts shared options Object, template, helpers, partials, and extender.
+     * @param {object} [implementations = dependencies] A container with the component implementation(s) to use.
+     *
+     */
+    constructor(opts, implementations = dependencies) {
 
-    this.opts = assign({
-        css: 'g5-component'
-    }, opts);
+        super();
 
-    this.container = this.opts.container;
-    this.dataCache = {};
+        this.opts = assign({
+            css: 'g5-component'
+        }, opts);
 
-    this.instance = false;
-    this.active = false;
-    this.bound = false;
+        this.container = this.opts.container;
+        this.dataCache = {};
 
-    try {
+        this.instance = false;
+        this.active = false;
+        this.bound = false;
 
-        this.component = require('component')(this);
-        this.template = require('component-template');
-        this.helpers = require('component-helpers');
-        this.partials = require('component-partials');
-        this.extender = require('component-extender');
+        this.component = implementations.component(this);
+        this.template = implementations.template;
+        this.helpers = implementations.helpers;
+        this.partials = implementations.partials;
+        this.extender = implementations.extender;
 
-    } catch (e) {
+        this.Handlebars = implementations.Handlebars;
 
-        this.component = {};
-        this.template = {};
-        this.helpers = {};
-        this.partials = {};
-        this.extender = {};
-
-        utils.log(e, 'the override template group was not imported.');
+        this.log = this.opts.log || utils.log;
 
     }
 
-    EventEmitter.call(this);
+    /**
+     *
+     * @method init
+     * @desc initiates viewModel
+     * @returns {Object} this
+     *
+     */
+    init() {
+
+        if (!this.container) {
+
+            throw Error('G5Component needs to be instantiated with a container');
+
+        } else if (!this.container.nodeType) {
+
+            throw Error('Container must be a valid DOM Node');
+
+        }
+
+        if (!this.instance) {
+
+            this.instance = true;
+            this.active = true;
+
+            this.addClass();
+            this.addG5Attributes();
+            this.registerHelpers();
+            this.registerPartials();
+
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method addClass
+     * @desc adds classes based on options and component state
+     * @returns {Object} this
+     *
+     */
+    addClass() {
+
+        const { css, i18n } = this.opts;
+
+        this.container.className += ` ${css}`;
+        this.container.className += ` g5-component--is-${i18n}` || 'en';
+
+        if (this.active) {
+            this.container.className += ' g5-component--is-visible';
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method addG5Attributes
+     * @desc adds base component attributes
+     * @returns {Object} this
+     *
+     */
+    addG5Attributes() {
+
+        this.container.setAttribute('data-g5-component-instance', this.instance);
+        this.container.setAttribute('data-g5-component-bound', this.bound);
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method registerHelpers
+     * @param {Object} helpers
+     * @desc method for registering handlebar helpers
+     * @returns {Object} this
+     *
+     */
+    registerHelpers(helpers = this.helpers) {
+
+        this.register('Helper', helpers);
+
+    }
+
+    /**
+     *
+     * @method registerPartials
+     * @param {Object} partials
+     * @desc method for registering handlebar partials
+     * @returns {Object} this
+     *
+     */
+    registerPartials(partials = this.partials) {
+
+        this.register('Partial', partials);
+
+    }
+
+    /**
+     *
+     * @access private
+     * @param {String} type "Partials" or "Helpers"
+     * @param {Object} from container of partials or helpers.
+     *
+     */
+    register(type, from) {
+
+        const { Handlebars } = this;
+
+        if (!Handlebars) {
+            return this;
+        }
+
+        const keys = Object.keys(from);
+
+        for (let i = 0; i < keys.length; ++i) {
+
+            const key = keys[i];
+            const item = from[key];
+
+            Handlebars['register' + type](key, item);
+
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method bindComponent
+     * @param {Object} data
+     * @desc attaches component specific functionality
+     * @returns {Object} this
+     *
+     */
+    bindComponent(data={}) {
+
+        data = this.extender(data, this.opts);
+
+        if (!isEqual(data, this.dataCache)) {
+
+            this.dataCache = data;
+
+            const template = this.template(data);
+
+            if (typeof HTMLElement === 'function' && template instanceof HTMLElement) {
+                this.container.innerHTML = '';
+                this.container.appendChild(template);
+            } else {
+                this.container.innerHTML = template;
+            }
+
+        }
+
+        if (!this.bound) {
+
+            this.bound = true;
+            this.addG5Attributes();
+            this.component.init(this.dataCache);
+
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method onDataError
+     * @param {Number|Object} error
+     * @desc method triggered on error
+     * @returns {Object} this
+     *
+     */
+    onDataError(error) {
+
+        const elementClasses = this.container.classList;
+        const errorClass = 'g5-component--is-error';
+
+        utils.trace(error);
+
+        if (!elementClasses.contains(errorClass)) {
+            this.container.classList.add(errorClass);
+        }
+
+        return this;
+
+    }
+
+    /**
+     *
+     * @method hasInstance
+     * @desc checks if container has an active instance
+     * @returns {Boolean}
+     *
+     */
+    hasInstance() {
+
+        if (this.container) {
+
+            return !!this.container.getAttribute('data-g5-component-instance');
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
+    /**
+     *
+     * @method destroy
+     * @desc completely destroys the current instance, and all children
+     * @returns {Object} this
+     *
+     */
+    destroy() {
+
+        this.component.destroy();
+
+        this.instance = false;
+        this.active = false;
+        this.bound = false;
+
+        this.dataCache = {};
+
+        this.component = null;
+        this.template = null;
+        this.helpers = null;
+        this.partials = null;
+        this.extender = null;
+
+        this.container.outerHTML = '';
+        this.container = null;
+
+        return this;
+
+    }
 
 }
 
-util.inherits(MasterViewModel, EventEmitter);
-
-/**
- *
- * @method init
- * @description initiates viewModel
- * @returns {Object} this
- *
- */
-MasterViewModel.prototype.init = function() {
-
-    if (!this.container) {
-
-        throw Error('G5Component needs to be instantiated with a container');
-
-    } else if (!this.container.nodeType) {
-
-        throw Error('Container must be a valid DOM Node');
-
-    }
-
-    if (!this.instance) {
-
-        this.instance = true;
-        this.active = true;
-
-        this.addClass();
-        this.addG5Attributes();
-        this.registerHelpers();
-        this.registerPartials();
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method addClass
- * @description adds classes based on options and component state
- * @returns {Object} this
- *
- */
-MasterViewModel.prototype.addClass = function() {
-
-    let { css, i18n } = this.opts;
-
-    this.container.className += ' ' + css;
-    this.container.className += ' g5-component--is-' + i18n || 'en';
-
-    if (this.active) {
-        this.container.className += ' g5-component--is-visible';
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method addG5Attributes
- * @description adds base component attributes
- * @returns {Object} this
- *
- */
-MasterViewModel.prototype.addG5Attributes = function() {
-
-    this.container.setAttribute('data-g5-component-instance', this.instance);
-    this.container.setAttribute('data-g5-component-bound', this.bound);
-
-    return this;
-
-};
-
-/**
- *
- * @method registerHelpers
- * @param {Object} helpers
- * @returns {Object} this
- * @description method for registering handlebar helpers
- *
- */
-MasterViewModel.prototype.registerHelpers = function(helpers = this.helpers) {
-
-    if (size(helpers)) {
-
-        forOwn(helpers, (item, key) => {
-
-            Handlebars.registerHelper(key, item);
-
-        });
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method registerPartials
- * @param {Object} partials
- * @returns {Object} this
- * @description method for registering handlebar partials
- *
- */
-MasterViewModel.prototype.registerPartials = function(partials = this.partials) {
-
-    if (size(partials)) {
-
-        forOwn(partials, (item, key) => {
-
-            Handlebars.registerPartial(key, item);
-
-        });
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method bindComponent
- * @param {Object} data
- * @returns {Object} this
- * @description attaches component specific functionality
- *
- */
-MasterViewModel.prototype.bindComponent = function(data={}) {
-
-    data = this.extender(data, this.opts);
-
-    if (!isEqual(data, this.dataCache)) {
-
-        this.dataCache = data;
-        this.container.innerHTML = this.template(data);
-
-    }
-
-    if (!this.bound) {
-
-        this.bound = true;
-        this.addG5Attributes();
-        this.component.init(this.dataCache);
-
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method onDataError
- * @param {Number|Object} err
- * @description method triggered on error
- * @returns {Object} this
- *
- */
-MasterViewModel.prototype.onDataError = function(err) {
-
-    let elementClasses = this.container.classList;
-    let errorClass = 'g5-component--is-error';
-
-    utils.log('error: ' + err);
-
-    if (!elementClasses.contains(errorClass)) {
-        this.container.classList.add(errorClass);
-    }
-
-    return this;
-
-};
-
-/**
- *
- * @method hasInstance
- * @description checks if container has an active instance
- * @returns {Boolean}
- *
- */
-MasterViewModel.prototype.hasInstance = function() {
-
-    if (this.container) {
-
-        return !!this.container.getAttribute('data-g5-component-instance');
-
-    } else {
-
-        return false;
-
-    }
-
-};
-
-/**
- *
- * @method destroy
- * @returns {Object} this
- * @description kills viewModel instance
- *
- */
-MasterViewModel.prototype.destroy = function() {
-
-    this.component.destroy();
-
-    this.instance = false;
-    this.active = false;
-    this.bound = false;
-
-    this.dataCache = {};
-
-    this.component = null;
-    this.template = null;
-    this.helpers = null;
-    this.partials = null;
-    this.extender = null;
-
-    this.container.outerHTML = '';
-    this.container = null;
-
-    return this;
-
-};
-
-module.exports = MasterViewModel;
+export default MasterViewModel;

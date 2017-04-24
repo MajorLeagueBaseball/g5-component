@@ -2,11 +2,8 @@
  *
  * @module events/group/extender
  * @author Greg Babula [greg.babula@mlb.com]
- * @description extended/custom events
  *
  */
-
-'use strict';
 
 /**
  *
@@ -14,6 +11,7 @@
  * @param {Object} master
  * @param {Object} model
  * @param {Object} viewModel
+ * @desc attaches custom events to all core dependencies
  *
  */
 function eventGroup(master={}, model={}, viewModel={}) {
@@ -24,4 +22,4 @@ function eventGroup(master={}, model={}, viewModel={}) {
 
 }
 
-module.exports = eventGroup;
+export default eventGroup;
