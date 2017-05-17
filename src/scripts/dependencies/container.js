@@ -29,7 +29,7 @@ export function stub() {
             return {
                 init: () => {},
                 destroy: () => {}
-            }
+            };
         },
         template: {},
         helpers: {},

@@ -16,7 +16,7 @@ export function Log() {
     this.store = [];
 
     const fn = function (...args) {
-        utils.log(this, ...args)
+        utils.log(this, ...args);
     }.bind(this);
 
     fn.store = this.store;

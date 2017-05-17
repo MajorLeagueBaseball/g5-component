@@ -1,6 +1,6 @@
 {
   "name": "g5-component",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Browserify Component Scaffold",
   "author": "Greg Babula <greg.babula@mlb.com>",
   "contributors": [
@@ -27,7 +27,14 @@
   "module": "src/scripts/g5-component.js",
   "browserify": {
     "transform": [
-      ["babelify", { "presets": ["es2015"] }],
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ],
       [
         "hbsfy",
         {
@@ -67,7 +74,6 @@
     "lint": "jshint src/scripts/ || true",
     "disk-usage": "du -sh ./dist/*",
     "prelint": "echo 'Checking code via JSHint...'",
-
     "build-js-composition-example": "browserify example/src/composition/g5-component-composition.js --s 'g5-component' > example/dist/g5-component-composition.js",
     "build-js-simple-example": "browserify example/src/simple/g5-component-simple.js --s 'g5-component' > example/dist/g5-component-simple.js",
     "build-examples": "npm run build-js-composition-example; npm run build-js-simple-example; du -sh ./example/dist/*",
@@ -97,6 +103,5 @@
     "uglify-js": "^2.8.14",
     "xmlhttprequest": "^1.8.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
