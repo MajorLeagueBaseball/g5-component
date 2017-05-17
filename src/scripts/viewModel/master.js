@@ -208,6 +208,8 @@ class MasterViewModel extends EventEmitter {
                 this.container.innerHTML = template;
             }
 
+            this.bound = false;
+
         }
 
         if (!this.bound) {
@@ -289,7 +291,7 @@ class MasterViewModel extends EventEmitter {
         this.partials = null;
         this.extender = null;
 
-        this.container.outerHTML = '';
+        this.container.innerHTML = '';
         this.container = null;
 
         return this;
