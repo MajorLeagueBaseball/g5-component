@@ -28,6 +28,10 @@
   ],
   "main": "src/scripts/g5-component.js",
   "module": "src/scripts/g5-component.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
   "browserify": {
     "transform": [
       [
