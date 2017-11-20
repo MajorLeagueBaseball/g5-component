@@ -58,7 +58,7 @@ export class Component {
 
         /**
          *
-         * @type {Function<*(...args)>} a logging function.
+         * @type {Function} a logging function<*(...args)>.
          * @see G5Component()
          *
          */

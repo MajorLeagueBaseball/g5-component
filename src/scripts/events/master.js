@@ -49,8 +49,8 @@ class EventTower {
         // EventEmitter before proceeding to attach events
         //
         if ([this.master, this.model, this.viewModel].filter((item) => {
-                return item instanceof EventEmitter;
-            }).length >= 3) {
+            return item instanceof EventEmitter;
+        }).length >= 3) {
 
             //
             // attach events to a single instnace

@@ -22,6 +22,7 @@ npm-debug.log
 *.log
 *.todo
 *.idea
+.eslintrc.js
 .eslintrc.json
 .devflow-session
 
@@ -43,3 +44,4 @@ npm-debug.log
 /dist/*.gz
 /dist/*.map
 /example/dist/*.js
+/esdocs

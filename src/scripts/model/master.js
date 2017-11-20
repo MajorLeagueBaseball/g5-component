@@ -65,7 +65,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function<*(...args)>} a logging function.
+         * @type {Function} a logging function *(...args).
          * @see G5Component()
          *
          */
@@ -110,7 +110,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} <object(string)>
+         * @type {Function} object(string)
          * @param {string} response
          * @desc example pass-through function
          * @returns {object}
@@ -120,7 +120,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} <void(object)>
+         * @type {Function} void(object)
          * @param {object} data parsed JSON
          * @emits {data}
          *
@@ -136,7 +136,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} <void(Error)>
+         * @type {Function} void(Error)
          * @param {Number|object} err
          * @emits {data-error}
          *

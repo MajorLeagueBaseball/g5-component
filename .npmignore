@@ -1,0 +1,6 @@
+docs
+esdocs
+example
+test
+.*
+index.html
