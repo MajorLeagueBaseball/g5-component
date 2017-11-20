@@ -21,7 +21,7 @@ class MasterModel extends EventEmitter {
 
     /**
      *
-     * @param {Object} opts shared options Object
+     * @param {object} opts shared options Object
      *
      */
     constructor(opts) {
@@ -30,7 +30,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Object}
+         * @type {object}
          *
          */
         this.opts = assign({
@@ -49,7 +49,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Object}
+         * @type {object}
          * @desc data cache stored in memory
          * @note also used for comparison to determine if a fetch is needed
          *
@@ -77,7 +77,7 @@ class MasterModel extends EventEmitter {
      *
      * @method init
      * @desc initiates model and triggers initial data fetch.
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     init() {
@@ -98,7 +98,7 @@ class MasterModel extends EventEmitter {
      *
      * @method fetch
      * @desc makes a GET request to specified path, emits data event, expecting JSON by default
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     fetch() {
@@ -113,7 +113,7 @@ class MasterModel extends EventEmitter {
          * @type {Function} <object(string)>
          * @param {string} response
          * @desc example pass-through function
-         * @returns {Object}
+         * @returns {object}
          *
          */
         const handleData = (response) => JSON.parse(response);
@@ -121,7 +121,7 @@ class MasterModel extends EventEmitter {
         /**
          *
          * @type {Function} <void(object)>
-         * @param {Object} data parsed JSON
+         * @param {object} data parsed JSON
          * @emits {data}
          *
          */
@@ -137,7 +137,7 @@ class MasterModel extends EventEmitter {
         /**
          *
          * @type {Function} <void(Error)>
-         * @param {Number|Object} err
+         * @param {Number|object} err
          * @emits {data-error}
          *
          */
@@ -191,7 +191,7 @@ class MasterModel extends EventEmitter {
      *
      * @method start
      * @desc begins data polling
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     start() {
@@ -209,7 +209,7 @@ class MasterModel extends EventEmitter {
      *
      * @method stop
      * @desc stops data polling
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     stop() {
@@ -226,7 +226,7 @@ class MasterModel extends EventEmitter {
      *
      * @method destroy
      * @desc stops data polling and destroys instance
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     destroy() {

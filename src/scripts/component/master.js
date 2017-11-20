@@ -21,7 +21,7 @@ export class Component {
 
     /**
      *
-     * @param {ViewModel|Object} parent
+     * @param {ViewModel|object} parent
      *
      */
     constructor(parent) {
@@ -30,7 +30,7 @@ export class Component {
 
         /**
          *
-         * @type {Object}
+         * @type {object}
          *
          */
         this.dataCache = dataCache;
@@ -51,7 +51,7 @@ export class Component {
 
         /**
          *
-         * @type {Object}
+         * @type {object}
          *
          */
         this.opts = opts;
@@ -70,10 +70,10 @@ export class Component {
      *
      * @access public
      * @method init
-     * @param {Object} data
+     * @param {object} data
      * @desc instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way.
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     init(data = {}) {
@@ -89,7 +89,7 @@ export class Component {
      * @access public
      * @method destroy
      * @desc detaches component functionality, events must be cleaned up
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     destroy() {
@@ -104,7 +104,7 @@ export class Component {
  *
  * @access public
  * @function componentFactory
- * @param {ViewModel|Object} parent
+ * @param {ViewModel|object} parent
  * @returns {Component}
  *
  */

@@ -11,7 +11,7 @@ import { EventEmitter } from 'events';
 /**
  *
  * @function detachEvents
- * @param {Object} target
+ * @param {object} target
  * @desc removes events if target is an EventEmitter.
  *
  */
@@ -33,7 +33,7 @@ class EventTower {
 
     /**
      *
-     * @param {Object} master
+     * @param {object} master
      *
      */
     constructor(master) {
@@ -73,7 +73,7 @@ class EventTower {
      *
      * @method attachEvents
      * @desc core attachEvents method, attaches core and extender events
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     attachEvents() {
@@ -91,7 +91,7 @@ class EventTower {
      *
      * @method detachEvents
      * @desc detaches all events
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     detachEvents() {
