@@ -8,9 +8,9 @@
 /**
  *
  * @function eventGroup
- * @param {object} master
- * @param {object} model
- * @param {object} viewModel
+ * @param {object} [master]
+ * @param {object} [model]
+ * @param {object} [viewModel]
  * @desc attaches base events to all core dependencies
  *
  */

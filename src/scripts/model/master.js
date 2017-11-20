@@ -42,7 +42,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Boolean}
+         * @type {boolean}
          *
          */
         this.instance = false;
@@ -58,14 +58,14 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Number} timeout ID or null
+         * @type {number} timeout ID or null
          *
          */
         this.dataFetch = null;
 
         /**
          *
-         * @type {Function} a logging function *(...args).
+         * @type {function} a logging function *(...args).
          * @see G5Component()
          *
          */
@@ -110,7 +110,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} object(string)
+         * @type {function} object(string)
          * @param {string} response
          * @desc example pass-through function
          * @returns {object}
@@ -120,7 +120,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} void(object)
+         * @type {function} void(object)
          * @param {object} data parsed JSON
          * @emits {data}
          *
@@ -136,7 +136,7 @@ class MasterModel extends EventEmitter {
 
         /**
          *
-         * @type {Function} void(Error)
+         * @type {function} void(Error)
          * @param {Number|object} err
          * @emits {data-error}
          *
@@ -156,7 +156,7 @@ class MasterModel extends EventEmitter {
     /**
      *
      * @param {string} url data location.
-     * @param {Function} handleError <*(Error)> an error handler, for when disaster strikes.
+     * @param {function} handleError <*(Error)> an error handler, for when disaster strikes.
      * @param {...Function} handleSuccess any number of success handlers, piped in order.
      *
      */

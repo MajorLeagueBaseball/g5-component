@@ -77,7 +77,7 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
-         * @type {Function} a function<*(...args)> that can log any number of arguments.
+         * @type {function} a function<*(...args)> that can log any number of arguments.
          * @desc by default the output will be stored in memory at [this.log.store].
          *
          * @example this.log('hello', { world: 'world' }, true, 42); // logs to memory store
@@ -155,7 +155,7 @@ export default class G5Component extends EventEmitter {
      * @access public
      * @method hasInstance
      * @desc checks if active instance exists on the primary container
-     * @returns {Boolean}
+     * @returns {boolean}
      *
      */
     hasInstance() {

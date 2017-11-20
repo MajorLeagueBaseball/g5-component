@@ -126,8 +126,8 @@ const utils = {
     /**
      *
      * @method pad
-     * @param {Number} n
-     * @param {Number} digits
+     * @param {number} n
+     * @param {number} digits
      * @returns {String} padded number
      *
      */

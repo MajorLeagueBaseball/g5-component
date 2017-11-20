@@ -58,7 +58,7 @@ export class Component {
 
         /**
          *
-         * @type {Function} a logging function<*(...args)>.
+         * @type {function} a logging function<*(...args)>.
          * @see G5Component()
          *
          */
@@ -70,7 +70,7 @@ export class Component {
      *
      * @access public
      * @method init
-     * @param {object} data
+     * @param {object} [data]
      * @desc instantiates component with a reference to the parent viewModel, properties on
      * the parent reference should never be modified in any way.
      * @returns {object} this
@@ -104,7 +104,7 @@ export class Component {
  *
  * @access public
  * @function componentFactory
- * @param {ViewModel|object} parent
+ * @param {ViewModel|object} [parent]
  * @returns {Component}
  *
  */

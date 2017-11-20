@@ -251,7 +251,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method hasInstance
      * @desc checks if container has an active instance
-     * @returns {Boolean}
+     * @returns {boolean}
      *
      */
     hasInstance() {

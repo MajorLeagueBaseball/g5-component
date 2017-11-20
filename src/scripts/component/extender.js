@@ -9,8 +9,8 @@
 /**
  *
  * @function extender
- * @param {object} data
- * @param {object} opts shared options
+ * @param {object} [data]
+ * @param {object} [opts] shared options
  * @desc component data extender
  * @returns {object} extended data
  *
