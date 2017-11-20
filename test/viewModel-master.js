@@ -8,11 +8,11 @@
 
 'use strict';
 
-const assert = require('assert')
+const assert = require('assert');
 const MasterViewModel = require('./../src/scripts/viewModel/master').default;
 const EventEmitter = require('events').EventEmitter;
 
-describe('viewModel-master test', (t) => {
+describe('viewModel-master test', () => {
 
     let viewModel = new MasterViewModel();
 

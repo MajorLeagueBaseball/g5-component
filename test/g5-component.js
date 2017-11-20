@@ -8,11 +8,11 @@
 
 'use strict';
 
-const assert = require('assert')
+const assert = require('assert');
 const G5Component = require('./../src/scripts/g5-component').default;
 const EventEmitter = require('events').EventEmitter;
 
-describe('g5-component core test', (t) => {
+describe('g5-component core test', () => {
 
     let linescoreComponent = new G5Component({
         container: null,

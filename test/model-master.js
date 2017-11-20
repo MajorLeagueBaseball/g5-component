@@ -14,7 +14,7 @@ const assert = require('assert');
 const MasterModel = require('./../src/scripts/model/master').default;
 const EventEmitter = require('events').EventEmitter;
 
-describe('model-master test', (t) => {
+describe('model-master test', () => {
 
     let model = new MasterModel({
         path: '/src/data/linescore.json'
