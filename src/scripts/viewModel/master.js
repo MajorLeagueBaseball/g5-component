@@ -227,7 +227,7 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method onDataError
-     * @param {Number|object} error
+     * @param {number|object} error
      * @desc method triggered on error
      * @returns {object} this
      *

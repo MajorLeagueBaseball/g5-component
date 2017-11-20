@@ -67,7 +67,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data-error
-     * @param {Number|object} err
+     * @param {number|object} err
      *
      */
     model.on('data-error', (err) => {
@@ -114,7 +114,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data-error
-     * @param {Number|object} err
+     * @param {number|object} err
      *
      */
     viewModel.on('data-error', (err) => {

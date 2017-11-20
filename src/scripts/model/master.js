@@ -137,7 +137,7 @@ class MasterModel extends EventEmitter {
         /**
          *
          * @type {function} void(Error)
-         * @param {Number|object} err
+         * @param {number|object} err
          * @emits {data-error}
          *
          */

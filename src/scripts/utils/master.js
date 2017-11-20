@@ -8,7 +8,7 @@
 /**
  *
  * @function Log
- * @returns {Log|Function} fogging function void(...args) that has a bound instance of utils.Log.
+ * @returns {Log|function} fogging function void(...args) that has a bound instance of utils.Log.
  *
  */
 export function Log() {
