@@ -9,10 +9,10 @@
 /**
  *
  * @function extender
- * @param {Object} data
- * @param {Object} opts shared options
+ * @param {object} [data]
+ * @param {object} [opts] shared options
  * @desc component data extender
- * @returns {Object} extended data
+ * @returns {object} extended data
  *
  */
 function extender(data={}, opts={}) {

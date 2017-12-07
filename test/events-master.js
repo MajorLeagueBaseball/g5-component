@@ -8,14 +8,12 @@
 
 'use strict';
 
-const test = require('tape');
+const assert = require('assert');
 const EventTower = require('./../src/scripts/events/master').default;
 const EventEmitter = require('events').EventEmitter;
 const assign = require('./../src/scripts/utils/nodash').assign;
 
-test('events-master test', (t) => {
-
-    t.plan(3);
+describe('events-master test', () => {
 
     let eventTower = new EventTower(assign(new EventEmitter, {
         hasInstance: () => true,
@@ -23,23 +21,19 @@ test('events-master test', (t) => {
         viewModel: new EventEmitter,
     }));
 
-    t.ok(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
+    assert(eventTower instanceof EventTower, 'eventTower should have instance of EventTower');
 
-    t.test('eventTower should have expected properties', (st) => {
+    it('eventTower should have expected properties', () => {
 
-        st.equal(typeof eventTower.model, 'object', 'should have model reference');
-        st.equal(typeof eventTower.viewModel, 'object', 'should have viewModel reference');
-
-        st.end();
+        assert.equal(typeof eventTower.model, 'object', 'should have model reference');
+        assert.equal(typeof eventTower.viewModel, 'object', 'should have viewModel reference');
 
     });
 
-    t.test('eventTower should have expected methods', (st) => {
+    it('eventTower should have expected methods', () => {
 
-        st.equal(typeof eventTower.attachEvents, 'function', 'should have attachEvents method');
-        st.equal(typeof eventTower.detachEvents, 'function', 'should have detachEvents method');
-
-        st.end();
+        assert.equal(typeof eventTower.attachEvents, 'function', 'should have attachEvents method');
+        assert.equal(typeof eventTower.detachEvents, 'function', 'should have detachEvents method');
 
     });
 

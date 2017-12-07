@@ -8,82 +8,72 @@
 
 'use strict';
 
-const test = require('tape');
+const assert = require('assert');
 const MasterViewModel = require('./../src/scripts/viewModel/master').default;
 const EventEmitter = require('events').EventEmitter;
 
-test('viewModel-master test', (t) => {
-
-    t.plan(6);
+describe('viewModel-master test', () => {
 
     let viewModel = new MasterViewModel();
 
     viewModel.container = {};
     viewModel.component.destroy = () => {};
 
-    t.ok(viewModel instanceof MasterViewModel, 'viewModel should have instance of MasterViewModel');
-    t.ok(viewModel instanceof EventEmitter, 'viewModel should have instance of EventEmitter');
+    assert(viewModel instanceof MasterViewModel, 'viewModel should have instance of MasterViewModel');
+    assert(viewModel instanceof EventEmitter, 'viewModel should have instance of EventEmitter');
 
-    t.test('viewModel should have expected properties', (st) => {
+    it('viewModel should have expected properties', () => {
 
-        st.equal(typeof viewModel.opts, 'object', 'should have opts object');
-        st.equal(typeof viewModel.opts.css, 'string', 'should have css property in opts object');
+        assert.equal(typeof viewModel.opts, 'object', 'should have opts object');
+        assert.equal(typeof viewModel.opts.css, 'string', 'should have css property in opts object');
 
-        st.equal(typeof viewModel.instance, 'boolean', 'should have instance property');
-        st.equal(typeof viewModel.active, 'boolean', 'should have active property');
-        st.equal(typeof viewModel.bound, 'boolean', 'should have bound property');
-        st.equal(typeof viewModel.helpers, 'object', 'should have component helpers');
-        st.equal(typeof viewModel.partials, 'object', 'should have component partials');
+        assert.equal(typeof viewModel.instance, 'boolean', 'should have instance property');
+        assert.equal(typeof viewModel.active, 'boolean', 'should have active property');
+        assert.equal(typeof viewModel.bound, 'boolean', 'should have bound property');
+        assert.equal(typeof viewModel.helpers, 'object', 'should have component helpers');
+        assert.equal(typeof viewModel.partials, 'object', 'should have component partials');
 
-        st.ok(!!viewModel.component, 'should have component master');
-        st.ok(!!viewModel.template, 'should have component template');
-        st.ok(!!viewModel.extender, 'should have component extender');
-
-        st.end();
+        assert(!!viewModel.component, 'should have component master');
+        assert(!!viewModel.template, 'should have component template');
+        assert(!!viewModel.extender, 'should have component extender');
 
     });
 
-    t.test('viewModel should have expected methods', (st) => {
+    it('viewModel should have expected methods', () => {
 
-        st.equal(typeof viewModel.log, 'function', 'should have log method');
-        st.equal(typeof viewModel.init, 'function', 'should have init method');
-        st.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
-        st.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');
-        st.equal(typeof viewModel.registerHelpers, 'function', 'should have registerHelpers method');
-        st.equal(typeof viewModel.registerPartials, 'function', 'should have registerPartials method');
-        st.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
-        st.equal(typeof viewModel.onDataError, 'function', 'should have onDataError method');
-        st.equal(typeof viewModel.hasInstance, 'function', 'should have hasInstance method');
-        st.equal(typeof viewModel.destroy, 'function', 'should have destroy method');
-
-        st.end();
+        assert.equal(typeof viewModel.log, 'function', 'should have log method');
+        assert.equal(typeof viewModel.init, 'function', 'should have init method');
+        assert.equal(typeof viewModel.addClass, 'function', 'should have addClass method');
+        assert.equal(typeof viewModel.addG5Attributes, 'function', 'should have addG5Attributes method');
+        assert.equal(typeof viewModel.registerHelpers, 'function', 'should have registerHelpers method');
+        assert.equal(typeof viewModel.registerPartials, 'function', 'should have registerPartials method');
+        assert.equal(typeof viewModel.bindComponent, 'function', 'should have bindComponent method');
+        assert.equal(typeof viewModel.onDataError, 'function', 'should have onDataError method');
+        assert.equal(typeof viewModel.hasInstance, 'function', 'should have hasInstance method');
+        assert.equal(typeof viewModel.destroy, 'function', 'should have destroy method');
 
     });
 
-    t.test('viewModel should have events', (st) => {
+    it('viewModel should have events', () => {
 
-        st.ok(viewModel._events, 'viewModel should have events Object');
-
-        st.end();
+        assert(viewModel._events, 'viewModel should have events Object');
 
     });
 
-    t.test('destroy should invalidate instance', (st) => {
+    it('destroy should invalidate instance', () => {
 
         viewModel.destroy();
 
-        st.notOk(viewModel.instance, 'instance should not exist after destroy');
-        st.notOk(viewModel.active, 'instance should not be active');
-        st.notOk(viewModel.bound, 'instance should not be bound');
+        assert(!viewModel.instance, 'instance should not exist after destroy');
+        assert(!viewModel.active, 'instance should not be active');
+        assert(!viewModel.bound, 'instance should not be bound');
 
-        st.notOk(viewModel.container, 'container should be destroyed');
-        st.notOk(viewModel.component, 'component master should not exist');
-        st.notOk(viewModel.template, 'component template should not exist');
-        st.notOk(viewModel.helpers, 'component helpers should not exist');
-        st.notOk(viewModel.partials, 'component partials should not exist');
-        st.notOk(viewModel.extender, 'component extender should not exist');
-
-        st.end();
+        assert(!viewModel.container, 'container should be destroyed');
+        assert(!viewModel.component, 'component master should not exist');
+        assert(!viewModel.template, 'component template should not exist');
+        assert(!viewModel.helpers, 'component helpers should not exist');
+        assert(!viewModel.partials, 'component partials should not exist');
+        assert(!viewModel.extender, 'component extender should not exist');
 
     });
 

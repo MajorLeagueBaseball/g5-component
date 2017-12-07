@@ -22,8 +22,8 @@ export default class G5Component extends EventEmitter {
 
     /**
      *
-     * @param {Object} opts shared options Object
-     * @param {Object} di containing customizations for the g5 component.
+     * @param {object} opts shared options Object
+     * @param {object} di containing customizations for the g5 component.
      *
      */
     constructor(opts, di = dependencies) {
@@ -44,7 +44,7 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
-         * @type {Object}
+         * @type {object}
          * @desc Dependencies references are copied at instantiation.
          *
          */
@@ -77,7 +77,7 @@ export default class G5Component extends EventEmitter {
 
         /**
          *
-         * @type {Function<*(...args)>} a function that can log any number of arguments.
+         * @type {function} a function<*(...args)> that can log any number of arguments.
          * @desc by default the output will be stored in memory at [this.log.store].
          *
          * @example this.log('hello', { world: 'world' }, true, 42); // logs to memory store
@@ -94,7 +94,7 @@ export default class G5Component extends EventEmitter {
      * @method init
      * @desc initiates implemnentations
      * @emits {ready}
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     init() {
@@ -119,7 +119,7 @@ export default class G5Component extends EventEmitter {
      * @access public
      * @method detachEvents
      * @desc detaches all EventTower events
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     detachEvents() {
@@ -137,7 +137,7 @@ export default class G5Component extends EventEmitter {
      * @access public
      * @method attachEvents
      * @desc attaches all EventTower events
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     attachEvents() {
@@ -155,7 +155,7 @@ export default class G5Component extends EventEmitter {
      * @access public
      * @method hasInstance
      * @desc checks if active instance exists on the primary container
-     * @returns {Boolean}
+     * @returns {boolean}
      *
      */
     hasInstance() {
@@ -170,7 +170,7 @@ export default class G5Component extends EventEmitter {
      * @method destroy
      * @desc destroys core instance and all implementations
      * @emits {destroy}
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     destroy() {

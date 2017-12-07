@@ -8,9 +8,9 @@
 /**
  *
  * @function eventGroup
- * @param {Object} master
- * @param {Object} model
- * @param {Object} viewModel
+ * @param {object} [master]
+ * @param {object} [model]
+ * @param {object} [viewModel]
  * @desc attaches base events to all core dependencies
  *
  */
@@ -19,7 +19,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event synthetic-data
-     * @param {Object} data
+     * @param {object} data
      *
      */
     master.on('synthetic-data', (data) => {
@@ -54,7 +54,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data
-     * @param {Object} data
+     * @param {object} data
      *
      */
     model.on('data', (data) => {
@@ -67,7 +67,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data-error
-     * @param {Number|Object} err
+     * @param {number|object} err
      *
      */
     model.on('data-error', (err) => {
@@ -102,7 +102,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data
-     * @param {Object} data
+     * @param {object} data
      *
      */
     viewModel.on('data', (data) => {
@@ -114,7 +114,7 @@ function eventGroup(master={}, model={}, viewModel={}) {
     /**
      *
      * @event data-error
-     * @param {Number|Object} err
+     * @param {number|object} err
      *
      */
     viewModel.on('data-error', (err) => {

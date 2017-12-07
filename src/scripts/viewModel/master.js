@@ -21,7 +21,7 @@ class MasterViewModel extends EventEmitter {
 
     /**
      *
-     * @param {Object} opts shared options Object, template, helpers, partials, and extender.
+     * @param {object} opts shared options Object, template, helpers, partials, and extender.
      * @param {object} [implementations = dependencies] A container with the component implementation(s) to use.
      *
      */
@@ -56,7 +56,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method init
      * @desc initiates viewModel
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     init() {
@@ -91,7 +91,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method addClass
      * @desc adds classes based on options and component state
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     addClass() {
@@ -113,7 +113,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method addG5Attributes
      * @desc adds base component attributes
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     addG5Attributes() {
@@ -128,9 +128,9 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method registerHelpers
-     * @param {Object} helpers
+     * @param {object} helpers
      * @desc method for registering handlebar helpers
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     registerHelpers(helpers = this.helpers) {
@@ -142,9 +142,9 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method registerPartials
-     * @param {Object} partials
+     * @param {object} partials
      * @desc method for registering handlebar partials
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     registerPartials(partials = this.partials) {
@@ -157,7 +157,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @access private
      * @param {String} type "Partials" or "Helpers"
-     * @param {Object} from container of partials or helpers.
+     * @param {object} from container of partials or helpers.
      *
      */
     register(type, from) {
@@ -186,9 +186,9 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method bindComponent
-     * @param {Object} data
+     * @param {object} data
      * @desc attaches component specific functionality
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     bindComponent(data={}) {
@@ -199,13 +199,13 @@ class MasterViewModel extends EventEmitter {
 
             this.dataCache = data;
 
-            const template = this.template(data);
+            const templateOutput = this.template(data);
 
-            if (typeof HTMLElement === 'function' && template instanceof HTMLElement) {
+            if (typeof templateOutput !== 'string') {
                 this.container.innerHTML = '';
-                this.container.appendChild(template);
+                this.container.appendChild(templateOutput);
             } else {
-                this.container.innerHTML = template;
+                this.container.innerHTML = templateOutput;
             }
 
             this.bound = false;
@@ -227,9 +227,9 @@ class MasterViewModel extends EventEmitter {
     /**
      *
      * @method onDataError
-     * @param {Number|Object} error
+     * @param {number|object} error
      * @desc method triggered on error
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     onDataError(error) {
@@ -251,7 +251,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method hasInstance
      * @desc checks if container has an active instance
-     * @returns {Boolean}
+     * @returns {boolean}
      *
      */
     hasInstance() {
@@ -272,7 +272,7 @@ class MasterViewModel extends EventEmitter {
      *
      * @method destroy
      * @desc completely destroys the current instance, and all children
-     * @returns {Object} this
+     * @returns {object} this
      *
      */
     destroy() {

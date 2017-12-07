@@ -8,7 +8,7 @@
 /**
  *
  * @function Log
- * @returns {Log|Function<void(...args)>} logging function that has a bound instance of utils.Log.
+ * @returns {Log|function} fogging function void(...args) that has a bound instance of utils.Log.
  *
  */
 export function Log() {
@@ -126,8 +126,8 @@ const utils = {
     /**
      *
      * @method pad
-     * @param {Number} n
-     * @param {Number} digits
+     * @param {number} n
+     * @param {number} digits
      * @returns {String} padded number
      *
      */
