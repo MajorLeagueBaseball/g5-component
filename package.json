@@ -53,7 +53,7 @@
     ]
   },
   "scripts": {
-    "serve": "npx http-server -c-1 -p 9966",
+    "serve": "npx http-server-legacy -c-1 -p 9966",
     "start": "npm run build && npm run serve",
     "start-dev": "npm run watch & npm run serve",
     "precommit": "npm run lint; npm test",
@@ -83,27 +83,27 @@
     "watch-examples": "npx nodemon --debug -e js,html --watch src/scripts/ --watch example/src/ --exec 'npm run build-examples'"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "handlebars": "^4.0.11",
+    "hbsfy": "^2.8.1",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
-    "bootstrap": "^3.3.7",
     "browserify": "^14.5.0",
     "clean-css": "^4.1.9",
     "clean-css-cli": "^4.1.10",
     "esdoc": "^1.0.4",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.11.0",
-    "handlebars": "^4.0.11",
-    "hbsfy": "^2.8.1",
-    "http-server": "^0.9.0",
     "husky": "^0.14.3",
     "imagemin": "^5.3.1",
     "imagemin-cli": "^3.0.0",
     "less": "^2.7.3",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
-    "uglify-js": "^2.8.29",
-    "xmlhttprequest": "^1.8.0"
-  },
-  "devDependencies": {}
+    "uglify-js": "^2.8.29"
+  }
 }
